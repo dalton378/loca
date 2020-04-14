@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08904C1096BDEBBBE6A04459 /* Pods_locaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF7294B8E53BB7098C1DCCE /* Pods_locaTests.framework */; };
+		48542ABA5CEF5C8E06E68954 /* Pods_loca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3562539F9D37F1EBC9C17C04 /* Pods_loca.framework */; };
 		8E7192EF24401C5000DB814A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7192EE24401C5000DB814A /* AppDelegate.swift */; };
 		8E7192F124401C5000DB814A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7192F024401C5000DB814A /* SceneDelegate.swift */; };
 		8E7192F324401C5000DB814A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7192F224401C5000DB814A /* ViewController.swift */; };
@@ -15,6 +17,8 @@
 		8E7192FB24401C5D00DB814A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7192F924401C5D00DB814A /* LaunchScreen.storyboard */; };
 		8E71930624401C5D00DB814A /* locaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71930524401C5D00DB814A /* locaTests.swift */; };
 		8E71931124401C5D00DB814A /* locaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71931024401C5D00DB814A /* locaUITests.swift */; };
+		8EC2606B2445E88600A1E842 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC2606A2445E88600A1E842 /* Messages.swift */; };
+		E31EBBCA5BF0C0966847A0B5 /* Pods_loca_locaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0649471F3332863F95C06533 /* Pods-loca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca.release.xcconfig"; path = "Target Support Files/Pods-loca/Pods-loca.release.xcconfig"; sourceTree = "<group>"; };
+		17740F70A558A1712E8EB938 /* Pods-locaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locaTests.release.xcconfig"; path = "Target Support Files/Pods-locaTests/Pods-locaTests.release.xcconfig"; sourceTree = "<group>"; };
+		3562539F9D37F1EBC9C17C04 /* Pods_loca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AF7294B8E53BB7098C1DCCE /* Pods_locaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_locaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loca_locaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7192EB24401C5000DB814A /* loca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7192EE24401C5000DB814A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E7192F024401C5000DB814A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +58,11 @@
 		8E71930C24401C5D00DB814A /* locaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = locaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E71931024401C5D00DB814A /* locaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locaUITests.swift; sourceTree = "<group>"; };
 		8E71931224401C5D00DB814A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EC2606A2445E88600A1E842 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		B1E6A166630A348BE0329D25 /* Pods-loca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca.debug.xcconfig"; path = "Target Support Files/Pods-loca/Pods-loca.debug.xcconfig"; sourceTree = "<group>"; };
+		B6D950CF60779FAD1E28C504 /* Pods-loca-locaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.release.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E71F892B618BB5E2BD1670FD /* Pods-loca-locaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.debug.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E74478F0BBC2F7922F203972 /* Pods-locaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locaTests.debug.xcconfig"; path = "Target Support Files/Pods-locaTests/Pods-locaTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48542ABA5CEF5C8E06E68954 /* Pods_loca.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08904C1096BDEBBBE6A04459 /* Pods_locaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +86,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E31EBBCA5BF0C0966847A0B5 /* Pods_loca_locaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51F65D0EC6D7CB98AB69244A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1E6A166630A348BE0329D25 /* Pods-loca.debug.xcconfig */,
+				0649471F3332863F95C06533 /* Pods-loca.release.xcconfig */,
+				E71F892B618BB5E2BD1670FD /* Pods-loca-locaUITests.debug.xcconfig */,
+				B6D950CF60779FAD1E28C504 /* Pods-loca-locaUITests.release.xcconfig */,
+				E74478F0BBC2F7922F203972 /* Pods-locaTests.debug.xcconfig */,
+				17740F70A558A1712E8EB938 /* Pods-locaTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8E7192E224401C5000DB814A = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +113,8 @@
 				8E71930424401C5D00DB814A /* locaTests */,
 				8E71930F24401C5D00DB814A /* locaUITests */,
 				8E7192EC24401C5000DB814A /* Products */,
+				51F65D0EC6D7CB98AB69244A /* Pods */,
+				AC513076BBDBBE861F037BC8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +131,7 @@
 		8E7192ED24401C5000DB814A /* loca */ = {
 			isa = PBXGroup;
 			children = (
+				8EC260692445E86700A1E842 /* functions */,
 				8E7192EE24401C5000DB814A /* AppDelegate.swift */,
 				8E7192F024401C5000DB814A /* SceneDelegate.swift */,
 				8E7192F224401C5000DB814A /* ViewController.swift */,
@@ -128,6 +161,24 @@
 			path = locaUITests;
 			sourceTree = "<group>";
 		};
+		8EC260692445E86700A1E842 /* functions */ = {
+			isa = PBXGroup;
+			children = (
+				8EC2606A2445E88600A1E842 /* Messages.swift */,
+			);
+			path = functions;
+			sourceTree = "<group>";
+		};
+		AC513076BBDBBE861F037BC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3562539F9D37F1EBC9C17C04 /* Pods_loca.framework */,
+				738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */,
+				5AF7294B8E53BB7098C1DCCE /* Pods_locaTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +186,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E71931524401C5D00DB814A /* Build configuration list for PBXNativeTarget "loca" */;
 			buildPhases = (
+				4E4CBC89EDDB5CF645009D66 /* [CP] Check Pods Manifest.lock */,
 				8E7192E724401C5000DB814A /* Sources */,
 				8E7192E824401C5000DB814A /* Frameworks */,
 				8E7192E924401C5000DB814A /* Resources */,
+				8D1BF4142D644C5BBB08BDD5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +205,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E71931824401C5D00DB814A /* Build configuration list for PBXNativeTarget "locaTests" */;
 			buildPhases = (
+				7E36BCC1E9DB71F9F788E723 /* [CP] Check Pods Manifest.lock */,
 				8E7192FD24401C5D00DB814A /* Sources */,
 				8E7192FE24401C5D00DB814A /* Frameworks */,
 				8E7192FF24401C5D00DB814A /* Resources */,
@@ -170,9 +224,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E71931B24401C5D00DB814A /* Build configuration list for PBXNativeTarget "locaUITests" */;
 			buildPhases = (
+				989C8E2AEBD231DC7EECE2A2 /* [CP] Check Pods Manifest.lock */,
 				8E71930824401C5D00DB814A /* Sources */,
 				8E71930924401C5D00DB814A /* Frameworks */,
 				8E71930A24401C5D00DB814A /* Resources */,
+				52FD867D02B8AEA82A335D17 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -254,12 +310,116 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4E4CBC89EDDB5CF645009D66 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-loca-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52FD867D02B8AEA82A335D17 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E36BCC1E9DB71F9F788E723 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-locaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D1BF4142D644C5BBB08BDD5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-loca/Pods-loca-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-loca/Pods-loca-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-loca/Pods-loca-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		989C8E2AEBD231DC7EECE2A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-loca-locaUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8E7192E724401C5000DB814A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8E7192F324401C5000DB814A /* ViewController.swift in Sources */,
+				8EC2606B2445E88600A1E842 /* Messages.swift in Sources */,
 				8E7192EF24401C5000DB814A /* AppDelegate.swift in Sources */,
 				8E7192F124401C5000DB814A /* SceneDelegate.swift in Sources */,
 			);
@@ -432,6 +592,7 @@
 		};
 		8E71931624401C5D00DB814A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1E6A166630A348BE0329D25 /* Pods-loca.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -441,7 +602,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Dalton.loca;
+				PRODUCT_BUNDLE_IDENTIFIER = com.localoca.estate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -450,6 +611,7 @@
 		};
 		8E71931724401C5D00DB814A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0649471F3332863F95C06533 /* Pods-loca.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -459,7 +621,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Dalton.loca;
+				PRODUCT_BUNDLE_IDENTIFIER = com.localoca.estate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -468,6 +630,7 @@
 		};
 		8E71931924401C5D00DB814A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E74478F0BBC2F7922F203972 /* Pods-locaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -490,6 +653,7 @@
 		};
 		8E71931A24401C5D00DB814A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17740F70A558A1712E8EB938 /* Pods-locaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +676,7 @@
 		};
 		8E71931C24401C5D00DB814A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E71F892B618BB5E2BD1670FD /* Pods-loca-locaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,6 +697,7 @@
 		};
 		8E71931D24401C5D00DB814A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6D950CF60779FAD1E28C504 /* Pods-loca-locaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
