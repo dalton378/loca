@@ -18,4 +18,12 @@ class AlamofireStore {
         })
         
     }
+    
+    func getUser(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.getUser(completionHandler: {result in
+            print(result.response?.statusCode)
+            print(result.error?.underlyingError)
+            completionHandler(result.result)
+        })
+    }
 }

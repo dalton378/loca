@@ -12,31 +12,50 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard  let token = AppConfig.shared.accessToken else {
+            return
+        }
+        print(token)
+        getUser()
+    }
+    
+    
+    @IBAction func accountClick(_ sender: UIButton) {
+        guard let isSignedIn = AppConfig.shared.isSignedIn else {return}
+        switch isSignedIn {
+        case true:
+            performSegue(withIdentifier: "home_manage", sender: self)
+        default:
+             performSegue(withIdentifier: "home_signin", sender: self)
+        }
+        
+    }
+    
+    private func getUser(){
         let store = AlamofireStore()
-        /*
-        store.login(email: "mecamyeu2001@yahoo.com", password: "P@ssw0rd2020", phone: "0909499240", completionHandler: {result in
-
+        store.getUser(completionHandler: {result in
             switch result {
             case .success(let data):
                 let parsedData = data.data(using: .utf8)
-                 guard let newData = parsedData, let autParams = try? JSONDecoder().decode(AccountModel.self, from: newData) else {
-                    Messages.displayErrorMessage(message: "Không thể tải dữ liệu. Vui lòng thử lại sau!")
-                    return
-                }
+                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ProfileModel.self, from: newData) else {return}
+                AppConfig.shared.profileName = autParams.name
+                AppConfig.shared.profileId = autParams.id
+                AppConfig.shared.profileEmail = autParams.email
+                AppConfig.shared.profilePhone = autParams.phone
+                AppConfig.shared.profileEmailVerified = autParams.is_email_verified
+                AppConfig.shared.profilePhoneVerified = autParams.is_phone_verified
                 
-                print(autParams.access_token)
-            case .failure(let error):
-                print(error.underlyingError ?? "nil")
-                Messages.displayErrorMessage(message: "Không thể tải dữ liệu. Vui lòng thử lại sau!")
+            case .failure:
+                return
             }
-        })*/
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)

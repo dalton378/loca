@@ -49,24 +49,25 @@ class SignInViewController: UIViewController {
     
     private func signIn(password: String, phone: String) {
         let store = AlamofireStore()
-              
-               store.login(email: "", password: password, phone: phone, completionHandler: {result in
-
-                   switch result {
-                   case .success(let data):
-                       let parsedData = data.data(using: .utf8)
-                        guard let newData = parsedData, let autParams = try? JSONDecoder().decode(AccountModel.self, from: newData) else {
-                           Messages.displayErrorMessage(message: "Không thể tải dữ liệu. Vui lòng thử lại sau!")
-                           return
-                       }
-                       
-                      // print(autParams.access_token)
-                       Messages.displaySuccessMessage(message: autParams.access_token)
-                   case .failure(let error):
-                       print(error.underlyingError ?? "nil")
-                       Messages.displayErrorMessage(message: "Không thể tải dữ liệu. Vui lòng thử lại sau!")
-                   }
-               })
+        
+        store.login(email: "", password: password, phone: phone, completionHandler: {result in
+            
+            switch result {
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(AccountModel.self, from: newData) else {
+                    Messages.displayErrorMessage(message: "Thông tin đăng nhập không đúng. Vui lòng thử lại sau!")
+                    return
+                }
+                
+                AppConfig.shared.accessToken = autParams.access_token
+                AppConfig.shared.isSignedIn = true
+                self.dismiss(animated: true, completion: nil)
+            case .failure(let error):
+                print(error.underlyingError ?? "nil")
+                Messages.displayErrorMessage(message: "Thông tin đăng nhập không đúng. Vui lòng thử lại sau!")
+            }
+        })
     }
-
+    
 }

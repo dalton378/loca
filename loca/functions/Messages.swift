@@ -11,7 +11,7 @@ import SwiftMessages
 
 public class Messages {
     static func displayErrorMessage(message: String) {
-        let view = MessageView.viewFromNib(layout: .statusLine)
+        let view = MessageView.viewFromNib(layout: .messageView)
         view.configureTheme(.error)
         view.configureDropShadow()
         view.configureContent(title: "Warning", body: message)
@@ -19,6 +19,7 @@ public class Messages {
 
         // Reduce the corner radius (applicable to layouts featuring rounded corners).
         (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+        view.button?.isHidden = true
 
         // Show the message.
         SwiftMessages.show(view: view)
@@ -36,5 +37,19 @@ public class Messages {
 
         // Show the message.
         SwiftMessages.show(view: view)
+    }
+    
+    static func displayCustomMessage(){
+//        let view: TacoDialogView = try! SwiftMessages.viewFromNib()
+//        view.configureDropShadow()
+//        view.getTacosAction = { _ in SwiftMessages.hide() }
+//        view.cancelAction = { SwiftMessages.hide() }
+//        var config = SwiftMessages.defaultConfig
+//        config.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
+//        config.duration = .forever
+//        config.presentationStyle = .center
+//        config.dimMode = .gray(interactive: true)
+//        SwiftMessages.show(config: config, view: view)
+//        
     }
 }
