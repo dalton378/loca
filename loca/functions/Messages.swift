@@ -23,4 +23,18 @@ public class Messages {
         // Show the message.
         SwiftMessages.show(view: view)
     }
+    
+    static func displaySuccessMessage(message: String) {
+        let view = MessageView.viewFromNib(layout: .centeredView)
+        view.configureTheme(.success)
+        view.configureDropShadow()
+        view.configureContent(title: "Success", body: message)
+        view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+
+        // Reduce the corner radius (applicable to layouts featuring rounded corners).
+        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+
+        // Show the message.
+        SwiftMessages.show(view: view)
+    }
 }

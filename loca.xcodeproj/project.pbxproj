@@ -19,6 +19,15 @@
 		8E71931124401C5D00DB814A /* locaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71931024401C5D00DB814A /* locaUITests.swift */; };
 		8EC2606B2445E88600A1E842 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC2606A2445E88600A1E842 /* Messages.swift */; };
 		E31EBBCA5BF0C0966847A0B5 /* Pods_loca_locaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */; };
+		E8510F00245915B4004BE65A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510EFF245915B4004BE65A /* HomeViewController.swift */; };
+		E8510F04245922F4004BE65A /* AlamofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F03245922F4004BE65A /* AlamofireRequest.swift */; };
+		E8510F072459252F004BE65A /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F062459252F004BE65A /* AppConfig.swift */; };
+		E8510F0B2459281F004BE65A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F0A2459281F004BE65A /* Router.swift */; };
+		E8510F0D24592850004BE65A /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F0C24592850004BE65A /* RouterProtocol.swift */; };
+		E8510F1024592958004BE65A /* AccountApiProtocol .swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F0F24592958004BE65A /* AccountApiProtocol .swift */; };
+		E8510F1424592B38004BE65A /* AcountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F1324592B38004BE65A /* AcountModel.swift */; };
+		E899550B245930E800E65195 /* AlamofireStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E899550A245930E800E65195 /* AlamofireStore.swift */; };
+		E899550E24594F2A00E65195 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E899550D24594F2A00E65195 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +72,15 @@
 		B6D950CF60779FAD1E28C504 /* Pods-loca-locaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.release.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E71F892B618BB5E2BD1670FD /* Pods-loca-locaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.debug.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E74478F0BBC2F7922F203972 /* Pods-locaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locaTests.debug.xcconfig"; path = "Target Support Files/Pods-locaTests/Pods-locaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E8510EFF245915B4004BE65A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E8510F03245922F4004BE65A /* AlamofireRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireRequest.swift; sourceTree = "<group>"; };
+		E8510F062459252F004BE65A /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		E8510F0A2459281F004BE65A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		E8510F0C24592850004BE65A /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		E8510F0F24592958004BE65A /* AccountApiProtocol .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountApiProtocol .swift"; sourceTree = "<group>"; };
+		E8510F1324592B38004BE65A /* AcountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcountModel.swift; sourceTree = "<group>"; };
+		E899550A245930E800E65195 /* AlamofireStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireStore.swift; sourceTree = "<group>"; };
+		E899550D24594F2A00E65195 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +149,9 @@
 		8E7192ED24401C5000DB814A /* loca */ = {
 			isa = PBXGroup;
 			children = (
+				E8510F1124592B21004BE65A /* Model */,
+				E8510F01245922BE004BE65A /* Data Layer */,
+				E8510EF924591559004BE65A /* Controllers */,
 				8EC260692445E86700A1E842 /* functions */,
 				8E7192EE24401C5000DB814A /* AppDelegate.swift */,
 				8E02CA812449DE03006A4F3B /* SceneDelegate.swift */,
@@ -177,6 +198,92 @@
 				5AF7294B8E53BB7098C1DCCE /* Pods_locaTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E8510EF924591559004BE65A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E899550C24594F1700E65195 /* Account */,
+				E8510EFA24591566004BE65A /* Home */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E8510EFA24591566004BE65A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E8510EFF245915B4004BE65A /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E8510F01245922BE004BE65A /* Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+				E8510F0924592814004BE65A /* Router */,
+				E8510F052459251F004BE65A /* Config */,
+				E8510F02245922C6004BE65A /* Alamofire */,
+			);
+			path = "Data Layer";
+			sourceTree = "<group>";
+		};
+		E8510F02245922C6004BE65A /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				E8510F0E24592938004BE65A /* Account */,
+				E8510F03245922F4004BE65A /* AlamofireRequest.swift */,
+				E899550A245930E800E65195 /* AlamofireStore.swift */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		E8510F052459251F004BE65A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				E8510F062459252F004BE65A /* AppConfig.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		E8510F0924592814004BE65A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				E8510F0A2459281F004BE65A /* Router.swift */,
+				E8510F0C24592850004BE65A /* RouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		E8510F0E24592938004BE65A /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				E8510F0F24592958004BE65A /* AccountApiProtocol .swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		E8510F1124592B21004BE65A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E8510F1224592B27004BE65A /* Acount */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E8510F1224592B27004BE65A /* Acount */ = {
+			isa = PBXGroup;
+			children = (
+				E8510F1324592B38004BE65A /* AcountModel.swift */,
+			);
+			path = Acount;
+			sourceTree = "<group>";
+		};
+		E899550C24594F1700E65195 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				E899550D24594F2A00E65195 /* SignInViewController.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +359,7 @@
 				TargetAttributes = {
 					8E7192EA24401C5000DB814A = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 					8E71930024401C5D00DB814A = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -418,8 +526,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8510F0D24592850004BE65A /* RouterProtocol.swift in Sources */,
+				E8510F0B2459281F004BE65A /* Router.swift in Sources */,
+				E8510F1424592B38004BE65A /* AcountModel.swift in Sources */,
+				E8510F04245922F4004BE65A /* AlamofireRequest.swift in Sources */,
+				E8510F00245915B4004BE65A /* HomeViewController.swift in Sources */,
+				E899550E24594F2A00E65195 /* SignInViewController.swift in Sources */,
 				8E7192F324401C5000DB814A /* ViewController.swift in Sources */,
+				E8510F072459252F004BE65A /* AppConfig.swift in Sources */,
 				8EC2606B2445E88600A1E842 /* Messages.swift in Sources */,
+				E899550B245930E800E65195 /* AlamofireStore.swift in Sources */,
+				E8510F1024592958004BE65A /* AccountApiProtocol .swift in Sources */,
 				8E7192EF24401C5000DB814A /* AppDelegate.swift in Sources */,
 				8E02CA822449DE03006A4F3B /* SceneDelegate.swift in Sources */,
 			);
@@ -595,6 +712,7 @@
 			baseConfigurationReference = B1E6A166630A348BE0329D25 /* Pods-loca.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VL9W949V2N;
 				INFOPLIST_FILE = loca/Info.plist;
@@ -604,6 +722,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.localoca.estate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -614,6 +734,7 @@
 			baseConfigurationReference = 0649471F3332863F95C06533 /* Pods-loca.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VL9W949V2N;
 				INFOPLIST_FILE = loca/Info.plist;
@@ -623,6 +744,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.localoca.estate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
