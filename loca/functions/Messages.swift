@@ -40,16 +40,15 @@ public class Messages {
     }
     
     static func displayCustomMessage(){
-//        let view: TacoDialogView = try! SwiftMessages.viewFromNib()
-//        view.configureDropShadow()
-//        view.getTacosAction = { _ in SwiftMessages.hide() }
-//        view.cancelAction = { SwiftMessages.hide() }
-//        var config = SwiftMessages.defaultConfig
-//        config.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
-//        config.duration = .forever
-//        config.presentationStyle = .center
-//        config.dimMode = .gray(interactive: true)
-//        SwiftMessages.show(config: config, view: view)
-//        
+        let view = SignInMessage(frame: CGRect(x: 0, y: 100, width: 300, height: 200))
+        view.doneAction = {SwiftMessages.hide()}
+        view.configureDropShadow()
+        var config = SwiftMessages.defaultConfig
+        config.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
+        config.duration = .forever
+        config.presentationStyle = .center
+        config.dimMode = .gray(interactive: true)
+        SwiftMessages.show(config: config, view: view)
+        
     }
 }
