@@ -22,14 +22,14 @@ class HomeViewController: UIViewController {
     
     @IBAction func accountClick(_ sender: UIButton) {
         
-        Messages.displayCustomMessage()
-//        guard let isSignedIn = AppConfig.shared.isSignedIn else {return}
-//        switch isSignedIn {
-//        case true:
-//            performSegue(withIdentifier: "home_manage", sender: self)
-//        default:
-//             performSegue(withIdentifier: "home_signin", sender: self)
-//        }
+        guard let isSignedIn = AppConfig.shared.isSignedIn else {return}
+        switch isSignedIn {
+        case true:
+            performSegue(withIdentifier: "home_manage", sender: self)
+        default:
+            Messages.displaySignInMessage(completionHandler: getUser, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)})
+            //Messages.displaySignUpMessage()
+        }
         
     }
     

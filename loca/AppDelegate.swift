@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()
