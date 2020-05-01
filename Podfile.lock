@@ -1,22 +1,38 @@
 PODS:
   - Alamofire (5.0.5)
+  - FBSDKCoreKit (6.5.2):
+    - FBSDKCoreKit/Basics (= 6.5.2)
+    - FBSDKCoreKit/Core (= 6.5.2)
+  - FBSDKCoreKit/Basics (6.5.2)
+  - FBSDKCoreKit/Core (6.5.2):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (6.5.2):
+    - FBSDKLoginKit/Login (= 6.5.2)
+  - FBSDKLoginKit/Login (6.5.2):
+    - FBSDKCoreKit (~> 6.5.2)
   - SwiftMessages (7.0.1):
     - SwiftMessages/App (= 7.0.1)
   - SwiftMessages/App (7.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - SwiftMessages
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - SwiftMessages
 
 SPEC CHECKSUMS:
   Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
+  FBSDKCoreKit: ada5c8a05188daefc9addb985c52b8a1b26da519
+  FBSDKLoginKit: caa165495afa29a12324cb2307fe6e5b33783142
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
 
-PODFILE CHECKSUM: 2cd3c14f1641bd1bdc8777573c9f422cc8c12dd4
+PODFILE CHECKSUM: cebe8c36c1621a8a4f153215b2947796c981faea
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.8.4

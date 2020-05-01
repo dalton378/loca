@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftMessages
+import FBSDKLoginKit
 
 class SignInMessage: MessageView {
     
@@ -17,12 +18,13 @@ class SignInMessage: MessageView {
     @IBOutlet weak var phoneTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var forgotPasswordLabel: UILabel!
+    @IBOutlet weak var FBLoginView: UIView!
+    @IBOutlet weak var GGLoginView: UIView!
     
-    @IBOutlet weak var FBLoginButton: UIButton!
-    @IBOutlet weak var GGLoginButton: UIButton!
+
     @IBOutlet weak var SingupButton: UIButton!
     @IBOutlet weak var errorMessageLabel: UILabel!
-    
+    @IBOutlet weak var underlineLabel: UIView!
     
     var doneAction: (() -> Void)?
     var exitAction: (() -> Void)?
@@ -45,7 +47,6 @@ class SignInMessage: MessageView {
         setupUI()
     }
     
-    
     @IBAction func signIn(_ sender: UIButton) {
        let pass = passwordTextfield.text
        let phone = phoneTextfield.text
@@ -54,9 +55,21 @@ class SignInMessage: MessageView {
     
     private func setupUI() {
         buttonSign.layer.cornerRadius = 10
+        
+            FBLoginView.awakeFromNib()
+        //let loginButton = FBLoginButton(frame: CGRect(x: 0 , y: 0, width: underlineLabel.frame.size.width * 0.95, height: FBLoginView.frame.size.height))
+         let loginButton = FBLoginButton()
+        
+        //loginButton.center.x = FBLoginView.center.x
+        ButtonfixInView(FBLoginView, button: loginButton)
+        //FBLoginView.addSubview(loginButton)
+        
+        NotificationCenter.default.addObserver(forName: .AccessTokenDidChange, object: nil, queue: OperationQueue.main) { (notification) in
+            
+            // Print out access token
+            print("FB Access Token: \(String(describing: AccessToken.current?.tokenString))")
+        }
     }
-    
-    
     
     private func signIn(password: String, phone: String) {
         self.errorMessageLabel.isHidden = true
@@ -88,6 +101,16 @@ class SignInMessage: MessageView {
     @IBAction func forgotPass(_ sender: UITapGestureRecognizer) {
         exitAction?()
         forgotPass?()
+    }
+    
+    private func ButtonfixInView(_ container: UIView!, button: FBLoginButton) -> Void{
+        button.translatesAutoresizingMaskIntoConstraints = false;
+        button.frame = container.frame;
+        container.addSubview(button);
+        NSLayoutConstraint(item: button, attribute: .leading, relatedBy: .equal, toItem: container, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: button, attribute: .trailing, relatedBy: .equal, toItem: container, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 
 @available(iOS 13.0, *)
 @UIApplicationMain
@@ -23,7 +24,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()
         
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions:launchOptions)
+        
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            options: options
+        )
     }
 
     // MARK: UISceneSession Lifecycle
