@@ -13,6 +13,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     let store = AlamofireStore()
+    var apartmentId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,8 +103,9 @@ class HomeViewController: UIViewController, MKMapViewDelegate {
     
     private func addApartmentAnnotation(mapView: MKMapView, apartmentList: ApartmentList){
         for apartment in apartmentList.data {
-            let anotation = MakerAnnotation(coordinate: CLLocationCoordinate2D(latitude: (apartment.lat as NSString).doubleValue,  longitude: (apartment.lng as NSString).doubleValue), title: "Căn " + apartment.search_text, subTitle: "Dự án " )
+            let anotation = MakerAnnotation(coordinate: CLLocationCoordinate2D(latitude: (apartment.lat as NSString).doubleValue,  longitude: (apartment.lng as NSString).doubleValue), title: "", subTitle: "\(apartment.search_text)|\(apartment.id)")
             mapView.addAnnotation(anotation)
+           
         }
     }
     
@@ -134,11 +136,29 @@ class HomeViewController: UIViewController, MKMapViewDelegate {
             let rightButton = UIButton(type: .contactAdd)
             rightButton.tag = annotation.hash
             //selectedAnnotation.animatesDrop = true
-            //selectedAnnotation.canShowCallout = true
+            selectedAnnotation.canShowCallout = false
             selectedAnnotation.rightCalloutAccessoryView = rightButton
             
             return selectedAnnotation
         }
         else {return nil}
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let selectedAnnotation = view.annotation as! MakerAnnotation
+        guard let text = selectedAnnotation.subtitle else {return}
+        let fulltextArr = text.split(separator: "|")
+        apartmentId = String(fulltextArr[1])
+
+        Messages.displayApartmentPreviewMessage(title: "Thông Tin", message: String(fulltextArr[0]), buttonAction: {
+            self.performSegue(withIdentifier: "home_apartmentDetail", sender: self)})
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "home_apartmentDetail" {
+            let view = segue.destination as! ApartmentDetailViewController
+            view.apartmentId = apartmentId
+        }
     }
 }

@@ -33,4 +33,13 @@ class AlamofireStore {
             completionHandler(result.result)
         })
     }
+    
+    func getApartmentDetail(id: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.getApartmentDetail(id: id, completionHandler: {result in
+            print(result.response?.statusCode)
+            completionHandler(result.result)
+        })
+    }
+    
+    
 }

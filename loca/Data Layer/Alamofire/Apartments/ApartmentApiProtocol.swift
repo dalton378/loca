@@ -12,11 +12,12 @@ import Alamofire
 enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     
     case getApartment(token: String)
+    case getApartmentDetail(id: String, token: String)
     
     
     var method: HTTPMethod {
         switch self {
-        case .getApartment:
+        case .getApartment, .getApartmentDetail:
             return .get
             
         }
@@ -26,6 +27,8 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
         switch self {
         case .getApartment:
             return "apartments"
+        case .getApartmentDetail( let id, _):
+            return "apartments/\(id)"
         default:
             return ""
         }
@@ -33,7 +36,7 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     
     var encoding: ParameterEncoding {
         switch self {
-        case .getApartment:
+        case .getApartment, .getApartmentDetail:
             return URLEncoding.default
         }
     }
@@ -52,7 +55,7 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     }
     var headers: [String : String]? {
         switch self {
-        case let .getApartment(token):
+        case let .getApartment(token), .getApartmentDetail(_, let token):
             return ["Authorization": "Bearer \(token)"]
         default:
             return [:]

@@ -534,3 +534,12 @@ Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit-prefix.pch
 Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit-umbrella.h
 Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit.modulemap
 Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit.xcconfig
+loca.xcodeproj/xcuserdata/toannguyen.xcuserdatad/xcschemes/xcschememanagement.plist
+loca.xcworkspace/xcuserdata/toannguyen.xcuserdatad/UserInterfaceState.xcuserstate
+loca.xcworkspace/xcuserdata/toannguyen.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+Pods/Pods.xcodeproj/xcuserdata/toannguyen.xcuserdatad/xcschemes/FBSDKCoreKit.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/toannguyen.xcuserdatad/xcschemes/FBSDKLoginKit.xcscheme
+Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit.debug.xcconfig
+Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit.release.xcconfig
+Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit.debug.xcconfig
+Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit.release.xcconfig

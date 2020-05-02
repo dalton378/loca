@@ -73,11 +73,22 @@
                         <segue destination="U2P-lr-fOl" kind="show" identifier="home_manage" id="bjU-P2-7WP"/>
                         <segue destination="orJ-8M-l7o" kind="presentation" identifier="signup_home" id="gGI-4n-rJy"/>
                         <segue destination="rSb-nA-A6P" kind="presentation" identifier="home_forgotPass" id="U1R-EL-LTk"/>
+                        <segue destination="oaM-HV-KSV" kind="show" identifier="home_apartmentDetail" id="CsY-5T-KRW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xws-Ts-cLH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="43" y="840"/>
+        </scene>
+        <!--Apartment-->
+        <scene sceneID="UcQ-aG-WbR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Apartment" id="oaM-HV-KSV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lgX-9b-LQf"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kSB-1c-UaR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-18" y="126"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="DLa-5d-zAJ">
