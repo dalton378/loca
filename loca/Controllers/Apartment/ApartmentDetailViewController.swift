@@ -11,12 +11,13 @@ import UIKit
 class ApartmentDetailViewController: UIViewController {
 
     var apartmentId: String?
-    
+    var apartmentDetail: ApartmentDetail?
     let store = AlamofireStore()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         getApartmentDetail(id: apartmentId!)
+        
     }
     
 
@@ -26,7 +27,7 @@ class ApartmentDetailViewController: UIViewController {
             case .success(let data):
                 let parsedData = data.data(using: .utf8)
                 guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentDetail.self, from: newData) else {return}
-                print(autParams)
+                self.apartmentDetail = autParams
             case .failure:
                 return
             }
