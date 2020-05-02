@@ -42,6 +42,7 @@
 		E85C4513245BCAAA0033CB53 /* ForgotPass.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85C4512245BCAAA0033CB53 /* ForgotPass.xib */; };
 		E85C4515245BCDC90033CB53 /* ForgotPassCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C4514245BCDC90033CB53 /* ForgotPassCustomView.swift */; };
 		E85C4518245BDD910033CB53 /* TextValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C4517245BDD910033CB53 /* TextValidation.swift */; };
+		E86B068B245DB27D00F5D501 /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B068A245DB27D00F5D501 /* CustomIndicator.swift */; };
 		E86B68432459B3D700AF6659 /* MangeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */; };
 		E899550B245930E800E65195 /* AlamofireStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E899550A245930E800E65195 /* AlamofireStore.swift */; };
 /* End PBXBuildFile section */
@@ -111,6 +112,7 @@
 		E85C4512245BCAAA0033CB53 /* ForgotPass.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPass.xib; sourceTree = "<group>"; };
 		E85C4514245BCDC90033CB53 /* ForgotPassCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassCustomView.swift; sourceTree = "<group>"; };
 		E85C4517245BDD910033CB53 /* TextValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValidation.swift; sourceTree = "<group>"; };
+		E86B068A245DB27D00F5D501 /* CustomIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
 		E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangeAccountViewController.swift; sourceTree = "<group>"; };
 		E899550A245930E800E65195 /* AlamofireStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +219,7 @@
 		8EC260692445E86700A1E842 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
+				E86B068A245DB27D00F5D501 /* CustomIndicator.swift */,
 				8EC2606A2445E88600A1E842 /* Messages.swift */,
 			);
 			path = Functions;
@@ -686,6 +689,7 @@
 				E8510F072459252F004BE65A /* AppConfig.swift in Sources */,
 				8EC2606B2445E88600A1E842 /* Messages.swift in Sources */,
 				E8315D44245B0D6E0022D4A7 /* SignInMessage.swift in Sources */,
+				E86B068B245DB27D00F5D501 /* CustomIndicator.swift in Sources */,
 				E899550B245930E800E65195 /* AlamofireStore.swift in Sources */,
 				E8510F1024592958004BE65A /* AccountApiProtocol .swift in Sources */,
 				8E7192EF24401C5000DB814A /* AppDelegate.swift in Sources */,

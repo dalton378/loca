@@ -31,9 +31,35 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-Pr-yqm">
                                                 <rect key="frame" x="20" y="980" width="366" height="200"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTo-ZM-WHm">
+                                                        <rect key="frame" x="8" y="8" width="350" height="21"/>
+                                                        <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.0" green="0.77647058823529413" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <string key="text">Mô tả bất động sản
+</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ddw-QT-Ug6">
+                                                        <rect key="frame" x="8" y="37" width="338" height="155"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
+                                                    <constraint firstItem="ddw-QT-Ug6" firstAttribute="top" secondItem="eTo-ZM-WHm" secondAttribute="bottom" constant="8" id="98Q-xd-3pJ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eTo-ZM-WHm" secondAttribute="trailing" constant="8" id="IRW-VI-zwL"/>
+                                                    <constraint firstItem="eTo-ZM-WHm" firstAttribute="leading" secondItem="dlg-Pr-yqm" secondAttribute="leading" constant="8" id="JEv-8m-17Q"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ddw-QT-Ug6" secondAttribute="bottom" constant="8" id="LJF-68-bex"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ddw-QT-Ug6" secondAttribute="trailing" constant="20" symbolic="YES" id="Ps0-BB-kxL"/>
                                                     <constraint firstAttribute="height" constant="200" id="QoR-cP-PuZ"/>
+                                                    <constraint firstItem="eTo-ZM-WHm" firstAttribute="top" secondItem="dlg-Pr-yqm" secondAttribute="top" constant="8" id="tjC-nl-8bg"/>
+                                                    <constraint firstItem="ddw-QT-Ug6" firstAttribute="leading" secondItem="dlg-Pr-yqm" secondAttribute="leading" constant="8" id="ubR-31-EVV"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gUy-jg-QdE">
@@ -77,6 +103,7 @@
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
                         <outlet property="containerView" destination="4H3-mf-WvQ" id="CrF-BD-g0m"/>
+                        <outlet property="descriptionTextView" destination="ddw-QT-Ug6" id="tDz-dY-NtT"/>
                         <outlet property="stackView" destination="gUy-jg-QdE" id="41l-Ie-Lsb"/>
                     </connections>
                 </viewController>

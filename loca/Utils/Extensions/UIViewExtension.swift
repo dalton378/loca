@@ -48,7 +48,7 @@ extension UIView
                 self.transform = CGAffineTransform(translationX: self.frame.width, y: 0)
                 break
             case .right:
-                self.transform = CGAffineTransform(translationX: -tableHeight, y: 0)
+                self.transform = CGAffineTransform(translationX: -self.frame.width, y: 0)
                 break
             default:
                 self.transform = CGAffineTransform(translationX: tableHeight, y: 0)

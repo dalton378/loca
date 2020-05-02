@@ -14,17 +14,20 @@ class ApartmentDetailViewController: UIViewController {
     var apartmentDetail: ApartmentDetail?
     let store = AlamofireStore()
     var data = [ApartmentData]()
+    let customIndicator = CustomIndicator()
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        getApartmentDetail(id: apartmentId!)
         
+        customIndicator.addIndicator(view: self, alpha: 1)
+        customIndicator.startIndicator(timeout: 5)
+        getApartmentDetail(id: apartmentId!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,6 +39,7 @@ class ApartmentDetailViewController: UIViewController {
             }
         }
         
+        descriptionTextView.text = apartmentDetail?.description
         self.view.layoutIfNeeded()
     }
 
@@ -47,9 +51,11 @@ class ApartmentDetailViewController: UIViewController {
                 guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentDetail.self, from: newData) else {return}
                 self.apartmentDetail = autParams
                 self.prepareData()
+                print(self.apartmentDetail?.images)
             case .failure:
                 return
             }
+            self.customIndicator.stopIndicator()
         })
     }
     
@@ -66,12 +72,10 @@ class ApartmentDetailViewController: UIViewController {
             containerView.addSubview(cus)
            }
            
-           return ((viewHeigh * numofViews) + 480)
+           return ((viewHeigh * numofViews) + 450)
        }
     
     private func prepareData(){
-        
-        
         guard let apartment = apartmentDetail else {return}
         
         data.append(ApartmentData(icon: UIImage(named: "location_icon")!, description: "Địa chỉ: \(apartment.address)"))

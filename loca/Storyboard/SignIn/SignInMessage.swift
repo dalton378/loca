@@ -55,9 +55,11 @@ class SignInMessage: MessageView {
     
     private func setupUI() {
         buttonSign.layer.cornerRadius = 10
+        SingupButton.layer.cornerRadius = 10
         contentView.layer.cornerRadius = 20
         
         let loginButton = FBLoginButton()
+        loginButton.layer.cornerRadius = 10
         subViewFixinContainer(FBLoginView, button: loginButton)
         
         NotificationCenter.default.addObserver(forName: .AccessTokenDidChange, object: nil, queue: OperationQueue.main) { (notification) in
