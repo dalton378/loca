@@ -69,6 +69,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qz1-l6-QrC"/>
                     <connections>
+                        <outlet property="mapView" destination="hh2-sh-tOl" id="uWP-Ll-AUu"/>
                         <segue destination="U2P-lr-fOl" kind="show" identifier="home_manage" id="bjU-P2-7WP"/>
                         <segue destination="orJ-8M-l7o" kind="presentation" identifier="signup_home" id="gGI-4n-rJy"/>
                         <segue destination="rSb-nA-A6P" kind="presentation" identifier="home_forgotPass" id="U1R-EL-LTk"/>

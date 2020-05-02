@@ -10,26 +10,27 @@ import UIKit
 import SwiftMessages
 
 class ForgotPassCustomView: MessageView {
-
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     
     override init(frame: CGRect) {
-           super.init(frame: frame)
-           commonInit()
-       }
-       
-       required init?(coder aDecoder: NSCoder) {
-           super.init(coder: aDecoder)
-           commonInit()
-       }
-       
-       func commonInit() {
-           Bundle.main.loadNibNamed("ForgotPass", owner: self, options: nil)
-           contentView.fixInView(self)
-       }
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        Bundle.main.loadNibNamed("ForgotPass", owner: self, options: nil)
+        contentView.fixInView(self)
+        contentView.layer.cornerRadius = 20
+    }
     @IBAction func dismiss(_ sender: Any) {
         self.endEditing(true)
     }

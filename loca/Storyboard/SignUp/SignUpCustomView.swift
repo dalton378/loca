@@ -36,6 +36,7 @@ class SignUpCustomView: MessageView {
     func commonInit() {
         Bundle.main.loadNibNamed("SignUp", owner: self, options: nil)
         contentView.fixInView(self)
+        contentView.layer.cornerRadius = 20
     }
     
     @IBAction func signUp(_ sender: UIButton) {

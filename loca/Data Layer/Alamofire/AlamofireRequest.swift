@@ -32,6 +32,13 @@ class AlamofireRequest {
         .responseString(completionHandler: completionHandler)
     }
     
+    func getApartment(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        guard let token = AppConfig.shared.accessToken else {return}
+        session.request(ApartmentApiProtocol.getApartment(token: token))
+        .validate()
+        .responseString(completionHandler: completionHandler)
+    }
+    
     
 }
 

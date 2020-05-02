@@ -23,6 +23,5 @@ class MangeAccountViewController: UIViewController {
         emailLabel.text = AppConfig.shared.profileEmail
     }
     
-
-   
+    
 }

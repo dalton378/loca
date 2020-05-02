@@ -23,6 +23,11 @@
 		E8315D44245B0D6E0022D4A7 /* SignInMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8315D43245B0D6E0022D4A7 /* SignInMessage.swift */; };
 		E8315D47245B11660022D4A7 /* SignUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8315D46245B11660022D4A7 /* SignUp.xib */; };
 		E8315D49245B119F0022D4A7 /* SignUpCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8315D48245B119F0022D4A7 /* SignUpCustomView.swift */; };
+		E84FD1C8245D01D400E10507 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84FD1C7245D01D400E10507 /* AppConstants.swift */; };
+		E84FD1CB245D068600E10507 /* ApartmentApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84FD1CA245D068600E10507 /* ApartmentApiProtocol.swift */; };
+		E84FD1CE245D085A00E10507 /* ApartmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84FD1CD245D085A00E10507 /* ApartmentModel.swift */; };
+		E84FD1D4245D184600E10507 /* ApartmentPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = E84FD1D3245D184600E10507 /* ApartmentPreview.xib */; };
+		E84FD1D6245D185800E10507 /* ApartmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84FD1D5245D185800E10507 /* ApartmentPreview.swift */; };
 		E8510F00245915B4004BE65A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510EFF245915B4004BE65A /* HomeViewController.swift */; };
 		E8510F04245922F4004BE65A /* AlamofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F03245922F4004BE65A /* AlamofireRequest.swift */; };
 		E8510F072459252F004BE65A /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F062459252F004BE65A /* AppConfig.swift */; };
@@ -84,6 +89,11 @@
 		E8315D43245B0D6E0022D4A7 /* SignInMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMessage.swift; sourceTree = "<group>"; };
 		E8315D46245B11660022D4A7 /* SignUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUp.xib; sourceTree = "<group>"; };
 		E8315D48245B119F0022D4A7 /* SignUpCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCustomView.swift; sourceTree = "<group>"; };
+		E84FD1C7245D01D400E10507 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		E84FD1CA245D068600E10507 /* ApartmentApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentApiProtocol.swift; sourceTree = "<group>"; };
+		E84FD1CD245D085A00E10507 /* ApartmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentModel.swift; sourceTree = "<group>"; };
+		E84FD1D3245D184600E10507 /* ApartmentPreview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentPreview.xib; sourceTree = "<group>"; };
+		E84FD1D5245D185800E10507 /* ApartmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentPreview.swift; sourceTree = "<group>"; };
 		E8510EFF245915B4004BE65A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E8510F03245922F4004BE65A /* AlamofireRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireRequest.swift; sourceTree = "<group>"; };
 		E8510F062459252F004BE65A /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
@@ -219,6 +229,7 @@
 		E8315D3C245AFFEA0022D4A7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				E84FD1D2245D182C00E10507 /* ApartmentPreview */,
 				E85C4511245BCA980033CB53 /* Forgot Pass */,
 				E8315D45245B115B0022D4A7 /* SignUp */,
 				E8315D3D245AFFFB0022D4A7 /* SignIn */,
@@ -245,6 +256,31 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		E84FD1C9245D066400E10507 /* Apartments */ = {
+			isa = PBXGroup;
+			children = (
+				E84FD1CA245D068600E10507 /* ApartmentApiProtocol.swift */,
+			);
+			path = Apartments;
+			sourceTree = "<group>";
+		};
+		E84FD1CC245D083800E10507 /* Apartment */ = {
+			isa = PBXGroup;
+			children = (
+				E84FD1CD245D085A00E10507 /* ApartmentModel.swift */,
+			);
+			path = Apartment;
+			sourceTree = "<group>";
+		};
+		E84FD1D2245D182C00E10507 /* ApartmentPreview */ = {
+			isa = PBXGroup;
+			children = (
+				E84FD1D3245D184600E10507 /* ApartmentPreview.xib */,
+				E84FD1D5245D185800E10507 /* ApartmentPreview.swift */,
+			);
+			path = ApartmentPreview;
+			sourceTree = "<group>";
+		};
 		E8510EF924591559004BE65A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,7 +302,6 @@
 			isa = PBXGroup;
 			children = (
 				E8510F0924592814004BE65A /* Router */,
-				E8510F052459251F004BE65A /* Config */,
 				E8510F02245922C6004BE65A /* Alamofire */,
 			);
 			path = "Data Layer";
@@ -275,6 +310,7 @@
 		E8510F02245922C6004BE65A /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
+				E84FD1C9245D066400E10507 /* Apartments */,
 				E8510F0E24592938004BE65A /* Account */,
 				E8510F03245922F4004BE65A /* AlamofireRequest.swift */,
 				E899550A245930E800E65195 /* AlamofireStore.swift */,
@@ -286,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				E8510F062459252F004BE65A /* AppConfig.swift */,
+				E84FD1C7245D01D400E10507 /* AppConstants.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -310,6 +347,8 @@
 		E8510F1124592B21004BE65A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E84FD1CC245D083800E10507 /* Apartment */,
+				E8510F052459251F004BE65A /* Config */,
 				E8510F1224592B27004BE65A /* Acount */,
 			);
 			path = Model;
@@ -481,6 +520,7 @@
 				8E7192F824401C5D00DB814A /* Assets.xcassets in Resources */,
 				E8315D47245B11660022D4A7 /* SignUp.xib in Resources */,
 				8E7192F624401C5000DB814A /* Main.storyboard in Resources */,
+				E84FD1D4245D184600E10507 /* ApartmentPreview.xib in Resources */,
 				E8315D3F245B00180022D4A7 /* SignIn.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,15 +649,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E84FD1C8245D01D400E10507 /* AppConstants.swift in Sources */,
+				E84FD1CB245D068600E10507 /* ApartmentApiProtocol.swift in Sources */,
 				E8510F0D24592850004BE65A /* RouterProtocol.swift in Sources */,
 				E8510F0B2459281F004BE65A /* Router.swift in Sources */,
 				E86B68432459B3D700AF6659 /* MangeAccountViewController.swift in Sources */,
+				E84FD1D6245D185800E10507 /* ApartmentPreview.swift in Sources */,
 				E8315D49245B119F0022D4A7 /* SignUpCustomView.swift in Sources */,
 				E8510F1424592B38004BE65A /* AcountModel.swift in Sources */,
 				E85C4515245BCDC90033CB53 /* ForgotPassCustomView.swift in Sources */,
 				E8510F04245922F4004BE65A /* AlamofireRequest.swift in Sources */,
 				E85C4510245BCA5C0033CB53 /* UIViewExtension.swift in Sources */,
 				E8510F00245915B4004BE65A /* HomeViewController.swift in Sources */,
+				E84FD1CE245D085A00E10507 /* ApartmentModel.swift in Sources */,
 				E85C4518245BDD910033CB53 /* TextValidation.swift in Sources */,
 				8E7192F324401C5000DB814A /* ViewController.swift in Sources */,
 				E8510F072459252F004BE65A /* AppConfig.swift in Sources */,

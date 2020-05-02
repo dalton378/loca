@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import MapKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, MKMapViewDelegate {
+    
+    @IBOutlet weak var mapView: MKMapView!
+    let store = AlamofireStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addMarker()
         guard  let token = AppConfig.shared.accessToken else {
             return
         }
         print(token)
-        getUser()
+        getDataFromServer()
     }
-    
     
     @IBAction func accountClick(_ sender: UIButton) {
         
@@ -27,14 +32,32 @@ class HomeViewController: UIViewController {
         case true:
             performSegue(withIdentifier: "home_manage", sender: self)
         default:
-            Messages.displaySignInMessage(completionHandler: getUser, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)})
-            //Messages.displaySignUpMessage()
+            Messages.displaySignInMessage(completionHandler: getDataFromServer, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)})
         }
         
     }
     
+    private func getDataFromServer() {
+        getUser()
+        getApartmentList()
+    }
+    
+    private func getApartmentList() {
+        store.getApartments(completionHandler: { result in
+            switch result {
+            case .success(let dataString):
+                let parsedData = dataString.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
+                AppConfig.shared.apartmentList = autParams
+                self.addApartmentAnnotation(mapView: self.mapView, apartmentList: autParams)
+            case .failure:
+                return
+            }
+        })
+    }
+    
     private func getUser(){
-        let store = AlamofireStore()
+        
         store.getUser(completionHandler: {result in
             switch result {
             case .success(let data):
@@ -61,5 +84,61 @@ class HomeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    func addMarker(){
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        
+        
+        
+        let defaultCoordinate = CLLocationCoordinate2D(latitude: Double(AppConstants.defaultLatitude)!, longitude: Double(AppConstants.defaultLongtitude)!)
+        let annotation = MakerAnnotation(coordinate: defaultCoordinate, title: "", subTitle: "")
+        
+        
+        mapView.setRegion(annotation.region, animated: true)
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+    }
+    
+    private func addApartmentAnnotation(mapView: MKMapView, apartmentList: ApartmentList){
+        for apartment in apartmentList.data {
+            let anotation = MakerAnnotation(coordinate: CLLocationCoordinate2D(latitude: (apartment.lat as NSString).doubleValue,  longitude: (apartment.lng as NSString).doubleValue), title: "Căn " + apartment.search_text, subTitle: "Dự án " )
+            mapView.addAnnotation(anotation)
+        }
+    }
+    
+    final class MakerAnnotation: NSObject, MKAnnotation {
+        var coordinate: CLLocationCoordinate2D
+        var title : String?
+        var subtitle: String?
+        var region : MKCoordinateRegion {
+            let span = MKCoordinateSpan(latitudeDelta: 0.003, longitudeDelta: 0.003)
+            return MKCoordinateRegion(center: coordinate, span: span)
+        }
+        
+        init(coordinate : CLLocationCoordinate2D, title : String, subTitle : String) {
+            self.coordinate = coordinate
+            self.title = title
+            self.subtitle = subTitle
+            super.init()
+        }
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let selectedAnnotation = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
+            selectedAnnotation.animatesWhenAdded = true
+            selectedAnnotation.titleVisibility = .adaptive
+            selectedAnnotation.subtitleVisibility = .adaptive
+            
+            let rightButton = UIButton(type: .contactAdd)
+            rightButton.tag = annotation.hash
+            //selectedAnnotation.animatesDrop = true
+            //selectedAnnotation.canShowCallout = true
+            selectedAnnotation.rightCalloutAccessoryView = rightButton
+            
+            return selectedAnnotation
+        }
+        else {return nil}
     }
 }

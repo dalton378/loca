@@ -50,24 +50,21 @@ class SignInMessage: MessageView {
     @IBAction func signIn(_ sender: UIButton) {
        let pass = passwordTextfield.text
        let phone = phoneTextfield.text
-       signIn(password: pass!, phone: phone!)
+        signIn(password: pass!, phone: phone!)
     }
     
     private func setupUI() {
         buttonSign.layer.cornerRadius = 10
+        contentView.layer.cornerRadius = 20
         
-            FBLoginView.awakeFromNib()
-        //let loginButton = FBLoginButton(frame: CGRect(x: 0 , y: 0, width: underlineLabel.frame.size.width * 0.95, height: FBLoginView.frame.size.height))
-         let loginButton = FBLoginButton()
-        
-        //loginButton.center.x = FBLoginView.center.x
-        ButtonfixInView(FBLoginView, button: loginButton)
-        //FBLoginView.addSubview(loginButton)
+        let loginButton = FBLoginButton()
+        subViewFixinContainer(FBLoginView, button: loginButton)
         
         NotificationCenter.default.addObserver(forName: .AccessTokenDidChange, object: nil, queue: OperationQueue.main) { (notification) in
             
             // Print out access token
             print("FB Access Token: \(String(describing: AccessToken.current?.tokenString))")
+            
         }
     }
     
@@ -103,7 +100,7 @@ class SignInMessage: MessageView {
         forgotPass?()
     }
     
-    private func ButtonfixInView(_ container: UIView!, button: FBLoginButton) -> Void{
+    private func subViewFixinContainer(_ container: UIView!, button: FBLoginButton) -> Void{
         button.translatesAutoresizingMaskIntoConstraints = false;
         button.frame = container.frame;
         container.addSubview(button);

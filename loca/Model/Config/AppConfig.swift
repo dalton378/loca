@@ -76,4 +76,23 @@ class AppConfig {
         get { return userDefaults.bool(forKey: "isSignedIn") }
         set { userDefaults.set(newValue, forKey: "isSignedIn") }
     }
+    
+    var apartmentList: ApartmentList?{
+        get {
+            guard let savedprofileDetails = userDefaults.object(forKey: AppConstants.apartmentListData) as? Data else { return nil }
+            let decoder = JSONDecoder()
+            return try? decoder.decode(ApartmentList.self, from: savedprofileDetails)
+        }
+        
+        set {
+            guard let newValue = newValue else {
+                userDefaults.removeObject(forKey: AppConstants.apartmentListData)
+                return
+            }
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(newValue) {
+                userDefaults.set(encoded, forKey: AppConstants.apartmentListData)
+            }
+        }
+    }
 }
