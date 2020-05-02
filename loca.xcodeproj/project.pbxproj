@@ -26,8 +26,6 @@
 		E84FD1C8245D01D400E10507 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84FD1C7245D01D400E10507 /* AppConstants.swift */; };
 		E84FD1CB245D068600E10507 /* ApartmentApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84FD1CA245D068600E10507 /* ApartmentApiProtocol.swift */; };
 		E84FD1CE245D085A00E10507 /* ApartmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84FD1CD245D085A00E10507 /* ApartmentModel.swift */; };
-		E84FD1D4245D184600E10507 /* ApartmentPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = E84FD1D3245D184600E10507 /* ApartmentPreview.xib */; };
-		E84FD1D6245D185800E10507 /* ApartmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84FD1D5245D185800E10507 /* ApartmentPreview.swift */; };
 		E84FD1D9245D21AA00E10507 /* Apartment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E84FD1D8245D21AA00E10507 /* Apartment.storyboard */; };
 		E84FD1DC245D21DA00E10507 /* ApartmentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84FD1DB245D21DA00E10507 /* ApartmentDetailViewController.swift */; };
 		E84FD1DF245D282E00E10507 /* ApartmentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84FD1DE245D282E00E10507 /* ApartmentDetail.swift */; };
@@ -38,6 +36,8 @@
 		E8510F0D24592850004BE65A /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F0C24592850004BE65A /* RouterProtocol.swift */; };
 		E8510F1024592958004BE65A /* AccountApiProtocol .swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F0F24592958004BE65A /* AccountApiProtocol .swift */; };
 		E8510F1424592B38004BE65A /* AcountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F1324592B38004BE65A /* AcountModel.swift */; };
+		E85C0894245D601700D8F740 /* APCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85C0893245D601700D8F740 /* APCustomView.xib */; };
+		E85C0896245D601B00D8F740 /* APCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C0895245D601B00D8F740 /* APCustomView.swift */; };
 		E85C4510245BCA5C0033CB53 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C450F245BCA5C0033CB53 /* UIViewExtension.swift */; };
 		E85C4513245BCAAA0033CB53 /* ForgotPass.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85C4512245BCAAA0033CB53 /* ForgotPass.xib */; };
 		E85C4515245BCDC90033CB53 /* ForgotPassCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C4514245BCDC90033CB53 /* ForgotPassCustomView.swift */; };
@@ -95,8 +95,6 @@
 		E84FD1C7245D01D400E10507 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		E84FD1CA245D068600E10507 /* ApartmentApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentApiProtocol.swift; sourceTree = "<group>"; };
 		E84FD1CD245D085A00E10507 /* ApartmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentModel.swift; sourceTree = "<group>"; };
-		E84FD1D3245D184600E10507 /* ApartmentPreview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentPreview.xib; sourceTree = "<group>"; };
-		E84FD1D5245D185800E10507 /* ApartmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentPreview.swift; sourceTree = "<group>"; };
 		E84FD1D8245D21AA00E10507 /* Apartment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Apartment.storyboard; sourceTree = "<group>"; };
 		E84FD1DB245D21DA00E10507 /* ApartmentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailViewController.swift; sourceTree = "<group>"; };
 		E84FD1DE245D282E00E10507 /* ApartmentDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetail.swift; sourceTree = "<group>"; };
@@ -107,6 +105,8 @@
 		E8510F0C24592850004BE65A /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		E8510F0F24592958004BE65A /* AccountApiProtocol .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountApiProtocol .swift"; sourceTree = "<group>"; };
 		E8510F1324592B38004BE65A /* AcountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcountModel.swift; sourceTree = "<group>"; };
+		E85C0893245D601700D8F740 /* APCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APCustomView.xib; sourceTree = "<group>"; };
+		E85C0895245D601B00D8F740 /* APCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APCustomView.swift; sourceTree = "<group>"; };
 		E85C450F245BCA5C0033CB53 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E85C4512245BCAAA0033CB53 /* ForgotPass.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPass.xib; sourceTree = "<group>"; };
 		E85C4514245BCDC90033CB53 /* ForgotPassCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassCustomView.swift; sourceTree = "<group>"; };
@@ -283,8 +283,8 @@
 		E84FD1D2245D182C00E10507 /* ApartmentPreview */ = {
 			isa = PBXGroup;
 			children = (
-				E84FD1D3245D184600E10507 /* ApartmentPreview.xib */,
-				E84FD1D5245D185800E10507 /* ApartmentPreview.swift */,
+				E85C0895245D601B00D8F740 /* APCustomView.swift */,
+				E85C0893245D601700D8F740 /* APCustomView.xib */,
 			);
 			path = ApartmentPreview;
 			sourceTree = "<group>";
@@ -536,8 +536,8 @@
 				E85C4513245BCAAA0033CB53 /* ForgotPass.xib in Resources */,
 				8E7192F824401C5D00DB814A /* Assets.xcassets in Resources */,
 				E8315D47245B11660022D4A7 /* SignUp.xib in Resources */,
+				E85C0894245D601700D8F740 /* APCustomView.xib in Resources */,
 				8E7192F624401C5000DB814A /* Main.storyboard in Resources */,
-				E84FD1D4245D184600E10507 /* ApartmentPreview.xib in Resources */,
 				E8315D3F245B00180022D4A7 /* SignIn.xib in Resources */,
 				E84FD1D9245D21AA00E10507 /* Apartment.storyboard in Resources */,
 			);
@@ -672,7 +672,6 @@
 				E8510F0D24592850004BE65A /* RouterProtocol.swift in Sources */,
 				E8510F0B2459281F004BE65A /* Router.swift in Sources */,
 				E86B68432459B3D700AF6659 /* MangeAccountViewController.swift in Sources */,
-				E84FD1D6245D185800E10507 /* ApartmentPreview.swift in Sources */,
 				E84FD1DC245D21DA00E10507 /* ApartmentDetailViewController.swift in Sources */,
 				E8315D49245B119F0022D4A7 /* SignUpCustomView.swift in Sources */,
 				E8510F1424592B38004BE65A /* AcountModel.swift in Sources */,
@@ -680,6 +679,7 @@
 				E8510F04245922F4004BE65A /* AlamofireRequest.swift in Sources */,
 				E85C4510245BCA5C0033CB53 /* UIViewExtension.swift in Sources */,
 				E8510F00245915B4004BE65A /* HomeViewController.swift in Sources */,
+				E85C0896245D601B00D8F740 /* APCustomView.swift in Sources */,
 				E84FD1CE245D085A00E10507 /* ApartmentModel.swift in Sources */,
 				E85C4518245BDD910033CB53 /* TextValidation.swift in Sources */,
 				8E7192F324401C5000DB814A /* ViewController.swift in Sources */,
