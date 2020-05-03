@@ -102,6 +102,11 @@ class SignInMessage: MessageView {
         forgotPass?()
     }
     
+    
+    @IBAction func hideKeyboard(_ sender: Any) {
+        self.endEditing(true)
+    }
+    
     private func subViewFixinContainer(_ container: UIView!, button: FBLoginButton) -> Void{
         button.translatesAutoresizingMaskIntoConstraints = false;
         button.frame = container.frame;

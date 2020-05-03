@@ -44,6 +44,7 @@
 		E85C4518245BDD910033CB53 /* TextValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C4517245BDD910033CB53 /* TextValidation.swift */; };
 		E86B068B245DB27D00F5D501 /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B068A245DB27D00F5D501 /* CustomIndicator.swift */; };
 		E86B68432459B3D700AF6659 /* MangeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */; };
+		E870ED5D245EF83E00B9204A /* AccountSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */; };
 		E894788E245E6D5100BA845E /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894788D245E6D5100BA845E /* FilterViewController.swift */; };
 		E8947890245E70F200BA845E /* DropDownExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894788F245E70F200BA845E /* DropDownExtension.swift */; };
 		E8947894245E8B6800BA845E /* ProvinceAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8947893245E8B6800BA845E /* ProvinceAPIProtocol.swift */; };
@@ -119,6 +120,7 @@
 		E85C4517245BDD910033CB53 /* TextValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValidation.swift; sourceTree = "<group>"; };
 		E86B068A245DB27D00F5D501 /* CustomIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
 		E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangeAccountViewController.swift; sourceTree = "<group>"; };
+		E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		E894788D245E6D5100BA845E /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		E894788F245E70F200BA845E /* DropDownExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownExtension.swift; sourceTree = "<group>"; };
 		E8947893245E8B6800BA845E /* ProvinceAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvinceAPIProtocol.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		E8315D3C245AFFEA0022D4A7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				E870ED5E245F01FC00B9204A /* Update */,
 				E84FD1D2245D182C00E10507 /* ApartmentPreview */,
 				E85C4511245BCA980033CB53 /* Forgot Pass */,
 				E8315D45245B115B0022D4A7 /* SignUp */,
@@ -432,6 +435,13 @@
 			path = Validation;
 			sourceTree = "<group>";
 		};
+		E870ED5E245F01FC00B9204A /* Update */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Update;
+			sourceTree = "<group>";
+		};
 		E8947891245E8B4F00BA845E /* Provinces */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */,
+				E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -715,6 +726,7 @@
 				8E7192F324401C5000DB814A /* ViewController.swift in Sources */,
 				E8510F072459252F004BE65A /* AppConfig.swift in Sources */,
 				8EC2606B2445E88600A1E842 /* Messages.swift in Sources */,
+				E870ED5D245EF83E00B9204A /* AccountSettingsTableViewCell.swift in Sources */,
 				E8315D44245B0D6E0022D4A7 /* SignInMessage.swift in Sources */,
 				E86B068B245DB27D00F5D501 /* CustomIndicator.swift in Sources */,
 				E894788E245E6D5100BA845E /* FilterViewController.swift in Sources */,
