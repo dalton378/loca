@@ -543,3 +543,14 @@ Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit.debug.xcconfig
 Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit.release.xcconfig
 Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit.debug.xcconfig
 Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit.release.xcconfig
+Pods/iOSDropDown/LICENSE
+Pods/iOSDropDown/README.md
+Pods/iOSDropDown/iOSDropDown/Classes/iOSDropDown.swift
+Pods/Pods.xcodeproj/xcuserdata/toannguyen.xcuserdatad/xcschemes/iOSDropDown.xcscheme
+Pods/Target Support Files/iOSDropDown/iOSDropDown-dummy.m
+Pods/Target Support Files/iOSDropDown/iOSDropDown-Info.plist
+Pods/Target Support Files/iOSDropDown/iOSDropDown-prefix.pch
+Pods/Target Support Files/iOSDropDown/iOSDropDown-umbrella.h
+Pods/Target Support Files/iOSDropDown/iOSDropDown.debug.xcconfig
+Pods/Target Support Files/iOSDropDown/iOSDropDown.modulemap
+Pods/Target Support Files/iOSDropDown/iOSDropDown.release.xcconfig

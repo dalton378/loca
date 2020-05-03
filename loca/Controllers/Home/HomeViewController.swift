@@ -17,7 +17,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setEmptyBackButton()
         addMarker()
         guard  let token = AppConfig.shared.accessToken else {
             return
@@ -159,6 +159,17 @@ class HomeViewController: UIViewController, MKMapViewDelegate {
         if segue.identifier == "home_apartmentDetail" {
             let view = segue.destination as! ApartmentDetailViewController
             view.apartmentId = apartmentId
+        }else if segue.identifier == "home_apartmentFilter" {
+            let view = segue.destination as! FilterViewController
+            view.delegate = self
         }
     }
+}
+
+
+extension HomeViewController: FilterSelectionProtocol {
+    func getFilterSelection(selections: [FilterSelection]) {
+        print(selections)
+    }
+    
 }

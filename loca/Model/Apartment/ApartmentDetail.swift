@@ -67,6 +67,15 @@ struct District: Codable {
     var name: String
 }
 
+struct ProvinceList: Codable {
+    var data : [Province]
+}
+
+struct DistrictList: Codable {
+    var data : [District]
+}
+
+
 struct Ward: Codable {
     var id: Int
     var name: String

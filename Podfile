@@ -9,6 +9,7 @@ pod 'SwiftMessages'
 pod 'Alamofire', '~> 5.0.0-rc.3'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
+pod 'iOSDropDown'
 
   target 'locaTests' do
     inherit! :search_paths

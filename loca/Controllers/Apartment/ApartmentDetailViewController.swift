@@ -27,20 +27,12 @@ class ApartmentDetailViewController: UIViewController {
         
         customIndicator.addIndicator(view: self, alpha: 1)
         customIndicator.startIndicator(timeout: 5)
-        getApartmentDetail(id: apartmentId!)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let totalHeight = addADCustomView(containerView: stackView, numofViews: data.count, viewHeigh: 60)
+        getApartmentDetail(id: apartmentId!)
         
-        for a in containerView.constraints {
-            if a.identifier == "containerHeight" {
-                a.constant = CGFloat(totalHeight)
-            }
-        }
-        
-        descriptionTextView.text = apartmentDetail?.description
-        self.view.layoutIfNeeded()
     }
 
     private func getApartmentDetail(id: String) {
@@ -51,7 +43,15 @@ class ApartmentDetailViewController: UIViewController {
                 guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentDetail.self, from: newData) else {return}
                 self.apartmentDetail = autParams
                 self.prepareData()
-                print(self.apartmentDetail?.images)
+                let totalHeight = self.addADCustomView(containerView: self.stackView, numofViews: self.data.count, viewHeigh: 60)
+                
+                for a in self.containerView.constraints {
+                    if a.identifier == "containerHeight" {
+                        a.constant = CGFloat(totalHeight)
+                    }
+                }
+                self.descriptionTextView.text = self.apartmentDetail?.description
+                self.view.layoutIfNeeded()
             case .failure:
                 return
             }

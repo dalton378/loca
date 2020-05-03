@@ -14,38 +14,58 @@ class AlamofireRequest {
     func login2(email: String, password: String, phone: String, completionHandler: @escaping (DataResponse<Data?, AFError>) -> Void ) {
         
         session.request(AccountApiProtocol.login(email: email, phone: phone, password: password))
-        .validate()
-        .responseDecodable(completionHandler: completionHandler)
+            .validate()
+            .responseDecodable(completionHandler: completionHandler)
     }
     
     func login(email: String, password: String, phone: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
         
         session.request(AccountApiProtocol.login(email: email, phone: phone, password: password))
-        .validate()
-        .responseString(completionHandler: completionHandler)
+            .validate()
+            .responseString(completionHandler: completionHandler)
     }
     
     func getUser(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
         guard let token = AppConfig.shared.accessToken else {return}
         session.request(AccountApiProtocol.getUser(token: token))
-        .validate()
-        .responseString(completionHandler: completionHandler)
+            .validate()
+            .responseString(completionHandler: completionHandler)
     }
     
     func getApartment(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
         guard let token = AppConfig.shared.accessToken else {return}
         session.request(ApartmentApiProtocol.getApartment(token: token))
-        .validate()
-        .responseString(completionHandler: completionHandler)
+            .validate()
+            .responseString(completionHandler: completionHandler)
     }
     
     func getApartmentDetail(id: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
-           guard let token = AppConfig.shared.accessToken else {return}
-           session.request(ApartmentApiProtocol.getApartmentDetail(id: id, token: token))
-           .validate()
-           .responseString(completionHandler: completionHandler)
-       }
+        guard let token = AppConfig.shared.accessToken else {return}
+        session.request(ApartmentApiProtocol.getApartmentDetail(id: id, token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
     
+    func getPropertyType(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        guard let token = AppConfig.shared.accessToken else {return}
+        session.request(ApartmentApiProtocol.getPropertyType(token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
+    func getProvinces(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        guard let token = AppConfig.shared.accessToken else {return}
+        session.request(ProvinceAPIProtocol.getProvinces(token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
+    func getDistrictByProvince(id: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        guard let token = AppConfig.shared.accessToken else {return}
+        session.request(ProvinceAPIProtocol.getDistrictByProvince(id: id, token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
     
 }
 
@@ -53,7 +73,7 @@ class AlamofireRequest {
 class NetworkSessionManager {
     static let shared = NetworkSessionManager()
     
-//    static var serverTrustPolicies: [String: ServerTrustPolicy]!
+    //    static var serverTrustPolicies: [String: ServerTrustPolicy]!
     let sessionManager: Session = {
         
         let configuration = URLSessionConfiguration.default

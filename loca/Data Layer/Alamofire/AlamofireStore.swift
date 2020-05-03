@@ -21,21 +21,36 @@ class AlamofireStore {
     
     func getUser(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
         client.getUser(completionHandler: {result in
-            print(result.response?.statusCode)
-            print(result.error?.underlyingError)
             completionHandler(result.result)
         })
     }
     
     func getApartments(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
         client.getApartment(completionHandler: {result in
-            print(result.response?.statusCode)
             completionHandler(result.result)
         })
     }
     
     func getApartmentDetail(id: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
         client.getApartmentDetail(id: id, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
+    
+    func getPropertyType(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.getPropertyType(completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
+    
+    func getProvinces(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.getProvinces(completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
+    
+    func getDistrictByProvince(id: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.getDistrictByProvince(id: id, completionHandler: {result in
             print(result.response?.statusCode)
             completionHandler(result.result)
         })

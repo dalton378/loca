@@ -1,23 +1,23 @@
 //
-//  ApartmentApiProtocol.swift
+//  ProvinceAPIProtocol.swift
 //  loca
 //
-//  Created by Toan Nguyen on 5/2/20.
+//  Created by Toan Nguyen on 5/3/20.
 //  Copyright © 2020 Dalton. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-enum ApartmentApiProtocol: ServicesApiRouterProtocol {
+enum ProvinceAPIProtocol: ServicesApiRouterProtocol {
     
-    case getApartment(token: String)
-    case getApartmentDetail(id: String, token: String)
+    case getProvinces(token: String)
+    case getDistrictByProvince(id: String, token: String)
     case getPropertyType(token: String)
     
     var method: HTTPMethod {
         switch self {
-        case .getApartment, .getApartmentDetail, .getPropertyType:
+        case .getProvinces, .getDistrictByProvince, .getPropertyType:
             return .get
             
         }
@@ -25,10 +25,10 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     
     var path: String {
         switch self {
-        case .getApartment:
-            return "apartments"
-        case .getApartmentDetail( let id, _):
-            return "apartments/\(id)"
+        case .getProvinces:
+            return "provinces"
+        case .getDistrictByProvince( let id, _):
+            return "districts/\(id)"
         case .getPropertyType:
             return "property-type"
         default:
@@ -38,7 +38,7 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     
     var encoding: ParameterEncoding {
         switch self {
-        case .getApartment, .getApartmentDetail, .getPropertyType:
+        case .getProvinces, .getDistrictByProvince, .getPropertyType:
             return URLEncoding.default
         }
     }
@@ -57,7 +57,7 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     }
     var headers: [String : String]? {
         switch self {
-        case let .getApartment(token), .getApartmentDetail(_, let token), .getPropertyType(let token):
+        case let .getProvinces(token), .getDistrictByProvince(_, let token), .getPropertyType(let token):
             return ["Authorization": "Bearer \(token)"]
         default:
             return [:]
