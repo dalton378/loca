@@ -8,22 +8,40 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class HomeViewController: UIViewController, MKMapViewDelegate {
+class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     let store = AlamofireStore()
     var apartmentId = ""
+    var locationManager: CLLocationManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setEmptyBackButton()
-        addMarker()
+        setupUI()
         guard  let token = AppConfig.shared.accessToken else {
             return
         }
-        print(token)
+        
         getDataFromServer()
+    }
+    
+    private func setupUI(){
+        setEmptyBackButton()
+        addMarker()
+        locationManager = CLLocationManager()
+        let status = CLLocationManager.authorizationStatus()
+        locationManager?.delegate = self
+        switch status {
+        case .notDetermined:
+            locationManager?.requestWhenInUseAuthorization()
+        default:
+            break
+        }
+        locationManager?.startUpdatingLocation()
+        //view.backgroundColor = .gray
+        
     }
     
     @IBAction func accountClick(_ sender: UIButton) {
@@ -105,7 +123,13 @@ class HomeViewController: UIViewController, MKMapViewDelegate {
         for apartment in apartmentList.data {
             let anotation = MakerAnnotation(coordinate: CLLocationCoordinate2D(latitude: (apartment.lat as NSString).doubleValue,  longitude: (apartment.lng as NSString).doubleValue), title: "", subTitle: "\(apartment.search_text)|\(apartment.id)")
             mapView.addAnnotation(anotation)
-           
+            
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if  status == .authorizedWhenInUse {
+            locationManager?.startUpdatingLocation()
         }
     }
     
@@ -150,9 +174,17 @@ class HomeViewController: UIViewController, MKMapViewDelegate {
         guard let text = selectedAnnotation.subtitle else {return}
         let fulltextArr = text.split(separator: "|")
         apartmentId = String(fulltextArr[1])
-
+        
         Messages.displayApartmentPreviewMessage(title: "Thông Tin", message: String(fulltextArr[0]), buttonAction: {
             self.performSegue(withIdentifier: "home_apartmentDetail", sender: self)})
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last{
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.mapView.setRegion(region, animated: true)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

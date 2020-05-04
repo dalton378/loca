@@ -9,8 +9,9 @@
 import UIKit
 import SwiftMessages
 import FBSDKLoginKit
+import GoogleSignIn
 
-class SignInMessage: MessageView {
+class SignInMessage: MessageView, GIDSignInDelegate {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var buttonSign: UIButton!
@@ -21,10 +22,13 @@ class SignInMessage: MessageView {
     @IBOutlet weak var FBLoginView: UIView!
     @IBOutlet weak var GGLoginView: UIView!
     
-
+    @IBOutlet weak var GGSignInButton: UIView!
+    
     @IBOutlet weak var SingupButton: UIButton!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var underlineLabel: UIView!
+    @IBOutlet weak var passwordLabel: UIView!
+    @IBOutlet weak var phoneUnderLineLabel: UIView!
     
     var doneAction: (() -> Void)?
     var exitAction: (() -> Void)?
@@ -48,8 +52,10 @@ class SignInMessage: MessageView {
     }
     
     @IBAction func signIn(_ sender: UIButton) {
-       let pass = passwordTextfield.text
-       let phone = phoneTextfield.text
+        passwordLabel.backgroundColor = UIColor.init(hex: "B0B0B0")
+        phoneUnderLineLabel.backgroundColor = UIColor.init(hex: "B0B0B0")
+        let pass = passwordTextfield.text
+        let phone = phoneTextfield.text
         signIn(password: pass!, phone: phone!)
     }
     
@@ -57,6 +63,9 @@ class SignInMessage: MessageView {
         buttonSign.layer.cornerRadius = 10
         SingupButton.layer.cornerRadius = 10
         contentView.layer.cornerRadius = 20
+        GGSignInButton.layer.cornerRadius = 10
+        GGLoginView.layer.cornerRadius = 10
+        FBLoginView.layer.cornerRadius = 10
         
         let loginButton = FBLoginButton()
         loginButton.layer.cornerRadius = 10
@@ -68,6 +77,10 @@ class SignInMessage: MessageView {
             print("FB Access Token: \(String(describing: AccessToken.current?.tokenString))")
             
         }
+        
+//        let googleSignIn = GIDSignInButton()
+//        googleSignIn.layer.cornerRadius = 10
+//        subViewFixinContainer(GGLoginView, button: googleSignIn)
     }
     
     private func signIn(password: String, phone: String) {
@@ -79,6 +92,8 @@ class SignInMessage: MessageView {
                     let parsedData = data.data(using: .utf8)
                     guard let newData = parsedData, let autParams = try? JSONDecoder().decode(AccountModel.self, from: newData) else {
                         self.errorMessageLabel.isHidden = false
+                        self.passwordLabel.backgroundColor = UIColor.red
+                        self.phoneUnderLineLabel.backgroundColor = UIColor.red
                         return
                     }
                     AppConfig.shared.accessToken = autParams.access_token
@@ -88,6 +103,8 @@ class SignInMessage: MessageView {
                     self.doneAction?()
                 case .failure:
                     self.errorMessageLabel.isHidden = false
+                    self.passwordLabel.backgroundColor = UIColor.red
+                    self.phoneUnderLineLabel.backgroundColor = UIColor.red
                 }
             })
         }
@@ -107,7 +124,7 @@ class SignInMessage: MessageView {
         self.endEditing(true)
     }
     
-    private func subViewFixinContainer(_ container: UIView!, button: FBLoginButton) -> Void{
+    private func subViewFixinContainer(_ container: UIView!, button: UIControl) -> Void{
         button.translatesAutoresizingMaskIntoConstraints = false;
         button.frame = container.frame;
         container.addSubview(button);
@@ -117,4 +134,45 @@ class SignInMessage: MessageView {
         NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
     }
     
+    
+    //MARK:Google SignIn Delegate
+    func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
+        // myActivityIndicator.stopAnimating()
+    }
+    // Present a view that prompts the user to sign in with Google
+    func sign(_ signIn: GIDSignIn!,
+              present viewController: UIViewController!) {
+        //self.present(viewController, animated: true, completion: nil)
+       // navigat
+    }
+
+    // Dismiss the "Sign in with Google" view
+    func sign(_ signIn: GIDSignIn!,
+              dismiss viewController: UIViewController!) {
+        //self.dismiss(animated: true, completion: nil)
+    }
+
+    //completed sign In
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+
+        if (error == nil) {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            // ...
+        } else {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    
+    @IBAction func ggSignInAction(_ sender: UIButton) {
+        GIDSignIn.sharedInstance().signIn()
+        GIDSignIn.sharedInstance().delegate=self
+        //GIDSignIn.sharedInstance().uiDelegate=self
+    }
 }

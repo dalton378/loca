@@ -17,6 +17,7 @@
 		8E7192FB24401C5D00DB814A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7192F924401C5D00DB814A /* LaunchScreen.storyboard */; };
 		8E71930624401C5D00DB814A /* locaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71930524401C5D00DB814A /* locaTests.swift */; };
 		8E71931124401C5D00DB814A /* locaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71931024401C5D00DB814A /* locaUITests.swift */; };
+		8E86298A2460276B007A5C07 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8629892460276B007A5C07 /* SignUpViewController.swift */; };
 		8EC2606B2445E88600A1E842 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC2606A2445E88600A1E842 /* Messages.swift */; };
 		E31EBBCA5BF0C0966847A0B5 /* Pods_loca_locaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */; };
 		E8315D3F245B00180022D4A7 /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8315D3E245B00180022D4A7 /* SignIn.xib */; };
@@ -90,6 +91,7 @@
 		8E71930C24401C5D00DB814A /* locaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = locaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E71931024401C5D00DB814A /* locaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locaUITests.swift; sourceTree = "<group>"; };
 		8E71931224401C5D00DB814A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E8629892460276B007A5C07 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8EC2606A2445E88600A1E842 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		B1E6A166630A348BE0329D25 /* Pods-loca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca.debug.xcconfig"; path = "Target Support Files/Pods-loca/Pods-loca.debug.xcconfig"; sourceTree = "<group>"; };
 		B6D950CF60779FAD1E28C504 /* Pods-loca-locaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.release.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 			children = (
 				E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */,
 				E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */,
+				8E8629892460276B007A5C07 /* SignUpViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				8E7192E824401C5000DB814A /* Frameworks */,
 				8E7192E924401C5000DB814A /* Resources */,
 				8D1BF4142D644C5BBB08BDD5 /* [CP] Embed Pods Frameworks */,
+				042F43DAF1DD9FFCAEF48F0C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -509,6 +513,7 @@
 				8E71930924401C5D00DB814A /* Frameworks */,
 				8E71930A24401C5D00DB814A /* Resources */,
 				52FD867D02B8AEA82A335D17 /* [CP] Embed Pods Frameworks */,
+				66AF57200D1B8F2FD556F50B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -597,6 +602,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		042F43DAF1DD9FFCAEF48F0C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-loca/Pods-loca-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-loca/Pods-loca-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-loca/Pods-loca-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4E4CBC89EDDB5CF645009D66 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -634,6 +656,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66AF57200D1B8F2FD556F50B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7E36BCC1E9DB71F9F788E723 /* [CP] Check Pods Manifest.lock */ = {
@@ -714,6 +753,7 @@
 				E8315D49245B119F0022D4A7 /* SignUpCustomView.swift in Sources */,
 				E8510F1424592B38004BE65A /* AcountModel.swift in Sources */,
 				E85C4515245BCDC90033CB53 /* ForgotPassCustomView.swift in Sources */,
+				8E86298A2460276B007A5C07 /* SignUpViewController.swift in Sources */,
 				E8510F04245922F4004BE65A /* AlamofireRequest.swift in Sources */,
 				E85C4510245BCA5C0033CB53 /* UIViewExtension.swift in Sources */,
 				E8510F00245915B4004BE65A /* HomeViewController.swift in Sources */,
