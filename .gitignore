@@ -738,3 +738,15 @@ Pods/Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests-resources-
 Pods/Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests-resources-Release-input-files.xcfilelist
 Pods/Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests-resources-Release-output-files.xcfilelist
 Pods/Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests-resources.sh
+Pods/Pods.xcodeproj/xcuserdata/toannguyen.xcuserdatad/xcschemes/AppAuth.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/toannguyen.xcuserdatad/xcschemes/GoogleSignIn.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/toannguyen.xcuserdatad/xcschemes/GTMAppAuth.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/toannguyen.xcuserdatad/xcschemes/GTMSessionFetcher.xcscheme
+Pods/Target Support Files/AppAuth/AppAuth.debug.xcconfig
+Pods/Target Support Files/AppAuth/AppAuth.release.xcconfig
+Pods/Target Support Files/GoogleSignIn/GoogleSignIn.debug.xcconfig
+Pods/Target Support Files/GoogleSignIn/GoogleSignIn.release.xcconfig
+Pods/Target Support Files/GTMAppAuth/GTMAppAuth.debug.xcconfig
+Pods/Target Support Files/GTMAppAuth/GTMAppAuth.release.xcconfig
+Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.debug.xcconfig
+Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.release.xcconfig

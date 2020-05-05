@@ -267,22 +267,33 @@
                     <connections>
                         <outlet property="nameLabel" destination="Bxp-uk-BJS" id="Ic3-Kc-K8V"/>
                         <outlet property="settingTable" destination="tnL-w6-oyc" id="NUD-zE-eDh"/>
+                        <segue destination="CU1-v5-YAe" kind="show" identifier="mangeaccount_createpost" id="CG7-CW-T7d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2C-z9-0JM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1043" y="826"/>
         </scene>
+        <!--CreateApartmentPostViewController-->
+        <scene sceneID="8Ho-ei-L4h">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Apartment" referencedIdentifier="CreateApartmentPostViewController" id="CU1-v5-YAe" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="P7B-sw-Ges"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YxR-xH-N7d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1917" y="761"/>
+        </scene>
         <!--Filter View Controller-->
         <scene sceneID="g9r-YL-Qab">
             <objects>
                 <viewController storyboardIdentifier="FilterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NsI-qh-BQi" customClass="FilterViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WD0-9L-29z">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2w-Qa-KRR">
-                                <rect key="frame" x="0.0" y="88" width="414" height="1078"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="612"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abU-5o-my4">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="549"/>
@@ -396,7 +407,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="XoH-lI-UFq"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="1200"/>
+                    <size key="freeformSize" width="414" height="700"/>
                     <connections>
                         <outlet property="city" destination="Zhc-0p-rcL" id="7uP-DJ-AQR"/>
                         <outlet property="confirmButton" destination="OK8-4i-Mx0" id="hKf-Bp-gtg"/>

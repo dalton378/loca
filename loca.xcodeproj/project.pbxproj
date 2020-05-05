@@ -57,6 +57,11 @@
 		E8947896245E971D00BA845E /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8947895245E971D00BA845E /* UIViewControllerExtension.swift */; };
 		E8947898245E986800BA845E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8947897245E986800BA845E /* UIColorExtension.swift */; };
 		E899550B245930E800E65195 /* AlamofireStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E899550A245930E800E65195 /* AlamofireStore.swift */; };
+		E8EDDB81246176250099691B /* CreateApartmentPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EDDB80246176250099691B /* CreateApartmentPostViewController.swift */; };
+		E8EDDB83246178720099691B /* CreatePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EDDB82246178720099691B /* CreatePostTableViewCell.swift */; };
+		E8EDDB8624618E980099691B /* PostCreationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EDDB8524618E980099691B /* PostCreationMapViewController.swift */; };
+		E8EDDB88246193790099691B /* ApartmentPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EDDB87246193790099691B /* ApartmentPost.swift */; };
+		E8EDDB8A246198C90099691B /* PostCreationDesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EDDB89246198C90099691B /* PostCreationDesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +144,11 @@
 		E8947895245E971D00BA845E /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		E8947897245E986800BA845E /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E899550A245930E800E65195 /* AlamofireStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireStore.swift; sourceTree = "<group>"; };
+		E8EDDB80246176250099691B /* CreateApartmentPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateApartmentPostViewController.swift; sourceTree = "<group>"; };
+		E8EDDB82246178720099691B /* CreatePostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostTableViewCell.swift; sourceTree = "<group>"; };
+		E8EDDB8524618E980099691B /* PostCreationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationMapViewController.swift; sourceTree = "<group>"; };
+		E8EDDB87246193790099691B /* ApartmentPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentPost.swift; sourceTree = "<group>"; };
+		E8EDDB89246198C90099691B /* PostCreationDesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationDesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +314,7 @@
 			children = (
 				E84FD1CD245D085A00E10507 /* ApartmentModel.swift */,
 				E84FD1DE245D282E00E10507 /* ApartmentDetail.swift */,
+				E8EDDB87246193790099691B /* ApartmentPost.swift */,
 			);
 			path = Apartment;
 			sourceTree = "<group>";
@@ -322,7 +333,10 @@
 		E84FD1DA245D21BF00E10507 /* Apartment */ = {
 			isa = PBXGroup;
 			children = (
+				E8EDDB8424618E760099691B /* PostCreation */,
 				E84FD1DB245D21DA00E10507 /* ApartmentDetailViewController.swift */,
+				E8EDDB80246176250099691B /* CreateApartmentPostViewController.swift */,
+				E8EDDB82246178720099691B /* CreatePostTableViewCell.swift */,
 			);
 			path = Apartment;
 			sourceTree = "<group>";
@@ -475,6 +489,15 @@
 				8E8629892460276B007A5C07 /* SignUpViewController.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		E8EDDB8424618E760099691B /* PostCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E8EDDB8524618E980099691B /* PostCreationMapViewController.swift */,
+				E8EDDB89246198C90099691B /* PostCreationDesViewController.swift */,
+			);
+			path = PostCreation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -762,11 +785,15 @@
 				E8947890245E70F200BA845E /* DropDownExtension.swift in Sources */,
 				8EC361AC2461604700F2F3EF /* Date+extension.swift in Sources */,
 				E84FD1C8245D01D400E10507 /* AppConstants.swift in Sources */,
+				E8EDDB83246178720099691B /* CreatePostTableViewCell.swift in Sources */,
+				E8EDDB8624618E980099691B /* PostCreationMapViewController.swift in Sources */,
 				E84FD1CB245D068600E10507 /* ApartmentApiProtocol.swift in Sources */,
 				E8510F0D24592850004BE65A /* RouterProtocol.swift in Sources */,
 				E8510F0B2459281F004BE65A /* Router.swift in Sources */,
+				E8EDDB88246193790099691B /* ApartmentPost.swift in Sources */,
 				E86B68432459B3D700AF6659 /* MangeAccountViewController.swift in Sources */,
 				E84FD1DC245D21DA00E10507 /* ApartmentDetailViewController.swift in Sources */,
+				E8EDDB8A246198C90099691B /* PostCreationDesViewController.swift in Sources */,
 				8EC361AA2461603A00F2F3EF /* DateFormatter+extension.swift in Sources */,
 				E8315D49245B119F0022D4A7 /* SignUpCustomView.swift in Sources */,
 				E8510F1424592B38004BE65A /* AcountModel.swift in Sources */,
@@ -775,6 +802,7 @@
 				E8510F04245922F4004BE65A /* AlamofireRequest.swift in Sources */,
 				E85C4510245BCA5C0033CB53 /* UIViewExtension.swift in Sources */,
 				E8510F00245915B4004BE65A /* HomeViewController.swift in Sources */,
+				E8EDDB81246176250099691B /* CreateApartmentPostViewController.swift in Sources */,
 				E85C0896245D601B00D8F740 /* APCustomView.swift in Sources */,
 				E8947894245E8B6800BA845E /* ProvinceAPIProtocol.swift in Sources */,
 				E8947896245E971D00BA845E /* UIViewControllerExtension.swift in Sources */,

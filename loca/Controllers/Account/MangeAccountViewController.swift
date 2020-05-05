@@ -34,6 +34,7 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         settingData.append(SettingData.init(icon: UIImage(named: "email_icon")!, description: "Email: \(AppConfig.shared.profileEmail!)"))
         settingData.append(SettingData.init(icon: UIImage(named: "password_icon")!, description: "Cập nhật Password"))
         settingData.append(SettingData.init(icon: UIImage(named: "letter_icon")!, description: "Liên hệ với LocaLoca"))
+        settingData.append(SettingData.init(icon: UIImage(named: "letter_icon")!, description: "Đăng tin"))
         
     }
     
@@ -56,7 +57,7 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            print("1")
+            performSegue(withIdentifier: "mangeaccount_createpost", sender: self)
         default:
             print("2")
         }
