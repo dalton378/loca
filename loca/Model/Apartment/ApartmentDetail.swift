@@ -11,39 +11,39 @@ import Foundation
 
 struct ApartmentDetail: Codable {
     var id: Int
-    var   track_id: Int
-      var post_id: Int
-      var start_date: String
-       var post_status: Int
-       var end_date: String
-       var project: String?
-       var property_type: PropertyType
-      var  post_type: PostType
-       var user_id: Int
-       var region: String?
-       var address: String
-      var  province: Province
-      var district: District
-      var ward: Ward
-      var images: [ApartmentPhotos]
-      var street: String
-       var apartment_number: String?
-       var apartment_code: String?
-       var direction: String
-       var lat: String
-       var lng: String
-       var area: Int
-       var area_unit: AreadUnit
-       var floor_number: Int?
-       var bedroom_number: Int?
-       var bathroom_number: Int?
-       var rooftop: Int?
-       var garden: Int?
-       var pool: Int?
-       var description: String
-       var price: Int
-       var currency: Currency
-       var apartment_contacts: [ApartmentContact]
+    var track_id: Int
+    var post_id: Int
+    var start_date: String
+    var post_status: Int
+    var end_date: String
+    var project: String?
+    var property_type: PropertyType
+    var post_type: PostType
+    var user_id: Int
+    var region: String?
+    var address: String
+    var province: Province
+    var district: District
+    var ward: Ward
+    var images: [ApartmentPhotos]
+    var street: String
+    var apartment_number: String?
+    var apartment_code: String?
+    var direction: String
+    var lat: String
+    var lng: String
+    var area: Int
+    var area_unit: AreadUnit
+    var floor_number: Int?
+    var bedroom_number: Int?
+    var bathroom_number: Int?
+    var rooftop: Int?
+    var garden: Int?
+    var pool: Int?
+    var description: String
+    var price: Int
+    var currency: Currency
+    var apartment_contacts: [ApartmentContact]
 }
 
 
@@ -101,4 +101,9 @@ struct ApartmentContact: Codable {
     var name: String
     var phone: String
     var email: String
+}
+
+struct ApartmentPhotoDetail: Codable {
+    var original: String
+    var thumbnail: String
 }

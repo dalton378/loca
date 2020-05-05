@@ -99,7 +99,7 @@
                             <rect key="frame" x="8" y="192" width="422" height="40"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dil-Jd-cFm">
-                                    <rect key="frame" x="283.5" y="2" width="126.5" height="36"/>
+                                    <rect key="frame" x="241" y="2" width="169" height="36"/>
                                     <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="Đăng Nhập">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -125,7 +125,7 @@
                                 <constraint firstItem="c3v-Zw-TCS" firstAttribute="leading" secondItem="PeV-7J-x36" secondAttribute="leading" constant="12" id="C7x-z1-r8A"/>
                                 <constraint firstItem="c3v-Zw-TCS" firstAttribute="centerY" secondItem="PeV-7J-x36" secondAttribute="centerY" id="J5l-xB-aO6"/>
                                 <constraint firstItem="dil-Jd-cFm" firstAttribute="height" secondItem="PeV-7J-x36" secondAttribute="height" multiplier="0.9" id="Jj6-g8-ooa"/>
-                                <constraint firstItem="dil-Jd-cFm" firstAttribute="width" secondItem="PeV-7J-x36" secondAttribute="width" multiplier="0.3" id="KBo-lh-dzL"/>
+                                <constraint firstItem="dil-Jd-cFm" firstAttribute="width" secondItem="PeV-7J-x36" secondAttribute="width" multiplier="0.4" id="KBo-lh-dzL"/>
                                 <constraint firstAttribute="height" constant="40" id="XIK-OX-UZF"/>
                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="laA-Jb-5qh"/>
                                 <constraint firstItem="dil-Jd-cFm" firstAttribute="centerY" secondItem="PeV-7J-x36" secondAttribute="centerY" id="uCR-TR-nz2"/>
