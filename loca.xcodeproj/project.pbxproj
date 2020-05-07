@@ -48,6 +48,12 @@
 		E85C4513245BCAAA0033CB53 /* ForgotPass.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85C4512245BCAAA0033CB53 /* ForgotPass.xib */; };
 		E85C4515245BCDC90033CB53 /* ForgotPassCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C4514245BCDC90033CB53 /* ForgotPassCustomView.swift */; };
 		E85C4518245BDD910033CB53 /* TextValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C4517245BDD910033CB53 /* TextValidation.swift */; };
+		E85DCCE72463AC65009E516D /* ListViewItemCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DCCE32463AC65009E516D /* ListViewItemCustom.swift */; };
+		E85DCCE82463AC65009E516D /* ListViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DCCE42463AC65009E516D /* ListViewCustom.swift */; };
+		E85DCCE92463AC65009E516D /* ListViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85DCCE52463AC65009E516D /* ListViewItem.xib */; };
+		E85DCCEA2463AC65009E516D /* ListViewCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85DCCE62463AC65009E516D /* ListViewCustom.xib */; };
+		E8648EFA2462CE7B00C132B8 /* PostCreationCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8648EF92462CE7B00C132B8 /* PostCreationCameraViewController.swift */; };
+		E8648EFC2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8648EFB2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift */; };
 		E86B068B245DB27D00F5D501 /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B068A245DB27D00F5D501 /* CustomIndicator.swift */; };
 		E86B68432459B3D700AF6659 /* MangeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */; };
 		E870ED5D245EF83E00B9204A /* AccountSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */; };
@@ -135,6 +141,12 @@
 		E85C4512245BCAAA0033CB53 /* ForgotPass.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPass.xib; sourceTree = "<group>"; };
 		E85C4514245BCDC90033CB53 /* ForgotPassCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassCustomView.swift; sourceTree = "<group>"; };
 		E85C4517245BDD910033CB53 /* TextValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValidation.swift; sourceTree = "<group>"; };
+		E85DCCE32463AC65009E516D /* ListViewItemCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewItemCustom.swift; sourceTree = "<group>"; };
+		E85DCCE42463AC65009E516D /* ListViewCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCustom.swift; sourceTree = "<group>"; };
+		E85DCCE52463AC65009E516D /* ListViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewItem.xib; sourceTree = "<group>"; };
+		E85DCCE62463AC65009E516D /* ListViewCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListViewCustom.xib; sourceTree = "<group>"; };
+		E8648EF92462CE7B00C132B8 /* PostCreationCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationCameraViewController.swift; sourceTree = "<group>"; };
+		E8648EFB2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationAddInfoViewController.swift; sourceTree = "<group>"; };
 		E86B068A245DB27D00F5D501 /* CustomIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
 		E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangeAccountViewController.swift; sourceTree = "<group>"; };
 		E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -272,6 +284,7 @@
 		E8315D3C245AFFEA0022D4A7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				E85DCCC9246399BF009E516D /* ListView */,
 				E870ED5E245F01FC00B9204A /* Update */,
 				E84FD1D2245D182C00E10507 /* ApartmentPreview */,
 				E85C4511245BCA980033CB53 /* Forgot Pass */,
@@ -466,6 +479,17 @@
 			path = Validation;
 			sourceTree = "<group>";
 		};
+		E85DCCC9246399BF009E516D /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				E85DCCE42463AC65009E516D /* ListViewCustom.swift */,
+				E85DCCE62463AC65009E516D /* ListViewCustom.xib */,
+				E85DCCE52463AC65009E516D /* ListViewItem.xib */,
+				E85DCCE32463AC65009E516D /* ListViewItemCustom.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
 		E870ED5E245F01FC00B9204A /* Update */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +520,8 @@
 			children = (
 				E8EDDB8524618E980099691B /* PostCreationMapViewController.swift */,
 				E8EDDB89246198C90099691B /* PostCreationDesViewController.swift */,
+				E8648EF92462CE7B00C132B8 /* PostCreationCameraViewController.swift */,
+				E8648EFB2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift */,
 			);
 			path = PostCreation;
 			sourceTree = "<group>";
@@ -619,6 +645,8 @@
 				E8315D47245B11660022D4A7 /* SignUp.xib in Resources */,
 				E85C0894245D601700D8F740 /* APCustomView.xib in Resources */,
 				8E7192F624401C5000DB814A /* Main.storyboard in Resources */,
+				E85DCCEA2463AC65009E516D /* ListViewCustom.xib in Resources */,
+				E85DCCE92463AC65009E516D /* ListViewItem.xib in Resources */,
 				E8315D3F245B00180022D4A7 /* SignIn.xib in Resources */,
 				E84FD1D9245D21AA00E10507 /* Apartment.storyboard in Resources */,
 			);
@@ -786,6 +814,7 @@
 				8EC361AC2461604700F2F3EF /* Date+extension.swift in Sources */,
 				E84FD1C8245D01D400E10507 /* AppConstants.swift in Sources */,
 				E8EDDB83246178720099691B /* CreatePostTableViewCell.swift in Sources */,
+				E85DCCE72463AC65009E516D /* ListViewItemCustom.swift in Sources */,
 				E8EDDB8624618E980099691B /* PostCreationMapViewController.swift in Sources */,
 				E84FD1CB245D068600E10507 /* ApartmentApiProtocol.swift in Sources */,
 				E8510F0D24592850004BE65A /* RouterProtocol.swift in Sources */,
@@ -805,15 +834,18 @@
 				E8EDDB81246176250099691B /* CreateApartmentPostViewController.swift in Sources */,
 				E85C0896245D601B00D8F740 /* APCustomView.swift in Sources */,
 				E8947894245E8B6800BA845E /* ProvinceAPIProtocol.swift in Sources */,
+				E85DCCE82463AC65009E516D /* ListViewCustom.swift in Sources */,
 				E8947896245E971D00BA845E /* UIViewControllerExtension.swift in Sources */,
 				E84FD1CE245D085A00E10507 /* ApartmentModel.swift in Sources */,
 				E8947898245E986800BA845E /* UIColorExtension.swift in Sources */,
+				E8648EFC2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift in Sources */,
 				E85C4518245BDD910033CB53 /* TextValidation.swift in Sources */,
 				8E7192F324401C5000DB814A /* ViewController.swift in Sources */,
 				E8510F072459252F004BE65A /* AppConfig.swift in Sources */,
 				8EC361A82461603400F2F3EF /* String+extension.swift in Sources */,
 				8EC2606B2445E88600A1E842 /* Messages.swift in Sources */,
 				E870ED5D245EF83E00B9204A /* AccountSettingsTableViewCell.swift in Sources */,
+				E8648EFA2462CE7B00C132B8 /* PostCreationCameraViewController.swift in Sources */,
 				E8315D44245B0D6E0022D4A7 /* SignInMessage.swift in Sources */,
 				E86B068B245DB27D00F5D501 /* CustomIndicator.swift in Sources */,
 				E894788E245E6D5100BA845E /* FilterViewController.swift in Sources */,
@@ -998,13 +1030,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VL9W949V2N;
+				DEVELOPMENT_TEAM = AFGW448WN5;
 				INFOPLIST_FILE = loca/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.localoca.estate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.localoca.estate.tonnguyen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1020,13 +1052,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VL9W949V2N;
+				DEVELOPMENT_TEAM = AFGW448WN5;
 				INFOPLIST_FILE = loca/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.localoca.estate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.localoca.estate.tonnguyen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;

@@ -7,21 +7,32 @@
 //
 
 import UIKit
-import iOSDropDown
 
 class FilterViewController: UIViewController {
     
     
-    @IBOutlet weak var propertyType: DropDown!
-    @IBOutlet weak var cost: DropDown!
-    @IBOutlet weak var proType: DropDown!
-    @IBOutlet weak var city: DropDown!
-    @IBOutlet weak var district: DropDown!
-    
+    @IBOutlet weak var propertyType: UIView!
+    @IBOutlet weak var cost: UIView!
+    @IBOutlet weak var proType: UIView!
+    @IBOutlet weak var city: UIView!
+    @IBOutlet weak var district: UIView!
     @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var propertySelected: UILabel!
+    @IBOutlet weak var costSelected: UILabel!
+    @IBOutlet weak var proSelected: UILabel!
+    @IBOutlet weak var citySelected: UILabel!
+    @IBOutlet weak var districtSelected: UILabel!
+    
     let store = AlamofireStore()
     var delegate: FilterSelectionProtocol!
     var filterSelections = [FilterSelection]()
+    var itemView: ListViewCustom?
+    
+    private var propertyData: ListData?
+    private var costData: ListData?
+    private var proData: ListData?
+    private var cityData: ListData?
+    private var districtData: ListData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +43,73 @@ class FilterViewController: UIViewController {
     private func getDropDownDataFromServer(){
         getCities()
         getPropertyType()
+    }
+    
+    @IBAction func dismissPopup(_ sender: UITapGestureRecognizer) {
+        itemView?.removeFromSuperview()
+    }
+    
+    @IBAction func showList(_ sender: UITapGestureRecognizer) {
+        guard let data = propertyData else {return}
+        displayListView(view: propertyType, listHeight: 100, text: data.text , id: data.id, selectionHandler: {(text,id) in
+            self.propertySelected.text = text
+            self.itemView?.removeFromSuperview()
+            switch id {
+            case 1:
+                self.costData = ListData.init(text: ["0 - 500 triệu", "500 triệu - 1 tỷ", "1 tỳ - 2 tỷ", "2 tỷ - 5 tỷ", "5 tỷ - 10 tỷ", ">10 tỷ"], id: [1,2,3,4,5,6])
+            case 2:
+                self.costData = ListData.init(text: ["0 - 5 triệu", "5 triệu - 10 triệu", "10 triệu - 15 triệu", "15 triệu - 20 triệu", "20 triệu - 30 triệu", ">30 triệu"], id: [1,2,3,4,5,6])
+            default:
+                break
+            }
+        })
+    }
+    
+    @IBAction func showCostList(_ sender: UITapGestureRecognizer) {
+        guard let data = costData else {return}
+        displayListView(view: cost, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
+            self.costSelected.text = text
+            self.itemView?.removeFromSuperview()
+        })
+    }
+    
+    @IBAction func showProList(_ sender: Any) {
+        guard let data = proData else {return}
+        displayListView(view: proType, listHeight: 250, text: data.text, id: data.id, selectionHandler: {(text,id) in
+            self.proSelected.text = text
+            self.itemView?.removeFromSuperview()
+        })
+    }
+    
+    @IBAction func showDistrcitList(_ sender: Any) {
+        guard let data = districtData else {return}
+        displayListView(view: district, listHeight: 250, text: data.text, id: data.id, selectionHandler: {(text,id) in
+            self.districtSelected.text = text
+            self.itemView?.removeFromSuperview()
+        })
+    }
+    
+    @IBAction func showCityList(_ sender: Any) {
+        guard let data = cityData else {return}
+        displayListView(view: city, listHeight: 250, text: data.text, id: data.id, selectionHandler: {(text,id) in
+            self.getDistrictByProvince(id: String(id))
+            self.citySelected.text = text
+            self.itemView?.removeFromSuperview()
+        })
+    }
+    
+    private func displayListView(view: UIView, listHeight: Int, text: [String], id: [Int], selectionHandler: @escaping ((String, Int) -> Void) ){
+        itemView?.removeFromSuperview()
+        var y = view.frame.maxY
+        
+        if y + CGFloat(listHeight) > (view.superview?.frame.height)! {
+            y = view.frame.minY - CGFloat(listHeight)
+        }
+        itemView = ListViewCustom(frame: CGRect(x: view.frame.minX, y: y, width: view.frame.width, height: CGFloat(listHeight)))
+        itemView!.setData(data: text, ids: id, selectionHandler: selectionHandler)
+        itemView?.backgroundColor = UIColor.red
+        self.view.addSubview(itemView!)
+        
     }
     
     private func getPropertyType(){
@@ -46,9 +124,8 @@ class FilterViewController: UIViewController {
                     items.append(i.name)
                     ids.append(i.id)
                 }
-                self.proType.prepareDropDown(optionArray: items, idArray: ids, completionHandler: {(text,id) in
-                    self.filterSelections.append(FilterSelection(value: String(id), type: .propertyType))
-                })
+                
+                self.proData = ListData(text: items, id: ids)
             case .failure:
                 return
             }
@@ -67,10 +144,8 @@ class FilterViewController: UIViewController {
                     cityItems.append(i.name)
                     cityIds.append(i.id)
                 }
-                self.city.prepareDropDown(optionArray: cityItems, idArray: cityIds, completionHandler: {(text,id) in
-                    self.filterSelections.append(FilterSelection(value: String(id), type: .city))
-                    self.getDistrictByProvince(id: String(id))
-                })
+                
+                self.cityData = ListData.init(text: cityItems, id: cityIds)
             case .failure:
                 return
             }
@@ -90,10 +165,8 @@ class FilterViewController: UIViewController {
                     items.append(i.name)
                     ids.append(i.id)
                 }
-                self.district.prepareDropDown(optionArray: items, idArray: ids, completionHandler: {(text,id) in
-                    self.filterSelections.append(FilterSelection(value: String(id), type: .district))
-                })
                 
+                self.districtData = ListData.init(text: items, id: ids)
             case .failure:
                 return
             }
@@ -104,29 +177,29 @@ class FilterViewController: UIViewController {
         setTransparentNavigationBar()
         confirmButton.layer.cornerRadius = 10
         
-        propertyType.prepareDropDown(optionArray: ["Bán", "Cho thuê"], idArray: [1,2], completionHandler: {(text, id) in
-            self.filterSelections.append(FilterSelection(value: String(id), type: .transType))
-            switch id {
-            case 1 :
-                self.cost.prepareDropDown(optionArray: ["0 - 500 triệu", "500 triệu - 1 tỷ", "1 tỳ - 2 tỷ", "2 tỷ - 5 tỷ", "5 tỷ - 10 tỷ", ">10 tỷ"], idArray: [1,2,3,4,5,6], completionHandler: { (text, id) in
-                    self.filterSelections.append(FilterSelection(value: String(id), type: .cost))
-                })
-            case 2:
-                self.cost.prepareDropDown(optionArray: ["0 - 5 triệu", "5 triệu - 10 triệu", "10 triệu - 15 triệu", "15 triệu - 20 triệu", "20 triệu - 30 triệu", ">30 triệu"], idArray: [1,2,3,4,5,6], completionHandler: { (text, id) in
-                    self.filterSelections.append(FilterSelection(value: String(id), type: .cost))
-                })
-            default:
-                break
-            }
-        })
+        
+        proType.layer.cornerRadius = 10
+        proType.layer.borderWidth = 1
+        
+        propertyType.layer.cornerRadius = 10
+        propertyType.layer.borderWidth = 1
+        
+        city.layer.cornerRadius = 10
+        city.layer.borderWidth = 1
+        
+        district.layer.cornerRadius = 10
+        district.layer.borderWidth = 1
+        
+        cost.layer.cornerRadius = 10
+        cost.layer.borderWidth = 1
+        
+        propertyData = ListData.init(text: ["Bán", "Cho thuê"], id: [1,2])
     }
     
     @IBAction func confirm(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
         delegate.getFilterSelection(selections: self.filterSelections)
     }
-    
-   
 }
 
 protocol FilterSelectionProtocol {
@@ -143,5 +216,10 @@ enum FilterType {
 struct FilterSelection {
     var value: String
     var type: FilterType
-    
 }
+
+private struct ListData {
+    var text: [String]
+    var id: [Int]
+}
+

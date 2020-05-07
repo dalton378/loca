@@ -55,7 +55,8 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
             performSegue(withIdentifier: "createPost_map", sender: self)
         case 2:
             performSegue(withIdentifier: "postcreation_description", sender: self)
-            
+        case 3:
+            performSegue(withIdentifier: "postcreation_addInfo", sender: self)
         case 4:
             performSegue(withIdentifier: "postcreation_camera", sender: self)
         default:
