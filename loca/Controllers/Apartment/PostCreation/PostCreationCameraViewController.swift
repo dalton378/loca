@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Photos
 
 class PostCreationCameraViewController: UIViewController {
     
@@ -108,12 +109,21 @@ extension PostCreationCameraViewController: UIImagePickerControllerDelegate, UIN
 
     //MARK:- UIImagePickerViewDelegate.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
+        
         self.dismiss(animated: true) { [weak self] in
-
+            
             guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+            
             //Setting image to your image view
             //self?.profileImgView.image = image
+            
+            if let imageURL = info[UIImagePickerController.InfoKey.referenceURL] as? URL {
+                let result = PHAsset.fetchAssets(withALAssetURLs: [imageURL], options: nil)
+                let asset = result.firstObject
+                print(asset?.value(forKey: "filename"))
+                
+            }
+            
         }
     }
 

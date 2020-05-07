@@ -72,6 +72,9 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         } else if segue.identifier == "postcreation_description" {
             let view = segue.destination as! PostCreationDesViewController
             view.delegate = self
+        } else if segue.identifier == "postcreation_addInfo" {
+            let view = segue.destination as! PostCreationAddInfoViewController
+            view.delegate = self
         }
     }
     
@@ -96,6 +99,13 @@ extension CreateApartmentPostViewController: PostCreationDescritionProtocol{
     func getDescription(description: String) {
         print(description)
         tableData[2].status = UIImage(named: "green_check_icon")!
+        tableView.reloadData()
+    }
+}
+
+extension CreateApartmentPostViewController: PostCreationAddInfoProtocol {
+    func getInfo() {
+        tableData[3].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
     }
     
