@@ -10,65 +10,42 @@ import UIKit
 import AVFoundation
 import Photos
 
-class PostCreationCameraViewController: UIViewController {
+class PostCreationCameraViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    
+    @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var cameraIcon: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var confirmButton: UIButton!
+    
+    var photoCollection = [UIImage]()
+    var delegate: PostCreationCameraProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        collection.dataSource = self
+        collection.delegate = self
+        confirmButton.layer.cornerRadius = 10
     }
-    
     
     
     @IBAction func cameraTap(_ sender: UITapGestureRecognizer) {
-        
-//        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
-//
-//        switch cameraAuthorizationStatus {
-//        case .notDetermined: requestCameraPermission()
-//        case .authorized: presentCamera()
-//        case .restricted, .denied: alertCameraAccessNeeded()
-//        @unknown default: break
-//        }
-        
-        
         showAlert()
     }
-    func requestCameraPermission() {
-        AVCaptureDevice.requestAccess(for: .video, completionHandler: {accessGranted in
-            guard accessGranted == true else { return }
-            self.presentCamera()
-        })
+    @IBAction func confirm(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+        delegate?.getPhotos(phots: self.photoCollection)
     }
     
-    func presentCamera() {
-        let photoPicker = UIImagePickerController()
-        photoPicker.sourceType = .camera
-        photoPicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        
-        self.present(photoPicker, animated: true, completion: nil)
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photoCollection.count
     }
     
-    func alertCameraAccessNeeded() {
-        let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
-        
-        let alert = UIAlertController(
-            title: "Need Camera Access",
-            message: "Camera access is required to make full use of this app.",
-            preferredStyle: UIAlertController.Style.alert
-        )
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Allow Camera", style: .cancel, handler: { (alert) -> Void in
-            UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
-        }))
-        
-        present(alert, animated: true, completion: nil)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collection.dequeueReusableCell(withReuseIdentifier: "photo_collection_cell", for: indexPath) as! PostCreationCameraCollectionViewCell
+        cell.setPhoto(photo: photoCollection[indexPath.row])
+        return cell
     }
-    
     
 }
 
@@ -114,15 +91,8 @@ extension PostCreationCameraViewController: UIImagePickerControllerDelegate, UIN
             
             guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
             
-            //Setting image to your image view
-            //self?.profileImgView.image = image
-            
-            if let imageURL = info[UIImagePickerController.InfoKey.referenceURL] as? URL {
-                let result = PHAsset.fetchAssets(withALAssetURLs: [imageURL], options: nil)
-                let asset = result.firstObject
-                print(asset?.value(forKey: "filename"))
-                
-            }
+            self?.photoCollection.append(image)
+            self?.collection.reloadData()
             
         }
     }
@@ -130,4 +100,14 @@ extension PostCreationCameraViewController: UIImagePickerControllerDelegate, UIN
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+}
+
+extension PostCreationCameraViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+}
+
+protocol PostCreationCameraProtocol {
+    func getPhotos(phots: [UIImage])
 }

@@ -57,12 +57,14 @@
 		E86B068B245DB27D00F5D501 /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B068A245DB27D00F5D501 /* CustomIndicator.swift */; };
 		E86B68432459B3D700AF6659 /* MangeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */; };
 		E870ED5D245EF83E00B9204A /* AccountSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */; };
+		E8818B5C24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8818B5B24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift */; };
 		E894788E245E6D5100BA845E /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894788D245E6D5100BA845E /* FilterViewController.swift */; };
 		E8947890245E70F200BA845E /* DropDownExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894788F245E70F200BA845E /* DropDownExtension.swift */; };
 		E8947894245E8B6800BA845E /* ProvinceAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8947893245E8B6800BA845E /* ProvinceAPIProtocol.swift */; };
 		E8947896245E971D00BA845E /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8947895245E971D00BA845E /* UIViewControllerExtension.swift */; };
 		E8947898245E986800BA845E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8947897245E986800BA845E /* UIColorExtension.swift */; };
 		E899550B245930E800E65195 /* AlamofireStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E899550A245930E800E65195 /* AlamofireStore.swift */; };
+		E8B74A2B2464451C0093F5C1 /* PosCreationContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B74A2A2464451C0093F5C1 /* PosCreationContactViewController.swift */; };
 		E8EDDB81246176250099691B /* CreateApartmentPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EDDB80246176250099691B /* CreateApartmentPostViewController.swift */; };
 		E8EDDB83246178720099691B /* CreatePostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EDDB82246178720099691B /* CreatePostTableViewCell.swift */; };
 		E8EDDB8624618E980099691B /* PostCreationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EDDB8524618E980099691B /* PostCreationMapViewController.swift */; };
@@ -150,12 +152,14 @@
 		E86B068A245DB27D00F5D501 /* CustomIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
 		E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangeAccountViewController.swift; sourceTree = "<group>"; };
 		E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		E8818B5B24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationCameraCollectionViewCell.swift; sourceTree = "<group>"; };
 		E894788D245E6D5100BA845E /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		E894788F245E70F200BA845E /* DropDownExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownExtension.swift; sourceTree = "<group>"; };
 		E8947893245E8B6800BA845E /* ProvinceAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvinceAPIProtocol.swift; sourceTree = "<group>"; };
 		E8947895245E971D00BA845E /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		E8947897245E986800BA845E /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E899550A245930E800E65195 /* AlamofireStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireStore.swift; sourceTree = "<group>"; };
+		E8B74A2A2464451C0093F5C1 /* PosCreationContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosCreationContactViewController.swift; sourceTree = "<group>"; };
 		E8EDDB80246176250099691B /* CreateApartmentPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateApartmentPostViewController.swift; sourceTree = "<group>"; };
 		E8EDDB82246178720099691B /* CreatePostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostTableViewCell.swift; sourceTree = "<group>"; };
 		E8EDDB8524618E980099691B /* PostCreationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationMapViewController.swift; sourceTree = "<group>"; };
@@ -497,6 +501,15 @@
 			path = Update;
 			sourceTree = "<group>";
 		};
+		E8818B5A24643C14006F8D49 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				E8648EF92462CE7B00C132B8 /* PostCreationCameraViewController.swift */,
+				E8818B5B24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		E8947891245E8B4F00BA845E /* Provinces */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,10 +531,11 @@
 		E8EDDB8424618E760099691B /* PostCreation */ = {
 			isa = PBXGroup;
 			children = (
+				E8818B5A24643C14006F8D49 /* Camera */,
 				E8EDDB8524618E980099691B /* PostCreationMapViewController.swift */,
 				E8EDDB89246198C90099691B /* PostCreationDesViewController.swift */,
-				E8648EF92462CE7B00C132B8 /* PostCreationCameraViewController.swift */,
 				E8648EFB2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift */,
+				E8B74A2A2464451C0093F5C1 /* PosCreationContactViewController.swift */,
 			);
 			path = PostCreation;
 			sourceTree = "<group>";
@@ -816,10 +830,12 @@
 				E8EDDB83246178720099691B /* CreatePostTableViewCell.swift in Sources */,
 				E85DCCE72463AC65009E516D /* ListViewItemCustom.swift in Sources */,
 				E8EDDB8624618E980099691B /* PostCreationMapViewController.swift in Sources */,
+				E8818B5C24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift in Sources */,
 				E84FD1CB245D068600E10507 /* ApartmentApiProtocol.swift in Sources */,
 				E8510F0D24592850004BE65A /* RouterProtocol.swift in Sources */,
 				E8510F0B2459281F004BE65A /* Router.swift in Sources */,
 				E8EDDB88246193790099691B /* ApartmentPost.swift in Sources */,
+				E8B74A2B2464451C0093F5C1 /* PosCreationContactViewController.swift in Sources */,
 				E86B68432459B3D700AF6659 /* MangeAccountViewController.swift in Sources */,
 				E84FD1DC245D21DA00E10507 /* ApartmentDetailViewController.swift in Sources */,
 				E8EDDB8A246198C90099691B /* PostCreationDesViewController.swift in Sources */,

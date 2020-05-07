@@ -12,6 +12,7 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     
     var tableData = [TableData]()
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var confirmButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +25,10 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         tableData.append(TableData(icon: UIImage(named: "details_icon")!, description: "Thông tin mô tả", status: UIImage()))
         tableData.append(TableData(icon: UIImage(named: "graph_icon")!, description: "Thông tin khác", status: UIImage()))
         tableData.append(TableData(icon: UIImage(named: "photo_icon")!, description: "Hình ảnh", status: UIImage()))
-        tableData.append(TableData(icon: UIImage(named: "contact_icon")!, description: "Liên hệ", status: UIImage(named: "green_check_icon")!))
+        tableData.append(TableData(icon: UIImage(named: "contact_icon")!, description: "Liên hệ", status: UIImage()))
         setEmptyBackButton()
         setTransparentNavigationBar()
+        confirmButton.layer.cornerRadius = 10
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -59,11 +61,17 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
             performSegue(withIdentifier: "postcreation_addInfo", sender: self)
         case 4:
             performSegue(withIdentifier: "postcreation_camera", sender: self)
+        case 5:
+            performSegue(withIdentifier: "createPost_contact", sender: self)
         default:
             break
         }
         
     }
+    
+    @IBAction func confirm(_ sender: UIButton) {
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createPost_map" {
@@ -74,6 +82,12 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
             view.delegate = self
         } else if segue.identifier == "postcreation_addInfo" {
             let view = segue.destination as! PostCreationAddInfoViewController
+            view.delegate = self
+        } else if segue.identifier == "postcreation_camera" {
+            let view = segue.destination as! PostCreationCameraViewController
+            view.delegate = self
+        } else if segue.identifier == "createPost_contact" {
+            let view = segue.destination as! PosCreationContactViewController
             view.delegate = self
         }
     }
@@ -108,6 +122,18 @@ extension CreateApartmentPostViewController: PostCreationAddInfoProtocol {
         tableData[3].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
     }
-    
-    
+}
+
+extension CreateApartmentPostViewController: PostCreationCameraProtocol {
+    func getPhotos(phots: [UIImage]) {
+        tableData[4].status = UIImage(named: "green_check_icon")!
+        tableView.reloadData()
+    }
+}
+
+extension CreateApartmentPostViewController: PostCreationContactProtocol {
+    func getContact(name: String, phone: String, email: String) {
+        tableData[5].status = UIImage(named: "green_check_icon")!
+        tableView.reloadData()
+    }
 }
