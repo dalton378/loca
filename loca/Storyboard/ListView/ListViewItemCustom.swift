@@ -29,6 +29,7 @@ class ListViewItemCustom: UIView {
     func commonInit() {
         Bundle.main.loadNibNamed("ListViewItem", owner: self, options: nil)
         contentView.fixInView(self)
+        contentView.layer.cornerRadius = 5
     }
     
     func setItem(item: String, id: Int){

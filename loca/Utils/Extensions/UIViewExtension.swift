@@ -27,6 +27,7 @@ extension UIView
         case left
         case right
         case none
+        case clearIn
     }
     
     func addAnimation(animationDirection: ReloadAnimationType, delay: Int) {
@@ -64,6 +65,15 @@ extension UIView
                        completion: nil)
         index += 1
         layoutIfNeeded()
+    }
+    
+    func addClearInAnimation(){
+        self.alpha = 0
+
+        UIView.animate(withDuration: 0.3, animations: {
+            self.alpha = 1.0
+        })
+     layoutIfNeeded()
     }
 }
 

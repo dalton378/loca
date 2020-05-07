@@ -103,11 +103,11 @@ class FilterViewController: UIViewController {
         var y = view.frame.maxY
         
         if y + CGFloat(listHeight) > (view.superview?.frame.height)! {
-            y = view.frame.minY - CGFloat(listHeight)
+            y = view.frame.minY - CGFloat(listHeight + 10)
         }
-        itemView = ListViewCustom(frame: CGRect(x: view.frame.minX, y: y, width: view.frame.width, height: CGFloat(listHeight)))
+        itemView = ListViewCustom(frame: CGRect(x: view.frame.minX, y: y + 5, width: view.frame.width, height: CGFloat(listHeight)))
         itemView!.setData(data: text, ids: id, selectionHandler: selectionHandler)
-        itemView?.backgroundColor = UIColor.red
+        itemView?.addClearInAnimation()
         self.view.addSubview(itemView!)
         
     }
@@ -180,18 +180,23 @@ class FilterViewController: UIViewController {
         
         proType.layer.cornerRadius = 10
         proType.layer.borderWidth = 1
+        proType.layer.borderColor = UIColor.init(named: "UBlack")?.cgColor
         
         propertyType.layer.cornerRadius = 10
         propertyType.layer.borderWidth = 1
+        propertyType.layer.borderColor = UIColor.init(named: "UBlack")?.cgColor
         
         city.layer.cornerRadius = 10
         city.layer.borderWidth = 1
+        city.layer.borderColor = UIColor.init(named: "UBlack")?.cgColor
         
         district.layer.cornerRadius = 10
         district.layer.borderWidth = 1
+        district.layer.borderColor = UIColor.init(named: "UBlack")?.cgColor
         
         cost.layer.cornerRadius = 10
         cost.layer.borderWidth = 1
+        cost.layer.borderColor = UIColor.init(named: "UBlack")?.cgColor
         
         propertyData = ListData.init(text: ["Bán", "Cho thuê"], id: [1,2])
     }

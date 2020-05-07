@@ -30,6 +30,7 @@ class ListViewCustom: UIView {
     func commonInit() {
         Bundle.main.loadNibNamed("ListViewCustom", owner: self, options: nil)
        contentView.fixInView(self)
+        contentView.layer.cornerRadius = 5
     }
     func setData(data: [String], ids: [Int], selectionHandler: @escaping ((String, Int) -> Void)){
         for i in 0...data.count - 1 {
@@ -46,7 +47,5 @@ class ListViewCustom: UIView {
             }
         }
         
-//        scrollView.frame.h
-//        scrollView.contentSize.height = CGFloat(viewHeight)
     }
 }

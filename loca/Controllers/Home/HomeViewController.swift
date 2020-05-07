@@ -39,7 +39,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         default:
             break
         }
-        locationManager?.startUpdatingLocation()
+        //locationManager?.startUpdatingLocation()
         //view.backgroundColor = .gray
         
     }
@@ -129,7 +129,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if  status == .authorizedWhenInUse {
-            locationManager?.startUpdatingLocation()
+            //locationManager?.startUpdatingLocation()
         }
     }
     
