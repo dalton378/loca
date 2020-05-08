@@ -15,6 +15,7 @@ PODS:
     - FBSDKLoginKit/Login (= 6.5.2)
   - FBSDKLoginKit/Login (6.5.2):
     - FBSDKCoreKit (~> 6.5.2)
+  - Floaty (4.2.0)
   - GoogleSignIn (5.0.2):
     - AppAuth (~> 1.2)
     - GTMAppAuth (~> 1.0)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
   - FBSDKCoreKit
   - FBSDKLoginKit
+  - Floaty (~> 4.2.0)
   - GoogleSignIn
   - iOSDropDown
   - SkyFloatingLabelTextField (~> 3.0)
@@ -50,6 +52,7 @@ SPEC REPOS:
     - AppAuth
     - FBSDKCoreKit
     - FBSDKLoginKit
+    - Floaty
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
@@ -63,6 +66,7 @@ SPEC CHECKSUMS:
   AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
   FBSDKCoreKit: ada5c8a05188daefc9addb985c52b8a1b26da519
   FBSDKLoginKit: caa165495afa29a12324cb2307fe6e5b33783142
+  Floaty: e2bd5a0f6f7f70899e26ff2da31081c8bee8d1b0
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
@@ -71,6 +75,6 @@ SPEC CHECKSUMS:
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 5695f911a61578c3b6f634b561a19163db1dffa2
+PODFILE CHECKSUM: 7ea5affa50714fb4473f8e15ff812fbe8ba91e65
 
 COCOAPODS: 1.9.1

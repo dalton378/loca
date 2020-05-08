@@ -13,6 +13,7 @@ pod 'iOSDropDown'
 pod 'GoogleSignIn'
 pod 'SkyFloatingLabelTextField', '~> 3.0'
 pod 'TransitionButton'
+pod 'Floaty', '~> 4.2.0'
 
   target 'locaTests' do
     inherit! :search_paths

@@ -778,3 +778,20 @@ Pods/TransitionButton/Source/CustomTransitionViewController.swift
 Pods/TransitionButton/Source/FadeTransition.swift
 Pods/TransitionButton/Source/SpinerLayer.swift
 Pods/TransitionButton/Source/TransitionButton.swift
+Pods/Floaty/LICENSE
+Pods/Floaty/README.md
+Pods/Floaty/Sources/Floaty.swift
+Pods/Floaty/Sources/FloatyDelegate.swift
+Pods/Floaty/Sources/FloatyItem.swift
+Pods/Floaty/Sources/FloatyManager.swift
+Pods/Floaty/Sources/FloatyViewController.swift
+Pods/Floaty/Sources/FloatyWindow.swift
+Pods/Floaty/Sources/UIView+Draggable.swift
+Pods/Pods.xcodeproj/xcuserdata/toannguyen.xcuserdatad/xcschemes/Floaty.xcscheme
+Pods/Target Support Files/Floaty/Floaty-dummy.m
+Pods/Target Support Files/Floaty/Floaty-Info.plist
+Pods/Target Support Files/Floaty/Floaty-prefix.pch
+Pods/Target Support Files/Floaty/Floaty-umbrella.h
+Pods/Target Support Files/Floaty/Floaty.debug.xcconfig
+Pods/Target Support Files/Floaty/Floaty.modulemap
+Pods/Target Support Files/Floaty/Floaty.release.xcconfig

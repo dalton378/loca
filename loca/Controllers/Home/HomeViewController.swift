@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Floaty
 
 class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -16,6 +17,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     let store = AlamofireStore()
     var apartmentId = ""
     var locationManager: CLLocationManager?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,24 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         default:
             break
         }
+        
+        let floaty = Floaty()
+        floaty.openAnimationType = .pop
+        floaty.addItem("Search", icon: UIImage(named: "search_icon")!,handler:{ _ in
+            self.performSegue(withIdentifier: "home_apartmentFilter", sender: self)
+        } )
+        floaty.addItem("Account", icon: UIImage(named: "user_icon")!,handler:{ _ in
+            guard let isSignedIn = AppConfig.shared.isSignedIn else {return}
+            switch isSignedIn {
+            case true:
+                self.performSegue(withIdentifier: "home_manage", sender: self)
+            default:
+                Messages.displaySignInMessage(completionHandler: self.getDataFromServer, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)})
+            }
+        } )
+        floaty.addItem("Contact", icon: UIImage(named: "email_icon")!,handler:{ _ in
+        } )
+        self.view.addSubview(floaty)
         //locationManager?.startUpdatingLocation()
         //view.backgroundColor = .gray
         
@@ -46,13 +66,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     @IBAction func accountClick(_ sender: UIButton) {
         
-        guard let isSignedIn = AppConfig.shared.isSignedIn else {return}
-        switch isSignedIn {
-        case true:
-            performSegue(withIdentifier: "home_manage", sender: self)
-        default:
-            Messages.displaySignInMessage(completionHandler: getDataFromServer, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)})
-        }
+        
         
     }
     
@@ -107,8 +121,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func addMarker(){
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        
-        
         
         let defaultCoordinate = CLLocationCoordinate2D(latitude: Double(AppConstants.defaultLatitude)!, longitude: Double(AppConstants.defaultLongtitude)!)
         let annotation = MakerAnnotation(coordinate: defaultCoordinate, title: "", subTitle: "")
