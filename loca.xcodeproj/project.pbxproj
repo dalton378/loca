@@ -25,6 +25,7 @@
 		8EC361AA2461603A00F2F3EF /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC361A92461603A00F2F3EF /* DateFormatter+extension.swift */; };
 		8EC361AC2461604700F2F3EF /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC361AB2461604600F2F3EF /* Date+extension.swift */; };
 		E31EBBCA5BF0C0966847A0B5 /* Pods_loca_locaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */; };
+		E816E4D1246596D10042BE48 /* PostCreationBasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E816E4D0246596D10042BE48 /* PostCreationBasicViewController.swift */; };
 		E8315D3F245B00180022D4A7 /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8315D3E245B00180022D4A7 /* SignIn.xib */; };
 		E8315D44245B0D6E0022D4A7 /* SignInMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8315D43245B0D6E0022D4A7 /* SignInMessage.swift */; };
 		E8315D47245B11660022D4A7 /* SignUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8315D46245B11660022D4A7 /* SignUp.xib */; };
@@ -122,6 +123,7 @@
 		B6D950CF60779FAD1E28C504 /* Pods-loca-locaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.release.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E71F892B618BB5E2BD1670FD /* Pods-loca-locaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.debug.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E74478F0BBC2F7922F203972 /* Pods-locaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locaTests.debug.xcconfig"; path = "Target Support Files/Pods-locaTests/Pods-locaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E816E4D0246596D10042BE48 /* PostCreationBasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationBasicViewController.swift; sourceTree = "<group>"; };
 		E8315D3E245B00180022D4A7 /* SignIn.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignIn.xib; sourceTree = "<group>"; };
 		E8315D43245B0D6E0022D4A7 /* SignInMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMessage.swift; sourceTree = "<group>"; };
 		E8315D46245B11660022D4A7 /* SignUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUp.xib; sourceTree = "<group>"; };
@@ -542,6 +544,7 @@
 				E8EDDB89246198C90099691B /* PostCreationDesViewController.swift */,
 				E8648EFB2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift */,
 				E8B74A2A2464451C0093F5C1 /* PosCreationContactViewController.swift */,
+				E816E4D0246596D10042BE48 /* PostCreationBasicViewController.swift */,
 			);
 			path = PostCreation;
 			sourceTree = "<group>";
@@ -856,6 +859,7 @@
 				E8EDDB81246176250099691B /* CreateApartmentPostViewController.swift in Sources */,
 				E85C0896245D601B00D8F740 /* APCustomView.swift in Sources */,
 				E8947894245E8B6800BA845E /* ProvinceAPIProtocol.swift in Sources */,
+				E816E4D1246596D10042BE48 /* PostCreationBasicViewController.swift in Sources */,
 				E85DCCE82463AC65009E516D /* ListViewCustom.swift in Sources */,
 				E8947896245E971D00BA845E /* UIViewControllerExtension.swift in Sources */,
 				E84FD1CE245D085A00E10507 /* ApartmentModel.swift in Sources */,
