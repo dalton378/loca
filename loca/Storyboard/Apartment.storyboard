@@ -983,7 +983,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OS2-0b-l27">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ex-rR-KpB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ex-rR-KpB" customClass="TransitionButton" customModule="TransitionButton">
                                 <rect key="frame" x="157" y="728" width="100" height="50"/>
                                 <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1011,7 +1011,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="gMV-5f-YhK"/>
                     <connections>
-                        <outlet property="confirmButton" destination="4ex-rR-KpB" id="bUW-oi-uQp"/>
+                        <outlet property="confirmButton" destination="4ex-rR-KpB" id="tVA-OM-50e"/>
                         <outlet property="mapView" destination="OS2-0b-l27" id="qhN-d3-tSs"/>
                     </connections>
                 </viewController>

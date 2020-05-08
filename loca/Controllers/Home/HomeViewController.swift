@@ -187,11 +187,18 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         }
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "home_apartmentDetail" {
             let view = segue.destination as! ApartmentDetailViewController
             view.apartmentId = apartmentId
         }else if segue.identifier == "home_apartmentFilter" {
+            let transition = CATransition()
+            transition.duration = 0.5
+            transition.type = CATransitionType.push
+            transition.subtype = CATransitionSubtype.fromLeft
+            transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeIn)
+            view.window!.layer.add(transition, forKey: kCATransition)
             let view = segue.destination as! FilterViewController
             view.delegate = self
         }
@@ -205,3 +212,4 @@ extension HomeViewController: FilterSelectionProtocol {
     }
     
 }
+

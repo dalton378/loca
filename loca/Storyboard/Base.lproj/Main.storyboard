@@ -65,7 +65,7 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="search-icon"/>
                                         <connections>
-                                            <segue destination="NsI-qh-BQi" kind="show" identifier="home_apartmentFilter" id="JLj-PZ-MvH"/>
+                                            <segue destination="NsI-qh-BQi" kind="show" identifier="home_apartmentFilter" id="Qlo-m4-dwm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -305,7 +305,7 @@
                                                 <color key="textColor" red="0.011764705882352941" green="0.66274509803921566" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OK8-4i-Mx0">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OK8-4i-Mx0" customClass="TransitionButton" customModule="TransitionButton">
                                                 <rect key="frame" x="20" y="489" width="374" height="50"/>
                                                 <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -529,7 +529,7 @@
                     <connections>
                         <outlet property="city" destination="7fr-0S-8Cp" id="8LB-9q-YGb"/>
                         <outlet property="citySelected" destination="Phx-rc-x1S" id="ofd-c4-fY9"/>
-                        <outlet property="confirmButton" destination="OK8-4i-Mx0" id="hKf-Bp-gtg"/>
+                        <outlet property="confirmButton" destination="OK8-4i-Mx0" id="CtY-3j-1Rb"/>
                         <outlet property="cost" destination="Mp1-j9-mD4" id="gLu-d9-wkR"/>
                         <outlet property="costSelected" destination="iPR-3W-xBf" id="BJe-n6-yfx"/>
                         <outlet property="district" destination="6xf-2K-GsA" id="Z01-nE-NpM"/>

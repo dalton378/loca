@@ -9,11 +9,13 @@
 import UIKit
 import MapKit
 import CoreLocation
+import TransitionButton
 
 class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var confirmButton: TransitionButton!
+    
     var gestureRecognizer = UITapGestureRecognizer()
     var delegate : ApartmentPostLocationProtocol?
     
@@ -26,7 +28,7 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
     }
     
     private func prepareUI(){
-        confirmButton.layer.cornerRadius = 10
+        TransitionButtonCustom.configureTransitionButton(button: confirmButton, tittle: "Hoàn Tất", tapHandler: nil)
         setEmptyBackButton()
         setTransparentNavigationBar()
         mapView.delegate = self
@@ -38,8 +40,12 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     
     @IBAction func confirm(_ sender: UIButton) {
-        delegate?.getLocation(long: long, lat: lat)
-        self.navigationController?.popViewController(animated: true)
+        confirmButton.setTitle("", for: .normal)
+        confirmButton.stopAnimation(animationStyle: .expand, revertAfterDelay: 1, completion: {
+            self.confirmButton.spinnerColor = UIColor.clear
+            self.delegate?.getLocation(long: self.long, lat: self.lat)
+            self.navigationController?.popViewController(animated: true)
+        })
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

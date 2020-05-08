@@ -28,9 +28,11 @@ PODS:
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
   - iOSDropDown (0.3.4)
+  - SkyFloatingLabelTextField (3.8.0)
   - SwiftMessages (7.0.1):
     - SwiftMessages/App (= 7.0.1)
   - SwiftMessages/App (7.0.1)
+  - TransitionButton (0.5.3)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
@@ -38,7 +40,9 @@ DEPENDENCIES:
   - FBSDKLoginKit
   - GoogleSignIn
   - iOSDropDown
+  - SkyFloatingLabelTextField (~> 3.0)
   - SwiftMessages
+  - TransitionButton
 
 SPEC REPOS:
   trunk:
@@ -50,7 +54,9 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - iOSDropDown
+    - SkyFloatingLabelTextField
     - SwiftMessages
+    - TransitionButton
 
 SPEC CHECKSUMS:
   Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
@@ -61,8 +67,10 @@ SPEC CHECKSUMS:
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
+  SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
+  TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 8326a73aebcd4f473486bdf41143c05bd9c014bd
+PODFILE CHECKSUM: 5695f911a61578c3b6f634b561a19163db1dffa2
 
 COCOAPODS: 1.9.1

@@ -11,7 +11,7 @@ import Foundation
 
 class TextValidation {
     
-    func validateByRule(rules: [TextValidationType], text: String) -> ResultTextValidation {
+    func validateByRule(rules: [TextValidationType], text: String, confirmText: String? = "") -> ResultTextValidation {
         
         var result = ResultTextValidation.init()
         
@@ -25,6 +25,20 @@ class TextValidation {
             case .emailPattern:
                 if !validateEmailPattern(text: text) {
                     result.isFailed = .isEmailFailed
+                    return result
+                }
+            case .phone:
+                if !validatePhone(text: text) {
+                    result.isFailed = .isPhoneFailed
+                    return result
+                }
+            case .confirmPass:
+                guard let comparedText = confirmText else {
+                    result.isFailed = .isConfirmPassFailed
+                    return result
+                }
+                if !validateConfirmedPass(pass: text, confirmedPass: comparedText) {
+                    result.isFailed = .isConfirmPassFailed
                     return result
                 }
             }
@@ -44,17 +58,33 @@ class TextValidation {
            let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
            return emailPred.evaluate(with: text)
        }
+    
+    private func validatePhone(text: String) -> Bool {
+        let PHONE_REGEX = "^[0-9]+$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result = phoneTest.evaluate(with: text)
+        return result
+    }
+    
+    private func validateConfirmedPass(pass: String, confirmedPass: String) -> Bool {
+        let result = pass == confirmedPass ? true : false
+        return result
+    }
 }
 
 
 enum TextValidationType {
     case empty
     case emailPattern
+    case phone
+    case confirmPass
 }
 
 enum resultValidation {
     case isEmptyFailed
     case isEmailFailed
+    case isPhoneFailed
+    case isConfirmPassFailed
     
 }
 
@@ -63,9 +93,13 @@ struct ResultTextValidation {
     var message: String {
         switch isFailed {
         case .isEmailFailed:
-            return "Email khoong dung format"
+            return "Email không đúng format"
         case .isEmptyFailed:
-            return "Data khong duoc rong"
+            return "Vui lòng điền đủ thông tin"
+        case .isPhoneFailed:
+            return "Số điện thoại không đúng"
+        case .isConfirmPassFailed:
+            return "Mật khẩu không trùng khớp"
         case .none:
             return ""
         }

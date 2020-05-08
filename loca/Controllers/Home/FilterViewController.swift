@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TransitionButton
 
 class FilterViewController: UIViewController {
     
@@ -16,7 +17,7 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var proType: UIView!
     @IBOutlet weak var city: UIView!
     @IBOutlet weak var district: UIView!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var confirmButton: TransitionButton!
     @IBOutlet weak var propertySelected: UILabel!
     @IBOutlet weak var costSelected: UILabel!
     @IBOutlet weak var proSelected: UILabel!
@@ -175,7 +176,7 @@ class FilterViewController: UIViewController {
     
     private func prepareUI() {
         setTransparentNavigationBar()
-        confirmButton.layer.cornerRadius = 10
+        TransitionButtonCustom.configureTransitionButton(button: confirmButton, tittle: "Lọc", tapHandler: nil)
         
         
         proType.layer.cornerRadius = 10
@@ -202,8 +203,11 @@ class FilterViewController: UIViewController {
     }
     
     @IBAction func confirm(_ sender: UIButton) {
+        confirmButton.startAnimation()
+        self.confirmButton.stopAnimation(animationStyle: .expand, revertAfterDelay: 3, completion: {})
         self.navigationController?.popViewController(animated: true)
-        delegate.getFilterSelection(selections: self.filterSelections)
+        self.delegate.getFilterSelection(selections: self.filterSelections)
+        
     }
 }
 

@@ -11,6 +11,8 @@ pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 pod 'iOSDropDown'
 pod 'GoogleSignIn'
+pod 'SkyFloatingLabelTextField', '~> 3.0'
+pod 'TransitionButton'
 
   target 'locaTests' do
     inherit! :search_paths
