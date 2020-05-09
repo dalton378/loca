@@ -29,13 +29,16 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         settingTable.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
+        prepareData()
+    }
+    
+    private func prepareData(){
         settingData.append(SettingData.init(icon: UIImage(named: "contact_icon")!, description: "Tên: \(AppConfig.shared.profileName!)"))
         settingData.append(SettingData.init(icon: UIImage(named: "phone_icon")!, description: "Số điện thoại: \(AppConfig.shared.profilePhone!)"))
         settingData.append(SettingData.init(icon: UIImage(named: "email_icon")!, description: "Email: \(AppConfig.shared.profileEmail!)"))
         settingData.append(SettingData.init(icon: UIImage(named: "password_icon")!, description: "Cập nhật Password"))
         settingData.append(SettingData.init(icon: UIImage(named: "letter_icon")!, description: "Liên hệ với LocaLoca"))
         settingData.append(SettingData.init(icon: UIImage(named: "letter_icon")!, description: "Đăng tin"))
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,9 +60,18 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
+            performSegue(withIdentifier: "accountSetting_updateName", sender: self)
+        case 5:
             performSegue(withIdentifier: "mangeaccount_createpost", sender: self)
         default:
             print("2")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "accountSetting_updateName" {
+            let viewController = segue.destination as! UpdateAccountNameViewController
+            viewController.delegate = self
         }
     }
     
@@ -69,4 +81,13 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         var description: String
     }
     
+}
+
+extension MangeAccountViewController: UpdateAccountData {
+    func update(data: String) {
+        settingData[0].description = "Tên: \(data)"
+        nameLabel.text = data
+        AppConfig.shared.profileName = data
+        settingTable.reloadData()
+    }
 }

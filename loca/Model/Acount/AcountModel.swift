@@ -21,3 +21,7 @@ struct ProfileModel: Codable {
     let is_phone_verified: Int
     let is_email_verified: Int
 }
+
+protocol UpdateAccountData {
+    func update(data: String)
+}

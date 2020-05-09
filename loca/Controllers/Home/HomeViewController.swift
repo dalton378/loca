@@ -59,8 +59,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         floaty.addItem("Contact", icon: UIImage(named: "email_icon")!,handler:{ _ in
         } )
         self.view.addSubview(floaty)
-        //locationManager?.startUpdatingLocation()
-        //view.backgroundColor = .gray
         
     }
     
@@ -71,26 +69,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     private func getDataFromServer() {
-        getUser()
+        getUserData()
         getApartmentList()
     }
     
-    private func getApartmentList() {
-        store.getApartments(completionHandler: { result in
-            switch result {
-            case .success(let dataString):
-                let parsedData = dataString.data(using: .utf8)
-                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
-                AppConfig.shared.apartmentList = autParams
-                self.addApartmentAnnotation(mapView: self.mapView, apartmentList: autParams)
-            case .failure:
-                return
-            }
-        })
-    }
-    
-    private func getUser(){
-        
+    private func getUserData(){
         store.getUser(completionHandler: {result in
             switch result {
             case .success(let data):
@@ -102,7 +85,20 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                 AppConfig.shared.profilePhone = autParams.phone
                 AppConfig.shared.profileEmailVerified = autParams.is_email_verified
                 AppConfig.shared.profilePhoneVerified = autParams.is_phone_verified
-                
+            case .failure:
+                return
+            }
+        })
+    }
+    
+    private func getApartmentList() {
+        store.getApartments(completionHandler: { result in
+            switch result {
+            case .success(let dataString):
+                let parsedData = dataString.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
+                AppConfig.shared.apartmentList = autParams
+                self.addApartmentAnnotation(mapView: self.mapView, apartmentList: autParams)
             case .failure:
                 return
             }
@@ -224,4 +220,3 @@ extension HomeViewController: FilterSelectionProtocol {
     }
     
 }
-

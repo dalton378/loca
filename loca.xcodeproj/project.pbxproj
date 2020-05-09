@@ -65,6 +65,7 @@
 		E8947896245E971D00BA845E /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8947895245E971D00BA845E /* UIViewControllerExtension.swift */; };
 		E8947898245E986800BA845E /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8947897245E986800BA845E /* UIColorExtension.swift */; };
 		E899550B245930E800E65195 /* AlamofireStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E899550A245930E800E65195 /* AlamofireStore.swift */; };
+		E89D55F22466E67D00917557 /* UpdateAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D55F12466E67D00917557 /* UpdateAccountNameViewController.swift */; };
 		E8B74A2B2464451C0093F5C1 /* PosCreationContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B74A2A2464451C0093F5C1 /* PosCreationContactViewController.swift */; };
 		E8C47C852464EDCD0046BB4F /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C47C842464EDCD0046BB4F /* FloatingTextField.swift */; };
 		E8C47C872465022C0046BB4F /* TransitionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C47C862465022C0046BB4F /* TransitionButton.swift */; };
@@ -163,6 +164,7 @@
 		E8947895245E971D00BA845E /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		E8947897245E986800BA845E /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E899550A245930E800E65195 /* AlamofireStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireStore.swift; sourceTree = "<group>"; };
+		E89D55F12466E67D00917557 /* UpdateAccountNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountNameViewController.swift; sourceTree = "<group>"; };
 		E8B74A2A2464451C0093F5C1 /* PosCreationContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosCreationContactViewController.swift; sourceTree = "<group>"; };
 		E8C47C842464EDCD0046BB4F /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		E8C47C862465022C0046BB4F /* TransitionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionButton.swift; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 				E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */,
 				E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */,
 				8E8629892460276B007A5C07 /* SignUpViewController.swift */,
+				E89D55F12466E67D00917557 /* UpdateAccountNameViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -866,6 +869,7 @@
 				E8947898245E986800BA845E /* UIColorExtension.swift in Sources */,
 				E8648EFC2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift in Sources */,
 				E8C47C852464EDCD0046BB4F /* FloatingTextField.swift in Sources */,
+				E89D55F22466E67D00917557 /* UpdateAccountNameViewController.swift in Sources */,
 				E85C4518245BDD910033CB53 /* TextValidation.swift in Sources */,
 				8E7192F324401C5000DB814A /* ViewController.swift in Sources */,
 				E8C47C872465022C0046BB4F /* TransitionButton.swift in Sources */,

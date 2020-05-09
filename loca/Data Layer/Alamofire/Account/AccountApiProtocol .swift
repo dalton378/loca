@@ -14,6 +14,7 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
     
     case login(email: String, phone: String, password: String)
     case getUser(token: String)
+    case updateName(token: String, name: String)
     
     
     var method: HTTPMethod {
@@ -22,7 +23,8 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             return .post
         case .getUser:
             return .get
-            
+        case .updateName:
+            return .put
         }
     }
     
@@ -32,6 +34,8 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             return "auth/login"
         case .getUser:
             return "auth/user"
+        case .updateName:
+            return "auth/update"
         default:
             return ""
         }
@@ -39,7 +43,7 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
     
     var encoding: ParameterEncoding {
         switch self {
-        case .login:
+        case .login,.updateName:
             return JSONEncoding.default
         case .getUser:
             return URLEncoding.default
@@ -55,13 +59,15 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
                 "password": password,
                 "phone": phone
             ]
+        case let .updateName(_, name):
+            return ["name": name]
         default:
             return [:]
         }
     }
     var headers: [String : String]? {
         switch self {
-        case let .getUser(token):
+        case let .getUser(token), let .updateName(token,_):
             return ["Authorization": "Bearer \(token)"]
         default:
             return [:]

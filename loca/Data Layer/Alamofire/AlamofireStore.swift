@@ -51,6 +51,12 @@ class AlamofireStore {
     
     func getDistrictByProvince(id: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
         client.getDistrictByProvince(id: id, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
+    
+    func updateAccountName(name: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.updateAccountName(name: name, completionHandler: {result in
             print(result.response?.statusCode)
             completionHandler(result.result)
         })

@@ -69,7 +69,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kSB-1c-UaR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-18" y="126"/>
+            <point key="canvasLocation" x="2" y="451"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="DLa-5d-zAJ">
@@ -116,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a3q-5p-rPQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1044.9275362318842" y="109.82142857142857"/>
+            <point key="canvasLocation" x="0.0" y="60"/>
         </scene>
         <!--Item-->
         <scene sceneID="uuU-sI-FoS">
@@ -225,6 +225,7 @@
                         <outlet property="nameLabel" destination="Bxp-uk-BJS" id="Ic3-Kc-K8V"/>
                         <outlet property="settingTable" destination="tnL-w6-oyc" id="NUD-zE-eDh"/>
                         <segue destination="CU1-v5-YAe" kind="show" identifier="mangeaccount_createpost" id="CG7-CW-T7d"/>
+                        <segue destination="9ZG-Se-P3s" kind="show" identifier="accountSetting_updateName" id="sN6-zc-yVo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2C-z9-0JM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -528,7 +529,59 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1044.9275362318842" y="1680.8035714285713"/>
+            <point key="canvasLocation" x="41" y="1598"/>
+        </scene>
+        <!--Update Account Name View Controller-->
+        <scene sceneID="dNu-Lm-8UE">
+            <objects>
+                <viewController storyboardIdentifier="UpdateAccountNameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9ZG-Se-P3s" customClass="UpdateAccountNameViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vQu-dN-Rjh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yoV-Bx-T77" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="12" y="128" width="390" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="fiq-Nd-NJR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xoy-Ut-mbJ">
+                                <rect key="frame" x="12" y="213" width="390" height="40"/>
+                                <color key="backgroundColor" name="UCyan"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="FPh-j5-H2Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Hoàn Tất">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirm:" destination="9ZG-Se-P3s" eventType="touchUpInside" id="AqZ-6r-PPs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yoV-Bx-T77" firstAttribute="leading" secondItem="h5l-Zu-5u5" secondAttribute="leading" constant="12" id="8DZ-Z4-OjI"/>
+                            <constraint firstItem="Xoy-Ut-mbJ" firstAttribute="leading" secondItem="h5l-Zu-5u5" secondAttribute="leading" constant="12" id="9Xm-AW-nV1"/>
+                            <constraint firstItem="Xoy-Ut-mbJ" firstAttribute="top" secondItem="yoV-Bx-T77" secondAttribute="bottom" constant="40" id="Hr0-qZ-nZ0"/>
+                            <constraint firstItem="yoV-Bx-T77" firstAttribute="top" secondItem="h5l-Zu-5u5" secondAttribute="top" constant="40" id="NdD-Lh-GRf"/>
+                            <constraint firstItem="h5l-Zu-5u5" firstAttribute="trailing" secondItem="yoV-Bx-T77" secondAttribute="trailing" constant="12" id="RsJ-ND-8EM"/>
+                            <constraint firstItem="h5l-Zu-5u5" firstAttribute="trailing" secondItem="Xoy-Ut-mbJ" secondAttribute="trailing" constant="12" id="jgr-pl-SzE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h5l-Zu-5u5"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uBd-Jv-kKc"/>
+                    <connections>
+                        <outlet property="confirmButton" destination="Xoy-Ut-mbJ" id="14s-ru-lBz"/>
+                        <outlet property="newNameTextField" destination="yoV-Bx-T77" id="uwA-hP-20w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLm-vW-aFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1004" y="1664"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Fcr-PZ-bVG">
@@ -572,7 +625,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddg-pP-xFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1939" y="110"/>
+            <point key="canvasLocation" x="942" y="60"/>
         </scene>
     </scenes>
     <resources>
@@ -580,6 +633,9 @@
         <image name="user_icon" width="100" height="100"/>
         <namedColor name="UBlack">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="UCyan">
+            <color red="0.011764705882352941" green="0.66274509803921566" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="White">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>

@@ -67,6 +67,13 @@ class AlamofireRequest {
             .responseString(completionHandler: completionHandler)
     }
     
+    func updateAccountName(name: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+           guard let token = AppConfig.shared.accessToken else {return}
+        session.request(AccountApiProtocol.updateName(token: token, name: name))
+               .validate()
+               .responseString(completionHandler: completionHandler)
+       }
+    
 }
 
 
