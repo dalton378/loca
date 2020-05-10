@@ -81,3 +81,7 @@ enum UpdateCase {
 protocol UpdateAccountData {
     func update(data: String, type: UpdateCase)
 }
+
+struct UpdateAccountError: Codable {
+    var error: String
+}

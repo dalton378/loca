@@ -11,7 +11,17 @@ import Foundation
 
 class AppConfig {
     
+    
+    
     static let shared = AppConfig()
+    
+    func resetDefaults() {
+        //let defaults = UserDefaults.standard
+        let dictionary = userDefaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            userDefaults.removeObject(forKey: key)
+        }
+    }
     
     private var userDefaults: UserDefaults {
         #if DEBUG

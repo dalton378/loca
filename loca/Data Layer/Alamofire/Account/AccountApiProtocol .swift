@@ -17,11 +17,12 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
     case updateName(token: String, name: String)
     case updatePhone(token: String, phone: String)
     case updateEmail(token: String, email: String)
+    case changePass(token: String, pass: String, newPass: String, confirmedPass: String)
     
     
     var method: HTTPMethod {
         switch self {
-        case .login:
+        case .login, .changePass:
             return .post
         case .getUser:
             return .get
@@ -38,6 +39,8 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             return "auth/user"
         case .updateName, .updatePhone, .updateEmail:
             return "auth/update"
+        case .changePass:
+            return "auth/change-password"
         default:
             return ""
         }
@@ -45,7 +48,7 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
     
     var encoding: ParameterEncoding {
         switch self {
-        case .login,.updateName, .updatePhone, .updateEmail:
+        case .login,.updateName, .updatePhone, .updateEmail, .changePass:
             return JSONEncoding.default
         case .getUser:
             return URLEncoding.default
@@ -65,15 +68,19 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             return ["name": name]
         case let .updatePhone(_, phone):
             return ["phone": phone]
-            case let .updateEmail(_, email):
+        case let .updateEmail(_, email):
             return ["email": email]
+        case let .changePass(_, pass, newPass, confirmedPass):
+            return ["current_password": pass,
+            "new_password": newPass,
+            "new_password_confirmation": confirmedPass]
         default:
             return [:]
         }
     }
     var headers: [String : String]? {
         switch self {
-        case let .getUser(token), let .updateName(token,_), let .updatePhone(token,_), let .updateEmail(token,_):
+        case let .getUser(token), let .updateName(token,_), let .updatePhone(token,_), let .updateEmail(token,_), let .changePass(token,  _, _, _):
             return ["Authorization": "Bearer \(token)"]
         default:
             return [:]

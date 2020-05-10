@@ -88,6 +88,14 @@ class AlamofireRequest {
             .responseString(completionHandler: completionHandler)
     }
     
+    func changeUserPassword(pass: String, newPass: String, confirmPass: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        guard let token = AppConfig.shared.accessToken else {return}
+        session.request(AccountApiProtocol.changePass(token: token, pass: pass, newPass: newPass, confirmedPass: confirmPass))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
+    
 }
 
 
