@@ -15,21 +15,20 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var settingTable: UITableView!
     
     var settingData = [SettingData]()
+    var updateData: AccountUpdate?
+    var updateCaseNum = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setEmptyBackButton()
         self.setTransparentNavigationBar()
-
-
-        nameLabel.text = AppConfig.shared.profileName
         
+        
+        nameLabel.text = AppConfig.shared.profileName
+        prepareData()
         settingTable.delegate = self
         settingTable.dataSource = self
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        prepareData()
     }
     
     private func prepareData(){
@@ -51,7 +50,7 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         cell.setData(icon: settingData[indexPath.row].icon, description: settingData[indexPath.row].description)
         cell.addAnimation(animationDirection: .left, delay: (indexPath.row * 4) )
         return cell
-    
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
@@ -60,7 +59,18 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
+            updateCaseNum = 0
             performSegue(withIdentifier: "accountSetting_updateName", sender: self)
+        case 1:
+            updateCaseNum = 1
+            performSegue(withIdentifier: "accountSetting_updateName", sender: self)
+        case 2:
+            updateCaseNum = 2
+            performSegue(withIdentifier: "accountSetting_updateName", sender: self)
+        case 3:
+            performSegue(withIdentifier: "accountSetting_updatePass", sender: self)
+        case 4:
+            performSegue(withIdentifier: "accountSetting_updatePass", sender: self)
         case 5:
             performSegue(withIdentifier: "mangeaccount_createpost", sender: self)
         default:
@@ -72,6 +82,18 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         if segue.identifier == "accountSetting_updateName" {
             let viewController = segue.destination as! UpdateAccountNameViewController
             viewController.delegate = self
+            
+            switch updateCaseNum {
+            case 0:
+                updateData = AccountUpdate(type: .name)
+            case 1:
+                updateData = AccountUpdate(type: .phone)
+            case 2:
+                updateData = AccountUpdate(type: .email)
+            default:
+                break
+            }
+            viewController.data = updateData
         }
     }
     
@@ -84,10 +106,22 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
 }
 
 extension MangeAccountViewController: UpdateAccountData {
-    func update(data: String) {
-        settingData[0].description = "Tên: \(data)"
-        nameLabel.text = data
-        AppConfig.shared.profileName = data
+    func update(data: String, type: UpdateCase) {
+        switch type {
+        case .name:
+            settingData[0].description = "Tên: \(data)"
+            nameLabel.text = data
+            AppConfig.shared.profileName = data
+        case .phone:
+            settingData[1].description = "Số điện thoại: \(data)"
+            AppConfig.shared.profilePhone = data
+        case .email:
+            settingData[2].description = "Email: \(data)"
+            AppConfig.shared.profileEmail = data
+        default:
+            break
+        }
+        
         settingTable.reloadData()
     }
 }

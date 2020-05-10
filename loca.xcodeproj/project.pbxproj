@@ -24,6 +24,7 @@
 		8EC361A82461603400F2F3EF /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC361A72461603300F2F3EF /* String+extension.swift */; };
 		8EC361AA2461603A00F2F3EF /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC361A92461603A00F2F3EF /* DateFormatter+extension.swift */; };
 		8EC361AC2461604700F2F3EF /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC361AB2461604600F2F3EF /* Date+extension.swift */; };
+		8EE37B8E2467BF3B0094CE6B /* UpdateAccountPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE37B8D2467BF3B0094CE6B /* UpdateAccountPassViewController.swift */; };
 		E31EBBCA5BF0C0966847A0B5 /* Pods_loca_locaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */; };
 		E816E4D1246596D10042BE48 /* PostCreationBasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E816E4D0246596D10042BE48 /* PostCreationBasicViewController.swift */; };
 		E8315D3F245B00180022D4A7 /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8315D3E245B00180022D4A7 /* SignIn.xib */; };
@@ -120,6 +121,7 @@
 		8EC361A72461603300F2F3EF /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		8EC361A92461603A00F2F3EF /* DateFormatter+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extension.swift"; sourceTree = "<group>"; };
 		8EC361AB2461604600F2F3EF /* Date+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
+		8EE37B8D2467BF3B0094CE6B /* UpdateAccountPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountPassViewController.swift; sourceTree = "<group>"; };
 		B1E6A166630A348BE0329D25 /* Pods-loca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca.debug.xcconfig"; path = "Target Support Files/Pods-loca/Pods-loca.debug.xcconfig"; sourceTree = "<group>"; };
 		B6D950CF60779FAD1E28C504 /* Pods-loca-locaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.release.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E71F892B618BB5E2BD1670FD /* Pods-loca-locaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.debug.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */,
 				8E8629892460276B007A5C07 /* SignUpViewController.swift */,
 				E89D55F12466E67D00917557 /* UpdateAccountNameViewController.swift */,
+				8EE37B8D2467BF3B0094CE6B /* UpdateAccountPassViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -886,6 +889,7 @@
 				E8510F1024592958004BE65A /* AccountApiProtocol .swift in Sources */,
 				8E7192EF24401C5000DB814A /* AppDelegate.swift in Sources */,
 				8E02CA822449DE03006A4F3B /* SceneDelegate.swift in Sources */,
+				8EE37B8E2467BF3B0094CE6B /* UpdateAccountPassViewController.swift in Sources */,
 				E84FD1DF245D282E00E10507 /* ApartmentDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

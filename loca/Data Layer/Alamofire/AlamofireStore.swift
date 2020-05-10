@@ -57,6 +57,18 @@ class AlamofireStore {
     
     func updateAccountName(name: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
         client.updateAccountName(name: name, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
+    
+    func updateAccountPhone(phone: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.updateAccountPhone(phone: phone, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
+    
+    func updateAccountEmail(email: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.updateAccountEmail(email: email, completionHandler: {result in
             print(result.response?.statusCode)
             completionHandler(result.result)
         })

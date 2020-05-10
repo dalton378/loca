@@ -226,6 +226,7 @@
                         <outlet property="settingTable" destination="tnL-w6-oyc" id="NUD-zE-eDh"/>
                         <segue destination="CU1-v5-YAe" kind="show" identifier="mangeaccount_createpost" id="CG7-CW-T7d"/>
                         <segue destination="9ZG-Se-P3s" kind="show" identifier="accountSetting_updateName" id="sN6-zc-yVo"/>
+                        <segue destination="2eV-p2-Krd" kind="show" identifier="accountSetting_updatePass" id="SLI-He-Ues"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2C-z9-0JM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -583,6 +584,85 @@
             </objects>
             <point key="canvasLocation" x="1004" y="1664"/>
         </scene>
+        <!--Update Account Pass View Controller-->
+        <scene sceneID="RcH-gu-niu">
+            <objects>
+                <viewController storyboardIdentifier="UpdateAccountPassViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2eV-p2-Krd" customClass="UpdateAccountPassViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qWE-Pk-Jia">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qky-2H-NB0" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="12" y="128" width="390" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="hiP-ta-5LN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jne-o0-4y9" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="12" y="193" width="390" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="FTN-2N-XP5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OFV-jT-ctJ" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="12" y="258" width="390" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="T0K-sP-ZPp"/>
+                                    <constraint firstAttribute="height" constant="45" id="WA4-3q-sYS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUS-sR-I2c">
+                                <rect key="frame" x="12" y="343" width="390" height="40"/>
+                                <color key="backgroundColor" name="UCyan"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="RdW-nA-wXf"/>
+                                    <constraint firstAttribute="height" constant="40" id="qb1-dI-6BI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Hoàn Tất">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirm:" destination="2eV-p2-Krd" eventType="touchUpInside" id="CoO-fQ-G1X"/>
+                                    <action selector="confirm:" destination="9ZG-Se-P3s" eventType="touchUpInside" id="lqj-w7-ttU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="qky-2H-NB0" firstAttribute="top" secondItem="QDd-cO-not" secondAttribute="top" constant="40" id="0lB-aN-wMh"/>
+                            <constraint firstItem="OFV-jT-ctJ" firstAttribute="leading" secondItem="qWE-Pk-Jia" secondAttribute="leading" constant="12" id="DyF-dP-tcm"/>
+                            <constraint firstItem="QDd-cO-not" firstAttribute="trailing" secondItem="OFV-jT-ctJ" secondAttribute="trailing" constant="12" id="F4x-Gb-oAE"/>
+                            <constraint firstItem="QDd-cO-not" firstAttribute="trailing" secondItem="Jne-o0-4y9" secondAttribute="trailing" constant="12" id="LQD-YQ-wit"/>
+                            <constraint firstItem="wUS-sR-I2c" firstAttribute="top" secondItem="OFV-jT-ctJ" secondAttribute="bottom" constant="40" id="OLh-zb-GTl"/>
+                            <constraint firstItem="OFV-jT-ctJ" firstAttribute="top" secondItem="Jne-o0-4y9" secondAttribute="bottom" constant="20" id="Sfx-No-4Xk"/>
+                            <constraint firstItem="QDd-cO-not" firstAttribute="trailing" secondItem="qky-2H-NB0" secondAttribute="trailing" constant="12" id="bjk-Ut-338"/>
+                            <constraint firstItem="Jne-o0-4y9" firstAttribute="leading" secondItem="QDd-cO-not" secondAttribute="leading" constant="12" id="cRp-vq-bTy"/>
+                            <constraint firstItem="Jne-o0-4y9" firstAttribute="top" secondItem="qky-2H-NB0" secondAttribute="bottom" constant="20" id="cXf-10-6rX"/>
+                            <constraint firstAttribute="trailing" secondItem="wUS-sR-I2c" secondAttribute="trailing" constant="12" id="exy-mj-v5v"/>
+                            <constraint firstItem="qky-2H-NB0" firstAttribute="leading" secondItem="QDd-cO-not" secondAttribute="leading" constant="12" id="ifM-Pk-Ynm"/>
+                            <constraint firstItem="wUS-sR-I2c" firstAttribute="leading" secondItem="QDd-cO-not" secondAttribute="leading" constant="12" id="lOl-DD-p5Y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QDd-cO-not"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0bR-Fg-Vjd"/>
+                    <connections>
+                        <outlet property="confirmButton" destination="wUS-sR-I2c" id="ptO-h7-mxr"/>
+                        <outlet property="confirmPassTextField" destination="OFV-jT-ctJ" id="FLh-5O-lvv"/>
+                        <outlet property="newPassTextField" destination="Jne-o0-4y9" id="cRb-3g-PDU"/>
+                        <outlet property="passwordTextField" destination="qky-2H-NB0" id="gCT-hp-yyu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0cK-1J-iLw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1842" y="1663"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="Fcr-PZ-bVG">
             <objects>
@@ -635,7 +715,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UCyan">
-            <color red="0.011764705882352941" green="0.66274509803921566" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.011764706112444401" green="0.66274511814117432" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="White">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>

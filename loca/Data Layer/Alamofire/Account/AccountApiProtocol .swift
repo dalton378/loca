@@ -15,6 +15,8 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
     case login(email: String, phone: String, password: String)
     case getUser(token: String)
     case updateName(token: String, name: String)
+    case updatePhone(token: String, phone: String)
+    case updateEmail(token: String, email: String)
     
     
     var method: HTTPMethod {
@@ -23,7 +25,7 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             return .post
         case .getUser:
             return .get
-        case .updateName:
+        case .updateName, .updatePhone, .updateEmail:
             return .put
         }
     }
@@ -34,7 +36,7 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             return "auth/login"
         case .getUser:
             return "auth/user"
-        case .updateName:
+        case .updateName, .updatePhone, .updateEmail:
             return "auth/update"
         default:
             return ""
@@ -43,7 +45,7 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
     
     var encoding: ParameterEncoding {
         switch self {
-        case .login,.updateName:
+        case .login,.updateName, .updatePhone, .updateEmail:
             return JSONEncoding.default
         case .getUser:
             return URLEncoding.default
@@ -61,13 +63,17 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             ]
         case let .updateName(_, name):
             return ["name": name]
+        case let .updatePhone(_, phone):
+            return ["phone": phone]
+            case let .updateEmail(_, email):
+            return ["email": email]
         default:
             return [:]
         }
     }
     var headers: [String : String]? {
         switch self {
-        case let .getUser(token), let .updateName(token,_):
+        case let .getUser(token), let .updateName(token,_), let .updatePhone(token,_), let .updateEmail(token,_):
             return ["Authorization": "Bearer \(token)"]
         default:
             return [:]

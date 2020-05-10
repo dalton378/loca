@@ -22,6 +22,62 @@ struct ProfileModel: Codable {
     let is_email_verified: Int
 }
 
+struct AccountUpdate {
+    var oldValue: String = ""
+    var newValue: String = ""
+    var title: String {
+        switch type {
+        case .name:
+            return "Tên hiển thị"
+        case .phone:
+            return "Số điện thoại"
+        case .password:
+            return "Mật khẩu"
+        case .email:
+            return "Email"
+        default:
+            break
+        }
+    }
+    
+    var successMessage: String {
+        switch type {
+        case .name:
+            return "Cập nhật tên thành công!"
+        case .phone:
+            return "Cập nhật số điện thoại thành công!"
+        case .password:
+            return "Cập nhật mật khẩu thành công!"
+        case.email:
+            return "Cập nhật email thành công!"
+        default:
+            break
+        }
+    }
+    var errorMessage: String {
+        switch type {
+        case .name:
+            return "Cập nhật tên không thành công. Vui lòng thử lại sau!"
+        case .password:
+             return "Cập nhật mật khẩu không thành công. Vui lòng thử lại sau!"
+        case .phone:
+             return "Cập nhật số điện thoại không thành công. Vui lòng thử lại sau!"
+        case.email :
+            return "Cập nhật email không thành công. Vui lòng thử lại sau!"
+        default:
+            break
+        }
+    }
+    var type : UpdateCase
+}
+
+enum UpdateCase {
+    case name
+    case password
+    case phone
+    case email
+}
+
 protocol UpdateAccountData {
-    func update(data: String)
+    func update(data: String, type: UpdateCase)
 }

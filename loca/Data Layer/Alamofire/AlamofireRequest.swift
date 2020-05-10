@@ -74,6 +74,20 @@ class AlamofireRequest {
                .responseString(completionHandler: completionHandler)
        }
     
+    func updateAccountPhone(phone: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        guard let token = AppConfig.shared.accessToken else {return}
+        session.request(AccountApiProtocol.updatePhone(token: token, phone: phone))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
+    func updateAccountEmail(email: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        guard let token = AppConfig.shared.accessToken else {return}
+        session.request(AccountApiProtocol.updateEmail(token: token, email: email))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
 }
 
 
