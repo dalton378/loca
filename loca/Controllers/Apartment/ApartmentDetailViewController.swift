@@ -35,7 +35,6 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
     
     private func prepareUI(){
         setEmptyBackButton()
-        setTransparentNavigationBar()
         self.title = "Thông Tin Chi Tiết"
     }
     

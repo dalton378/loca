@@ -25,25 +25,17 @@
             <rect key="frame" x="0.0" y="0.0" width="509" height="504"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izm-e2-A0h">
-                    <rect key="frame" x="134.5" y="188" width="240" height="128"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="128" id="ZkP-wx-5fZ"/>
-                        <constraint firstAttribute="width" constant="240" id="hEO-TO-ZAn"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDJ-ci-lEZ">
-                    <rect key="frame" x="0.0" y="44" width="509" height="420"/>
+                    <rect key="frame" x="0.0" y="44" width="509" height="460"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đăng Ký" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyS-J1-rl1">
-                            <rect key="frame" x="223" y="8" width="63.5" height="20.5"/>
+                            <rect key="frame" x="223" y="8" width="63.5" height="10"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7v-2E-2yA">
-                            <rect key="frame" x="8" y="48.5" width="493" height="40"/>
+                            <rect key="frame" x="8" y="38" width="493" height="40"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tên" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mms-Fj-jjO" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                     <rect key="frame" x="12" y="0.0" width="469" height="39"/>
@@ -56,13 +48,12 @@
                                 <constraint firstItem="mms-Fj-jjO" firstAttribute="leading" secondItem="z7v-2E-2yA" secondAttribute="leading" constant="12" id="XML-iA-dCZ"/>
                                 <constraint firstAttribute="height" constant="40" id="cmA-4S-hWQ"/>
                                 <constraint firstAttribute="trailing" secondItem="mms-Fj-jjO" secondAttribute="trailing" constant="12" id="cxI-Uo-ajd"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="ggX-wd-ltQ"/>
                                 <constraint firstItem="mms-Fj-jjO" firstAttribute="top" secondItem="z7v-2E-2yA" secondAttribute="top" id="szk-j9-YOY"/>
-                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="v3T-bn-NIh"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="v3T-bn-NIh"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gW6-SB-pvU">
-                            <rect key="frame" x="8" y="100.5" width="493" height="40"/>
+                            <rect key="frame" x="8" y="90" width="493" height="40"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lsy-pa-iGN" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                     <rect key="frame" x="12" y="0.0" width="469" height="39"/>
@@ -74,14 +65,13 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="3gT-Zh-st1"/>
                                 <constraint firstItem="lsy-pa-iGN" firstAttribute="top" secondItem="gW6-SB-pvU" secondAttribute="top" id="4yC-Hc-Eld"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="G7m-A3-th6"/>
                                 <constraint firstAttribute="trailing" secondItem="lsy-pa-iGN" secondAttribute="trailing" constant="12" id="PQa-9S-yGW"/>
-                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="dPA-0V-QcC"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="dPA-0V-QcC"/>
                                 <constraint firstItem="lsy-pa-iGN" firstAttribute="leading" secondItem="gW6-SB-pvU" secondAttribute="leading" constant="12" id="zAO-Ek-6l7"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iuq-aW-riR">
-                            <rect key="frame" x="8" y="160.5" width="493" height="40"/>
+                            <rect key="frame" x="8" y="150" width="493" height="40"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số Điện Thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="siC-ad-Yhn" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                     <rect key="frame" x="12" y="0.0" width="469" height="39"/>
@@ -93,14 +83,13 @@
                             <constraints>
                                 <constraint firstItem="siC-ad-Yhn" firstAttribute="top" secondItem="Iuq-aW-riR" secondAttribute="top" id="1Ey-3I-raa"/>
                                 <constraint firstAttribute="trailing" secondItem="siC-ad-Yhn" secondAttribute="trailing" constant="12" id="60o-JG-PyF"/>
-                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="DOO-nc-iL9"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="cVy-xo-7Qz"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="DOO-nc-iL9"/>
                                 <constraint firstAttribute="height" constant="40" id="mT6-ae-X9K"/>
                                 <constraint firstItem="siC-ad-Yhn" firstAttribute="leading" secondItem="Iuq-aW-riR" secondAttribute="leading" constant="12" id="xUW-Be-85e"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Et-Tg-iJy">
-                            <rect key="frame" x="8" y="220.5" width="493" height="40"/>
+                            <rect key="frame" x="8" y="210" width="493" height="40"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật Khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hwL-6f-JgR" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                     <rect key="frame" x="12" y="0.0" width="469" height="39"/>
@@ -113,13 +102,12 @@
                                 <constraint firstItem="hwL-6f-JgR" firstAttribute="leading" secondItem="2Et-Tg-iJy" secondAttribute="leading" constant="12" id="2Ro-eX-HTU"/>
                                 <constraint firstAttribute="height" constant="40" id="6un-cZ-ZQj"/>
                                 <constraint firstItem="hwL-6f-JgR" firstAttribute="top" secondItem="2Et-Tg-iJy" secondAttribute="top" id="A9t-T5-bKQ"/>
-                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="GRH-XT-ElU"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="QH7-KW-Gan"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="GRH-XT-ElU"/>
                                 <constraint firstAttribute="trailing" secondItem="hwL-6f-JgR" secondAttribute="trailing" constant="12" id="vKS-DP-b9R"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdJ-Pb-s93">
-                            <rect key="frame" x="8" y="280.5" width="493" height="40"/>
+                            <rect key="frame" x="8" y="270" width="493" height="40"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập Lại Mật Khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AkB-8a-Yj8" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                     <rect key="frame" x="12" y="0.0" width="469" height="39"/>
@@ -129,16 +117,15 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="41G-3X-bHh"/>
                                 <constraint firstItem="AkB-8a-Yj8" firstAttribute="leading" secondItem="tdJ-Pb-s93" secondAttribute="leading" constant="12" id="6ZE-eR-LdM"/>
                                 <constraint firstItem="AkB-8a-Yj8" firstAttribute="top" secondItem="tdJ-Pb-s93" secondAttribute="top" id="WbW-lE-6db"/>
-                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="dUF-Hp-dDo"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="dUF-Hp-dDo"/>
                                 <constraint firstAttribute="trailing" secondItem="AkB-8a-Yj8" secondAttribute="trailing" constant="12" id="tbI-HC-ItV"/>
                                 <constraint firstAttribute="height" constant="40" id="wjL-CV-oez"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMi-iC-mnF" customClass="TransitionButton" customModule="TransitionButton">
-                            <rect key="frame" x="8" y="350.5" width="493" height="40"/>
+                            <rect key="frame" x="8" y="340" width="493" height="40"/>
                             <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="jx1-LT-0hP"/>
@@ -150,7 +137,10 @@
                             </connections>
                         </button>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ada-Ow-9UJ">
-                            <rect key="frame" x="12" y="410.5" width="485" height="18"/>
+                            <rect key="frame" x="12" y="400" width="485" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="RkA-ce-1tl"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -169,7 +159,6 @@
                         <constraint firstItem="tMi-iC-mnF" firstAttribute="leading" secondItem="PDJ-ci-lEZ" secondAttribute="leading" constant="8" id="Kh3-Vz-Psk"/>
                         <constraint firstItem="2Et-Tg-iJy" firstAttribute="leading" secondItem="PDJ-ci-lEZ" secondAttribute="leading" constant="8" id="NWR-EO-xXE"/>
                         <constraint firstAttribute="trailing" secondItem="tMi-iC-mnF" secondAttribute="trailing" constant="8" id="NZR-VE-lts"/>
-                        <constraint firstAttribute="height" constant="420" id="QUj-J0-yPh"/>
                         <constraint firstItem="z7v-2E-2yA" firstAttribute="top" secondItem="jyS-J1-rl1" secondAttribute="bottom" constant="20" id="Sjs-Gc-jYM"/>
                         <constraint firstItem="Iuq-aW-riR" firstAttribute="top" secondItem="gW6-SB-pvU" secondAttribute="bottom" constant="20" id="ZmC-hb-he0"/>
                         <constraint firstItem="jyS-J1-rl1" firstAttribute="centerX" secondItem="PDJ-ci-lEZ" secondAttribute="centerX" id="aKl-2Y-PuM"/>
@@ -182,6 +171,7 @@
                         <constraint firstItem="Ada-Ow-9UJ" firstAttribute="leading" secondItem="PDJ-ci-lEZ" secondAttribute="leading" constant="12" id="usX-OS-VvK"/>
                         <constraint firstItem="gW6-SB-pvU" firstAttribute="leading" secondItem="PDJ-ci-lEZ" secondAttribute="leading" constant="8" id="vgN-RX-OIq"/>
                         <constraint firstItem="z7v-2E-2yA" firstAttribute="leading" secondItem="PDJ-ci-lEZ" secondAttribute="leading" constant="8" id="vlH-j8-2Gk"/>
+                        <constraint firstAttribute="bottom" secondItem="Ada-Ow-9UJ" secondAttribute="bottom" constant="40" id="xzp-eG-pcW"/>
                     </constraints>
                 </view>
             </subviews>
@@ -191,9 +181,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PDJ-ci-lEZ" secondAttribute="trailing" id="5DU-kp-Qle"/>
                 <constraint firstItem="PDJ-ci-lEZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="5Mf-L7-EEu"/>
                 <constraint firstAttribute="bottom" secondItem="PDJ-ci-lEZ" secondAttribute="bottom" id="W76-69-qBA"/>
-                <constraint firstItem="izm-e2-A0h" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dfE-7r-rRO"/>
                 <constraint firstItem="PDJ-ci-lEZ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="n2E-vU-NAj"/>
-                <constraint firstItem="izm-e2-A0h" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rjc-TZ-Wkr"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

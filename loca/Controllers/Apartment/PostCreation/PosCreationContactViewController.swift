@@ -23,7 +23,6 @@ class PosCreationContactViewController: UIViewController {
         super.viewDidLoad()
 
         setEmptyBackButton()
-        setTransparentNavigationBar()
         confirmButton.layer.cornerRadius = 10
     }
     

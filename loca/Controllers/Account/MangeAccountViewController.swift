@@ -22,15 +22,13 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         
         self.setEmptyBackButton()
-        self.setTransparentNavigationBar()
-        
         
         nameLabel.text = AppConfig.shared.profileName
         prepareData()
         settingTable.delegate = self
         settingTable.dataSource = self
     }
-    
+
     private func prepareData(){
         settingData.append(SettingData.init(icon: UIImage(named: "contact_icon")!, description: "Tên: \(AppConfig.shared.profileName!)"))
         settingData.append(SettingData.init(icon: UIImage(named: "phone_icon")!, description: "Số điện thoại: \(AppConfig.shared.profilePhone!)"))
@@ -70,7 +68,7 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         case 3:
             performSegue(withIdentifier: "accountSetting_updatePass", sender: self)
         case 4:
-            performSegue(withIdentifier: "accountSetting_updatePass", sender: self)
+            performSegue(withIdentifier: "manageaccount_contact", sender: self)
         case 5:
             performSegue(withIdentifier: "mangeaccount_createpost", sender: self)
         default:

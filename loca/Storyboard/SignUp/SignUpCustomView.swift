@@ -44,6 +44,7 @@ class SignUpCustomView: MessageView {
     
     func setupUI(){
         contentView.layer.cornerRadius = 20
+        
         FloatingTextField.configureFloatingText(textfield: nameTextField, placeHolder: "Tên", title: "Tên")
         FloatingTextField.configureFloatingText(textfield: phoneTextField, placeHolder: "Số điện thoại", title: "Số điện thoại")
         FloatingTextField.configureFloatingText(textfield: emailTextField, placeHolder: "Email", title: "Email")

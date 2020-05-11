@@ -27,7 +27,7 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         tableData.append(TableData(icon: UIImage(named: "photo_icon")!, description: "Hình ảnh", status: UIImage()))
         tableData.append(TableData(icon: UIImage(named: "contact_icon")!, description: "Liên hệ", status: UIImage()))
         setEmptyBackButton()
-        setTransparentNavigationBar()
+        
         confirmButton.layer.cornerRadius = 10
         tableView.dataSource = self
         tableView.delegate = self

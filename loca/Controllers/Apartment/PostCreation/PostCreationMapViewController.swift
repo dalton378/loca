@@ -30,7 +30,6 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
     private func prepareUI(){
         TransitionButtonCustom.configureTransitionButton(button: confirmButton, tittle: "Hoàn Tất", tapHandler: nil)
         setEmptyBackButton()
-        setTransparentNavigationBar()
         mapView.delegate = self
         gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         gestureRecognizer.delegate = self

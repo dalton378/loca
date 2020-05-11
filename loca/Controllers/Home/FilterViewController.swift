@@ -175,7 +175,6 @@ class FilterViewController: UIViewController {
     }
     
     private func prepareUI() {
-        setTransparentNavigationBar()
         TransitionButtonCustom.configureTransitionButton(button: confirmButton, tittle: "Lọc", tapHandler: nil)
         
         

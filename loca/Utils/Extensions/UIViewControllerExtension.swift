@@ -15,11 +15,4 @@ extension UIViewController {
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
     }
-    
-    func setTransparentNavigationBar(){
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.tintColor = UIColor.init(hex: "03A9F3")
-    }
 }

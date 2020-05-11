@@ -17,6 +17,8 @@
 		8E7192FB24401C5D00DB814A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7192F924401C5D00DB814A /* LaunchScreen.storyboard */; };
 		8E71930624401C5D00DB814A /* locaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71930524401C5D00DB814A /* locaTests.swift */; };
 		8E71931124401C5D00DB814A /* locaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71931024401C5D00DB814A /* locaUITests.swift */; };
+		8E7A513C246981A100A7C716 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A513B246981A100A7C716 /* ContactViewController.swift */; };
+		8E7A513E246985C200A7C716 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A513D246985C200A7C716 /* UITextViewExtension.swift */; };
 		8E86298A2460276B007A5C07 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8629892460276B007A5C07 /* SignUpViewController.swift */; };
 		8EC2606B2445E88600A1E842 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC2606A2445E88600A1E842 /* Messages.swift */; };
 		8EC361A42461576900F2F3EF /* ApartmentPreviewPhoto.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC361A32461576800F2F3EF /* ApartmentPreviewPhoto.xib */; };
@@ -24,6 +26,7 @@
 		8EC361A82461603400F2F3EF /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC361A72461603300F2F3EF /* String+extension.swift */; };
 		8EC361AA2461603A00F2F3EF /* DateFormatter+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC361A92461603A00F2F3EF /* DateFormatter+extension.swift */; };
 		8EC361AC2461604700F2F3EF /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC361AB2461604600F2F3EF /* Date+extension.swift */; };
+		8ED3C6CC24699A1500A49530 /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3C6CB24699A1400A49530 /* HomeNavigationViewController.swift */; };
 		8EE37B8E2467BF3B0094CE6B /* UpdateAccountPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE37B8D2467BF3B0094CE6B /* UpdateAccountPassViewController.swift */; };
 		E31EBBCA5BF0C0966847A0B5 /* Pods_loca_locaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */; };
 		E816E4D1246596D10042BE48 /* PostCreationBasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E816E4D0246596D10042BE48 /* PostCreationBasicViewController.swift */; };
@@ -114,6 +117,8 @@
 		8E71930C24401C5D00DB814A /* locaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = locaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E71931024401C5D00DB814A /* locaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locaUITests.swift; sourceTree = "<group>"; };
 		8E71931224401C5D00DB814A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E7A513B246981A100A7C716 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		8E7A513D246985C200A7C716 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
 		8E8629892460276B007A5C07 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8EC2606A2445E88600A1E842 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		8EC361A32461576800F2F3EF /* ApartmentPreviewPhoto.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentPreviewPhoto.xib; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		8EC361A72461603300F2F3EF /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		8EC361A92461603A00F2F3EF /* DateFormatter+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+extension.swift"; sourceTree = "<group>"; };
 		8EC361AB2461604600F2F3EF /* Date+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
+		8ED3C6CB24699A1400A49530 /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
 		8EE37B8D2467BF3B0094CE6B /* UpdateAccountPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountPassViewController.swift; sourceTree = "<group>"; };
 		B1E6A166630A348BE0329D25 /* Pods-loca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca.debug.xcconfig"; path = "Target Support Files/Pods-loca/Pods-loca.debug.xcconfig"; sourceTree = "<group>"; };
 		B6D950CF60779FAD1E28C504 /* Pods-loca-locaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.release.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -385,6 +391,7 @@
 			children = (
 				E8510EFF245915B4004BE65A /* HomeViewController.swift */,
 				E894788D245E6D5100BA845E /* FilterViewController.swift */,
+				8ED3C6CB24699A1400A49530 /* HomeNavigationViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -474,6 +481,7 @@
 				E894788F245E70F200BA845E /* DropDownExtension.swift */,
 				E8947895245E971D00BA845E /* UIViewControllerExtension.swift */,
 				E8947897245E986800BA845E /* UIColorExtension.swift */,
+				8E7A513D246985C200A7C716 /* UITextViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -538,6 +546,7 @@
 				8E8629892460276B007A5C07 /* SignUpViewController.swift */,
 				E89D55F12466E67D00917557 /* UpdateAccountNameViewController.swift */,
 				8EE37B8D2467BF3B0094CE6B /* UpdateAccountPassViewController.swift */,
+				8E7A513B246981A100A7C716 /* ContactViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -856,6 +865,7 @@
 				E8EDDB8A246198C90099691B /* PostCreationDesViewController.swift in Sources */,
 				8EC361AA2461603A00F2F3EF /* DateFormatter+extension.swift in Sources */,
 				E8315D49245B119F0022D4A7 /* SignUpCustomView.swift in Sources */,
+				8ED3C6CC24699A1500A49530 /* HomeNavigationViewController.swift in Sources */,
 				E8510F1424592B38004BE65A /* AcountModel.swift in Sources */,
 				E85C4515245BCDC90033CB53 /* ForgotPassCustomView.swift in Sources */,
 				8E86298A2460276B007A5C07 /* SignUpViewController.swift in Sources */,
@@ -884,11 +894,13 @@
 				E8315D44245B0D6E0022D4A7 /* SignInMessage.swift in Sources */,
 				E86B068B245DB27D00F5D501 /* CustomIndicator.swift in Sources */,
 				E894788E245E6D5100BA845E /* FilterViewController.swift in Sources */,
+				8E7A513C246981A100A7C716 /* ContactViewController.swift in Sources */,
 				8EC361A62461577B00F2F3EF /* ApartmentPhotoPreview.swift in Sources */,
 				E899550B245930E800E65195 /* AlamofireStore.swift in Sources */,
 				E8510F1024592958004BE65A /* AccountApiProtocol .swift in Sources */,
 				8E7192EF24401C5000DB814A /* AppDelegate.swift in Sources */,
 				8E02CA822449DE03006A4F3B /* SceneDelegate.swift in Sources */,
+				8E7A513E246985C200A7C716 /* UITextViewExtension.swift in Sources */,
 				8EE37B8E2467BF3B0094CE6B /* UpdateAccountPassViewController.swift in Sources */,
 				E84FD1DF245D282E00E10507 /* ApartmentDetail.swift in Sources */,
 			);
