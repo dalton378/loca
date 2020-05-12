@@ -16,7 +16,7 @@ class UpdateAccountPassViewController: UIViewController {
     @IBOutlet weak var newPassTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var confirmPassTextField: SkyFloatingLabelTextField!
     
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var confirmButton: TransitionButtonExtent!
     let store = AlamofireStore()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +28,21 @@ class UpdateAccountPassViewController: UIViewController {
         FloatingTextField.configureFloatingText(textfield: newPassTextField, placeHolder: "Nhập Password mới", title: "Password mới")
         FloatingTextField.configureFloatingText(textfield: confirmPassTextField, placeHolder: "Nhập lại password", title: "Nhập lại password")
         confirmPassTextField.addTarget(self, action: #selector(self.validateInput(_:)), for: .editingChanged)
+        confirmButton.layer.cornerRadius = 10
     }
     
     
     @IBAction func confirm(_ sender: UIButton) {
-        
+        confirmButton.startAnimation()
         if confirmPassTextField.text!.isEmpty || passwordTextField.text!.isEmpty || newPassTextField.text!.isEmpty {
             Messages.displayErrorMessage(message: "Vui lòng nhập đầy đủ thông tin")
+            confirmButton.stopAnimation()
             return
         }
         
         if confirmPassTextField.text! != newPassTextField.text! {
             Messages.displayErrorMessage(message: "Mật khẩu mới không trùng khớp")
+            confirmButton.stopAnimation()
             return
         }
         
@@ -48,12 +51,18 @@ class UpdateAccountPassViewController: UIViewController {
             
             switch result {
             case .success:
-                Messages.displaySuccessMessage(message: "Cập nhật mật khẩu thành công")
+                self.confirmButton.stopAnimation(animationStyle: .normal, color: UIColor.green, revertAfterDelay: 1, completion: {
+                    Messages.displaySuccessMessage(message: "Cập nhật mật khẩu thành công")
+                })
             case .failure:
                 guard let newData = data, let autParams = try? JSONDecoder().decode(UpdateAccountError.self, from: newData) else {
-                    Messages.displayErrorMessage( message: "Cập nhật không thành công. Vui lòng thử lại sau")
-                    return}
-                Messages.displayErrorMessage(message: autParams.error)
+                    self.confirmButton.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
+                        Messages.displayErrorMessage( message: "Cập nhật không thành công. Vui lòng thử lại sau")})
+                    return
+                }
+                
+                self.confirmButton.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
+                    Messages.displayErrorMessage(message: autParams.error)})
             }
         })
     }

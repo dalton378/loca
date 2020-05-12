@@ -20,3 +20,17 @@ class TransitionButtonCustom {
         button.addGestureRecognizer(gesture)
     }
 }
+
+
+class TransitionButtonExtent: TransitionButton {
+    func stopAnimation(animationStyle: StopAnimationStyle = .normal, color: UIColor, revertAfterDelay delay: TimeInterval = 1.0, completion: (() -> Void)? = nil) {
+        stopAnimation()
+        let delayToRevert = max(delay, 0.2)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.backgroundColor = color
+        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + delayToRevert) {
+            completion?()
+        }
+    }
+}

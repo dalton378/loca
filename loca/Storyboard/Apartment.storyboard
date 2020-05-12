@@ -14,7 +14,7 @@
         <scene sceneID="SyN-Oe-ohl">
             <objects>
                 <viewController storyboardIdentifier="ApartmentDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2W6-hK-OLg" customClass="ApartmentDetailViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LKG-Fj-MKp">
+                    <view key="view" contentMode="scaleToFill" id="LKG-Fj-MKp" customClass="GradientView" customModule="loca" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -32,13 +32,14 @@
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </scrollView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="pkj-sF-eE9" secondAttribute="height" multiplier="1:1" id="YBP-bc-i8J"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gUy-jg-QdE">
                                                 <rect key="frame" x="20" y="526.5" width="366" height="673.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="673.5" identifier="satckbarHeight" id="Yhp-wb-p2l"/>
                                                 </constraints>
@@ -52,17 +53,17 @@
                                                         <string key="text">Mô tả bất động sản
 </string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaM-lF-OOU">
                                                         <rect key="frame" x="8" y="52" width="350" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="gaM-lF-OOU" secondAttribute="trailing" constant="8" id="1xE-vl-0Sy"/>
                                                     <constraint firstAttribute="trailing" secondItem="eTo-ZM-WHm" secondAttribute="trailing" constant="8" id="IRW-VI-zwL"/>
@@ -74,7 +75,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="gUy-jg-QdE" firstAttribute="top" secondItem="dlg-Pr-yqm" secondAttribute="bottom" constant="20" id="7xt-bS-Kjb"/>
                                             <constraint firstAttribute="trailing" secondItem="dlg-Pr-yqm" secondAttribute="trailing" constant="20" symbolic="YES" id="AMg-ab-mUA"/>
@@ -89,6 +90,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="4H3-mf-WvQ" secondAttribute="bottom" id="A78-id-Uzr"/>
                                     <constraint firstItem="4H3-mf-WvQ" firstAttribute="leading" secondItem="zbT-c1-w9q" secondAttribute="leading" id="Iub-fE-Dz3"/>
@@ -106,6 +108,14 @@
                             <constraint firstItem="0xT-aD-0HA" firstAttribute="bottom" secondItem="zbT-c1-w9q" secondAttribute="bottom" id="ruJ-ih-lTD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0xT-aD-0HA"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="Gradient_DarkBlue"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="Gradient_Grey"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <size key="freeformSize" width="414" height="1200"/>
                     <connections>
@@ -124,13 +134,13 @@
         <scene sceneID="Z3v-j4-94l">
             <objects>
                 <viewController storyboardIdentifier="CreateApartmentPostViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ySo-pb-1yd" customClass="CreateApartmentPostViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="g75-LO-aeA">
+                    <view key="view" contentMode="scaleToFill" id="g75-LO-aeA" customClass="GradientView" customModule="loca" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5OO-M1-RW6">
                                 <rect key="frame" x="0.0" y="44" width="414" height="738"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CreatePostTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="createPost_cell" rowHeight="110" id="sdb-K7-Blb" customClass="CreatePostTableViewCell" customModule="loca" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="110"/>
@@ -171,6 +181,7 @@
                                                 <constraint firstItem="kdd-J3-uTz" firstAttribute="leading" secondItem="wMf-he-XKI" secondAttribute="leading" constant="12" id="v2r-dm-Mnj"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="iTN-Xh-G6A" id="6MB-aq-RA0"/>
                                             <outlet property="iconImage" destination="kdd-J3-uTz" id="Jzs-8y-jUe"/>
@@ -205,6 +216,14 @@
                             <constraint firstItem="5OO-M1-RW6" firstAttribute="trailing" secondItem="nbG-VE-VWi" secondAttribute="trailing" id="zYF-am-35N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nbG-VE-VWi"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="Gradient_DarkBlue"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="Gradient_Grey"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="Wgj-Kq-uQN"/>
                     <connections>
@@ -226,7 +245,7 @@
         <scene sceneID="bAL-o4-k8o">
             <objects>
                 <viewController storyboardIdentifier="PostCreationCameraViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2lU-O9-lG0" customClass="PostCreationCameraViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wSc-56-HHT">
+                    <view key="view" contentMode="scaleToFill" id="wSc-56-HHT" customClass="GradientView" customModule="loca" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -250,7 +269,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="9wF-gG-vUx"/>
                                     <constraint firstItem="wNL-cm-NA8" firstAttribute="top" secondItem="vzN-od-k5U" secondAttribute="bottom" constant="12" id="Uxm-tH-u5B"/>
@@ -277,7 +296,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h9m-Bx-IbU">
                                 <rect key="frame" x="12" y="208" width="390" height="540"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Shf-uq-qwj">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -324,6 +343,15 @@
                             <constraint firstItem="vpq-qS-3F1" firstAttribute="bottom" secondItem="uvG-AS-aYC" secondAttribute="bottom" constant="20" id="yvJ-Oi-pfc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vpq-qS-3F1"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="Gradient_DarkBlue"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="Gradient_Grey"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="wjI-Md-TtA"/>
                     <connections>
@@ -345,7 +373,7 @@
         <scene sceneID="p22-hs-PVM">
             <objects>
                 <viewController storyboardIdentifier="PostCreationAddInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lzh-fn-DdU" customClass="PostCreationAddInfoViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eWB-1s-Xrs">
+                    <view key="view" contentMode="scaleToFill" id="eWB-1s-Xrs" customClass="GradientView" customModule="loca" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -375,7 +403,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hướng nhà" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xho-s6-hUr">
                                                         <rect key="frame" x="8" y="12" width="348" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_icon" translatesAutoresizingMaskIntoConstraints="NO" id="QEY-Zd-l27">
@@ -385,7 +413,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="QEY-Zd-l27" secondAttribute="trailing" constant="8" id="0BY-IT-Hfk"/>
@@ -406,7 +434,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số tầng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXc-3Z-tAz">
                                                         <rect key="frame" x="8" y="12" width="352" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9HF-hB-j85">
@@ -416,7 +444,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="9HF-hB-j85" firstAttribute="centerY" secondItem="KeI-dD-RtA" secondAttribute="centerY" id="8eo-XY-QeK"/>
@@ -438,7 +466,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số phòng ngủ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QF9-Vu-uTS">
                                                         <rect key="frame" x="8" y="12" width="348" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_icon" translatesAutoresizingMaskIntoConstraints="NO" id="37L-fi-HNY">
@@ -448,7 +476,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="37L-fi-HNY" firstAttribute="height" secondItem="BAs-nz-OHS" secondAttribute="height" multiplier="0.4" id="9dq-Tq-Gw4"/>
@@ -470,7 +498,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số phòng tắm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVN-WX-uKH">
                                                         <rect key="frame" x="8" y="12" width="348" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_icon" translatesAutoresizingMaskIntoConstraints="NO" id="sfX-Yz-mFq">
@@ -480,7 +508,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="5c8-Sr-UEg"/>
@@ -503,7 +531,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hồ bơi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDA-7x-65v">
                                                         <rect key="frame" x="8" y="12" width="348" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_icon" translatesAutoresizingMaskIntoConstraints="NO" id="TVj-2C-D0X">
@@ -513,7 +541,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="6ON-mS-Y4I"/>
@@ -537,7 +565,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thang máy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLG-Q3-Wge">
                                                         <rect key="frame" x="8" y="12" width="348" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_icon" translatesAutoresizingMaskIntoConstraints="NO" id="479-eM-POc">
@@ -547,7 +575,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="FLG-Q3-Wge" firstAttribute="centerY" secondItem="c3U-We-2Jl" secondAttribute="centerY" id="3F1-Ez-LIS"/>
@@ -571,7 +599,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vườn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9P3-Kr-Msu">
                                                         <rect key="frame" x="8" y="12" width="348" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_icon" translatesAutoresizingMaskIntoConstraints="NO" id="uVC-HF-Mb0">
@@ -581,7 +609,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="uVC-HF-Mb0" secondAttribute="trailing" constant="8" id="7hM-l0-ged"/>
@@ -605,7 +633,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tầng thượng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Red-mc-vlh">
                                                         <rect key="frame" x="8" y="12" width="348" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ymj-I1-tO3">
@@ -615,7 +643,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="45" id="Bke-ey-weE"/>
@@ -634,7 +662,7 @@
                                                 </connections>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="c3U-We-2Jl" firstAttribute="leading" secondItem="DpQ-Lz-PIq" secondAttribute="leading" constant="12" id="01X-dX-bIq"/>
                                             <constraint firstAttribute="trailing" secondItem="oB8-Jy-kjq" secondAttribute="trailing" constant="12" id="7jT-Gv-lLE"/>
@@ -667,6 +695,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="DpQ-Lz-PIq" secondAttribute="bottom" id="JrT-Yr-uH3"/>
                                     <constraint firstAttribute="trailing" secondItem="DpQ-Lz-PIq" secondAttribute="trailing" id="e90-uX-tnU"/>
@@ -685,6 +714,15 @@
                             <constraint firstItem="lF9-8r-9Ta" firstAttribute="top" secondItem="O8b-9j-obk" secondAttribute="top" id="qL8-w2-OMz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O8b-9j-obk"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="Gradient_DarkBlue"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="Gradient_Grey"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="eRv-4U-BrV"/>
                     <size key="freeformSize" width="414" height="1000"/>
@@ -756,7 +794,7 @@
         <scene sceneID="MY9-cY-9Zh">
             <objects>
                 <viewController storyboardIdentifier="PostCreationDesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WId-Z6-89j" customClass="PostCreationDesViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="l4q-iX-ceM">
+                    <view key="view" contentMode="scaleToFill" id="l4q-iX-ceM" customClass="GradientView" customModule="loca" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -770,12 +808,12 @@
                                 <rect key="frame" x="12" y="69" width="390" height="54"/>
                                 <string key="text">Giới thiệu chung về bất động sản của bạn. Ví dụ: Khu nhà có vị trí thuận lợi. Gần công viên, gần trường học,... Tổng diện tích 200m2, hẻm ô tô.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" name="UBlack"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Utd-yD-4qJ">
                                 <rect key="frame" x="12" y="143" width="390" height="565"/>
-                                <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -814,6 +852,15 @@
                             <constraint firstItem="mBX-x1-885" firstAttribute="trailing" secondItem="RbD-8Z-exy" secondAttribute="trailing" constant="12" id="wl9-mV-sG6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mBX-x1-885"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="Gradient_DarkBlue"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="Gradient_Grey"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="mIJ-yz-g9O" appends="YES" id="rZw-iC-81C"/>
                         </connections>
@@ -837,7 +884,7 @@
         <scene sceneID="x1l-6D-lhB">
             <objects>
                 <viewController storyboardIdentifier="PosCreationContactViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="816-0R-ypU" customClass="PosCreationContactViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cRe-Ja-KPR">
+                    <view key="view" contentMode="scaleToFill" id="cRe-Ja-KPR" customClass="GradientView" customModule="loca" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -857,7 +904,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="7At-Pd-sYb" firstAttribute="leading" secondItem="cbB-fP-imu" secondAttribute="leading" constant="12" id="6bi-sY-txS"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="7Mq-iX-DIK"/>
@@ -887,7 +934,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="4hV-DZ-jbq"/>
                                     <constraint firstAttribute="trailing" secondItem="bqr-Ya-zrl" secondAttribute="trailing" constant="12" id="K6Y-gC-yfE"/>
@@ -917,7 +964,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Ynj-0V-S1A" firstAttribute="leading" secondItem="Fyz-fR-HYG" secondAttribute="leading" constant="12" id="Dfj-VN-2ng"/>
                                     <constraint firstItem="Ynj-0V-S1A" firstAttribute="top" secondItem="gcn-kM-Apk" secondAttribute="bottom" constant="10" id="MsS-Dg-QBR"/>
@@ -960,6 +1007,15 @@
                             <constraint firstItem="ng1-7P-XQP" firstAttribute="trailing" secondItem="Uoo-iF-8Fo" secondAttribute="trailing" constant="12" id="xuX-TL-ZJF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ng1-7P-XQP"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="Gradient_DarkBlue"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="Gradient_Grey"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="5dd-3b-ZsT"/>
                     <connections>
@@ -1024,7 +1080,7 @@
         <scene sceneID="1uS-dA-oDq">
             <objects>
                 <viewController storyboardIdentifier="PostCreationBasicViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dtg-dJ-vfG" customClass="PostCreationBasicViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZQY-mx-RhZ">
+                    <view key="view" contentMode="scaleToFill" id="ZQY-mx-RhZ" customClass="GradientView" customModule="loca" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1046,11 +1102,11 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loại hình giao dịch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZG-Oc-tfM">
                                                         <rect key="frame" x="8" y="12" width="348" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="G4e-uW-keh"/>
@@ -1077,11 +1133,11 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loại bất động sản" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luv-dF-ySb">
                                                         <rect key="frame" x="8" y="12" width="356" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="A43-3i-Fb8" secondAttribute="trailing" constant="8" id="49N-rZ-BF1"/>
@@ -1109,11 +1165,11 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tỉnh/ Thành phố" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0O0-bb-YM7">
                                                         <rect key="frame" x="8" y="12" width="356" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="gjo-cc-i1q" firstAttribute="leading" secondItem="0O0-bb-YM7" secondAttribute="trailing" constant="8" id="7xh-ZD-bju"/>
@@ -1141,11 +1197,11 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quận/ Huyện" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RrS-Mg-Cbr">
                                                         <rect key="frame" x="8" y="12" width="356" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="RrS-Mg-Cbr" firstAttribute="leading" secondItem="6Oi-oT-Ggq" secondAttribute="leading" constant="8" id="3mh-So-NgQ"/>
@@ -1173,11 +1229,11 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phường/ Xã" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCE-Ed-1A7">
                                                         <rect key="frame" x="8" y="12" width="356" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="oRB-0n-q91" firstAttribute="centerY" secondItem="H4I-bu-cBS" secondAttribute="centerY" id="04H-Vs-JxG"/>
@@ -1202,7 +1258,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="45" id="0Rb-UJ-WKS"/>
                                                     <constraint firstAttribute="bottom" secondItem="mUT-Vx-nfj" secondAttribute="bottom" id="AJv-Yg-dka"/>
@@ -1221,7 +1277,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="45" id="0c7-tD-Eb6"/>
                                                     <constraint firstItem="dZR-gI-R41" firstAttribute="leading" secondItem="ada-zG-l80" secondAttribute="leading" constant="12" id="Ec9-9o-vfH"/>
@@ -1244,11 +1300,11 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="m2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8f-92-XUb">
                                                         <rect key="frame" x="8" y="12" width="38" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="qt7-2V-Evq" firstAttribute="leading" secondItem="L8f-92-XUb" secondAttribute="trailing" constant="8" id="F4f-b3-D32"/>
@@ -1274,7 +1330,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="VuU-Fa-YTv" firstAttribute="leading" secondItem="OjW-ti-cOA" secondAttribute="leading" constant="12" id="1pv-tc-dD7"/>
                                                     <constraint firstItem="VuU-Fa-YTv" firstAttribute="top" secondItem="OjW-ti-cOA" secondAttribute="top" id="25p-Wf-sRs"/>
@@ -1293,7 +1349,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="GV1-a8-Hfq" firstAttribute="top" secondItem="nK3-11-2J3" secondAttribute="top" id="3Ha-T6-NA2"/>
                                                     <constraint firstAttribute="bottom" secondItem="GV1-a8-Hfq" secondAttribute="bottom" id="HZW-HI-eQh"/>
@@ -1316,11 +1372,11 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tỷ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApI-tX-7We">
                                                         <rect key="frame" x="8" y="12" width="38" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="Cg0-m2-fPA" firstAttribute="leading" secondItem="ApI-tX-7We" secondAttribute="trailing" constant="8" id="2sY-fo-Uk5"/>
@@ -1347,7 +1403,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="7go-QX-lrP" secondAttribute="trailing" constant="8" id="CJx-oa-BCe"/>
                                                     <constraint firstItem="7go-QX-lrP" firstAttribute="leading" secondItem="JoF-Jp-n86" secondAttribute="leading" constant="12" id="Yx4-3L-7jM"/>
@@ -1366,7 +1422,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="d3E-w6-f3g" firstAttribute="leading" secondItem="7Xt-HE-AUH" secondAttribute="leading" constant="12" id="0Rh-cY-a6B"/>
                                                     <constraint firstAttribute="bottom" secondItem="d3E-w6-f3g" secondAttribute="bottom" id="1uI-pH-0lF"/>
@@ -1391,7 +1447,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="wup-jM-Be5" firstAttribute="leading" secondItem="kAc-WO-Btb" secondAttribute="leading" constant="8" id="0ho-XN-VhG"/>
                                             <constraint firstAttribute="trailing" secondItem="qad-lk-0rW" secondAttribute="trailing" constant="12" id="2YO-M8-7Af"/>
@@ -1437,6 +1493,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="kAc-WO-Btb" firstAttribute="leading" secondItem="sdC-LN-dNp" secondAttribute="leading" id="5vf-Uy-mJe"/>
                                     <constraint firstAttribute="trailing" secondItem="kAc-WO-Btb" secondAttribute="trailing" id="Z4L-3U-ug5"/>
@@ -1454,6 +1511,14 @@
                             <constraint firstAttribute="trailing" secondItem="sdC-LN-dNp" secondAttribute="trailing" id="oyb-Iq-bZK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SY3-tr-ZiC"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="Gradient_DarkBlue"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="Gradient_Grey"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="SWn-wY-v9N"/>
                     <connections>
@@ -1523,11 +1588,17 @@
     <resources>
         <image name="camera_icon" width="100" height="100"/>
         <image name="down_icon" width="100" height="100"/>
+        <namedColor name="Gradient_DarkBlue">
+            <color red="0.73333333333333328" green="0.82352941176470584" blue="0.77254901960784317" alpha="0.95099997520446777" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gradient_Grey">
+            <color red="0.32549019607843138" green="0.41176470588235292" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="UBlack">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UCyan">
-            <color red="0.011764706112444401" green="0.66274511814117432" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.011764705882352941" green="0.66274509803921566" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

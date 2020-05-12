@@ -75,9 +75,18 @@ class AlamofireStore {
     
     func changeAccountPass(pass: String, newPass: String, confirmPass: String, completionHandler: @escaping ((Result<String, AFError>, Data?) -> Void )) {
         client.changeUserPassword(pass: pass, newPass: newPass, confirmPass: confirmPass, completionHandler: {result in
-            
-            print(result.data)
-            print(result.result)
+            completionHandler(result.result, result.data)
+        })
+    }
+    
+    func forgetPassword(email: String, completionHandler: @escaping ((Result<String, AFError>, Data?) -> Void )) {
+        client.forgetPassword(email: email, completionHandler: {result in
+            completionHandler(result.result, result.data)
+        })
+    }
+    
+    func register(name: String, email: String, phone: String, pass: String, passConfirm: String, completionHandler: @escaping ((Result<String, AFError>, Data?) -> Void )) {
+        client.register(name: name, email: email, phone: phone, pass: pass, passConfirm: passConfirm, completionHandler: {result in
             print(result.response?.statusCode)
             completionHandler(result.result, result.data)
         })

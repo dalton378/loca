@@ -18,9 +18,11 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var confirmPassTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var errorMessageLabel: UILabel!
-    @IBOutlet weak var confirmButton: TransitionButton!
+    @IBOutlet weak var confirmButton: TransitionButtonExtent!
     
     var result: ResultTextValidation?
+    var store = AlamofireStore()
+    var delegate: SignUpProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,17 +47,45 @@ class SignUpViewController: UIViewController {
         TransitionButtonCustom.configureTransitionButton(button: confirmButton, tittle: "Đăng Ký", tapHandler: nil)
     }
     
-    @IBAction func signUp(_ sender: UIButton) {
+    
+    @IBAction func register(_ sender: TransitionButtonExtent) {
         if nameTextField.text!.isEmpty || phoneTextField.text!.isEmpty || emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty || confirmPassTextField.text!.isEmpty {
             Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin")
         } else {
             guard let error = result, let _ = error.isFailed else {
                 confirmButton.startAnimation()
-                confirmButton.stopAnimation(animationStyle: .expand, revertAfterDelay: 1, completion: {})
+                store.register(name: nameTextField.text!, email: emailTextField.text!, phone: phoneTextField.text!, pass: passwordTextField.text!, passConfirm: confirmPassTextField.text!, completionHandler: { (result,data) in
+                    switch result{
+                    case .success(let data):
+                        let parsedData = data.data(using: .utf8)
+                        guard let newData = parsedData, let autParams = try? JSONDecoder().decode(AccountModel.self, from: newData) else {
+                            print(data)
+                            self.confirmButton.stopAnimation()
+                            return}
+                        self.confirmButton.stopAnimation(animationStyle: .normal, color: .green, revertAfterDelay: 1, completion: {
+                            AppConfig.shared.accessToken = autParams.access_token
+                            AppConfig.shared.isSignedIn = true
+                            Messages.displaySuccessMessage(message: "Đăng ký thành công.")
+                            self.navigationController?.popViewController(animated: true)
+                            self.delegate?.completionHandler()
+                        })
+                        
+                    case .failure:
+                        self.confirmButton.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
+                            Messages.displayErrorMessage(message: "Đăng kí không thành công. Vui lòng thử lại sau!")
+                        })
+                    }
+                })
+                
                 return
             }
+            confirmButton.startAnimation()
             Messages.displayErrorMessage(message: error.message)
         }
+    }
+    
+    private func setUserData(){
+        
     }
     
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -85,4 +115,8 @@ class SignUpViewController: UIViewController {
         
         textfield.errorMessage = result?.message
     }
+}
+
+protocol SignUpProtocol {
+    func completionHandler()
 }

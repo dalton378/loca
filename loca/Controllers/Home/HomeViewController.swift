@@ -209,6 +209,9 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             view.window!.layer.add(transition, forKey: kCATransition)
             let view = segue.destination as! FilterViewController
             view.delegate = self
+        } else if segue.identifier == "signup_home" {
+            let viewController = segue.destination as! SignUpViewController
+            viewController.delegate = self
         }
     }
 }
@@ -218,5 +221,11 @@ extension HomeViewController: FilterSelectionProtocol {
     func getFilterSelection(selections: [FilterSelection]) {
         print(selections)
     }
-    
+}
+
+
+extension HomeViewController: SignUpProtocol{
+    func completionHandler() {
+        getDataFromServer()
+    }
 }

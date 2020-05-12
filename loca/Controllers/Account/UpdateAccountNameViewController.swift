@@ -8,11 +8,12 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import TransitionButton
 
 class UpdateAccountNameViewController: UIViewController {
     
     @IBOutlet weak var newNameTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var confirmButton: TransitionButtonExtent!
     
     var delegate: UpdateAccountData?
     var store = AlamofireStore()
@@ -37,6 +38,8 @@ class UpdateAccountNameViewController: UIViewController {
         }
         newNameTextField.text = dataString
         FloatingTextField.configureFloatingText(textfield: newNameTextField, placeHolder: data!.title, title: data!.title)
+        
+        confirmButton.layer.cornerRadius = 10
     }
     
     
@@ -47,6 +50,7 @@ class UpdateAccountNameViewController: UIViewController {
     }
     
     private func updateByType(dataUpdated: AccountUpdate){
+        confirmButton.startAnimation()
         switch data?.type {
         case .name:
             store.updateAccountName(name: dataUpdated.newValue, completionHandler: {(result) in
@@ -54,7 +58,7 @@ class UpdateAccountNameViewController: UIViewController {
                 case .success:
                     self.updatedSuccess(data: dataUpdated)
                 case .failure:
-                    Messages.displayErrorMessage(message: dataUpdated.errorMessage)
+                    self.failureHandler(message: dataUpdated.errorMessage)
                 }
             })
         case .phone:
@@ -63,7 +67,7 @@ class UpdateAccountNameViewController: UIViewController {
                 case .success:
                     self.updatedSuccess(data: dataUpdated)
                 case .failure:
-                    Messages.displayErrorMessage(message: dataUpdated.errorMessage)
+                    self.failureHandler(message: dataUpdated.errorMessage)
                 }
             })
         case .email:
@@ -72,7 +76,7 @@ class UpdateAccountNameViewController: UIViewController {
                 case .success:
                     self.updatedSuccess(data: dataUpdated)
                 case .failure:
-                    Messages.displayErrorMessage(message: dataUpdated.errorMessage)
+                    self.failureHandler(message: dataUpdated.errorMessage)
                 }
             })
         default:
@@ -81,9 +85,14 @@ class UpdateAccountNameViewController: UIViewController {
     }
     
     private func updatedSuccess(data: AccountUpdate){
-        Messages.displaySuccessMessage(message: data.successMessage)
-        self.delegate?.update(data: data.newValue, type: data.type)
-        self.navigationController?.popViewController(animated: true)
+        confirmButton.stopAnimation(animationStyle: .normal, color: UIColor.green, revertAfterDelay: 1, completion: {
+            Messages.displaySuccessMessage(message: data.successMessage)
+            self.delegate?.update(data: data.newValue, type: data.type)
+            self.navigationController?.popViewController(animated: true)})
+    }
+    
+    private func failureHandler(message: String) {
+        confirmButton.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {Messages.displayErrorMessage(message: message)})
     }
 }
 

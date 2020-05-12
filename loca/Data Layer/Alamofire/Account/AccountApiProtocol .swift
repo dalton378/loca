@@ -18,11 +18,13 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
     case updatePhone(token: String, phone: String)
     case updateEmail(token: String, email: String)
     case changePass(token: String, pass: String, newPass: String, confirmedPass: String)
+    case forgetPass(email: String)
+    case register(name: String, phone: String, email: String, pass: String, passConfirm: String)
     
     
     var method: HTTPMethod {
         switch self {
-        case .login, .changePass:
+        case .login, .changePass, .forgetPass, .register:
             return .post
         case .getUser:
             return .get
@@ -41,6 +43,10 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             return "auth/update"
         case .changePass:
             return "auth/change-password"
+        case .forgetPass:
+            return "auth/forget-password"
+        case .register:
+            return "auth/register"
         default:
             return ""
         }
@@ -48,7 +54,7 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
     
     var encoding: ParameterEncoding {
         switch self {
-        case .login,.updateName, .updatePhone, .updateEmail, .changePass:
+        case .login,.updateName, .updatePhone, .updateEmail, .changePass, .forgetPass, .register:
             return JSONEncoding.default
         case .getUser:
             return URLEncoding.default
@@ -74,6 +80,16 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             return ["current_password": pass,
             "new_password": newPass,
             "new_password_confirmation": confirmedPass]
+        case let .forgetPass(email):
+            return ["email": email]
+        case let .register(name, phone, email, pass, passConfirm):
+            return [
+                "name" : name,
+                "email": email,
+                "password": pass,
+                "password_confirmation": passConfirm,
+                "phone": phone
+            ]
         default:
             return [:]
         }

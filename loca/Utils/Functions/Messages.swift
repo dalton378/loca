@@ -56,20 +56,6 @@ public class Messages {
         
     }
     
-    static func displaySignUpMessage(){
-        let view = SignUpCustomView(frame: CGRect(x: 0, y: 100, width: 300, height: 200))
-//        view.exitAction = {SwiftMessages.hide()}
-//        view.doneAction = completionHandler
-        view.configureDropShadow()
-        var config = SwiftMessages.defaultConfig
-        config.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
-        config.duration = .forever
-        config.presentationStyle = .center
-        config.dimMode = .gray(interactive: true)
-        SwiftMessages.show(config: config, view: view)
-        
-    }
-    
     static func displayApartmentPreviewMessage(title: String, message: String, buttonAction: @escaping (()->Void)) {
         let view = MessageView.viewFromNib(layout: .cardView)
         view.configureTheme(.info)

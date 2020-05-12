@@ -95,6 +95,18 @@ class AlamofireRequest {
             .responseString(completionHandler: completionHandler)
     }
     
+    func forgetPassword(email: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+           session.request(AccountApiProtocol.forgetPass(email: email))
+               .validate()
+               .responseString(completionHandler: completionHandler)
+       }
+    
+    func register(name: String, email: String, phone: String, pass: String, passConfirm: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        session.request(AccountApiProtocol.register(name: name, phone: phone, email: email, pass: pass, passConfirm: passConfirm))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
     
 }
 

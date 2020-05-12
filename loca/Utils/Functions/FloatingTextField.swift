@@ -20,6 +20,8 @@ class FloatingTextField {
         textfield.tintColor = UIColor.init(named: "UBlack")
         textfield.selectedLineColor = UIColor.init(named: "UBlack")!
         textfield.selectedTitleColor = UIColor.init(named: "UBlack")!
+        textfield.placeholderColor = UIColor.darkGray
+        textfield.lineColor = UIColor.darkGray
         
     }
     
