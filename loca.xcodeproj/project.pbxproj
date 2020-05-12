@@ -19,6 +19,7 @@
 		8E71931124401C5D00DB814A /* locaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E71931024401C5D00DB814A /* locaUITests.swift */; };
 		8E7A513C246981A100A7C716 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A513B246981A100A7C716 /* ContactViewController.swift */; };
 		8E7A513E246985C200A7C716 /* UITextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7A513D246985C200A7C716 /* UITextViewExtension.swift */; };
+		8E807BD3246A7F290002A6AC /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E807BD2246A7F290002A6AC /* GradientView.swift */; };
 		8E86298A2460276B007A5C07 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8629892460276B007A5C07 /* SignUpViewController.swift */; };
 		8EC2606B2445E88600A1E842 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC2606A2445E88600A1E842 /* Messages.swift */; };
 		8EC361A42461576900F2F3EF /* ApartmentPreviewPhoto.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC361A32461576800F2F3EF /* ApartmentPreviewPhoto.xib */; };
@@ -119,6 +120,7 @@
 		8E71931224401C5D00DB814A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E7A513B246981A100A7C716 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		8E7A513D246985C200A7C716 /* UITextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtension.swift; sourceTree = "<group>"; };
+		8E807BD2246A7F290002A6AC /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		8E8629892460276B007A5C07 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8EC2606A2445E88600A1E842 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		8EC361A32461576800F2F3EF /* ApartmentPreviewPhoto.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentPreviewPhoto.xib; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				8EC2606A2445E88600A1E842 /* Messages.swift */,
 				E8C47C842464EDCD0046BB4F /* FloatingTextField.swift */,
 				E8C47C862465022C0046BB4F /* TransitionButton.swift */,
+				8E807BD2246A7F290002A6AC /* GradientView.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -894,6 +897,7 @@
 				E8315D44245B0D6E0022D4A7 /* SignInMessage.swift in Sources */,
 				E86B068B245DB27D00F5D501 /* CustomIndicator.swift in Sources */,
 				E894788E245E6D5100BA845E /* FilterViewController.swift in Sources */,
+				8E807BD3246A7F290002A6AC /* GradientView.swift in Sources */,
 				8E7A513C246981A100A7C716 /* ContactViewController.swift in Sources */,
 				8EC361A62461577B00F2F3EF /* ApartmentPhotoPreview.swift in Sources */,
 				E899550B245930E800E65195 /* AlamofireStore.swift in Sources */,
