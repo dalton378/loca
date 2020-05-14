@@ -14,12 +14,14 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     case getApartment(token: String)
     case getApartmentDetail(id: String, token: String)
     case getPropertyType(token: String)
+    case postFiles(data: String)
     
     var method: HTTPMethod {
         switch self {
         case .getApartment, .getApartmentDetail, .getPropertyType:
             return .get
-            
+        case .postFiles:
+            return .post
         }
     }
     
@@ -31,6 +33,8 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
             return "apartments/\(id)"
         case .getPropertyType:
             return "property-type"
+        case .postFiles:
+            return "files"
         default:
             return ""
         }
@@ -40,17 +44,15 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
         switch self {
         case .getApartment, .getApartmentDetail, .getPropertyType:
             return URLEncoding.default
+        case .postFiles:
+            return JSONEncoding.default
         }
     }
     
     var parameters: Parameters? {
         switch self {
-//        case let .login(email, phone, password):
-//            return [
-//                "email": email,
-//                "password": password,
-//                "phone": phone
-//            ]
+        case .postFiles(let data):
+            return ["file": data]
         default:
             return [:]
         }

@@ -16,3 +16,21 @@ struct PostPosition: Codable {
     var long: String
     var lat: String
 }
+
+struct ApartmentPhotoReturn: Codable{
+    var id: String
+    var path: ApartmentPhotoDetailReturn
+}
+
+struct ApartmentPhotoDetailReturn: Codable {
+    var original: String
+    var thumbnail: String
+}
+
+struct PhotosBase64Upload: Codable {
+    let base64Image: String
+}
+
+struct ApartmentPostCreation: Codable {
+    
+}

@@ -87,6 +87,12 @@ class AlamofireStore {
     
     func register(name: String, email: String, phone: String, pass: String, passConfirm: String, completionHandler: @escaping ((Result<String, AFError>, Data?) -> Void )) {
         client.register(name: name, email: email, phone: phone, pass: pass, passConfirm: passConfirm, completionHandler: {result in
+            completionHandler(result.result, result.data)
+        })
+    }
+    
+    func postFile(file: UIImage, completionHandler: @escaping ((Result<String, AFError>, Data?) -> Void )) {
+        client.postFile(file: file, completionHandler: {result in
             print(result.response?.statusCode)
             completionHandler(result.result, result.data)
         })

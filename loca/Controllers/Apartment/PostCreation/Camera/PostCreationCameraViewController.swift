@@ -20,6 +20,7 @@ class PostCreationCameraViewController: UIViewController, UICollectionViewDataSo
     
     var photoCollection = [UIImage]()
     var delegate: PostCreationCameraProtocol?
+    var store = AlamofireStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,18 @@ class PostCreationCameraViewController: UIViewController, UICollectionViewDataSo
     @IBAction func confirm(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
         delegate?.getPhotos(phots: self.photoCollection)
+        
+//        store.postFile(file: photoCollection.first!, completionHandler: {(result,data) in
+//            switch result {
+//            case .success(let dataString):
+//                let parsedData = dataString.data(using: .utf8)
+//                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentPhotoReturn.self, from: newData) else {return}
+//            case .failure(let data):
+//                print(data)
+//                Messages.displayErrorMessage(message: "Upload file không thành công!")
+//            }
+//        })
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

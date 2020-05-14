@@ -68,11 +68,11 @@ class AlamofireRequest {
     }
     
     func updateAccountName(name: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
-           guard let token = AppConfig.shared.accessToken else {return}
+        guard let token = AppConfig.shared.accessToken else {return}
         session.request(AccountApiProtocol.updateName(token: token, name: name))
-               .validate()
-               .responseString(completionHandler: completionHandler)
-       }
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
     
     func updateAccountPhone(phone: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
         guard let token = AppConfig.shared.accessToken else {return}
@@ -96,10 +96,10 @@ class AlamofireRequest {
     }
     
     func forgetPassword(email: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
-           session.request(AccountApiProtocol.forgetPass(email: email))
-               .validate()
-               .responseString(completionHandler: completionHandler)
-       }
+        session.request(AccountApiProtocol.forgetPass(email: email))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
     
     func register(name: String, email: String, phone: String, pass: String, passConfirm: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
         session.request(AccountApiProtocol.register(name: name, phone: phone, email: email, pass: pass, passConfirm: passConfirm))
@@ -107,7 +107,12 @@ class AlamofireRequest {
             .responseString(completionHandler: completionHandler)
     }
     
-    
+    func postFile(file: UIImage, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        let photoString = file.base64String
+        session.request(ApartmentApiProtocol.postFiles(data: photoString))
+        .validate()
+        .responseString(completionHandler: completionHandler)
+    }
 }
 
 
