@@ -27,6 +27,16 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
         prepareUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     private func prepareUI(){
         TransitionButtonCustom.configureTransitionButton(button: confirmButton, tittle: "Hoàn Tất", tapHandler: nil)
         setEmptyBackButton()
@@ -37,6 +47,9 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
         addMarker()
     }
     
+    @IBAction func back(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func confirm(_ sender: UIButton) {
         confirmButton.setTitle("", for: .normal)

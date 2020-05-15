@@ -85,3 +85,13 @@ protocol UpdateAccountData {
 struct UpdateAccountError: Codable {
     var error: String
 }
+
+struct AccountGeneralError: Codable {
+    let message: String
+    let errors: AccountGeneralErrorDetail
+}
+
+struct AccountGeneralErrorDetail: Codable {
+    let email: [String]?
+    let phone: [String]?
+}

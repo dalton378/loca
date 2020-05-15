@@ -696,6 +696,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="DpQ-Lz-PIq" secondAttribute="bottom" id="JrT-Yr-uH3"/>
                                     <constraint firstAttribute="trailing" secondItem="DpQ-Lz-PIq" secondAttribute="trailing" id="e90-uX-tnU"/>
@@ -703,6 +704,9 @@
                                     <constraint firstItem="DpQ-Lz-PIq" firstAttribute="top" secondItem="lF9-8r-9Ta" secondAttribute="top" id="nNv-XG-UFS"/>
                                     <constraint firstItem="DpQ-Lz-PIq" firstAttribute="leading" secondItem="lF9-8r-9Ta" secondAttribute="leading" id="pv9-sN-gx3"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="FS5-8V-jYu" appends="YES" id="ogV-cc-YQ2"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -744,6 +748,7 @@
                         <outlet property="poolLabel" destination="CDA-7x-65v" id="nYI-7l-PhY"/>
                         <outlet property="rooftopDropDown" destination="RAF-h8-pN0" id="VO6-uD-z06"/>
                         <outlet property="rooftopLabel" destination="Red-mc-vlh" id="oaY-cM-EpD"/>
+                        <outlet property="scrollView" destination="lF9-8r-9Ta" id="BbX-ga-c1q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ql7-0L-Va4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -785,6 +790,11 @@
                 <tapGestureRecognizer id="gBW-qd-qCF" userLabel="rooftopTap">
                     <connections>
                         <action selector="showRoofList:" destination="lzh-fn-DdU" id="Ixu-aZ-czB"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="FS5-8V-jYu" userLabel="hideKeyboard">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="lzh-fn-DdU" id="Aww-UU-Q5n"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -992,6 +1002,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="OE8-mn-YtC" firstAttribute="leading" secondItem="cRe-Ja-KPR" secondAttribute="leading" constant="12" id="0hA-Vp-Yjw"/>
                             <constraint firstItem="cbB-fP-imu" firstAttribute="leading" secondItem="cRe-Ja-KPR" secondAttribute="leading" constant="12" id="4ok-Tu-kF9"/>
@@ -1016,6 +1027,9 @@
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="YES"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="lcp-aX-vej" appends="YES" id="Ema-FB-OPg"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="5dd-3b-ZsT"/>
                     <connections>
@@ -1026,6 +1040,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58p-jm-0ZF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lcp-aX-vej"/>
             </objects>
             <point key="canvasLocation" x="1222" y="-794"/>
         </scene>
@@ -1038,7 +1053,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OS2-0b-l27">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="-40" width="414" height="882"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ex-rR-KpB" customClass="TransitionButton" customModule="TransitionButton">
                                 <rect key="frame" x="157" y="728" width="100" height="50"/>
@@ -1054,15 +1069,29 @@
                                     <action selector="confirm:" destination="Aut-bh-6Kv" eventType="touchUpInside" id="wLq-YA-ylP"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_icon" translatesAutoresizingMaskIntoConstraints="NO" id="hRb-sZ-TAl">
+                                <rect key="frame" x="20" y="20" width="25" height="25"/>
+                                <color key="tintColor" name="UBlack"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="RUL-If-s1g"/>
+                                    <constraint firstAttribute="width" constant="25" id="g5c-ET-4Sm"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="IxY-EA-2Yo" appends="YES" id="Vbg-md-6M2"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="OS2-0b-l27" firstAttribute="top" secondItem="Esx-Hm-bGd" secondAttribute="top" id="9TN-Xf-Bhu"/>
-                            <constraint firstAttribute="bottom" secondItem="OS2-0b-l27" secondAttribute="bottom" id="AmD-42-pz5"/>
-                            <constraint firstItem="OS2-0b-l27" firstAttribute="leading" secondItem="Esx-Hm-bGd" secondAttribute="leading" id="BRm-72-0dA"/>
+                            <constraint firstItem="OS2-0b-l27" firstAttribute="top" secondItem="gEa-gt-nK2" secondAttribute="top" constant="-40" id="AWG-jt-8yW"/>
+                            <constraint firstAttribute="bottom" secondItem="OS2-0b-l27" secondAttribute="bottom" id="Cdi-04-1d6"/>
                             <constraint firstItem="Esx-Hm-bGd" firstAttribute="bottom" secondItem="4ex-rR-KpB" secondAttribute="bottom" constant="30" id="Ncc-b8-FD7"/>
+                            <constraint firstItem="hRb-sZ-TAl" firstAttribute="leading" secondItem="Esx-Hm-bGd" secondAttribute="leading" constant="20" id="OP3-9s-EAe"/>
                             <constraint firstItem="4ex-rR-KpB" firstAttribute="centerX" secondItem="gEa-gt-nK2" secondAttribute="centerX" id="PXt-Lk-Ykr"/>
-                            <constraint firstItem="OS2-0b-l27" firstAttribute="trailing" secondItem="Esx-Hm-bGd" secondAttribute="trailing" id="qyo-8w-p3u"/>
+                            <constraint firstItem="OS2-0b-l27" firstAttribute="leading" secondItem="Esx-Hm-bGd" secondAttribute="leading" id="TiY-QH-xIt"/>
+                            <constraint firstItem="OS2-0b-l27" firstAttribute="trailing" secondItem="Esx-Hm-bGd" secondAttribute="trailing" id="etP-3p-t6g"/>
+                            <constraint firstItem="hRb-sZ-TAl" firstAttribute="top" secondItem="Esx-Hm-bGd" secondAttribute="top" constant="20" id="iAn-LP-yPE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Esx-Hm-bGd"/>
                     </view>
@@ -1073,6 +1102,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjw-sQ-i1Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="IxY-EA-2Yo" userLabel="back">
+                    <connections>
+                        <action selector="back:" destination="Aut-bh-6Kv" id="6xC-dN-Dit"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2182.608695652174" y="-793.52678571428567"/>
         </scene>
@@ -1494,6 +1528,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="kAc-WO-Btb" firstAttribute="leading" secondItem="sdC-LN-dNp" secondAttribute="leading" id="5vf-Uy-mJe"/>
                                     <constraint firstAttribute="trailing" secondItem="kAc-WO-Btb" secondAttribute="trailing" id="Z4L-3U-ug5"/>
@@ -1501,6 +1536,9 @@
                                     <constraint firstItem="kAc-WO-Btb" firstAttribute="top" secondItem="sdC-LN-dNp" secondAttribute="top" id="tfe-oq-Xhi"/>
                                     <constraint firstItem="kAc-WO-Btb" firstAttribute="width" secondItem="sdC-LN-dNp" secondAttribute="width" id="zC5-T3-lmc"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="zLB-T0-0Y5" appends="YES" id="GCW-1t-a0r"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1534,6 +1572,7 @@
                         <outlet property="numberAddressTextField" destination="dZR-gI-R41" id="gdQ-ox-lhP"/>
                         <outlet property="propertyTypeText" destination="luv-dF-ySb" id="Kuo-xu-umm"/>
                         <outlet property="propertyTypeView" destination="RmU-YH-IdS" id="ASR-45-OVg"/>
+                        <outlet property="scrollView" destination="sdC-LN-dNp" id="80R-3X-BOZ"/>
                         <outlet property="squareTextfield" destination="VuU-Fa-YTv" id="les-50-Oey"/>
                         <outlet property="squareUnitText" destination="L8f-92-XUb" id="RWN-ov-ctb"/>
                         <outlet property="squareUnitView" destination="XW6-Ch-YKE" id="SAf-Yg-PwA"/>
@@ -1581,11 +1620,17 @@
                         <action selector="showCostUnitList:" destination="Dtg-dJ-vfG" id="5Wf-F7-NP8"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="zLB-T0-0Y5">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="Dtg-dJ-vfG" id="bM7-ts-wDw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2183" y="-92"/>
         </scene>
     </scenes>
     <resources>
+        <image name="back_icon" width="100" height="100"/>
         <image name="camera_icon" width="100" height="100"/>
         <image name="down_icon" width="100" height="100"/>
         <namedColor name="Gradient_DarkBlue">

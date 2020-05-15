@@ -32,5 +32,23 @@ struct PhotosBase64Upload: Codable {
 }
 
 struct ApartmentPostCreation: Codable {
-    
+    var user_id: Int
+    var apartment_id : Int
+    var currency_id: Int
+    var lat: String
+    var lng: String
+    var address: String
+    var name: String
+    var street: String
+    var content: String
+    var ward_id: Int
+    var total_area: Int
+    var district_id: Int
+    var province_id: Int
+    var apartment_code: Int
+    var apartment_number: String
+    var property_type_id: Int
+    var post_type_id: Int
+    var images: [Int]
+    var prices: Int
 }

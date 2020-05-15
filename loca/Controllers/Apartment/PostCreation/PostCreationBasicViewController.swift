@@ -32,6 +32,7 @@ class PostCreationBasicViewController: UIViewController {
     @IBOutlet weak var squareUnitText: UILabel!
     @IBOutlet weak var costUnitText: UILabel!
     @IBOutlet weak var confirmButto: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     private var propertyData: ListData?
     private var transData: ListData?
@@ -103,7 +104,7 @@ class PostCreationBasicViewController: UIViewController {
         getPropertyType()
         getCities()
         transData = ListData.init(text: ["Bán", "Cho thuê"], id: [1,2])
-        
+        registerForKeyboardNotifications()
     }
     
     
@@ -168,6 +169,11 @@ class PostCreationBasicViewController: UIViewController {
            })
        }
     
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+    
     private func displayListView(view: UIView, listHeight: Int, text: [String], id: [Int], selectionHandler: @escaping ((String, Int) -> Void) ){
         itemView?.removeFromSuperview()
         var y = view.frame.maxY
@@ -190,4 +196,27 @@ class PostCreationBasicViewController: UIViewController {
 private struct ListData {
     var text: [String]
     var id: [Int]
+}
+
+
+extension PostCreationBasicViewController {
+    func registerForKeyboardNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    @objc func adjustForKeyboard(_ notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            scrollView.contentInset = .zero
+        } else {
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
+    }
 }

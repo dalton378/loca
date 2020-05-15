@@ -67,6 +67,10 @@ class UpdateAccountPassViewController: UIViewController {
         })
     }
     
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
     
     @objc func validateInput(_ textfield: SkyFloatingLabelTextField) {
         let validation = TextValidation()

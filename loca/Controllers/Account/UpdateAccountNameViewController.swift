@@ -14,6 +14,7 @@ class UpdateAccountNameViewController: UIViewController {
     
     @IBOutlet weak var newNameTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var confirmButton: TransitionButtonExtent!
+    @IBOutlet weak var iconImage: UIImageView!
     
     var delegate: UpdateAccountData?
     var store = AlamofireStore()
@@ -29,10 +30,13 @@ class UpdateAccountNameViewController: UIViewController {
         switch data!.type {
         case .name:
             dataString = AppConfig.shared.profileName!
+            iconImage.image = UIImage(named: "user_gradient_icon")
         case .phone:
             dataString = AppConfig.shared.profilePhone!
+            iconImage.image = UIImage(named: "phone_gradient_icon")
         case .email:
             dataString = AppConfig.shared.profileEmail!
+            iconImage.image = UIImage(named: "email_gradient_icon")
         default:
             break
         }
@@ -82,6 +86,11 @@ class UpdateAccountNameViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
     private func updatedSuccess(data: AccountUpdate){
