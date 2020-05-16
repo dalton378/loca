@@ -36,13 +36,47 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hh2-sh-tOl">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="MY1-bH-n3Y" appends="YES" id="TkB-oj-EKl"/>
+                                </connections>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rgz-Ue-EWJ">
+                                <rect key="frame" x="12" y="20" width="390" height="40"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3th-Gh-tCs">
+                                        <rect key="frame" x="362" y="10" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="8Kp-S5-N6h"/>
+                                            <constraint firstAttribute="width" constant="20" id="lqA-81-8Qz"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tìm kiếm" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y5L-mI-Gnp">
+                                        <rect key="frame" x="8" y="0.0" width="346" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="3th-Gh-tCs" secondAttribute="trailing" constant="8" id="5T4-UC-WJ0"/>
+                                    <constraint firstItem="y5L-mI-Gnp" firstAttribute="centerY" secondItem="Rgz-Ue-EWJ" secondAttribute="centerY" id="YaS-HV-nmo"/>
+                                    <constraint firstItem="y5L-mI-Gnp" firstAttribute="leading" secondItem="Rgz-Ue-EWJ" secondAttribute="leading" constant="8" id="ijo-Zl-V5f"/>
+                                    <constraint firstItem="3th-Gh-tCs" firstAttribute="centerY" secondItem="Rgz-Ue-EWJ" secondAttribute="centerY" id="mTc-hx-CZ2"/>
+                                    <constraint firstItem="3th-Gh-tCs" firstAttribute="leading" secondItem="y5L-mI-Gnp" secondAttribute="trailing" constant="8" id="vlw-qu-rDS"/>
+                                    <constraint firstItem="y5L-mI-Gnp" firstAttribute="height" secondItem="Rgz-Ue-EWJ" secondAttribute="height" id="ywa-WS-r6W"/>
+                                    <constraint firstAttribute="height" constant="40" id="zU4-IT-8UM"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="hh2-sh-tOl" firstAttribute="trailing" secondItem="A1P-UP-eXn" secondAttribute="trailing" id="0YL-2J-QHc"/>
                             <constraint firstItem="hh2-sh-tOl" firstAttribute="leading" secondItem="A1P-UP-eXn" secondAttribute="leading" id="DAI-hY-KDj"/>
+                            <constraint firstItem="A1P-UP-eXn" firstAttribute="trailing" secondItem="Rgz-Ue-EWJ" secondAttribute="trailing" constant="12" id="WhA-Yt-UoE"/>
+                            <constraint firstItem="Rgz-Ue-EWJ" firstAttribute="top" secondItem="A1P-UP-eXn" secondAttribute="top" constant="20" id="flq-gP-NDc"/>
                             <constraint firstItem="hh2-sh-tOl" firstAttribute="top" secondItem="A1P-UP-eXn" secondAttribute="top" id="l1n-nF-iRe"/>
+                            <constraint firstItem="Rgz-Ue-EWJ" firstAttribute="leading" secondItem="A1P-UP-eXn" secondAttribute="leading" constant="12" id="lGK-ua-nQs"/>
                             <constraint firstAttribute="bottom" secondItem="hh2-sh-tOl" secondAttribute="bottom" id="vrc-JS-YSM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A1P-UP-eXn"/>
@@ -51,6 +85,9 @@
                     <navigationItem key="navigationItem" id="Qz1-l6-QrC"/>
                     <connections>
                         <outlet property="mapView" destination="hh2-sh-tOl" id="uWP-Ll-AUu"/>
+                        <outlet property="searchIndicator" destination="3th-Gh-tCs" id="GhG-Jt-NL2"/>
+                        <outlet property="searchTextField" destination="y5L-mI-Gnp" id="OV8-LH-u6c"/>
+                        <outlet property="searchView" destination="Rgz-Ue-EWJ" id="MZV-Fg-IbX"/>
                         <segue destination="oaM-HV-KSV" kind="show" identifier="home_apartmentDetail" id="CsY-5T-KRW"/>
                         <segue destination="nUc-XZ-LoH" kind="show" identifier="home_manage" id="CLG-xq-UIs"/>
                         <segue destination="NsI-qh-BQi" kind="show" identifier="home_apartmentFilter" id="BUm-0a-adM"/>
@@ -59,6 +96,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xws-Ts-cLH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MY1-bH-n3Y" userLabel="hidKeyboard">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="o8A-ec-I9P" id="ipf-88-Pbj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="42.028985507246382" y="839.73214285714278"/>
         </scene>

@@ -19,8 +19,15 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
     var gestureRecognizer = UITapGestureRecognizer()
     var delegate : ApartmentPostLocationProtocol?
     
+    
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var searchTextFiled: UITextField!
+    
+    @IBOutlet weak var searchView: UIView!
     var long = ""
     var lat = ""
+    let searchRequest = MKLocalSearch.Request()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +44,60 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    
+    @IBAction func searchAddress(_ sender: UIButton) {
+        let address = searchTextFiled.text!
+        searchAdressByText(text: address)
+    }
+    
+    private func searchAdressByText(text: String){
+        searchRequest.naturalLanguageQuery = text
+        searchRequest.region = mapView.region
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { response, error in
+            guard let response = response else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error").")
+                return
+            }
+            
+            var listItem = [String]()
+            var ids = [Int]()
+            var i = 0
+            for item in response.mapItems {
+                print(item.phoneNumber ?? "No phone number.")
+                listItem.append(item.name!)
+                
+                ids.append(i)
+                i+=1
+            }
+            
+            ListView.displayListView(view: self.searchView, listHeight: 150, text: listItem, id: ids, selectionHandler: {(a,b) in
+                ListView.removeListView()
+                self.dropPinZoomIn(placemark: response.mapItems[b].placemark)
+                
+            })
+        }
+    }
+    
+    func dropPinZoomIn(placemark:MKPlacemark){
+        // cache the pin
+        //selectedPin = placemark
+        // clear existing pins
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality,
+        let state = placemark.administrativeArea {
+            annotation.subtitle = "(city) (state)"
+        }
+        mapView.addAnnotation(annotation)
+
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        mapView.setRegion(region, animated: true)
+    }
+    
     private func prepareUI(){
         TransitionButtonCustom.configureTransitionButton(button: confirmButton, tittle: "Hoàn Tất", tapHandler: nil)
         setEmptyBackButton()
@@ -45,6 +106,10 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
         gestureRecognizer.delegate = self
         mapView.addGestureRecognizer(gestureRecognizer)
         addMarker()
+        searchTextFiled.layer.cornerRadius = 10
+        searchTextFiled.delegate = self
+       
+       
     }
     
     @IBAction func back(_ sender: UITapGestureRecognizer) {
@@ -119,4 +184,16 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
 
 protocol ApartmentPostLocationProtocol {
     func getLocation(long: String, lat: String)
+}
+
+
+extension PostCreationMapViewController: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text  else {return true}
+        if text.count > 3 {
+            searchAdressByText(text: text)
+        }
+        return true
+    }
 }

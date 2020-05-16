@@ -13,11 +13,14 @@ import Floaty
 
 class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mapView: MKMapView!
     let store = AlamofireStore()
     var apartmentId = ""
     var locationManager: CLLocationManager?
-    
+    let searchRequest = MKLocalSearch.Request()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,12 +63,51 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         } )
         self.view.addSubview(floaty)
         
+        searchView.layer.cornerRadius = 10
+        searchTextField.delegate = self
+        
     }
     
-    @IBAction func accountClick(_ sender: UIButton) {
+    private func searchAdressByText(text: String){
+        searchRequest.naturalLanguageQuery = text
+        searchRequest.region = mapView.region
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { response, error in
+            self.searchIndicator.stopAnimating()
+            guard let response = response else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error").")
+                return
+            }
+            
+            var listItem = [String]()
+            var ids = [Int]()
+            var i = 0
+            for item in response.mapItems {
+                print(item.phoneNumber ?? "No phone number.")
+                listItem.append(item.name!)
+                
+                ids.append(i)
+                i+=1
+            }
+            
+            ListView.displayListView(view: self.searchView, listHeight: 150, text: listItem, id: ids, selectionHandler: {(a,b) in
+                ListView.removeListView()
+                self.dropPinZoomIn(placemark: response.mapItems[b].placemark)
+                
+            })
+        }
+    }
+    
+    func dropPinZoomIn(placemark:MKPlacemark){
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        mapView.addAnnotation(annotation)
+
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
-        
-        
+        mapView.setRegion(region, animated: true)
     }
     
     private func getDataFromServer() {
@@ -113,6 +155,12 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+        ListView.removeListView()
     }
     
     func addMarker(){
@@ -178,7 +226,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        let selectedAnnotation = view.annotation as! MakerAnnotation
+        ListView.removeListView()
+        guard let selectedAnnotation = view.annotation as? MakerAnnotation else {return}
         guard let text = selectedAnnotation.subtitle else {return}
         let fulltextArr = text.split(separator: "|")
         apartmentId = String(fulltextArr[1])
@@ -227,5 +276,18 @@ extension HomeViewController: FilterSelectionProtocol {
 extension HomeViewController: SignUpProtocol{
     func completionHandler() {
         getDataFromServer()
+    }
+}
+
+
+extension HomeViewController: UITextFieldDelegate {
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text  else {return true}
+        if text.count > 3 {
+            self.searchIndicator.startAnimating()
+            searchAdressByText(text: text)
+        }
+        return true
     }
 }

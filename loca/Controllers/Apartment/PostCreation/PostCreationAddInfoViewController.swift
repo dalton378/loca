@@ -32,8 +32,6 @@ class PostCreationAddInfoViewController: UIViewController {
     
     
     private var direction, floor, bedroom, bathroom, pool, elevator, garden, roof : ListData?
-    var itemView: ListViewCustom?
-    
     var delegate: PostCreationAddInfoProtocol?
     
     override func viewDidLoad() {
@@ -70,84 +68,68 @@ class PostCreationAddInfoViewController: UIViewController {
     
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
-        itemView?.removeFromSuperview()
+        ListView.removeListView()
     }
     
     @IBAction func showDirectionList(_ sender: UITapGestureRecognizer) {
         guard let data = direction else { return}
-        displayListView(view: directionDropdown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: directionDropdown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.directionLabel.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     
     @IBAction func showFloorList(_ sender: UITapGestureRecognizer) {
         guard let data = floor else { return}
-        displayListView(view: floorDropDown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: floorDropDown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.floorLabel.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     @IBAction func showBedroomList(_ sender: UITapGestureRecognizer) {
         guard let data = bedroom else { return}
-        displayListView(view: bedroomDropDown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: bedroomDropDown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.bedroomLabel.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     
     @IBAction func showBathroomList(_ sender: UITapGestureRecognizer) {
         guard let data = bathroom else { return}
-        displayListView(view: bathroomDropDown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: bathroomDropDown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.bathroomLabel.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     
     @IBAction func showPoolList(_ sender: UITapGestureRecognizer) {
         guard let data = pool else { return}
-        displayListView(view: poolDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: poolDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.poolLabel.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     @IBAction func showGardenList(_ sender: Any) {
         guard let data = garden else { return}
-        displayListView(view: gardenDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: gardenDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.gardenLabel.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     
     @IBAction func showElevatorList(_ sender: UITapGestureRecognizer) {
         guard let data = elevator else { return}
-        displayListView(view: elevatorDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: elevatorDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.elevatorLabel.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     @IBAction func showRoofList(_ sender: Any) {
         guard let data = roof else { return}
-        displayListView(view: rooftopDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: rooftopDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.rooftopLabel.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
-    }
-    
-    
-    private func displayListView(view: UIView, listHeight: Int, text: [String], id: [Int], selectionHandler: @escaping ((String, Int) -> Void) ){
-        itemView?.removeFromSuperview()
-        
-        var y = view.frame.maxY
-        
-        if y + CGFloat(listHeight) > (view.superview?.frame.height)! {
-            y = view.frame.minY - CGFloat(listHeight + 10)
-        }
-        itemView = ListViewCustom(frame: CGRect(x: view.frame.minX, y: y + 5, width: view.frame.width, height: CGFloat(listHeight)))
-        itemView!.setData(data: text, ids: id, selectionHandler: selectionHandler)
-        itemView?.addClearInAnimation()
-        self.view.addSubview(itemView!)
-        
     }
     
     private struct ListData{

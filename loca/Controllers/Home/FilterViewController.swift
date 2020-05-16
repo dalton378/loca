@@ -27,7 +27,6 @@ class FilterViewController: UIViewController {
     let store = AlamofireStore()
     var delegate: FilterSelectionProtocol!
     var filterSelections = [FilterSelection]()
-    var itemView: ListViewCustom?
     
     private var propertyData: ListData?
     private var costData: ListData?
@@ -47,14 +46,14 @@ class FilterViewController: UIViewController {
     }
     
     @IBAction func dismissPopup(_ sender: UITapGestureRecognizer) {
-        itemView?.removeFromSuperview()
+        ListView.removeListView()
     }
     
     @IBAction func showList(_ sender: UITapGestureRecognizer) {
         guard let data = propertyData else {return}
-        displayListView(view: propertyType, listHeight: 100, text: data.text , id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: propertyType, listHeight: 100, text: data.text , id: data.id, selectionHandler: {(text,id) in
             self.propertySelected.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
             switch id {
             case 1:
                 self.costData = ListData.init(text: ["0 - 500 triệu", "500 triệu - 1 tỷ", "1 tỳ - 2 tỷ", "2 tỷ - 5 tỷ", "5 tỷ - 10 tỷ", ">10 tỷ"], id: [1,2,3,4,5,6])
@@ -68,51 +67,38 @@ class FilterViewController: UIViewController {
     
     @IBAction func showCostList(_ sender: UITapGestureRecognizer) {
         guard let data = costData else {return}
-        displayListView(view: cost, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: cost, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.costSelected.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
+        
     }
     
     @IBAction func showProList(_ sender: Any) {
         guard let data = proData else {return}
-        displayListView(view: proType, listHeight: 250, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: proType, listHeight: 250, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.proSelected.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     
     @IBAction func showDistrcitList(_ sender: Any) {
         guard let data = districtData else {return}
-        displayListView(view: district, listHeight: 250, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: district, listHeight: 250, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.districtSelected.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     
     @IBAction func showCityList(_ sender: Any) {
         guard let data = cityData else {return}
-        displayListView(view: city, listHeight: 250, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: city, listHeight: 250, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.getDistrictByProvince(id: String(id))
             self.citySelected.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
-    
-    private func displayListView(view: UIView, listHeight: Int, text: [String], id: [Int], selectionHandler: @escaping ((String, Int) -> Void) ){
-        itemView?.removeFromSuperview()
-        var y = view.frame.maxY
-        
-        if y + CGFloat(listHeight) > (view.superview?.frame.height)! {
-            y = view.frame.minY - CGFloat(listHeight + 10)
-        }
-        itemView = ListViewCustom(frame: CGRect(x: view.frame.minX, y: y + 5, width: view.frame.width, height: CGFloat(listHeight)))
-        itemView!.setData(data: text, ids: id, selectionHandler: selectionHandler)
-        itemView?.addClearInAnimation()
-        self.view.addSubview(itemView!)
-        
-    }
-    
+
     private func getPropertyType(){
         store.getPropertyType(completionHandler: {resut in
             switch resut{

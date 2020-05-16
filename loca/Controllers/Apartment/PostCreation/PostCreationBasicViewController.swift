@@ -39,8 +39,6 @@ class PostCreationBasicViewController: UIViewController {
     private var cityData: ListData?
     private var districtData: ListData?
     
-    var itemView: ListViewCustom?
-    
     let store = AlamofireStore()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,25 +48,25 @@ class PostCreationBasicViewController: UIViewController {
     
     @IBAction func showTransList(_ sender: Any) {
         guard let data = transData else {return}
-        displayListView(view: transTypeView, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: transTypeView, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.transTypeText.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     
     @IBAction func shoPropertyList(_ sender: Any) {
         guard let data = propertyData else {return}
-        displayListView(view: propertyTypeView, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: propertyTypeView, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.propertyTypeText.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     
     @IBAction func showCityList(_ sender: Any) {
         guard let data = cityData else {return}
-        displayListView(view: cityView, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: cityView, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.cityText.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
             self.getDistrictByProvince(id: String(id))
         })
     }
@@ -76,9 +74,9 @@ class PostCreationBasicViewController: UIViewController {
     
     @IBAction func districtList(_ sender: Any) {
         guard let data = districtData else {return}
-        displayListView(view: districtView, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: districtView, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.districtText.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     
@@ -87,16 +85,16 @@ class PostCreationBasicViewController: UIViewController {
     }
     
     @IBAction func showSquareUnitList(_ sender: Any) {
-        displayListView(view: squareUnitView, listHeight: 100, text: ["m2"], id: [1], selectionHandler: {(text,id) in
+        ListView.displayListView(view: squareUnitView, listHeight: 100, text: ["m2"], id: [1], selectionHandler: {(text,id) in
             self.squareUnitText.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     
     @IBAction func showCostUnitList(_ sender: Any) {
-        displayListView(view: costunitView, listHeight: 100, text: ["tỷ", "triệu"], id: [1,2], selectionHandler: {(text,id) in
+        ListView.displayListView(view: costunitView, listHeight: 100, text: ["tỷ", "triệu"], id: [1,2], selectionHandler: {(text,id) in
             self.costUnitText.text = text
-            self.itemView?.removeFromSuperview()
+            ListView.removeListView()
         })
     }
     
@@ -173,21 +171,6 @@ class PostCreationBasicViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    
-    private func displayListView(view: UIView, listHeight: Int, text: [String], id: [Int], selectionHandler: @escaping ((String, Int) -> Void) ){
-        itemView?.removeFromSuperview()
-        var y = view.frame.maxY
-        
-        if y + CGFloat(listHeight) > (view.superview?.frame.height)! {
-            y = view.frame.minY - CGFloat(listHeight + 10)
-        }
-        itemView = ListViewCustom(frame: CGRect(x: view.frame.minX, y: y + 5, width: view.frame.width, height: CGFloat(listHeight)))
-        itemView!.setData(data: text, ids: id, selectionHandler: selectionHandler)
-        itemView?.addClearInAnimation()
-        self.view.addSubview(itemView!)
-        
-    }
-
     @IBAction func confirm(_ sender: UIButton) {
         
     }

@@ -230,11 +230,11 @@
                         <outlet property="confirmButton" destination="w93-sp-gFA" id="iDc-iB-yra"/>
                         <outlet property="tableView" destination="5OO-M1-RW6" id="37R-g4-aBd"/>
                         <segue destination="Aut-bh-6Kv" kind="show" identifier="createPost_map" id="TEX-Ke-YzV"/>
-                        <segue destination="WId-Z6-89j" kind="show" identifier="postcreation_description" id="5Yw-5x-UDR"/>
                         <segue destination="2lU-O9-lG0" kind="show" identifier="postcreation_camera" id="hcE-vD-zif"/>
                         <segue destination="lzh-fn-DdU" kind="show" identifier="postcreation_addInfo" id="nBa-vV-gBb"/>
                         <segue destination="816-0R-ypU" kind="show" identifier="createPost_contact" id="HUu-8I-rkf"/>
                         <segue destination="Dtg-dJ-vfG" kind="show" identifier="createPost_basicInfo" id="LIM-EB-N47"/>
+                        <segue destination="rOb-Hk-nNF" kind="show" identifier="postcreation_description" id="EMD-HO-YaG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJE-Ew-DuT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -801,67 +801,98 @@
             <point key="canvasLocation" x="2311.594202898551" y="1007.8125"/>
         </scene>
         <!--Post Creation Des View Controller-->
-        <scene sceneID="MY9-cY-9Zh">
+        <scene sceneID="HMS-eB-co3">
             <objects>
-                <viewController storyboardIdentifier="PostCreationDesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WId-Z6-89j" customClass="PostCreationDesViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="l4q-iX-ceM" customClass="GradientView" customModule="loca" customModuleProvider="target">
+                <viewController storyboardIdentifier="PostCreationDesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rOb-Hk-nNF" customClass="PostCreationDesViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GPY-H3-gYa" customClass="GradientView" customModule="loca" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nội dung (~ 1000 kí tự)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keL-77-vWc">
-                                <rect key="frame" x="12" y="40" width="390" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTf-Wj-SjA">
-                                <rect key="frame" x="12" y="69" width="390" height="54"/>
-                                <string key="text">Giới thiệu chung về bất động sản của bạn. Ví dụ: Khu nhà có vị trí thuận lợi. Gần công viên, gần trường học,... Tổng diện tích 200m2, hẻm ô tô.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" name="UBlack"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Utd-yD-4qJ">
-                                <rect key="frame" x="12" y="143" width="390" height="565"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qfn-eL-ycd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ekf-g0-qVG">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="629"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nội dung (~ 1000 kí tự)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USu-PH-lTE">
+                                                <rect key="frame" x="12" y="20" width="390" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Iq-dr-cCN">
+                                                <rect key="frame" x="12" y="53" width="390" height="54"/>
+                                                <string key="text">Giới thiệu chung về bất động sản của bạn. Ví dụ: Khu nhà có vị trí thuận lợi. Gần công viên, gần trường học,... Tổng diện tích 200m2, hẻm ô tô.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" name="UBlack"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6IO-ix-BHu">
+                                                <rect key="frame" x="12" y="119" width="390" height="400"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="400" id="ao2-fy-mg9"/>
+                                                </constraints>
+                                                <color key="textColor" name="UBlack"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gm-wV-pf5" customClass="TransitionButton" customModule="TransitionButton">
+                                                <rect key="frame" x="12" y="549" width="390" height="40"/>
+                                                <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="1q0-kU-4SP"/>
+                                                    <constraint firstAttribute="height" constant="40" id="4v1-SK-ho3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Hoàn Tất">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="confirm:" destination="rOb-Hk-nNF" eventType="touchUpInside" id="isJ-qa-Smc"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="6gm-wV-pf5" firstAttribute="top" secondItem="6IO-ix-BHu" secondAttribute="bottom" constant="30" id="6FI-Zh-Ukt"/>
+                                            <constraint firstItem="6gm-wV-pf5" firstAttribute="leading" secondItem="Ekf-g0-qVG" secondAttribute="leading" constant="12" id="7E7-n2-nP4"/>
+                                            <constraint firstItem="9Iq-dr-cCN" firstAttribute="top" secondItem="USu-PH-lTE" secondAttribute="bottom" constant="12" id="Ccn-Nx-GQQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="6gm-wV-pf5" secondAttribute="bottom" constant="40" id="EI8-fT-x6s"/>
+                                            <constraint firstItem="USu-PH-lTE" firstAttribute="leading" secondItem="Ekf-g0-qVG" secondAttribute="leading" constant="12" id="Guk-yH-xqU"/>
+                                            <constraint firstItem="6IO-ix-BHu" firstAttribute="leading" secondItem="Ekf-g0-qVG" secondAttribute="leading" constant="12" id="Smw-yZ-qqw"/>
+                                            <constraint firstItem="USu-PH-lTE" firstAttribute="top" secondItem="Ekf-g0-qVG" secondAttribute="top" constant="20" id="WM3-8M-2Vb"/>
+                                            <constraint firstItem="6IO-ix-BHu" firstAttribute="top" secondItem="9Iq-dr-cCN" secondAttribute="bottom" constant="12" id="ZNZ-z9-0gJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="USu-PH-lTE" secondAttribute="trailing" constant="12" id="cHg-4W-7cl"/>
+                                            <constraint firstAttribute="trailing" secondItem="6gm-wV-pf5" secondAttribute="trailing" constant="12" id="hMF-sq-EUS"/>
+                                            <constraint firstAttribute="trailing" secondItem="6IO-ix-BHu" secondAttribute="trailing" constant="12" id="iv5-Ij-XWi"/>
+                                            <constraint firstItem="9Iq-dr-cCN" firstAttribute="leading" secondItem="Ekf-g0-qVG" secondAttribute="leading" constant="12" id="ktX-AM-RAp"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Iq-dr-cCN" secondAttribute="trailing" constant="12" id="pNl-te-h5X"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbD-8Z-exy">
-                                <rect key="frame" x="12" y="748" width="390" height="40"/>
-                                <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="NiS-Jr-6KJ"/>
+                                    <constraint firstItem="Ekf-g0-qVG" firstAttribute="top" secondItem="Qfn-eL-ycd" secondAttribute="top" id="D2a-nd-p5c"/>
+                                    <constraint firstItem="Ekf-g0-qVG" firstAttribute="leading" secondItem="Qfn-eL-ycd" secondAttribute="leading" id="Jlo-Ba-PX1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ekf-g0-qVG" secondAttribute="trailing" id="cYz-Yf-fWC"/>
+                                    <constraint firstItem="Ekf-g0-qVG" firstAttribute="width" secondItem="Qfn-eL-ycd" secondAttribute="width" id="oN0-Wa-7x3"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ekf-g0-qVG" secondAttribute="bottom" id="s2J-02-Djd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Hoàn Tất">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
                                 <connections>
-                                    <action selector="confirm:" destination="WId-Z6-89j" eventType="touchUpInside" id="YRu-l4-5ig"/>
+                                    <outletCollection property="gestureRecognizers" destination="f3x-5O-SL2" appends="YES" id="NRB-TO-J10"/>
                                 </connections>
-                            </button>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Utd-yD-4qJ" firstAttribute="top" secondItem="JTf-Wj-SjA" secondAttribute="bottom" constant="20" id="A74-Fv-P3D"/>
-                            <constraint firstItem="mBX-x1-885" firstAttribute="trailing" secondItem="keL-77-vWc" secondAttribute="trailing" constant="12" id="IkA-7r-ANF"/>
-                            <constraint firstItem="keL-77-vWc" firstAttribute="top" secondItem="mBX-x1-885" secondAttribute="top" constant="40" id="KcI-bJ-ZB0"/>
-                            <constraint firstItem="Utd-yD-4qJ" firstAttribute="leading" secondItem="mBX-x1-885" secondAttribute="leading" constant="12" id="YFa-G9-mpV"/>
-                            <constraint firstItem="JTf-Wj-SjA" firstAttribute="leading" secondItem="mBX-x1-885" secondAttribute="leading" constant="12" id="Z2q-6n-1G0"/>
-                            <constraint firstItem="RbD-8Z-exy" firstAttribute="top" secondItem="Utd-yD-4qJ" secondAttribute="bottom" constant="40" id="cAm-oL-Ne5"/>
-                            <constraint firstItem="keL-77-vWc" firstAttribute="leading" secondItem="mBX-x1-885" secondAttribute="leading" constant="12" id="dQK-g3-BOC"/>
-                            <constraint firstItem="mBX-x1-885" firstAttribute="trailing" secondItem="Utd-yD-4qJ" secondAttribute="trailing" constant="12" id="hkN-X4-pk9"/>
-                            <constraint firstItem="RbD-8Z-exy" firstAttribute="leading" secondItem="mBX-x1-885" secondAttribute="leading" constant="12" id="m3g-5U-cJZ"/>
-                            <constraint firstItem="JTf-Wj-SjA" firstAttribute="top" secondItem="keL-77-vWc" secondAttribute="bottom" constant="8" id="mEi-dj-3q6"/>
-                            <constraint firstItem="mBX-x1-885" firstAttribute="bottom" secondItem="RbD-8Z-exy" secondAttribute="bottom" constant="20" id="mZC-U5-PLj"/>
-                            <constraint firstItem="mBX-x1-885" firstAttribute="trailing" secondItem="JTf-Wj-SjA" secondAttribute="trailing" constant="12" id="szc-HW-K5f"/>
-                            <constraint firstItem="mBX-x1-885" firstAttribute="trailing" secondItem="RbD-8Z-exy" secondAttribute="trailing" constant="12" id="wl9-mV-sG6"/>
+                            <constraint firstAttribute="bottom" secondItem="Qfn-eL-ycd" secondAttribute="bottom" id="FKl-w2-foe"/>
+                            <constraint firstItem="Qfn-eL-ycd" firstAttribute="top" secondItem="aSw-ek-aFK" secondAttribute="top" id="OmW-TF-xxG"/>
+                            <constraint firstItem="Qfn-eL-ycd" firstAttribute="leading" secondItem="aSw-ek-aFK" secondAttribute="leading" id="Rpe-2S-asj"/>
+                            <constraint firstAttribute="trailing" secondItem="Qfn-eL-ycd" secondAttribute="trailing" id="ecZ-rL-24M"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="mBX-x1-885"/>
+                        <viewLayoutGuide key="safeArea" id="aSw-ek-aFK"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
                                 <color key="value" name="Gradient_DarkBlue"/>
@@ -871,24 +902,22 @@
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="YES"/>
                         </userDefinedRuntimeAttributes>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="mIJ-yz-g9O" appends="YES" id="rZw-iC-81C"/>
-                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="izs-Jt-9BZ"/>
+                    <navigationItem key="navigationItem" id="XXK-Nn-cpY"/>
                     <connections>
-                        <outlet property="confirmButton" destination="RbD-8Z-exy" id="Gvl-7z-i1D"/>
-                        <outlet property="descriptionTextView" destination="Utd-yD-4qJ" id="BYa-RC-kmN"/>
+                        <outlet property="confirmButton" destination="6gm-wV-pf5" id="8XA-84-kyS"/>
+                        <outlet property="descriptionTextView" destination="6IO-ix-BHu" id="fEy-q9-DRg"/>
+                        <outlet property="scrollView" destination="Qfn-eL-ycd" id="Na6-vF-BEf"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nF8-3E-LNz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="mIJ-yz-g9O" userLabel="hideKeyboard">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uso-Kp-9sN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="f3x-5O-SL2" userLabel="HideKeyboard">
                     <connections>
-                        <action selector="dismissKeyboard:" destination="WId-Z6-89j" id="Ydl-NA-jZv"/>
+                        <action selector="dismissKeyboard:" destination="rOb-Hk-nNF" id="NH3-yF-BIa"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3314" y="1007"/>
+            <point key="canvasLocation" x="3141" y="974"/>
         </scene>
         <!--Pos Creation Contact View Controller-->
         <scene sceneID="x1l-6D-lhB">
@@ -1081,9 +1110,42 @@
                                     <outletCollection property="gestureRecognizers" destination="IxY-EA-2Yo" appends="YES" id="Vbg-md-6M2"/>
                                 </connections>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhI-x0-db4">
+                                <rect key="frame" x="12" y="75" width="390" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSm-JY-g4g">
+                                        <rect key="frame" x="350" y="4" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="KSm-JY-g4g" secondAttribute="height" multiplier="1:1" id="Gyl-zf-LQT"/>
+                                        </constraints>
+                                        <state key="normal" image="search_icon"/>
+                                        <connections>
+                                            <action selector="searchAddress:" destination="Aut-bh-6Kv" eventType="touchUpInside" id="WjR-es-KKZ"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tìm kiếm" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnB-EX-W2k">
+                                        <rect key="frame" x="12" y="0.0" width="326" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9GM-hG-d9f"/>
+                                    <constraint firstAttribute="trailing" secondItem="KSm-JY-g4g" secondAttribute="trailing" constant="8" id="GSY-p5-xgM"/>
+                                    <constraint firstItem="hnB-EX-W2k" firstAttribute="leading" secondItem="lhI-x0-db4" secondAttribute="leading" constant="12" id="PGk-2z-PHv"/>
+                                    <constraint firstItem="KSm-JY-g4g" firstAttribute="height" secondItem="lhI-x0-db4" secondAttribute="height" multiplier="0.8" id="SF1-fF-w8p"/>
+                                    <constraint firstItem="hnB-EX-W2k" firstAttribute="height" secondItem="lhI-x0-db4" secondAttribute="height" id="TCt-Ok-6Ic"/>
+                                    <constraint firstItem="KSm-JY-g4g" firstAttribute="centerY" secondItem="lhI-x0-db4" secondAttribute="centerY" id="U8g-cW-8i5"/>
+                                    <constraint firstItem="KSm-JY-g4g" firstAttribute="leading" secondItem="hnB-EX-W2k" secondAttribute="trailing" constant="12" id="sHY-RJ-Y4i"/>
+                                    <constraint firstItem="hnB-EX-W2k" firstAttribute="top" secondItem="lhI-x0-db4" secondAttribute="top" id="yOd-is-Gpf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="lhI-x0-db4" firstAttribute="top" secondItem="hRb-sZ-TAl" secondAttribute="bottom" constant="30" id="8Ql-Ob-amy"/>
+                            <constraint firstItem="lhI-x0-db4" firstAttribute="leading" secondItem="Esx-Hm-bGd" secondAttribute="leading" constant="12" id="9kJ-zG-66p"/>
                             <constraint firstItem="OS2-0b-l27" firstAttribute="top" secondItem="gEa-gt-nK2" secondAttribute="top" constant="-40" id="AWG-jt-8yW"/>
                             <constraint firstAttribute="bottom" secondItem="OS2-0b-l27" secondAttribute="bottom" id="Cdi-04-1d6"/>
                             <constraint firstItem="Esx-Hm-bGd" firstAttribute="bottom" secondItem="4ex-rR-KpB" secondAttribute="bottom" constant="30" id="Ncc-b8-FD7"/>
@@ -1091,6 +1153,7 @@
                             <constraint firstItem="4ex-rR-KpB" firstAttribute="centerX" secondItem="gEa-gt-nK2" secondAttribute="centerX" id="PXt-Lk-Ykr"/>
                             <constraint firstItem="OS2-0b-l27" firstAttribute="leading" secondItem="Esx-Hm-bGd" secondAttribute="leading" id="TiY-QH-xIt"/>
                             <constraint firstItem="OS2-0b-l27" firstAttribute="trailing" secondItem="Esx-Hm-bGd" secondAttribute="trailing" id="etP-3p-t6g"/>
+                            <constraint firstItem="Esx-Hm-bGd" firstAttribute="trailing" secondItem="lhI-x0-db4" secondAttribute="trailing" constant="12" id="hCO-0b-NAP"/>
                             <constraint firstItem="hRb-sZ-TAl" firstAttribute="top" secondItem="Esx-Hm-bGd" secondAttribute="top" constant="20" id="iAn-LP-yPE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Esx-Hm-bGd"/>
@@ -1099,6 +1162,9 @@
                     <connections>
                         <outlet property="confirmButton" destination="4ex-rR-KpB" id="tVA-OM-50e"/>
                         <outlet property="mapView" destination="OS2-0b-l27" id="qhN-d3-tSs"/>
+                        <outlet property="searchButton" destination="KSm-JY-g4g" id="Nig-84-hjP"/>
+                        <outlet property="searchTextFiled" destination="hnB-EX-W2k" id="stn-Xt-gcH"/>
+                        <outlet property="searchView" destination="lhI-x0-db4" id="NQX-ZW-qj8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjw-sQ-i1Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1633,6 +1699,7 @@
         <image name="back_icon" width="100" height="100"/>
         <image name="camera_icon" width="100" height="100"/>
         <image name="down_icon" width="100" height="100"/>
+        <image name="search_icon" width="100" height="100"/>
         <namedColor name="Gradient_DarkBlue">
             <color red="0.73333333333333328" green="0.82352941176470584" blue="0.77254901960784317" alpha="0.95099997520446777" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
