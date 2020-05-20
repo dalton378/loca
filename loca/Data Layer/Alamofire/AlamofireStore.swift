@@ -93,9 +93,14 @@ class AlamofireStore {
     
     func postFile(file: UIImage, completionHandler: @escaping ((Result<String, AFError>, Data?) -> Void )) {
         client.postFile(file: file, completionHandler: {result in
-            print(result.response?.statusCode)
             completionHandler(result.result, result.data)
         })
     }
     
+    func searchApartment(token: String, post_type_id: String, min_price: String, min_currency: String, max_price: String, max_currency: String, property_type_id: String, province_id : String, district_id: String, completionHandler:@escaping (Result<String, AFError>) -> Void ) {
+           client.searchApartment(token: token, post_type_id: post_type_id, min_price: min_price, min_currency: min_currency, max_price: max_price, max_currency: max_currency, property_type_id: property_type_id, province_id: province_id, district_id: district_id, completionHandler: {result in
+               print(result.response?.statusCode)
+            completionHandler(result.result)
+           })
+       }
 }

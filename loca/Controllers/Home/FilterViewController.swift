@@ -54,11 +54,12 @@ class FilterViewController: UIViewController {
         ListView.displayListView(view: propertyType, listHeight: 100, text: data.text , id: data.id, selectionHandler: {(text,id) in
             self.propertySelected.text = text
             ListView.removeListView()
+            self.addFilterSelection(value: String(id), type: .transType)
             switch id {
             case 1:
                 self.costData = ListData.init(text: ["0 - 500 triệu", "500 triệu - 1 tỷ", "1 tỳ - 2 tỷ", "2 tỷ - 5 tỷ", "5 tỷ - 10 tỷ", ">10 tỷ"], id: [1,2,3,4,5,6])
             case 2:
-                self.costData = ListData.init(text: ["0 - 5 triệu", "5 triệu - 10 triệu", "10 triệu - 15 triệu", "15 triệu - 20 triệu", "20 triệu - 30 triệu", ">30 triệu"], id: [1,2,3,4,5,6])
+                self.costData = ListData.init(text: ["0 - 5 triệu", "5 triệu - 10 triệu", "10 triệu - 15 triệu", "15 triệu - 20 triệu", "20 triệu - 30 triệu", ">30 triệu"], id: [7,8,9,10,11,12])
             default:
                 break
             }
@@ -70,6 +71,7 @@ class FilterViewController: UIViewController {
         ListView.displayListView(view: cost, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.costSelected.text = text
             ListView.removeListView()
+            self.addFilterSelection(value: String(id), type: .cost)
         })
         
     }
@@ -79,6 +81,7 @@ class FilterViewController: UIViewController {
         ListView.displayListView(view: proType, listHeight: 250, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.proSelected.text = text
             ListView.removeListView()
+            self.addFilterSelection(value: String(id), type: .propertyType)
         })
     }
     
@@ -87,6 +90,7 @@ class FilterViewController: UIViewController {
         ListView.displayListView(view: district, listHeight: 250, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.districtSelected.text = text
             ListView.removeListView()
+            self.addFilterSelection(value: String(id), type: .district)
         })
     }
     
@@ -96,6 +100,7 @@ class FilterViewController: UIViewController {
             self.getDistrictByProvince(id: String(id))
             self.citySelected.text = text
             ListView.removeListView()
+            self.addFilterSelection(value: String(id), type: .city)
         })
     }
 
@@ -193,6 +198,11 @@ class FilterViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
         self.delegate.getFilterSelection(selections: self.filterSelections)
         
+    }
+    
+    private func addFilterSelection(value: String, type: FilterType){
+        filterSelections.removeAll(where: {$0.type == type})
+        filterSelections.append(FilterSelection.init(value: value, type: type))
     }
 }
 

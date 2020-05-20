@@ -22,13 +22,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="1122"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H3-mf-WvQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="406" height="1220"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1228"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkj-sF-eE9">
-                                                <rect key="frame" x="0.0" y="0.0" width="406" height="406"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVK-as-e8y">
-                                                        <rect key="frame" x="0.0" y="-8" width="406" height="420"/>
+                                                        <rect key="frame" x="0.0" y="-8" width="414" height="420"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </scrollView>
                                                 </subviews>
@@ -38,17 +38,17 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gUy-jg-QdE">
-                                                <rect key="frame" x="20" y="526.5" width="366" height="673.5"/>
+                                                <rect key="frame" x="20" y="534.5" width="374" height="673.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="673.5" identifier="satckbarHeight" id="Yhp-wb-p2l"/>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-Pr-yqm">
-                                                <rect key="frame" x="20" y="426" width="366" height="80.5"/>
+                                                <rect key="frame" x="20" y="434" width="374" height="80.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTo-ZM-WHm">
-                                                        <rect key="frame" x="8" y="8" width="350" height="24"/>
+                                                        <rect key="frame" x="8" y="8" width="358" height="24"/>
                                                         <color key="tintColor" red="0.0" green="0.77647058823529413" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <string key="text">Mô tả bất động sản
 </string>
@@ -57,7 +57,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaM-lF-OOU">
-                                                        <rect key="frame" x="8" y="52" width="350" height="20.5"/>
+                                                        <rect key="frame" x="8" y="52" width="358" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" name="UBlack"/>
                                                         <nil key="highlightedColor"/>
@@ -94,7 +94,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="4H3-mf-WvQ" secondAttribute="bottom" id="A78-id-Uzr"/>
                                     <constraint firstItem="4H3-mf-WvQ" firstAttribute="leading" secondItem="zbT-c1-w9q" secondAttribute="leading" id="Iub-fE-Dz3"/>
-                                    <constraint firstItem="4H3-mf-WvQ" firstAttribute="width" secondItem="zbT-c1-w9q" secondAttribute="width" multiplier="0.980676" id="O3n-fl-0eH"/>
+                                    <constraint firstItem="4H3-mf-WvQ" firstAttribute="width" secondItem="zbT-c1-w9q" secondAttribute="width" id="O3n-fl-0eH"/>
                                     <constraint firstItem="4H3-mf-WvQ" firstAttribute="top" secondItem="zbT-c1-w9q" secondAttribute="top" id="Tl4-4L-DlQ"/>
                                     <constraint firstAttribute="trailing" secondItem="4H3-mf-WvQ" secondAttribute="trailing" id="rml-lM-l4b"/>
                                 </constraints>
@@ -128,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e23-y3-pvX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-896" y="157"/>
+            <point key="canvasLocation" x="-897.10144927536237" y="156.69642857142856"/>
         </scene>
         <!--Create Apartment Post View Controller-->
         <scene sceneID="Z3v-j4-94l">
@@ -1710,7 +1710,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UCyan">
-            <color red="0.011764705882352941" green="0.66274509803921566" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.011764706112444401" green="0.66274511814117432" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -113,6 +113,12 @@ class AlamofireRequest {
         .validate()
         .responseString(completionHandler: completionHandler)
     }
+    
+    func searchApartment(token: String, post_type_id: String, min_price: String, min_currency: String, max_price: String, max_currency: String, property_type_id: String, province_id : String, district_id: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        session.request(ApartmentApiProtocol.searchApartment(token: token, post_type_id: post_type_id, min_price: min_price, min_currency: min_currency, max_price: max_price, max_currency: max_currency, property_type_id: property_type_id, province_id: province_id, district_id: district_id))
+        .validate()
+        .responseString(completionHandler: completionHandler)
+    }
 }
 
 

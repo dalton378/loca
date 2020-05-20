@@ -22,6 +22,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var locationManager: CLLocationManager?
     let searchRequest = MKLocalSearch.Request()
     
+    var city = "", district = "", min_price = "", min_currency = "", max_price = "", max_currency = "", transaction = "", propertyType = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -176,6 +178,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     private func addApartmentAnnotation(mapView: MKMapView, apartmentList: ApartmentList){
+        mapView.removeAnnotations(mapView.annotations)
         for apartment in apartmentList.data {
             let anotation = MakerAnnotation(coordinate: CLLocationCoordinate2D(latitude: (apartment.lat as NSString).doubleValue,  longitude: (apartment.lng as NSString).doubleValue), title: "", subTitle: "\(apartment.search_text)|\(apartment.id)")
             mapView.addAnnotation(anotation)
@@ -267,9 +270,73 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 
 
 extension HomeViewController: FilterSelectionProtocol {
-    func getFilterSelection(selections: [FilterSelection]) {
-        print(selections)
+    
+    private func generateFromCostID(cost: String, min_price: inout String, min_currency: inout String, max_price: inout String, max_currency: inout String){
+        
+        switch cost {
+        case "1":
+            min_price = "0"; min_currency = "trieu"; max_price = "500"; max_currency = "trieu"
+        case "2":
+            min_price = "500"; min_currency = "trieu"; max_price = "1"; max_currency = "ty"
+        case "3":
+            min_price = "1"; min_currency = "ty"; max_price = "2"; max_currency = "ty"
+        case "4":
+            min_price = "2"; min_currency = "ty"; max_price = "5"; max_currency = "ty"
+        case "5":
+            min_price = "5"; min_currency = "ty"; max_price = "10"; max_currency = "ty"
+        case "6":
+            min_price = "10"; min_currency = "ty"
+        case "7":
+            min_price = "0"; min_currency = "trieu"; max_price = "5"; max_currency = "trieu"
+        case "8":
+            min_price = "5"; min_currency = "trieu"; max_price = "10"; max_currency = "trieu"
+        case "9":
+            min_price = "10"; min_currency = "trieu"; max_price = "15"; max_currency = "trieu"
+        case "10":
+            min_price = "15"; min_currency = "trieu"; max_price = "20"; max_currency = "trieu"
+        case "11":
+            min_price = "20"; min_currency = "trieu"; max_price = "30"; max_currency = "trieu"
+        case "12":
+            min_price = "30"; min_currency = "trieu"
+        default:
+            return
+        }
     }
+    
+    func getFilterSelection(selections: [FilterSelection]) {
+        city = ""; district = ""; min_price = ""; min_currency = ""; max_price = ""; max_currency = ""; transaction = ""; propertyType = ""
+        for section in selections {
+            switch section.type {
+            case .city:
+                city = section.value
+            case .district:
+                district = section.value
+            case .transType:
+                transaction = section.value
+            case .propertyType:
+                propertyType = section.value
+            case .cost :
+                generateFromCostID(cost: section.value, min_price: &min_price, min_currency: &min_currency, max_price: &max_price, max_currency: &max_currency)
+            default:
+                break
+            }
+        }
+        let token = AppConfig.shared.accessToken ?? ""
+        store.searchApartment(token: token, post_type_id: transaction, min_price: min_price, min_currency: min_currency, max_price: max_price, max_currency: max_currency, property_type_id: propertyType, province_id: city, district_id: district, completionHandler: { result in
+            switch result {
+            case .success(let dataString):
+                let parsedData = dataString.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
+                AppConfig.shared.apartmentList = autParams
+                self.addApartmentAnnotation(mapView: self.mapView, apartmentList: autParams)
+            case .failure:
+                return
+            }
+        })
+    }
+    
+    
+    
 }
 
 

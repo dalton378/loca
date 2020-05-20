@@ -35,7 +35,6 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
     
     private func prepareUI(){
         setEmptyBackButton()
-        self.title = "Thông Tin Chi Tiết"
     }
     
     private func getApartmentDetail(id: String) {
@@ -145,7 +144,6 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
             photoScrollView.addSubview(apartmentPhotosView[i])
         }
     }
-    
     
     struct ApartmentData {
         var icon: UIImage
