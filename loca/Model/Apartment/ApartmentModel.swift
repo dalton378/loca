@@ -21,3 +21,8 @@ struct ApartmentInfo: Codable {
     var post_type: String
     var post_type_id: Int
 }
+
+struct CommonAPIReturn: Codable {
+    var id: Int
+    var name: String
+}

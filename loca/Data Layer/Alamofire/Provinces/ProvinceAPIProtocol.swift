@@ -14,10 +14,14 @@ enum ProvinceAPIProtocol: ServicesApiRouterProtocol {
     case getProvinces(token: String)
     case getDistrictByProvince(id: String, token: String)
     case getPropertyType(token: String)
+    case getWardByDisctrict(id: String)
+    case getCurrencies(token: String)
+    case getAreaUnit(token: String)
+    case getTransactionType(token: String)
     
     var method: HTTPMethod {
         switch self {
-        case .getProvinces, .getDistrictByProvince, .getPropertyType:
+        case .getProvinces, .getDistrictByProvince, .getPropertyType, .getWardByDisctrict, .getCurrencies, .getAreaUnit, .getTransactionType:
             return .get
             
         }
@@ -31,6 +35,14 @@ enum ProvinceAPIProtocol: ServicesApiRouterProtocol {
             return "districts/\(id)"
         case .getPropertyType:
             return "property-type"
+        case .getWardByDisctrict(let id):
+            return "wards/\(id)"
+        case .getCurrencies:
+            return "commons/currencies"
+        case .getAreaUnit:
+            return "commons/area-units"
+        case .getTransactionType:
+            return "post-types"
         default:
             return ""
         }
@@ -38,19 +50,13 @@ enum ProvinceAPIProtocol: ServicesApiRouterProtocol {
     
     var encoding: ParameterEncoding {
         switch self {
-        case .getProvinces, .getDistrictByProvince, .getPropertyType:
+        case .getProvinces, .getDistrictByProvince, .getPropertyType, .getWardByDisctrict, .getCurrencies, .getAreaUnit, .getTransactionType:
             return URLEncoding.default
         }
     }
     
     var parameters: Parameters? {
         switch self {
-//        case let .login(email, phone, password):
-//            return [
-//                "email": email,
-//                "password": password,
-//                "phone": phone
-//            ]
         default:
             return [:]
         }

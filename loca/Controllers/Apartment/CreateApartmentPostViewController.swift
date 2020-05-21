@@ -11,6 +11,7 @@ import UIKit
 class CreateApartmentPostViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var tableData = [TableData]()
+    var data = ApartmentPostCreation()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var confirmButton: UIButton!
     
@@ -70,6 +71,7 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     }
     
     @IBAction func confirm(_ sender: UIButton) {
+        print(data)
     }
     
     
@@ -89,6 +91,9 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         } else if segue.identifier == "createPost_contact" {
             let view = segue.destination as! PosCreationContactViewController
             view.delegate = self
+        } else if segue.identifier == "createPost_basicInfo" {
+            let view = segue.destination as! PostCreationBasicViewController
+            view.delegate = self
         }
     }
     
@@ -101,8 +106,8 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
 
 extension CreateApartmentPostViewController: ApartmentPostLocationProtocol{
     func getLocation(long: String, lat: String) {
-        print(long)
-        print(lat)
+        data.lng = long
+        data.lat = lat
         tableData[1].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
     }
@@ -111,16 +116,23 @@ extension CreateApartmentPostViewController: ApartmentPostLocationProtocol{
 
 extension CreateApartmentPostViewController: PostCreationDescritionProtocol{
     func getDescription(description: String) {
-        print(description)
+        data.content = description
         tableData[2].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
     }
 }
 
 extension CreateApartmentPostViewController: PostCreationAddInfoProtocol {
-    func getInfo() {
+    func getInfo(direction: String, floor: String, bedroom: String, bathroom: String, pool: String, elevator: String, garden: String, roof: String) {
+        
+        data.direction = direction; data.floor_number = floor; data.bedroom_number = bedroom; data.bathroom_number = bathroom; data.pool = pool; data.garden = garden; data.rooftop = roof
+        
         tableData[3].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
+    }
+    
+    func getInfo() {
+        
     }
 }
 
@@ -133,7 +145,16 @@ extension CreateApartmentPostViewController: PostCreationCameraProtocol {
 
 extension CreateApartmentPostViewController: PostCreationContactProtocol {
     func getContact(name: String, phone: String, email: String) {
+        data.contacts.append(ApartmentContact.init(name: name, phone: phone, email: email))
         tableData[5].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
     }
 }
+
+extension CreateApartmentPostViewController: PostCreationBasicProtocol {
+    func getBasicInfo(transType: String, proType: String, city: String, district: String, ward: String, street: String, unitNum: String, square: String, squareUnit: String, price: String, priceUnit: String, startDate: String, endDate: String) {
+        
+        data.post_type_id = transType; data.property_type_id = proType; data.province_id = city; data.district_id = district; data.ward_id = ward; data.street = street; data.address = unitNum; data.area = square; data.area_unit_id = squareUnit; data.price = price; data.prices_unit_id = priceUnit; data.start_date = startDate; data.end_date = endDate
+    }
+}
+

@@ -34,12 +34,21 @@ class PostCreationBasicViewController: UIViewController {
     @IBOutlet weak var confirmButto: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    let customIndicator = CustomIndicator()
+    
     private var propertyData: ListData?
     private var transData: ListData?
     private var cityData: ListData?
     private var districtData: ListData?
+    private var wardData: ListData?
+    private var currenciesData: ListData?
+    private var areaUnitData: ListData?
+    
+    var delegate: PostCreationBasicProtocol?
     
     let store = AlamofireStore()
+    var propertyString = ""; var tranString = ""; var cityString = ""; var districtString = ""; var wardString = ""; var squareUnitString = ""; var priceUnitString = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
@@ -50,6 +59,7 @@ class PostCreationBasicViewController: UIViewController {
         guard let data = transData else {return}
         ListView.displayListView(view: transTypeView, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.transTypeText.text = text
+            self.tranString = String(id)
             ListView.removeListView()
         })
     }
@@ -58,6 +68,7 @@ class PostCreationBasicViewController: UIViewController {
         guard let data = propertyData else {return}
         ListView.displayListView(view: propertyTypeView, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.propertyTypeText.text = text
+            self.propertyString = String(id)
             ListView.removeListView()
         })
     }
@@ -66,6 +77,7 @@ class PostCreationBasicViewController: UIViewController {
         guard let data = cityData else {return}
         ListView.displayListView(view: cityView, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.cityText.text = text
+            self.cityString = String(id)
             ListView.removeListView()
             self.getDistrictByProvince(id: String(id))
         })
@@ -76,32 +88,48 @@ class PostCreationBasicViewController: UIViewController {
         guard let data = districtData else {return}
         ListView.displayListView(view: districtView, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.districtText.text = text
+            self.districtString = String(id)
+            self.getWardByDistrict(id: String(id))
             ListView.removeListView()
         })
     }
     
     @IBAction func showWardList(_ sender: Any) {
-        
+        guard let data = wardData else {return}
+        ListView.displayListView(view: wardView, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
+            self.wardText.text = text
+            self.wardString = String(id)
+            ListView.removeListView()
+        })
     }
     
     @IBAction func showSquareUnitList(_ sender: Any) {
-        ListView.displayListView(view: squareUnitView, listHeight: 100, text: ["m2"], id: [1], selectionHandler: {(text,id) in
+        guard let data = areaUnitData else {return}
+        ListView.displayListView(view: squareUnitView, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.squareUnitText.text = text
+            self.squareUnitString = String(id)
             ListView.removeListView()
         })
     }
     
     @IBAction func showCostUnitList(_ sender: Any) {
-        ListView.displayListView(view: costunitView, listHeight: 100, text: ["tỷ", "triệu"], id: [1,2], selectionHandler: {(text,id) in
+        guard let data = currenciesData else {return}
+        
+        ListView.displayListView(view: costunitView, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.costUnitText.text = text
+            self.priceUnitString = String(id)
             ListView.removeListView()
         })
     }
     
     private func prepareUI(){
+        customIndicator.addIndicator(view: self, alpha: 1)
+        customIndicator.startIndicator(timeout: 5)
         getPropertyType()
         getCities()
-        transData = ListData.init(text: ["Bán", "Cho thuê"], id: [1,2])
+        getCurrencies()
+        getAreaUnit()
+        getTransactionType()
         registerForKeyboardNotifications()
     }
     
@@ -167,12 +195,98 @@ class PostCreationBasicViewController: UIViewController {
            })
        }
     
+    private func getWardByDistrict(id: String) {
+        store.getWardByDisctrict(id: id, completionHandler: {result in
+            switch result {
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try! JSONDecoder().decode(DistrictList?.self, from: newData) else {return}
+                
+                var items = [String]()
+                var ids = [Int]()
+                for i in autParams.data {
+                    items.append(i.name)
+                    ids.append(i.id)
+                }
+                
+                self.wardData = ListData.init(text: items, id: ids)
+            case .failure:
+                return
+            }
+        })
+    }
+    
+    private func getCurrencies(){
+        store.getCurrencies(completionHandler: {(result) in
+            switch result{
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try! JSONDecoder().decode([CommonAPIReturn]?.self, from: newData) else {return}
+                
+                var items = [String]()
+                var ids = [Int]()
+                for i in autParams {
+                    items.append(i.name)
+                    ids.append(i.id)
+                }
+                self.currenciesData = ListData.init(text: items, id: ids)
+            case .failure:
+                return
+            }
+            
+        })
+    }
+    
+    private func getAreaUnit(){
+        store.getAreaUnit(completionHandler: {(result) in
+            switch result{
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try! JSONDecoder().decode([CommonAPIReturn]?.self, from: newData) else {return}
+                
+                var items = [String]()
+                var ids = [Int]()
+                for i in autParams {
+                    items.append(i.name)
+                    ids.append(i.id)
+                }
+                self.areaUnitData = ListData.init(text: items, id: ids)
+            case .failure:
+                return
+            }
+            
+        })
+    }
+    
+    private func getTransactionType(){
+           store.getTransactionType(completionHandler: {(result) in
+            self.customIndicator.stopIndicator()
+               switch result{
+               case .success(let data):
+                   let parsedData = data.data(using: .utf8)
+                   guard let newData = parsedData, let autParams = try! JSONDecoder().decode([CommonAPIReturn]?.self, from: newData) else {return}
+                   
+                   var items = [String]()
+                   var ids = [Int]()
+                   for i in autParams {
+                       items.append(i.name)
+                       ids.append(i.id)
+                   }
+                   self.transData = ListData.init(text: items, id: ids)
+               case .failure:
+                   return
+               }
+               
+           })
+       }
+    
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
     
     @IBAction func confirm(_ sender: UIButton) {
-        
+        delegate?.getBasicInfo(transType: tranString, proType: propertyString, city: cityString, district: districtString, ward: wardString, street: streetTextField.text!, unitNum: numberAddressTextField.text!, square: squareTextfield.text!, squareUnit: squareUnitString, price: costTextField.text!, priceUnit: priceUnitString, startDate: startDateTextField.text!, endDate: endDateTextField.text!)
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
@@ -202,4 +316,9 @@ extension PostCreationBasicViewController {
         }
         scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
+}
+
+
+protocol PostCreationBasicProtocol {
+    func getBasicInfo(transType: String, proType: String, city: String, district: String, ward: String, street: String, unitNum: String, square: String, squareUnit: String, price: String, priceUnit: String, startDate: String, endDate: String)
 }

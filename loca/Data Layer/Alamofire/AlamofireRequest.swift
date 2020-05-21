@@ -119,6 +119,40 @@ class AlamofireRequest {
         .validate()
         .responseString(completionHandler: completionHandler)
     }
+    
+    func createPost(data: ApartmentPostCreation, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        guard let token = AppConfig.shared.accessToken else {return}
+        session.request(ApartmentApiProtocol.createPost(token: token, data: data))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
+    func getWardByDistrict(id: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        session.request(ProvinceAPIProtocol.getWardByDisctrict(id: id))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
+    func getCurrencies(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        let token = AppConfig.shared.accessToken ?? ""
+        session.request(ProvinceAPIProtocol.getCurrencies(token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
+    func getAreaUnit(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        let token = AppConfig.shared.accessToken ?? ""
+        session.request(ProvinceAPIProtocol.getAreaUnit(token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
+    func getTransactionType(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        let token = AppConfig.shared.accessToken ?? ""
+        session.request(ProvinceAPIProtocol.getTransactionType(token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
 }
 
 

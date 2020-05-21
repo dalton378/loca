@@ -32,6 +32,7 @@ class PostCreationAddInfoViewController: UIViewController {
     
     
     private var direction, floor, bedroom, bathroom, pool, elevator, garden, roof : ListData?
+    var directionString = ""; var floorString = ""; var bedroomString = ""; var bathroomString = ""; var poolString = ""; var elevatorString = ""; var gardenString = ""; var roofString = ""
     var delegate: PostCreationAddInfoProtocol?
     
     override func viewDidLoad() {
@@ -62,7 +63,7 @@ class PostCreationAddInfoViewController: UIViewController {
     
     @IBAction func confirm(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
-        delegate?.getInfo()
+        delegate?.getInfo(direction: directionString, floor: floorString, bedroom: bedroomString, bathroom: bathroomString, pool: poolString, elevator: elevatorString, garden: gardenString, roof: roofString)
     }
     
     
@@ -75,6 +76,7 @@ class PostCreationAddInfoViewController: UIViewController {
         guard let data = direction else { return}
         ListView.displayListView(view: directionDropdown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.directionLabel.text = text
+            self.directionString = String(id)
             ListView.removeListView()
         })
     }
@@ -83,6 +85,7 @@ class PostCreationAddInfoViewController: UIViewController {
         guard let data = floor else { return}
         ListView.displayListView(view: floorDropDown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.floorLabel.text = text
+            self.floorString = String(id)
             ListView.removeListView()
         })
     }
@@ -90,6 +93,7 @@ class PostCreationAddInfoViewController: UIViewController {
         guard let data = bedroom else { return}
         ListView.displayListView(view: bedroomDropDown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.bedroomLabel.text = text
+            self.bedroomString = String(id)
             ListView.removeListView()
         })
     }
@@ -98,6 +102,7 @@ class PostCreationAddInfoViewController: UIViewController {
         guard let data = bathroom else { return}
         ListView.displayListView(view: bathroomDropDown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.bathroomLabel.text = text
+            self.bathroomString = String(id)
             ListView.removeListView()
         })
     }
@@ -106,6 +111,7 @@ class PostCreationAddInfoViewController: UIViewController {
         guard let data = pool else { return}
         ListView.displayListView(view: poolDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.poolLabel.text = text
+            self.poolString = String(id)
             ListView.removeListView()
         })
     }
@@ -113,6 +119,7 @@ class PostCreationAddInfoViewController: UIViewController {
         guard let data = garden else { return}
         ListView.displayListView(view: gardenDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.gardenLabel.text = text
+            self.gardenString = String(id)
             ListView.removeListView()
         })
     }
@@ -121,6 +128,7 @@ class PostCreationAddInfoViewController: UIViewController {
         guard let data = elevator else { return}
         ListView.displayListView(view: elevatorDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.elevatorLabel.text = text
+            self.elevatorString = String(id)
             ListView.removeListView()
         })
     }
@@ -128,6 +136,7 @@ class PostCreationAddInfoViewController: UIViewController {
         guard let data = roof else { return}
         ListView.displayListView(view: rooftopDropDown, listHeight: 100, text: data.text, id: data.id, selectionHandler: {(text,id) in
             self.rooftopLabel.text = text
+            self.roofString = String(id)
             ListView.removeListView()
         })
     }
@@ -140,7 +149,7 @@ class PostCreationAddInfoViewController: UIViewController {
 }
 
 protocol PostCreationAddInfoProtocol {
-    func getInfo()
+    func getInfo(direction: String, floor: String, bedroom: String, bathroom: String, pool: String, elevator: String, garden: String, roof: String)
 }
 
 extension PostCreationAddInfoViewController {
