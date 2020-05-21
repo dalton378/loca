@@ -50,8 +50,6 @@
 		E85C0894245D601700D8F740 /* APCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85C0893245D601700D8F740 /* APCustomView.xib */; };
 		E85C0896245D601B00D8F740 /* APCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C0895245D601B00D8F740 /* APCustomView.swift */; };
 		E85C4510245BCA5C0033CB53 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C450F245BCA5C0033CB53 /* UIViewExtension.swift */; };
-		E85C4513245BCAAA0033CB53 /* ForgotPass.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85C4512245BCAAA0033CB53 /* ForgotPass.xib */; };
-		E85C4515245BCDC90033CB53 /* ForgotPassCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C4514245BCDC90033CB53 /* ForgotPassCustomView.swift */; };
 		E85C4518245BDD910033CB53 /* TextValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85C4517245BDD910033CB53 /* TextValidation.swift */; };
 		E85DCCE72463AC65009E516D /* ListViewItemCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DCCE32463AC65009E516D /* ListViewItemCustom.swift */; };
 		E85DCCE82463AC65009E516D /* ListViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DCCE42463AC65009E516D /* ListViewCustom.swift */; };
@@ -155,8 +153,6 @@
 		E85C0893245D601700D8F740 /* APCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APCustomView.xib; sourceTree = "<group>"; };
 		E85C0895245D601B00D8F740 /* APCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APCustomView.swift; sourceTree = "<group>"; };
 		E85C450F245BCA5C0033CB53 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		E85C4512245BCAAA0033CB53 /* ForgotPass.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPass.xib; sourceTree = "<group>"; };
-		E85C4514245BCDC90033CB53 /* ForgotPassCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassCustomView.swift; sourceTree = "<group>"; };
 		E85C4517245BDD910033CB53 /* TextValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextValidation.swift; sourceTree = "<group>"; };
 		E85DCCE32463AC65009E516D /* ListViewItemCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewItemCustom.swift; sourceTree = "<group>"; };
 		E85DCCE42463AC65009E516D /* ListViewCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCustom.swift; sourceTree = "<group>"; };
@@ -315,7 +311,6 @@
 				E85DCCC9246399BF009E516D /* ListView */,
 				E870ED5E245F01FC00B9204A /* Update */,
 				E84FD1D2245D182C00E10507 /* ApartmentPreview */,
-				E85C4511245BCA980033CB53 /* Forgot Pass */,
 				E8315D3D245AFFFB0022D4A7 /* SignIn */,
 				8E7192F424401C5000DB814A /* Main.storyboard */,
 				E84FD1D8245D21AA00E10507 /* Apartment.storyboard */,
@@ -483,15 +478,6 @@
 				8E7A513D246985C200A7C716 /* UITextViewExtension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		E85C4511245BCA980033CB53 /* Forgot Pass */ = {
-			isa = PBXGroup;
-			children = (
-				E85C4512245BCAAA0033CB53 /* ForgotPass.xib */,
-				E85C4514245BCDC90033CB53 /* ForgotPassCustomView.swift */,
-			);
-			path = "Forgot Pass";
 			sourceTree = "<group>";
 		};
 		E85C4516245BDD800033CB53 /* Validation */ = {
@@ -675,7 +661,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E7192FB24401C5D00DB814A /* LaunchScreen.storyboard in Resources */,
-				E85C4513245BCAAA0033CB53 /* ForgotPass.xib in Resources */,
 				8E7192F824401C5D00DB814A /* Assets.xcassets in Resources */,
 				8EC361A42461576900F2F3EF /* ApartmentPreviewPhoto.xib in Resources */,
 				E85C0894245D601700D8F740 /* APCustomView.xib in Resources */,
@@ -863,7 +848,6 @@
 				8EC361AA2461603A00F2F3EF /* DateFormatter+extension.swift in Sources */,
 				8ED3C6CC24699A1500A49530 /* HomeNavigationViewController.swift in Sources */,
 				E8510F1424592B38004BE65A /* AcountModel.swift in Sources */,
-				E85C4515245BCDC90033CB53 /* ForgotPassCustomView.swift in Sources */,
 				8E86298A2460276B007A5C07 /* SignUpViewController.swift in Sources */,
 				E8510F04245922F4004BE65A /* AlamofireRequest.swift in Sources */,
 				E85C4510245BCA5C0033CB53 /* UIViewExtension.swift in Sources */,

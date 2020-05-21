@@ -27,10 +27,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        guard  let token = AppConfig.shared.accessToken else {
-            return
-        }
-        
         getDataFromServer()
     }
     
@@ -113,8 +109,12 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     private func getDataFromServer() {
-        getUserData()
+       
         getApartmentList()
+        guard  let _ = AppConfig.shared.accessToken else {
+            return
+        }
+         getUserData()
     }
     
     private func getUserData(){

@@ -62,7 +62,7 @@ class SignInMessage: MessageView, GIDSignInDelegate {
         FloatingTextField.configureFloatingText(textfield: passwordTextfield, placeHolder: "Password", title: "Password")
         passwordTextfield.addTarget(self, action: #selector(self.validateInput(_:)), for: .editingChanged)
         
-        FloatingTextField.configureFloatingText(textfield: phoneTextfield, placeHolder: "Số điẹn thoại", title: "Số điện thoại")
+        FloatingTextField.configureFloatingText(textfield: phoneTextfield, placeHolder: "Số điện thoại", title: "Số điện thoại")
         phoneTextfield.addTarget(self, action: #selector(self.validateInput(_:)), for: .editingChanged)
         
         TransitionButtonCustom.configureTransitionButton(button: buttonSign, tittle: "Đăng Nhập", tapHandler: nil)

@@ -33,35 +33,35 @@ class AlamofireRequest {
     }
     
     func getApartment(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
-        guard let token = AppConfig.shared.accessToken else {return}
+        let token = AppConfig.shared.accessToken ?? ""
         session.request(ApartmentApiProtocol.getApartment(token: token))
             .validate()
             .responseString(completionHandler: completionHandler)
     }
     
     func getApartmentDetail(id: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
-        guard let token = AppConfig.shared.accessToken else {return}
+        let token = AppConfig.shared.accessToken ?? ""
         session.request(ApartmentApiProtocol.getApartmentDetail(id: id, token: token))
             .validate()
             .responseString(completionHandler: completionHandler)
     }
     
     func getPropertyType(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
-        guard let token = AppConfig.shared.accessToken else {return}
+        let token = AppConfig.shared.accessToken ?? ""
         session.request(ApartmentApiProtocol.getPropertyType(token: token))
             .validate()
             .responseString(completionHandler: completionHandler)
     }
     
     func getProvinces(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
-        guard let token = AppConfig.shared.accessToken else {return}
+        let token = AppConfig.shared.accessToken ?? ""
         session.request(ProvinceAPIProtocol.getProvinces(token: token))
             .validate()
             .responseString(completionHandler: completionHandler)
     }
     
     func getDistrictByProvince(id: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
-        guard let token = AppConfig.shared.accessToken else {return}
+        let token = AppConfig.shared.accessToken ?? ""
         session.request(ProvinceAPIProtocol.getDistrictByProvince(id: id, token: token))
             .validate()
             .responseString(completionHandler: completionHandler)

@@ -46,9 +46,26 @@ struct ApartmentPostCreation: Codable {
     var district_id: Int
     var province_id: Int
     var apartment_code: Int
-    var apartment_number: String
-    var property_type_id: Int
+    var apartment_number: Int
+    var property_type_id: String
     var post_type_id: Int
     var images: [Int]
     var prices: Int
+    var area: String
+    var area_unit_id: Int
+    var bathroom_number: Int
+    var bedroom_number: Int
+    var contacts: [ApartmentContact]
+    var description: String
+    var direction: String
+    var end_date: String
+    var floor_number: Int
+    var garden: String
+    var id: Int
+    var pool: String
+    var price: String
+    var region: String?
+    var start_date: String
 }
+
+
