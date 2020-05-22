@@ -7,28 +7,64 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class PosCreationContactViewController: UIViewController {
-
-    @IBOutlet weak var nameTextField: UITextField!
     
-    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var nameTextField: SkyFloatingLabelTextField!
     
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var phoneTextField: SkyFloatingLabelTextField!
+    
+    @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
     
     @IBOutlet weak var confirmButton: UIButton!
     
     var delegate: PostCreationContactProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
         setEmptyBackButton()
         confirmButton.layer.cornerRadius = 10
     }
     
+    private func setupUI(){
+        FloatingTextField.configureFloatingText(textfield: nameTextField, placeHolder: "Họ Tên", title: "Họ Tên")
+        
+        FloatingTextField.configureFloatingText(textfield: phoneTextField, placeHolder: "Số điện thoại", title: "Số điện thoại")
+        phoneTextField.addTarget(self, action: #selector(self.validateInput(_:)), for: .editingChanged)
+        FloatingTextField.configureFloatingText(textfield: emailTextField, placeHolder: "Email", title: "Email")
+        emailTextField.addTarget(self, action: #selector(self.validateInput(_:)), for: .editingChanged)
+    }
+    
+    @objc func validateInput(_ textfield: SkyFloatingLabelTextField) {
+        
+        let validation = TextValidation()
+        if let text = textfield.text {
+            var result: ResultTextValidation?
+            if textfield == emailTextField {
+                result = validation.validateByRule(rules: [.empty, .emailPattern], text: text)
+                
+            } else if textfield == phoneTextField {
+                result = validation.validateByRule(rules: [.empty, .phone], text: text)
+            }
+            guard let _ = result?.isFailed else{
+                textfield.errorMessage = ""
+                confirmButton.isEnabled = true
+                return }
+            
+            textfield.errorMessage = result?.message
+            confirmButton.isEnabled = false
+        }
+    }
+    
     @IBAction func confirm(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-        delegate?.getContact(name: emailTextField.text!, phone: phoneTextField.text!, email: emailTextField.text!)
+        
+        if emailTextField.text!.isEmpty || phoneTextField.text!.isEmpty || emailTextField.text!.isEmpty {
+            Messages.displayErrorMessage(message: "Vui lòng nhập đầy đủ thông tin")
+        } else {
+            self.navigationController?.popViewController(animated: true)
+            delegate?.getContact(name: emailTextField.text!, phone: phoneTextField.text!, email: emailTextField.text!)
+        }
     }
 }
 

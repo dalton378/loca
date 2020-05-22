@@ -42,6 +42,7 @@ class PostCreationAddInfoViewController: UIViewController {
     }
     
     private func prepareUI(){
+        confirmButton.layer.cornerRadius = 10
         direction = ListData.init(text: ["Đông","Tây","Nam","Bắc","Đông Nam","Đông Bắc", "Tây Nam","Tây Bắc"], id: [1,2,3,4,5,6,7,8])
         
         var num = [Int]()

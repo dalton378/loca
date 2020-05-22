@@ -31,7 +31,7 @@ class PostCreationBasicViewController: UIViewController {
     @IBOutlet weak var wardText: UILabel!
     @IBOutlet weak var squareUnitText: UILabel!
     @IBOutlet weak var costUnitText: UILabel!
-    @IBOutlet weak var confirmButto: UIButton!
+    @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
     let customIndicator = CustomIndicator()
@@ -123,8 +123,13 @@ class PostCreationBasicViewController: UIViewController {
     }
     
     private func prepareUI(){
+        confirmButton.layer.cornerRadius = 10
         customIndicator.addIndicator(view: self, alpha: 1)
         customIndicator.startIndicator(timeout: 5)
+        let startDate = DateTimePicker(view: self.view, textField: startDateTextField)
+        startDate.showDatePicker()
+        let endDate = DateTimePicker(view: self.view, textField: endDateTextField)
+        endDate.showDatePicker()
         getPropertyType()
         getCities()
         getCurrencies()
@@ -282,14 +287,19 @@ class PostCreationBasicViewController: UIViewController {
     
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
+        ListView.removeListView()
     }
     
     @IBAction func confirm(_ sender: UIButton) {
-        delegate?.getBasicInfo(transType: tranString, proType: propertyString, city: cityString, district: districtString, ward: wardString, street: streetTextField.text!, unitNum: numberAddressTextField.text!, square: squareTextfield.text!, squareUnit: squareUnitString, price: costTextField.text!, priceUnit: priceUnitString, startDate: startDateTextField.text!, endDate: endDateTextField.text!)
-        self.navigationController?.popViewController(animated: true)
+        if tranString.isEmpty || propertyString.isEmpty || cityString.isEmpty || districtString.isEmpty || wardString.isEmpty || streetTextField.text!.isEmpty || numberAddressTextField.text!.isEmpty || squareTextfield.text!.isEmpty || squareUnitString.isEmpty || costTextField.text!.isEmpty || priceUnitString.isEmpty || startDateTextField.text!.isEmpty || endDateTextField.text!.isEmpty {
+            Messages.displayErrorMessage(message: "Vui lòng nhập đầy đủ thông tin")
+        } else {
+            delegate?.getBasicInfo(transType: tranString, proType: propertyString, city: cityString, district: districtString, ward: wardString, street: streetTextField.text!, unitNum: numberAddressTextField.text!, square: squareTextfield.text!, squareUnit: squareUnitString, price: costTextField.text!, priceUnit: priceUnitString, startDate: startDateTextField.text!, endDate: endDateTextField.text!)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
-    
 }
+
 private struct ListData {
     var text: [String]
     var id: [Int]

@@ -116,7 +116,7 @@ extension CreateApartmentPostViewController: ApartmentPostLocationProtocol{
 
 extension CreateApartmentPostViewController: PostCreationDescritionProtocol{
     func getDescription(description: String) {
-        data.content = description
+        data.description = description
         tableData[2].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
     }
@@ -154,7 +154,10 @@ extension CreateApartmentPostViewController: PostCreationContactProtocol {
 extension CreateApartmentPostViewController: PostCreationBasicProtocol {
     func getBasicInfo(transType: String, proType: String, city: String, district: String, ward: String, street: String, unitNum: String, square: String, squareUnit: String, price: String, priceUnit: String, startDate: String, endDate: String) {
         
-        data.post_type_id = transType; data.property_type_id = proType; data.province_id = city; data.district_id = district; data.ward_id = ward; data.street = street; data.address = unitNum; data.area = square; data.area_unit_id = squareUnit; data.price = price; data.prices_unit_id = priceUnit; data.start_date = startDate; data.end_date = endDate
+        data.post_type_id = transType; data.property_type_id = proType; data.province_id = city; data.district_id = district; data.ward_id = ward; data.street = street; data.address = unitNum; data.area = square; data.area_unit_id = squareUnit; data.price = price; data.currency_id = priceUnit; data.start_date = startDate; data.end_date = endDate
+        
+        tableData[0].status = UIImage(named: "green_check_icon")!
+        tableView.reloadData()
     }
 }
 
