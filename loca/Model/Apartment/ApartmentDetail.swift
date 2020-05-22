@@ -12,9 +12,9 @@ import Foundation
 struct ApartmentDetail: Codable {
     var id: Int
     var track_id: Int
-    var post_id: Int
+    var post_id: Int?
     var start_date: String
-    var post_status: Int
+    var post_status: Int?
     var end_date: String
     var project: String?
     var property_type: PropertyType
@@ -106,4 +106,53 @@ struct ApartmentContact: Codable {
 struct ApartmentPhotoDetail: Codable {
     var original: String
     var thumbnail: String
+}
+
+struct ApartmentPostList: Codable {
+    var current_page: Int
+    var data: [ApartmentPostDetail]
+    var total: Int
+}
+
+
+struct ApartmentPostDetail: Codable {
+    var id: Int
+    var track_id: Int
+    var post_id: Int?
+    var start_date: String
+    var post_status: Int?
+    var end_date: String
+    var project: String?
+    var property_type: PropertyTypePost
+    var post_type: PostType
+    var user_id: Int
+    var region: String?
+    var address: String
+    var province: Province
+    var district: District
+    var ward: Ward
+    var images: [ApartmentPhotos]
+    var street: String
+    var apartment_number: Int?
+    var apartment_code: String?
+    var direction: String
+    var lat: CFloat
+    var lng: CFloat
+    var area: String
+    var area_unit: AreadUnit
+    var floor_number: Int?
+    var bedroom_number: Int?
+    var bathroom_number: Int?
+    var rooftop: Int?
+    var garden: String?
+    var pool: String?
+    var description: String
+    var price: String
+    var currency: Currency
+    var contacts: [ApartmentContact]
+}
+
+struct PropertyTypePost: Codable {
+    var id: String
+    var name: String
 }

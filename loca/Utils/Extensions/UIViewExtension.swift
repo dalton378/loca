@@ -56,8 +56,8 @@ extension UIView
             break
         }
         
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.05 * Double(index),
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.03 * Double(index),
                        usingSpringWithDamping: 0.8,
                        initialSpringVelocity: 0,
                        options: .curveEaseIn,

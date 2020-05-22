@@ -497,6 +497,7 @@
                         <segue destination="9ZG-Se-P3s" kind="show" identifier="accountSetting_updateName" id="sN6-zc-yVo"/>
                         <segue destination="2eV-p2-Krd" kind="show" identifier="accountSetting_updatePass" id="SLI-He-Ues"/>
                         <segue destination="JIb-iO-mEV" kind="show" identifier="manageaccount_contact" id="OXM-LH-D9h"/>
+                        <segue destination="bXc-E0-Jfc" kind="show" identifier="manageaccount_postmanage" id="Sd3-nW-zyz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2C-z9-0JM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1188,6 +1189,77 @@
             </objects>
             <point key="canvasLocation" x="2642" y="1663"/>
         </scene>
+        <!--Post Manage List View Controller-->
+        <scene sceneID="fTQ-tZ-Dci">
+            <objects>
+                <viewController storyboardIdentifier="PostManageListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bXc-E0-Jfc" customClass="PostManageListViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7wY-RN-9sQ" customClass="GradientView" customModule="loca" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IN0-ho-UDI">
+                                <rect key="frame" x="107" y="0.0" width="200" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHX-YN-6Vo">
+                                        <rect key="frame" x="42" y="31.5" width="116.5" height="137.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="115"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4129827023" green="0.40107023720000001" blue="0.65212726590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="WHX-YN-6Vo" firstAttribute="centerY" secondItem="IN0-ho-UDI" secondAttribute="centerY" id="10R-az-kM6"/>
+                                    <constraint firstItem="WHX-YN-6Vo" firstAttribute="centerX" secondItem="IN0-ho-UDI" secondAttribute="centerX" id="KZ1-E5-uHe"/>
+                                    <constraint firstAttribute="height" constant="200" id="Tca-Z7-7qU"/>
+                                    <constraint firstAttribute="width" constant="200" id="wMV-qx-mVr"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="O1n-Qq-4Iw">
+                                <rect key="frame" x="0.0" y="210" width="414" height="598"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="post" id="aee-Ky-oT7">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aee-Ky-oT7" id="lnI-DZ-CgT">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="IN0-ho-UDI" firstAttribute="top" secondItem="Udo-ot-mCL" secondAttribute="top" id="4eZ-fQ-VkG"/>
+                            <constraint firstItem="O1n-Qq-4Iw" firstAttribute="top" secondItem="IN0-ho-UDI" secondAttribute="bottom" constant="10" id="9Tc-Ub-x0b"/>
+                            <constraint firstAttribute="bottom" secondItem="O1n-Qq-4Iw" secondAttribute="bottom" id="IWA-9A-RwO"/>
+                            <constraint firstItem="IN0-ho-UDI" firstAttribute="centerX" secondItem="7wY-RN-9sQ" secondAttribute="centerX" id="NNm-Bf-3u2"/>
+                            <constraint firstItem="O1n-Qq-4Iw" firstAttribute="trailing" secondItem="Udo-ot-mCL" secondAttribute="trailing" id="bzj-32-rkp"/>
+                            <constraint firstItem="O1n-Qq-4Iw" firstAttribute="leading" secondItem="Udo-ot-mCL" secondAttribute="leading" id="rEM-Gj-fv9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Udo-ot-mCL"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="Gradient_DarkBlue"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="Gradient_Grey"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" id="aeT-n2-wT7"/>
+                    <connections>
+                        <outlet property="circleRing" destination="IN0-ho-UDI" id="VIZ-o7-vjw"/>
+                        <outlet property="postNumberLabel" destination="WHX-YN-6Vo" id="ysG-Jo-BsK"/>
+                        <outlet property="tableView" destination="O1n-Qq-4Iw" id="OT2-hM-Fu5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SF6-N5-4bO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3522" y="1663"/>
+        </scene>
     </scenes>
     <resources>
         <image name="down_icon" width="100" height="100"/>
@@ -1205,7 +1277,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UCyan">
-            <color red="0.011764706112444401" green="0.66274511814117432" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.011764705882352941" green="0.66274509803921566" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

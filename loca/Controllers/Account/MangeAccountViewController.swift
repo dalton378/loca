@@ -36,6 +36,7 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         settingData.append(SettingData.init(icon: UIImage(named: "password_icon")!, description: "Cập nhật Password"))
         settingData.append(SettingData.init(icon: UIImage(named: "letter_icon")!, description: "Liên hệ với LocaLoca"))
         settingData.append(SettingData.init(icon: UIImage(named: "letter_icon")!, description: "Đăng tin"))
+        settingData.append(SettingData.init(icon: UIImage(named: "management_icon")!, description: "Quản lý tin"))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,6 +72,8 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
             performSegue(withIdentifier: "manageaccount_contact", sender: self)
         case 5:
             performSegue(withIdentifier: "mangeaccount_createpost", sender: self)
+        case 6:
+            performSegue(withIdentifier: "manageaccount_postmanage", sender: self)
         default:
             print("2")
         }

@@ -140,4 +140,11 @@ class AlamofireStore {
         })
     }
     
+    func getPost(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.getPost(completionHandler: {result in
+            print(result.response?.statusCode)
+            completionHandler(result.result)
+        })
+    }
+    
 }
