@@ -12,6 +12,7 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     
     var tableData = [TableData]()
     var data = ApartmentPostCreation()
+    let store = AlamofireStore()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var confirmButton: UIButton!
     
@@ -72,6 +73,20 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     
     @IBAction func confirm(_ sender: UIButton) {
         print(data)
+        store.createPost(data: data, completionHandler: { (result, data) in
+            switch result {
+            case .success(let dataString):
+                
+                print(dataString)
+//                let parsedData = dataString.data(using: .utf8)
+//                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
+                
+            case .failure:
+                print(data)
+                return
+            }
+            
+        })
     }
     
     
@@ -129,10 +144,6 @@ extension CreateApartmentPostViewController: PostCreationAddInfoProtocol {
         
         tableData[3].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
-    }
-    
-    func getInfo() {
-        
     }
 }
 

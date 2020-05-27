@@ -62,6 +62,7 @@
 		E86B068B245DB27D00F5D501 /* CustomIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B068A245DB27D00F5D501 /* CustomIndicator.swift */; };
 		E86B68432459B3D700AF6659 /* MangeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */; };
 		E870ED5D245EF83E00B9204A /* AccountSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */; };
+		E87E10F524790B4F00307263 /* ApartmentPostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87E10F424790B4F00307263 /* ApartmentPostList.swift */; };
 		E8818B5C24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8818B5B24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift */; };
 		E894788E245E6D5100BA845E /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894788D245E6D5100BA845E /* FilterViewController.swift */; };
 		E8947890245E70F200BA845E /* DropDownExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894788F245E70F200BA845E /* DropDownExtension.swift */; };
@@ -167,6 +168,7 @@
 		E86B068A245DB27D00F5D501 /* CustomIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomIndicator.swift; sourceTree = "<group>"; };
 		E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangeAccountViewController.swift; sourceTree = "<group>"; };
 		E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		E87E10F424790B4F00307263 /* ApartmentPostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentPostList.swift; sourceTree = "<group>"; };
 		E8818B5B24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationCameraCollectionViewCell.swift; sourceTree = "<group>"; };
 		E894788D245E6D5100BA845E /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		E894788F245E70F200BA845E /* DropDownExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownExtension.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				E84FD1CD245D085A00E10507 /* ApartmentModel.swift */,
 				E84FD1DE245D282E00E10507 /* ApartmentDetail.swift */,
 				E8EDDB87246193790099691B /* ApartmentPost.swift */,
+				E87E10F424790B4F00307263 /* ApartmentPostList.swift */,
 			);
 			path = Apartment;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				E816E4D1246596D10042BE48 /* PostCreationBasicViewController.swift in Sources */,
 				E85DCCE82463AC65009E516D /* ListViewCustom.swift in Sources */,
 				E8947896245E971D00BA845E /* UIViewControllerExtension.swift in Sources */,
+				E87E10F524790B4F00307263 /* ApartmentPostList.swift in Sources */,
 				E84FD1CE245D085A00E10507 /* ApartmentModel.swift in Sources */,
 				E8947898245E986800BA845E /* UIColorExtension.swift in Sources */,
 				E8648EFC2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift in Sources */,

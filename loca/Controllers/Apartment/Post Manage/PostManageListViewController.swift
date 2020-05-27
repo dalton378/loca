@@ -37,7 +37,7 @@ class PostManageListViewController: UIViewController {
             switch result {
             case .success(let data):
                 let parsedData = data.data(using: .utf8)
-                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentPostList.self, from: newData) else {return}
+                guard let newData = parsedData, let autParams = try! JSONDecoder().decode(ApartmentPostList?.self, from: newData) else {return}
                 for item in autParams.data {
                     self.data.append(item)
                 }
