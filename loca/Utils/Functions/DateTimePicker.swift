@@ -50,7 +50,7 @@ class DateTimePicker: UIDatePicker {
     @objc func donedatePicker(){
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "yyyy-MM-dd"
         textFiled!.text = formatter.string(from: self.date)
         self.view!.endEditing(true)
     }

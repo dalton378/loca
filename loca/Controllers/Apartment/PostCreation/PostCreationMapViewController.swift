@@ -24,8 +24,8 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
     @IBOutlet weak var searchTextFiled: UITextField!
     
     @IBOutlet weak var searchView: UIView!
-    var long = ""
-    var lat = ""
+    var long = 0.0
+    var lat = 0.0
     let searchRequest = MKLocalSearch.Request()
     
     
@@ -95,6 +95,9 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
 
         let region = MKCoordinateRegion(center: placemark.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
+        self.lat = placemark.coordinate.latitude
+        self.long = placemark.coordinate.longitude
+        
         mapView.setRegion(region, animated: true)
     }
     
@@ -152,8 +155,8 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
         let location = gestureReconizer.location(in: mapView)
         let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
         
-        long = String(coordinate.longitude)
-        lat = String(coordinate.latitude)
+        long = coordinate.longitude
+        lat = coordinate.latitude
         // Add annotation:
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
@@ -183,7 +186,7 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
 }
 
 protocol ApartmentPostLocationProtocol {
-    func getLocation(long: String, lat: String)
+    func getLocation(long: Double, lat: Double)
 }
 
 

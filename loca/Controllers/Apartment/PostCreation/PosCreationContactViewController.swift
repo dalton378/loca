@@ -63,7 +63,7 @@ class PosCreationContactViewController: UIViewController {
             Messages.displayErrorMessage(message: "Vui lòng nhập đầy đủ thông tin")
         } else {
             self.navigationController?.popViewController(animated: true)
-            delegate?.getContact(name: emailTextField.text!, phone: phoneTextField.text!, email: emailTextField.text!)
+            delegate?.getContact(name: nameTextField.text!, phone: phoneTextField.text!, email: emailTextField.text!)
         }
     }
 }
