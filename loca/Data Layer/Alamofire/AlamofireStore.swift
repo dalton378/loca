@@ -147,4 +147,18 @@ class AlamofireStore {
         })
     }
     
+    func getFBUserId(token: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.getFBUserId(token: token, completionHandler: {result in
+            print(result.response?.statusCode)
+            completionHandler(result.result)
+        })
+    }
+    
+    func socialLogin(name: String, id: String, provider: String, email: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.socialLogin(name: name, id: id, provider: provider, email: email, completionHandler: {result in
+            print(result.response?.statusCode)
+            completionHandler(result.result)
+        })
+    }
+    
 }

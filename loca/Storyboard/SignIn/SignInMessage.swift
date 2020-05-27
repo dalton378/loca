@@ -35,6 +35,8 @@ class SignInMessage: MessageView, GIDSignInDelegate {
     var openSignUpAction: (() -> Void)?
     var forgotPass: (() -> Void)?
     
+    let store = AlamofireStore()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -81,6 +83,34 @@ class SignInMessage: MessageView, GIDSignInDelegate {
             
             // Print out access token
             print("FB Access Token: \(String(describing: AccessToken.current?.tokenString))")
+            
+            guard let token = AccessToken.current?.tokenString else {return}
+            
+            self.store.getFBUserId(token: token, completionHandler: {(result) in
+                switch result {
+                case .success(let data):
+                    let parsedData = data.data(using: .utf8)
+                    guard let newData = parsedData, let autParams = try? JSONDecoder().decode(SocialMediaApiModel.self, from: newData) else {return}
+                    self.store.socialLogin(name: autParams.name, id: autParams.id, provider: "Facebook", email: "", completionHandler: {result in
+                        switch result {
+                        case .success(let data):
+                            let parsedData = data.data(using: .utf8)
+                            guard let newData = parsedData, let autParams = try? JSONDecoder().decode(AccountModel.self, from: newData) else { return}
+                            AppConfig.shared.accessToken = autParams.access_token
+                            AppConfig.shared.isSignedIn = true
+                            self.exitAction?()
+                            Messages.displaySuccessMessage(message: "Đăng Nhập Thành Công.")
+                            self.doneAction?()
+                        case .failure:
+                            return
+                        }
+                    })
+                case .failure:
+                    return
+                }
+                
+                print(result)
+            })
             
         }
         

@@ -154,12 +154,25 @@ class AlamofireRequest {
             .responseString(completionHandler: completionHandler)
     }
     
+    func getFBUserId(token: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        session.request(FBApiProtocol.getFBUserId(token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
     func getPost(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
-           let token = AppConfig.shared.accessToken ?? ""
-           session.request(ApartmentApiProtocol.getPost(token: token))
-               .validate()
-               .responseString(completionHandler: completionHandler)
-       }
+        let token = AppConfig.shared.accessToken ?? ""
+        session.request(ApartmentApiProtocol.getPost(token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
+    func socialLogin(name: String, id: String, provider: String, email: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        session.request(AccountApiProtocol.socialLogin(name: name, id: id, provider: provider, email: email))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
 }
 
 

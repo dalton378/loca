@@ -32,10 +32,10 @@ class UpdateAccountNameViewController: UIViewController {
             dataString = AppConfig.shared.profileName!
             iconImage.image = UIImage(named: "user_gradient_icon")
         case .phone:
-            dataString = AppConfig.shared.profilePhone!
+            dataString = AppConfig.shared.profilePhone ?? ""
             iconImage.image = UIImage(named: "phone_gradient_icon")
         case .email:
-            dataString = AppConfig.shared.profileEmail!
+            dataString = AppConfig.shared.profileEmail ?? ""
             iconImage.image = UIImage(named: "email_gradient_icon")
         default:
             break

@@ -31,6 +31,8 @@
 		8EE37B8E2467BF3B0094CE6B /* UpdateAccountPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE37B8D2467BF3B0094CE6B /* UpdateAccountPassViewController.swift */; };
 		E31EBBCA5BF0C0966847A0B5 /* Pods_loca_locaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */; };
 		E80049D0246F8E4600AAD711 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80049CF246F8E4600AAD711 /* ListView.swift */; };
+		E8165DFF247E6D0F009666BC /* SocialMediaApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8165DFE247E6D0F009666BC /* SocialMediaApiProtocol.swift */; };
+		E8165E02247E7263009666BC /* SocialMediaApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8165E01247E7263009666BC /* SocialMediaApiModel.swift */; };
 		E816E4D1246596D10042BE48 /* PostCreationBasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E816E4D0246596D10042BE48 /* PostCreationBasicViewController.swift */; };
 		E8315D3F245B00180022D4A7 /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8315D3E245B00180022D4A7 /* SignIn.xib */; };
 		E8315D44245B0D6E0022D4A7 /* SignInMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8315D43245B0D6E0022D4A7 /* SignInMessage.swift */; };
@@ -137,6 +139,8 @@
 		E71F892B618BB5E2BD1670FD /* Pods-loca-locaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.debug.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E74478F0BBC2F7922F203972 /* Pods-locaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-locaTests.debug.xcconfig"; path = "Target Support Files/Pods-locaTests/Pods-locaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E80049CF246F8E4600AAD711 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		E8165DFE247E6D0F009666BC /* SocialMediaApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaApiProtocol.swift; sourceTree = "<group>"; };
+		E8165E01247E7263009666BC /* SocialMediaApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaApiModel.swift; sourceTree = "<group>"; };
 		E816E4D0246596D10042BE48 /* PostCreationBasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationBasicViewController.swift; sourceTree = "<group>"; };
 		E8315D3E245B00180022D4A7 /* SignIn.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignIn.xib; sourceTree = "<group>"; };
 		E8315D43245B0D6E0022D4A7 /* SignInMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMessage.swift; sourceTree = "<group>"; };
@@ -312,6 +316,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E8165DFD247E6CE0009666BC /* Social Media */ = {
+			isa = PBXGroup;
+			children = (
+				E8165DFE247E6D0F009666BC /* SocialMediaApiProtocol.swift */,
+			);
+			path = "Social Media";
+			sourceTree = "<group>";
+		};
+		E8165E00247E724F009666BC /* SocialMedia */ = {
+			isa = PBXGroup;
+			children = (
+				E8165E01247E7263009666BC /* SocialMediaApiModel.swift */,
+			);
+			path = SocialMedia;
+			sourceTree = "<group>";
+		};
 		E8315D3C245AFFEA0022D4A7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +430,7 @@
 		E8510F02245922C6004BE65A /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
+				E8165DFD247E6CE0009666BC /* Social Media */,
 				E8947891245E8B4F00BA845E /* Provinces */,
 				E84FD1C9245D066400E10507 /* Apartments */,
 				E8510F0E24592938004BE65A /* Account */,
@@ -448,6 +469,7 @@
 		E8510F1124592B21004BE65A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E8165E00247E724F009666BC /* SocialMedia */,
 				E84FD1CC245D083800E10507 /* Apartment */,
 				E8510F052459251F004BE65A /* Config */,
 				E8510F1224592B27004BE65A /* Acount */,
@@ -863,6 +885,7 @@
 				E84FD1DC245D21DA00E10507 /* ApartmentDetailViewController.swift in Sources */,
 				E8EDDB8A246198C90099691B /* PostCreationDesViewController.swift in Sources */,
 				8EC361AA2461603A00F2F3EF /* DateFormatter+extension.swift in Sources */,
+				E8165DFF247E6D0F009666BC /* SocialMediaApiProtocol.swift in Sources */,
 				8ED3C6CC24699A1500A49530 /* HomeNavigationViewController.swift in Sources */,
 				E8510F1424592B38004BE65A /* AcountModel.swift in Sources */,
 				8E86298A2460276B007A5C07 /* SignUpViewController.swift in Sources */,
@@ -904,6 +927,7 @@
 				8E7192EF24401C5000DB814A /* AppDelegate.swift in Sources */,
 				8E02CA822449DE03006A4F3B /* SceneDelegate.swift in Sources */,
 				E80049D0246F8E4600AAD711 /* ListView.swift in Sources */,
+				E8165E02247E7263009666BC /* SocialMediaApiModel.swift in Sources */,
 				8E7A513E246985C200A7C716 /* UITextViewExtension.swift in Sources */,
 				8EE37B8E2467BF3B0094CE6B /* UpdateAccountPassViewController.swift in Sources */,
 				E84FD1DF245D282E00E10507 /* ApartmentDetail.swift in Sources */,
