@@ -29,6 +29,7 @@
 		8EC361AC2461604700F2F3EF /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC361AB2461604600F2F3EF /* Date+extension.swift */; };
 		8ED3C6CC24699A1500A49530 /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3C6CB24699A1400A49530 /* HomeNavigationViewController.swift */; };
 		8EE37B8E2467BF3B0094CE6B /* UpdateAccountPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE37B8D2467BF3B0094CE6B /* UpdateAccountPassViewController.swift */; };
+		8EF804382488EF4700F425E7 /* GoogleSigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF804372488EF4700F425E7 /* GoogleSigninViewController.swift */; };
 		E31EBBCA5BF0C0966847A0B5 /* Pods_loca_locaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */; };
 		E80049D0246F8E4600AAD711 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80049CF246F8E4600AAD711 /* ListView.swift */; };
 		E8165DFF247E6D0F009666BC /* SocialMediaApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8165DFE247E6D0F009666BC /* SocialMediaApiProtocol.swift */; };
@@ -134,6 +135,7 @@
 		8EC361AB2461604600F2F3EF /* Date+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
 		8ED3C6CB24699A1400A49530 /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
 		8EE37B8D2467BF3B0094CE6B /* UpdateAccountPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountPassViewController.swift; sourceTree = "<group>"; };
+		8EF804372488EF4700F425E7 /* GoogleSigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSigninViewController.swift; sourceTree = "<group>"; };
 		B1E6A166630A348BE0329D25 /* Pods-loca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca.debug.xcconfig"; path = "Target Support Files/Pods-loca/Pods-loca.debug.xcconfig"; sourceTree = "<group>"; };
 		B6D950CF60779FAD1E28C504 /* Pods-loca-locaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.release.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E71F892B618BB5E2BD1670FD /* Pods-loca-locaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loca-locaUITests.debug.xcconfig"; path = "Target Support Files/Pods-loca-locaUITests/Pods-loca-locaUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				E894788D245E6D5100BA845E /* FilterViewController.swift */,
 				8ED3C6CB24699A1400A49530 /* HomeNavigationViewController.swift */,
 				E8C9DA0E246AB0B200BB8E26 /* ForgetPassViewController.swift */,
+				8EF804372488EF4700F425E7 /* GoogleSigninViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -904,6 +907,7 @@
 				E8648EFC2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift in Sources */,
 				E8C47C852464EDCD0046BB4F /* FloatingTextField.swift in Sources */,
 				E8539CDE2477F2FE005DF65F /* PostManageListViewController.swift in Sources */,
+				8EF804382488EF4700F425E7 /* GoogleSigninViewController.swift in Sources */,
 				E8539CDB2477BA50005DF65F /* DateTimePicker.swift in Sources */,
 				E89FAD5A246D68510020AFAE /* UIImage+extension.swift in Sources */,
 				E89D55F22466E67D00917557 /* UpdateAccountNameViewController.swift in Sources */,

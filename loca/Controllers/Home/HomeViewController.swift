@@ -54,7 +54,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             case true:
                 self.performSegue(withIdentifier: "home_manage", sender: self)
             default:
-                Messages.displaySignInMessage(completionHandler: self.getDataFromServer, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)})
+                Messages.displaySignInMessage(completionHandler: self.getDataFromServer, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)}, navigateGGsignInAction: {self.performSegue(withIdentifier: "google_signin", sender: self)})
             }
         } )
         floaty.addItem("Contact", icon: UIImage(named: "email_icon")!,handler:{ _ in
