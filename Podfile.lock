@@ -30,6 +30,7 @@ PODS:
     - GTMSessionFetcher/Core (= 1.4.0)
   - iOSDropDown (0.3.4)
   - SkyFloatingLabelTextField (3.8.0)
+  - SVPinView (1.0.8)
   - SwiftMessages (7.0.1):
     - SwiftMessages/App (= 7.0.1)
   - SwiftMessages/App (7.0.1)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - iOSDropDown
   - SkyFloatingLabelTextField (~> 3.0)
+  - SVPinView (~> 1.0)
   - SwiftMessages
   - TransitionButton
 
@@ -58,6 +60,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - iOSDropDown
     - SkyFloatingLabelTextField
+    - SVPinView
     - SwiftMessages
     - TransitionButton
 
@@ -72,9 +75,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SVPinView: 3194be48b8275805244486590b82e6da14d23ca6
   SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
   TransitionButton: 36283346e17c64775a1b3bc3a7a72940a367de1f
 
-PODFILE CHECKSUM: 7ea5affa50714fb4473f8e15ff812fbe8ba91e65
+PODFILE CHECKSUM: 16d70eabfbc0b9ad84700a61af4dc1ba9d0b8a5e
 
 COCOAPODS: 1.8.4

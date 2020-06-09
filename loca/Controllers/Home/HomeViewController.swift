@@ -97,11 +97,9 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     func dropPinZoomIn(placemark:MKPlacemark){
-        mapView.removeAnnotations(mapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
-        mapView.addAnnotation(annotation)
 
         let region = MKCoordinateRegion(center: placemark.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
@@ -261,9 +259,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             view.window!.layer.add(transition, forKey: kCATransition)
             let view = segue.destination as! FilterViewController
             view.delegate = self
-        } else if segue.identifier == "signup_home" {
-            let viewController = segue.destination as! SignUpViewController
-            viewController.delegate = self
         }
     }
 }
@@ -334,18 +329,7 @@ extension HomeViewController: FilterSelectionProtocol {
             }
         })
     }
-    
-    
-    
 }
-
-
-extension HomeViewController: SignUpProtocol{
-    func completionHandler() {
-        getDataFromServer()
-    }
-}
-
 
 extension HomeViewController: UITextFieldDelegate {
 

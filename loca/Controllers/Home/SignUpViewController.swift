@@ -24,7 +24,6 @@ class SignUpViewController: UIViewController {
     
     var result: ResultTextValidation?
     var store = AlamofireStore()
-    var delegate: SignUpProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +32,7 @@ class SignUpViewController: UIViewController {
     }
     
     func setupUI(){
+        setEmptyBackButton()
         
         FloatingTextField.configureFloatingText(textfield: nameTextField, placeHolder: "Tên", title: "Tên")
         FloatingTextField.configureFloatingText(textfield: phoneTextField, placeHolder: "Số điện thoại", title: "Số điện thoại")
@@ -70,8 +70,8 @@ class SignUpViewController: UIViewController {
                             AppConfig.shared.accessToken = autParams.access_token
                             AppConfig.shared.isSignedIn = true
                             Messages.displaySuccessMessage(message: "Đăng ký thành công.")
-                            self.navigationController?.popViewController(animated: true)
-                            self.delegate?.completionHandler()
+                            self.getUserData()
+                            self.performSegue(withIdentifier: "register_verifyphone", sender: self)
                         })
                         
                     case .failure:
@@ -89,10 +89,25 @@ class SignUpViewController: UIViewController {
             confirmButton.startAnimation()
             Messages.displayErrorMessage(message: error.message)
         }
+        
     }
     
-    private func setUserData(){
-        
+    private func getUserData(){
+        store.getUser(completionHandler: {result in
+            switch result {
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ProfileModel.self, from: newData) else {return}
+                AppConfig.shared.profileName = autParams.name
+                AppConfig.shared.profileId = autParams.id
+                AppConfig.shared.profileEmail = autParams.email
+                AppConfig.shared.profilePhone = autParams.phone
+                AppConfig.shared.profileEmailVerified = autParams.is_email_verified
+                AppConfig.shared.profilePhoneVerified = autParams.is_phone_verified
+            case .failure:
+                return
+            }
+        })
     }
     
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -124,24 +139,19 @@ class SignUpViewController: UIViewController {
     }
 }
 
-protocol SignUpProtocol {
-    func completionHandler()
-}
-
-
 extension SignUpViewController {
     func registerForKeyboardNotifications() {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
-
+    
     @objc func adjustForKeyboard(_ notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-
+        
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-
+        
         if notification.name == UIResponder.keyboardWillHideNotification {
             scrollView.contentInset = .zero
         } else {

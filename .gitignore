@@ -801,3 +801,16 @@ Pods/Pods.xcodeproj/xcuserdata/macpro.xcuserdatad/xcschemes/TransitionButton.xcs
 Pods/Target Support Files/Floaty/Floaty.xcconfig
 Pods/Target Support Files/SkyFloatingLabelTextField/SkyFloatingLabelTextField.xcconfig
 Pods/Target Support Files/TransitionButton/TransitionButton.xcconfig
+Pods/Pods.xcodeproj/xcuserdata/macpro.xcuserdatad/xcschemes/SVPinView.xcscheme
+Pods/SVPinView/LICENSE
+Pods/SVPinView/README.md
+Pods/SVPinView/SVPinView/Source/Classes/SVPinField.swift
+Pods/SVPinView/SVPinView/Source/Classes/SVPinView.swift
+Pods/SVPinView/SVPinView/Source/XIB's/SVPinCell.xib
+Pods/SVPinView/SVPinView/Source/XIB's/SVPinView.xib
+Pods/Target Support Files/SVPinView/SVPinView-dummy.m
+Pods/Target Support Files/SVPinView/SVPinView-Info.plist
+Pods/Target Support Files/SVPinView/SVPinView-prefix.pch
+Pods/Target Support Files/SVPinView/SVPinView-umbrella.h
+Pods/Target Support Files/SVPinView/SVPinView.modulemap
+Pods/Target Support Files/SVPinView/SVPinView.xcconfig

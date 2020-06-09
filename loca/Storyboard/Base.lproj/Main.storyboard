@@ -367,6 +367,7 @@
                         <outlet property="passwordTextField" destination="5eE-n9-6DE" id="A02-mK-63n"/>
                         <outlet property="phoneTextField" destination="eLc-1T-xld" id="eEt-6a-nWW"/>
                         <outlet property="scrollView" destination="n4D-Ga-32p" id="JqN-Z5-U00"/>
+                        <segue destination="A90-lv-m2D" kind="show" identifier="register_verifyphone" id="YMv-GY-WxU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7bM-G8-geE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -377,6 +378,83 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="0.0" y="52.901785714285715"/>
+        </scene>
+        <!--Verify Phone View Controller-->
+        <scene sceneID="d8b-Fl-ocw">
+            <objects>
+                <viewController storyboardIdentifier="VerifyPhoneViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="A90-lv-m2D" customClass="VerifyPhoneViewController" customModule="loca" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tku-j9-NK0" customClass="GradientView" customModule="loca" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xác Nhận Số Điện Thoại" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqK-Kd-xmG">
+                                <rect key="frame" x="12" y="20" width="390" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <color key="textColor" name="UBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_gradient_icon" translatesAutoresizingMaskIntoConstraints="NO" id="qvl-U1-QaK">
+                                <rect key="frame" x="157" y="70" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="7uJ-a4-Yts"/>
+                                    <constraint firstAttribute="height" constant="100" id="S4B-me-7VL"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVX-nh-6rB" customClass="SVPinView" customModule="SVPinView">
+                                <rect key="frame" x="12" y="190" width="390" height="75"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="EN7-NM-L2u"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kích Hoạt Sau" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Snl-Zg-pSt">
+                                <rect key="frame" x="12" y="285" width="390" height="21"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="I6t-x9-YAm" appends="YES" id="yN4-MP-q8K"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="iVX-nh-6rB" firstAttribute="leading" secondItem="E65-LG-QQS" secondAttribute="leading" constant="12" id="3cW-MF-sP6"/>
+                            <constraint firstItem="qvl-U1-QaK" firstAttribute="top" secondItem="HqK-Kd-xmG" secondAttribute="bottom" constant="20" id="Dnd-eB-m55"/>
+                            <constraint firstItem="qvl-U1-QaK" firstAttribute="centerX" secondItem="tku-j9-NK0" secondAttribute="centerX" id="EBe-bF-7LO"/>
+                            <constraint firstItem="Snl-Zg-pSt" firstAttribute="top" secondItem="iVX-nh-6rB" secondAttribute="bottom" constant="20" id="Kcy-ov-rFE"/>
+                            <constraint firstItem="HqK-Kd-xmG" firstAttribute="top" secondItem="E65-LG-QQS" secondAttribute="top" constant="20" id="UPn-nV-rq9"/>
+                            <constraint firstAttribute="trailing" secondItem="HqK-Kd-xmG" secondAttribute="trailing" constant="12" id="YmZ-6L-0b3"/>
+                            <constraint firstItem="iVX-nh-6rB" firstAttribute="top" secondItem="qvl-U1-QaK" secondAttribute="bottom" constant="20" id="Ypc-07-6Fr"/>
+                            <constraint firstItem="E65-LG-QQS" firstAttribute="trailing" secondItem="Snl-Zg-pSt" secondAttribute="trailing" constant="12" id="YrQ-ai-izB"/>
+                            <constraint firstItem="Snl-Zg-pSt" firstAttribute="leading" secondItem="E65-LG-QQS" secondAttribute="leading" constant="12" id="b8s-5b-2AL"/>
+                            <constraint firstItem="HqK-Kd-xmG" firstAttribute="leading" secondItem="E65-LG-QQS" secondAttribute="leading" constant="12" id="hpa-sD-k65"/>
+                            <constraint firstItem="E65-LG-QQS" firstAttribute="trailing" secondItem="iVX-nh-6rB" secondAttribute="trailing" constant="12" id="hwu-xV-nue"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="E65-LG-QQS"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" name="Gradient_DarkBlue"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" name="Gradient_Grey"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" id="gjp-fJ-7n1"/>
+                    <connections>
+                        <outlet property="pinView" destination="iVX-nh-6rB" id="VOX-il-25K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ovm-mP-d4o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="I6t-x9-YAm" userLabel="toHome">
+                    <connections>
+                        <action selector="toHome:" destination="A90-lv-m2D" id="ezh-Rx-9ng"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="842" y="60"/>
         </scene>
         <!--Item-->
         <scene sceneID="uuU-sI-FoS">
@@ -1283,6 +1361,7 @@
         <image name="forgot_password_icon" width="96" height="96"/>
         <image name="membership_icon" width="96" height="96"/>
         <image name="password_gradient_icon" width="96" height="96"/>
+        <image name="phone_gradient_icon" width="96" height="96"/>
         <image name="user_icon" width="100" height="100"/>
         <namedColor name="Gradient_DarkBlue">
             <color red="0.73333333333333328" green="0.82352941176470584" blue="0.77254901960784317" alpha="0.95099997520446777" colorSpace="custom" customColorSpace="sRGB"/>
