@@ -419,6 +419,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="iVX-nh-6rB" firstAttribute="leading" secondItem="E65-LG-QQS" secondAttribute="leading" constant="12" id="3cW-MF-sP6"/>
                             <constraint firstItem="qvl-U1-QaK" firstAttribute="top" secondItem="HqK-Kd-xmG" secondAttribute="bottom" constant="20" id="Dnd-eB-m55"/>
@@ -441,6 +442,9 @@
                                 <color key="value" name="Gradient_Grey"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="LoM-l0-TCx" appends="YES" id="35j-TH-EXk"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="gjp-fJ-7n1"/>
                     <connections>
@@ -451,6 +455,11 @@
                 <tapGestureRecognizer id="I6t-x9-YAm" userLabel="toHome">
                     <connections>
                         <action selector="toHome:" destination="A90-lv-m2D" id="ezh-Rx-9ng"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="LoM-l0-TCx" userLabel="hideKeyboard">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="A90-lv-m2D" id="icQ-If-NPl"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1373,7 +1382,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UCyan">
-            <color red="0.011764706112444401" green="0.66274511814117432" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.011764705882352941" green="0.66274509803921566" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

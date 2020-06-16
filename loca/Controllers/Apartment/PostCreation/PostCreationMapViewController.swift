@@ -19,6 +19,7 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
     var gestureRecognizer = UITapGestureRecognizer()
     var delegate : ApartmentPostLocationProtocol?
     
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchTextFiled: UITextField!
@@ -44,13 +45,8 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    
-    @IBAction func searchAddress(_ sender: UIButton) {
-        let address = searchTextFiled.text!
-        searchAdressByText(text: address)
-    }
-    
     private func searchAdressByText(text: String){
+        indicator.startAnimating()
         searchRequest.naturalLanguageQuery = text
         searchRequest.region = mapView.region
         let search = MKLocalSearch(request: searchRequest)
@@ -70,11 +66,14 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
                 ids.append(i)
                 i+=1
             }
+            self.indicator.stopAnimating()
             
-            ListView.displayListView(view: self.searchView, listHeight: 150, text: listItem, id: ids, selectionHandler: {(a,b) in
+            ListView.displayListView(view: self.searchView, listHeight: 150, text: listItem, id: ids, selectionHandler: {(name,index) in
                 ListView.removeListView()
-                self.dropPinZoomIn(placemark: response.mapItems[b].placemark)
-                
+                self.view.endEditing(true)
+                self.indicator.stopAnimating()
+                self.searchTextFiled.text = name
+                self.dropPinZoomIn(placemark: response.mapItems[index].placemark)
             })
         }
     }
@@ -111,8 +110,6 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
         addMarker()
         searchTextFiled.layer.cornerRadius = 10
         searchTextFiled.delegate = self
-       
-       
     }
     
     @IBAction func back(_ sender: UITapGestureRecognizer) {
@@ -152,6 +149,7 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     @objc func handleTap(_ gestureReconizer: UILongPressGestureRecognizer) {
         removeAllAnnotations()
+        self.view.endEditing(true)
         let location = gestureReconizer.location(in: mapView)
         let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
         

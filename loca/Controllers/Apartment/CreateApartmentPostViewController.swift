@@ -73,20 +73,26 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     
     @IBAction func confirm(_ sender: UIButton) {
         print(data)
-        store.createPost(data: data, completionHandler: { (result, data) in
-            switch result {
-            case .success(let dataString):
-                
-                print(dataString)
-                //                let parsedData = dataString.data(using: .utf8)
-                //                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
-                
-            case .failure:
-                print(data)
-                return
-            }
-            
-        })
+        if data.district_id == 0 && data.lat == 0 {
+            Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin trước khi đăng tin!")
+        }
+        else {
+            store.createPost(data: data, completionHandler: { (result, data) in
+                switch result {
+                case .success(let dataString):
+
+                    print(dataString)
+                    //                let parsedData = dataString.data(using: .utf8)
+                    //                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
+
+                case .failure:
+                    print(data)
+                    return
+                }
+
+            })
+        }
+        
     }
     
     
@@ -140,7 +146,7 @@ extension CreateApartmentPostViewController: PostCreationDescritionProtocol{
 extension CreateApartmentPostViewController: PostCreationAddInfoProtocol {
     func getInfo(direction: String, floor: String, bedroom: String, bathroom: String, pool: String, elevator: String, garden: String, roof: String) {
         
-        data.direction = direction; data.floor_number = Int(floor)!; data.bedroom_number = Int(bedroom)!; data.bathroom_number = Int(bathroom)!; data.pool = pool; data.garden = garden; data.rooftop = roof
+        data.direction = direction; data.floor_number = Int(floor) ?? 0; data.bedroom_number = Int(bedroom) ?? 0; data.bathroom_number = Int(bathroom) ?? 0; data.pool = pool; data.garden = garden; data.rooftop = roof
         
         tableData[3].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()

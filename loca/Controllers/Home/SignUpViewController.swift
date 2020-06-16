@@ -53,6 +53,9 @@ class SignUpViewController: UIViewController {
     
     
     @IBAction func register(_ sender: TransitionButtonExtent) {
+        
+//        self.performSegue(withIdentifier: "register_verifyphone", sender: self)
+        
         if nameTextField.text!.isEmpty || phoneTextField.text!.isEmpty || emailTextField.text!.isEmpty || passwordTextField.text!.isEmpty || confirmPassTextField.text!.isEmpty {
             Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin")
         } else {
@@ -73,17 +76,17 @@ class SignUpViewController: UIViewController {
                             self.getUserData()
                             self.performSegue(withIdentifier: "register_verifyphone", sender: self)
                         })
-                        
+
                     case .failure:
                         self.confirmButton.stopAnimation(animationStyle: .shake, revertAfterDelay: 1, completion: {
-                            
+
                             guard let newData = data, let autParams = try? JSONDecoder().decode(AccountGeneralError.self, from: newData) else {return}
-                            
+
                             Messages.displayErrorMessage(message: "\(String(describing: autParams.errors.email)) \(String(describing: autParams.errors.phone))")
                         })
                     }
                 })
-                
+
                 return
             }
             confirmButton.startAnimation()

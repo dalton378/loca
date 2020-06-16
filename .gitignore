@@ -814,3 +814,6 @@ Pods/Target Support Files/SVPinView/SVPinView-prefix.pch
 Pods/Target Support Files/SVPinView/SVPinView-umbrella.h
 Pods/Target Support Files/SVPinView/SVPinView.modulemap
 Pods/Target Support Files/SVPinView/SVPinView.xcconfig
+Pods/Pods.xcodeproj/xcuserdata/toannguyen.xcuserdatad/xcschemes/SVPinView.xcscheme
+Pods/Target Support Files/SVPinView/SVPinView.debug.xcconfig
+Pods/Target Support Files/SVPinView/SVPinView.release.xcconfig

@@ -12,6 +12,9 @@ import SVPinView
 class VerifyPhoneViewController: UIViewController {
     
     @IBOutlet weak var pinView: SVPinView!
+    
+    let store = AlamofireStore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -24,7 +27,7 @@ class VerifyPhoneViewController: UIViewController {
         pinView.pinLength = 5
         pinView.secureCharacter = "\u{25CF}"
         pinView.interSpace = 15
-        pinView.textColor = UIColor.black
+        pinView.textColor = UIColor.init(named: "UBlack")!
         pinView.shouldSecureText = true
         pinView.style = .box
         
@@ -40,11 +43,25 @@ class VerifyPhoneViewController: UIViewController {
         pinView.becomeFirstResponderAtIndex = 0
         
         pinView.didFinishCallback = { pin in
-            print("The pin entered is \(pin)")
+            let id = AppConfig.shared.profileId ?? 0
+            self.store.phoneVerify(token: pin, id: String(id), completionHandler: {result in
+                switch result{
+                case .success:
+                    Messages.displaySuccessMessage(message: "Xác nhận tài khoản thành công!")
+                    self.navigationController?.popToRootViewController(animated: true)
+                case .failure:
+                    Messages.displayErrorMessage(message: "Xác nhận tài khoản không thành công!")
+                }
+            })
         }
     }
+    
     @IBAction func toHome(_ sender: UITapGestureRecognizer) {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
 }

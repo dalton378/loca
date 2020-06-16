@@ -173,6 +173,12 @@ class AlamofireRequest {
             .responseString(completionHandler: completionHandler)
     }
     
+    func phoneVerify(token: String, id: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        session.request(AccountApiProtocol.phoneVerify(id: id, token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
 }
 
 

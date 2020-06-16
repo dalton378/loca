@@ -21,11 +21,12 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
     case forgetPass(email: String)
     case register(name: String, phone: String, email: String, pass: String, passConfirm: String)
     case socialLogin(name: String, id: String, provider: String, email: String)
+    case phoneVerify(id: String, token: String)
     
     
     var method: HTTPMethod {
         switch self {
-        case .login, .changePass, .forgetPass, .register, .socialLogin:
+        case .login, .changePass, .forgetPass, .register, .socialLogin, .phoneVerify:
             return .post
         case .getUser:
             return .get
@@ -50,6 +51,8 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             return "auth/register"
         case .socialLogin:
             return "auth/social-login"
+        case .phoneVerify:
+            return "auth/phone-verify"
         default:
             return ""
         }
@@ -57,7 +60,7 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
     
     var encoding: ParameterEncoding {
         switch self {
-        case .login,.updateName, .updatePhone, .updateEmail, .changePass, .forgetPass, .register, .socialLogin:
+        case .login,.updateName, .updatePhone, .updateEmail, .changePass, .forgetPass, .register, .socialLogin, .phoneVerify:
             return JSONEncoding.default
         case .getUser:
             return URLEncoding.default
@@ -95,6 +98,8 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             ]
         case .socialLogin(let name, let id, let provider, let email):
             return ["name": name, "provider_id": id, "provider": provider, "email": email]
+        case .phoneVerify(let id, let token):
+            return ["user_id": id, "token": token]
         default:
             return [:]
         }

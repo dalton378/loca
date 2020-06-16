@@ -1082,31 +1082,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhI-x0-db4">
                                 <rect key="frame" x="12" y="75" width="390" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSm-JY-g4g">
-                                        <rect key="frame" x="350" y="4" width="32" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="KSm-JY-g4g" secondAttribute="height" multiplier="1:1" id="Gyl-zf-LQT"/>
-                                        </constraints>
-                                        <state key="normal" image="search_icon"/>
-                                        <connections>
-                                            <action selector="searchAddress:" destination="Aut-bh-6Kv" eventType="touchUpInside" id="WjR-es-KKZ"/>
-                                        </connections>
-                                    </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tìm kiếm" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnB-EX-W2k">
-                                        <rect key="frame" x="12" y="0.0" width="326" height="40"/>
+                                        <rect key="frame" x="12" y="0.0" width="338" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="JRh-Hw-0ks">
+                                        <rect key="frame" x="362" y="10" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9GM-hG-d9f"/>
-                                    <constraint firstAttribute="trailing" secondItem="KSm-JY-g4g" secondAttribute="trailing" constant="8" id="GSY-p5-xgM"/>
+                                    <constraint firstAttribute="trailing" secondItem="JRh-Hw-0ks" secondAttribute="trailing" constant="8" id="Lu0-ti-pbU"/>
                                     <constraint firstItem="hnB-EX-W2k" firstAttribute="leading" secondItem="lhI-x0-db4" secondAttribute="leading" constant="12" id="PGk-2z-PHv"/>
-                                    <constraint firstItem="KSm-JY-g4g" firstAttribute="height" secondItem="lhI-x0-db4" secondAttribute="height" multiplier="0.8" id="SF1-fF-w8p"/>
                                     <constraint firstItem="hnB-EX-W2k" firstAttribute="height" secondItem="lhI-x0-db4" secondAttribute="height" id="TCt-Ok-6Ic"/>
-                                    <constraint firstItem="KSm-JY-g4g" firstAttribute="centerY" secondItem="lhI-x0-db4" secondAttribute="centerY" id="U8g-cW-8i5"/>
-                                    <constraint firstItem="KSm-JY-g4g" firstAttribute="leading" secondItem="hnB-EX-W2k" secondAttribute="trailing" constant="12" id="sHY-RJ-Y4i"/>
+                                    <constraint firstItem="JRh-Hw-0ks" firstAttribute="leading" secondItem="hnB-EX-W2k" secondAttribute="trailing" constant="12" id="fEi-QP-xUM"/>
+                                    <constraint firstItem="JRh-Hw-0ks" firstAttribute="centerY" secondItem="lhI-x0-db4" secondAttribute="centerY" id="nIF-I0-ctY"/>
                                     <constraint firstItem="hnB-EX-W2k" firstAttribute="top" secondItem="lhI-x0-db4" secondAttribute="top" id="yOd-is-Gpf"/>
                                 </constraints>
                             </view>
@@ -1130,8 +1122,8 @@
                     <navigationItem key="navigationItem" id="gMV-5f-YhK"/>
                     <connections>
                         <outlet property="confirmButton" destination="4ex-rR-KpB" id="tVA-OM-50e"/>
+                        <outlet property="indicator" destination="JRh-Hw-0ks" id="3Wg-eO-r6R"/>
                         <outlet property="mapView" destination="OS2-0b-l27" id="qhN-d3-tSs"/>
-                        <outlet property="searchButton" destination="KSm-JY-g4g" id="Nig-84-hjP"/>
                         <outlet property="searchTextFiled" destination="hnB-EX-W2k" id="stn-Xt-gcH"/>
                         <outlet property="searchView" destination="lhI-x0-db4" id="NQX-ZW-qj8"/>
                     </connections>
@@ -1666,7 +1658,6 @@
         <image name="back_icon" width="100" height="100"/>
         <image name="camera_icon" width="100" height="100"/>
         <image name="down_icon" width="100" height="100"/>
-        <image name="search_icon" width="100" height="100"/>
         <namedColor name="Gradient_DarkBlue">
             <color red="0.73333333333333328" green="0.82352941176470584" blue="0.77254901960784317" alpha="0.95099997520446777" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1677,7 +1668,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UCyan">
-            <color red="0.011764706112444401" green="0.66274511814117432" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.011764705882352941" green="0.66274509803921566" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

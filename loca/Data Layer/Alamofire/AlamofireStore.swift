@@ -156,9 +156,16 @@ class AlamofireStore {
     
     func socialLogin(name: String, id: String, provider: String, email: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
         client.socialLogin(name: name, id: id, provider: provider, email: email, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
+    
+    func phoneVerify(token: String, id: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.phoneVerify(token: token, id: id, completionHandler: {result in
             print(result.response?.statusCode)
             completionHandler(result.result)
         })
     }
+    
     
 }
