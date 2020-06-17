@@ -45,6 +45,7 @@ class PostCreationBasicViewController: UIViewController {
     private var areaUnitData: ListData?
     
     var delegate: PostCreationBasicProtocol?
+    var dataBasic: ApartmentPostCreation!
     
     let store = AlamofireStore()
     var propertyString = ""; var tranString = ""; var cityString = ""; var districtString = ""; var wardString = ""; var squareUnitString = ""; var priceUnitString = ""
@@ -52,7 +53,7 @@ class PostCreationBasicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
-
+        
     }
     
     @IBAction func showTransList(_ sender: Any) {
@@ -130,6 +131,15 @@ class PostCreationBasicViewController: UIViewController {
         startDate.showDatePicker()
         let endDate = DateTimePicker(view: self.view, textField: endDateTextField)
         endDate.showDatePicker()
+        
+        streetTextField.text = dataBasic.street
+        numberAddressTextField.text = dataBasic.address
+        squareTextfield.text = dataBasic.area
+        costTextField.text = dataBasic.price
+        startDateTextField.text = dataBasic.start_date
+        endDateTextField.text = dataBasic.end_date
+        
+        //Get Data from server
         getPropertyType()
         getCities()
         getCurrencies()
@@ -138,67 +148,75 @@ class PostCreationBasicViewController: UIViewController {
         registerForKeyboardNotifications()
     }
     
-    
     private func getPropertyType(){
-           store.getPropertyType(completionHandler: {resut in
-               switch resut{
-               case .success(let data):
-                   let parsedData = data.data(using: .utf8)
-                   guard let newData = parsedData, let autParams = try! JSONDecoder().decode([PropertyType]?.self, from: newData) else {return}
-                   var items = [String]()
-                   var ids = [Int]()
-                   for i in autParams {
-                       items.append(i.name)
-                       ids.append(i.id)
-                   }
-                   
-                   self.propertyData = ListData(text: items, id: ids)
-               case .failure:
-                   return
-               }
-           })
-       }
-       
-       private func getCities(){
-           store.getProvinces(completionHandler: {resut in
-               switch resut{
-               case .success(let data):
-                   let parsedData = data.data(using: .utf8)
-                   guard let newData = parsedData, let autParams = try! JSONDecoder().decode(ProvinceList?.self, from: newData) else {return}
-                   var cityItems = [String]()
-                   var cityIds = [Int]()
-                   for i in autParams.data {
-                       cityItems.append(i.name)
-                       cityIds.append(i.id)
-                   }
-                   
-                   self.cityData = ListData.init(text: cityItems, id: cityIds)
-               case .failure:
-                   return
-               }
-           })
-       }
-       
-       private func getDistrictByProvince(id: String) {
-           store.getDistrictByProvince(id: id, completionHandler: {result in
-               switch result {
-               case .success(let data):
-                   let parsedData = data.data(using: .utf8)
-                   guard let newData = parsedData, let autParams = try! JSONDecoder().decode(DistrictList?.self, from: newData) else {return}
-                   
-                   var items = [String]()
-                   var ids = [Int]()
-                   for i in autParams.data {
-                       items.append(i.name)
-                       ids.append(i.id)
-                   }
-                   
-                   self.districtData = ListData.init(text: items, id: ids)
-               case .failure:
-                   return
-               }
-           })
-       }
+        store.getPropertyType(completionHandler: {resut in
+            switch resut{
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try! JSONDecoder().decode([PropertyType]?.self, from: newData) else {return}
+                var items = [String]()
+                var ids = [Int]()
+                for i in autParams {
+                    items.append(i.name)
+                    ids.append(i.id)
+                }
+                
+                self.propertyData = ListData(text: items, id: ids)
+                self.displayData(data: Int(self.dataBasic.property_type_id) ?? 0, list: self.propertyData, textLabel: self.propertyTypeText, selectedData: &self.propertyString)
+            case .failure:
+                return
+            }
+        })
+    }
+    
+    private func getCities(){
+        store.getProvinces(completionHandler: {resut in
+            switch resut{
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try! JSONDecoder().decode(ProvinceList?.self, from: newData) else {return}
+                var cityItems = [String]()
+                var cityIds = [Int]()
+                for i in autParams.data {
+                    cityItems.append(i.name)
+                    cityIds.append(i.id)
+                }
+                
+                self.cityData = ListData.init(text: cityItems, id: cityIds)
+                if self.dataBasic.province_id != 0 {
+                self.displayData(data: self.dataBasic.province_id, list: self.cityData, textLabel: self.cityText, selectedData: &self.cityString)
+                    self.getDistrictByProvince(id: String(self.dataBasic.province_id))
+                }
+            case .failure:
+                return
+            }
+        })
+    }
+    
+    private func getDistrictByProvince(id: String) {
+        store.getDistrictByProvince(id: id, completionHandler: {result in
+            switch result {
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try! JSONDecoder().decode(DistrictList?.self, from: newData) else {return}
+                
+                var items = [String]()
+                var ids = [Int]()
+                for i in autParams.data {
+                    items.append(i.name)
+                    ids.append(i.id)
+                }
+                
+                self.districtData = ListData.init(text: items, id: ids)
+                if self.dataBasic.district_id != 0 {
+                self.displayData(data: self.dataBasic.district_id, list: self.districtData, textLabel: self.districtText, selectedData: &self.districtString)
+                    self.getWardByDistrict(id: String(self.dataBasic.district_id))
+                }
+            case .failure:
+                return
+            }
+        })
+    }
     
     private func getWardByDistrict(id: String) {
         store.getWardByDisctrict(id: id, completionHandler: {result in
@@ -215,6 +233,7 @@ class PostCreationBasicViewController: UIViewController {
                 }
                 
                 self.wardData = ListData.init(text: items, id: ids)
+                self.displayData(data: self.dataBasic.ward_id, list: self.wardData, textLabel: self.wardText, selectedData: &self.wardString)
             case .failure:
                 return
             }
@@ -235,6 +254,7 @@ class PostCreationBasicViewController: UIViewController {
                     ids.append(i.id)
                 }
                 self.currenciesData = ListData.init(text: items, id: ids)
+                self.displayData(data: self.dataBasic.currency_id, list: self.currenciesData, textLabel: self.costUnitText, selectedData: &self.priceUnitString)
             case .failure:
                 return
             }
@@ -256,6 +276,7 @@ class PostCreationBasicViewController: UIViewController {
                     ids.append(i.id)
                 }
                 self.areaUnitData = ListData.init(text: items, id: ids)
+                self.displayData(data: self.dataBasic.area_unit_id, list: self.areaUnitData, textLabel: self.squareUnitText, selectedData: &self.squareUnitString)
             case .failure:
                 return
             }
@@ -264,26 +285,27 @@ class PostCreationBasicViewController: UIViewController {
     }
     
     private func getTransactionType(){
-           store.getTransactionType(completionHandler: {(result) in
+        store.getTransactionType(completionHandler: {(result) in
             self.customIndicator.stopIndicator()
-               switch result{
-               case .success(let data):
-                   let parsedData = data.data(using: .utf8)
-                   guard let newData = parsedData, let autParams = try! JSONDecoder().decode([CommonAPIReturn]?.self, from: newData) else {return}
-                   
-                   var items = [String]()
-                   var ids = [Int]()
-                   for i in autParams {
-                       items.append(i.name)
-                       ids.append(i.id)
-                   }
-                   self.transData = ListData.init(text: items, id: ids)
-               case .failure:
-                   return
-               }
-               
-           })
-       }
+            switch result{
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try! JSONDecoder().decode([CommonAPIReturn]?.self, from: newData) else {return}
+                
+                var items = [String]()
+                var ids = [Int]()
+                for i in autParams {
+                    items.append(i.name)
+                    ids.append(i.id)
+                }
+                self.transData = ListData.init(text: items, id: ids)
+                self.displayData(data: self.dataBasic.post_type_id, list: self.transData, textLabel: self.transTypeText, selectedData: &self.tranString)
+            case .failure:
+                return
+            }
+            
+        })
+    }
     
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
@@ -325,6 +347,14 @@ extension PostCreationBasicViewController {
             scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
         }
         scrollView.scrollIndicatorInsets = scrollView.contentInset
+    }
+    
+    private func displayData(data: Int, list: ListData?, textLabel: UILabel, selectedData: inout String){
+        if data != 0 {
+            let index = list?.id.firstIndex(of: data) ?? 0
+            textLabel.text = list?.text[index]
+            selectedData = String(data)
+        }
     }
 }
 

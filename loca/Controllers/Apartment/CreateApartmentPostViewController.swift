@@ -73,7 +73,7 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     
     @IBAction func confirm(_ sender: UIButton) {
         print(data)
-        if data.district_id == 0 && data.lat == 0 {
+        if data.district_id == 0 || data.lat == 0 {
             Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin trước khi đăng tin!")
         }
         else {
@@ -115,6 +115,7 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         } else if segue.identifier == "createPost_basicInfo" {
             let view = segue.destination as! PostCreationBasicViewController
             view.delegate = self
+            view.dataBasic = data
         }
     }
     
