@@ -10,7 +10,6 @@ import UIKit
 
 class PostCreationAddInfoViewController: UIViewController {
     
-    
     @IBOutlet weak var directionDropdown: UIView!
     @IBOutlet weak var bedroomDropDown: UIView!
     @IBOutlet weak var floorDropDown: UIView!
@@ -30,20 +29,19 @@ class PostCreationAddInfoViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    
-    private var direction, floor, bedroom, bathroom, pool, elevator, garden, roof : ListData?
+    private var floor, bedroom, bathroom, pool, elevator, garden, roof : ListData?
     var directionString = ""; var floorString = ""; var bedroomString = ""; var bathroomString = ""; var poolString = ""; var elevatorString = ""; var gardenString = ""; var roofString = ""
     var delegate: PostCreationAddInfoProtocol?
+    var data: ApartmentPostCreation!
+    private var direction = ListData(text: ["Đông","Tây","Nam","Bắc","Đông Nam","Đông Bắc", "Tây Nam","Tây Bắc"], id: [1,2,3,4,5,6,7,8])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
-        // Do any additional setup after loading the view.
     }
     
     private func prepareUI(){
         confirmButton.layer.cornerRadius = 10
-        direction = ListData.init(text: ["Đông","Tây","Nam","Bắc","Đông Nam","Đông Bắc", "Tây Nam","Tây Bắc"], id: [1,2,3,4,5,6,7,8])
         
         var num = [Int]()
         var data = [String]()
@@ -59,6 +57,45 @@ class PostCreationAddInfoViewController: UIViewController {
         roof = ListData.init(text: ["Có","Không"], id: [1,2])
         elevator = ListData.init(text: ["Có","Không"], id: [1,2])
         registerForKeyboardNotifications()
+        setData()
+    }
+    
+    private func setData(){
+        if data.floor_number != 0 {
+            guard let index = floor?.id.firstIndex(of: data.floor_number) else {return}
+            floorLabel.text = floor?.text[index]
+            floorString = String(data.floor_number)
+        }
+        if data.bedroom_number != 0 {
+                   guard let index = bedroom?.id.firstIndex(of: data.bedroom_number) else {return}
+                   bedroomLabel.text = bedroom?.text[index]
+                   bedroomString = String(data.bedroom_number)
+               }
+        if data.bathroom_number != 0 {
+                   guard let index = bathroom?.id.firstIndex(of: data.bathroom_number) else {return}
+                   bathroomLabel.text = bathroom?.text[index]
+                   bathroomString = String(data.bathroom_number)
+               }
+        if !data.pool.isEmpty {
+            guard let index = pool?.id.firstIndex(of: Int(data.pool) ?? 0) else {return}
+            poolLabel.text = pool?.text[index]
+            poolString = data.pool
+        }
+        if !data.garden.isEmpty {
+            guard let index = garden?.id.firstIndex(of: Int(data.garden) ?? 0) else {return}
+            gardenLabel.text = garden?.text[index]
+            gardenString = data.garden
+        }
+        if !data.rooftop.isEmpty {
+            guard let index = roof?.id.firstIndex(of: Int(data.rooftop) ?? 0) else {return}
+            rooftopLabel.text = roof?.text[index]
+            roofString = data.rooftop
+        }
+        if !data.direction.isEmpty {
+            guard let index = direction.id.firstIndex(of: Int(data.direction) ?? 0) else {return}
+            directionLabel.text = direction.text[index]
+            directionString = data.direction
+        }
     }
     
     
@@ -74,8 +111,7 @@ class PostCreationAddInfoViewController: UIViewController {
     }
     
     @IBAction func showDirectionList(_ sender: UITapGestureRecognizer) {
-        guard let data = direction else { return}
-        ListView.displayListView(view: directionDropdown, listHeight: 150, text: data.text, id: data.id, selectionHandler: {(text,id) in
+        ListView.displayListView(view: directionDropdown, listHeight: 150, text: direction.text, id: direction.id, selectionHandler: {(text,id) in
             self.directionLabel.text = text
             self.directionString = String(id)
             ListView.removeListView()

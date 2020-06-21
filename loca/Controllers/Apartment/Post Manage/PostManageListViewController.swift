@@ -45,6 +45,8 @@ class PostManageListViewController: UIViewController {
                 self.postNumberLabel.text = String(autParams.data.count)
                 self.tableView.reloadData()
             case .failure:
+                Messages.displayErrorMessage(message: "Không có dữ liệu. Vui lòng thử lại sau!")
+                self.navigationController?.popViewController(animated: true)
                 return
             }
         })

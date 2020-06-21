@@ -16,6 +16,7 @@ class PostCreationDesViewController: UIViewController {
     @IBOutlet weak var confirmButton: TransitionButton!
     
     var delegate: PostCreationDescritionProtocol?
+    var data = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,9 @@ class PostCreationDesViewController: UIViewController {
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = UIColor(named: "UIBlack")?.cgColor
         registerForKeyboardNotifications()
+        if !data.isEmpty {
+            descriptionTextView.text = data
+        }
     }
     
     @IBAction func dismissKeyboard(_ sender: Any) {

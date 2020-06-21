@@ -29,6 +29,7 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
     var lat = 0.0
     let searchRequest = MKLocalSearch.Request()
     
+    var dataLocation: ApartmentPostCreation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,6 +111,14 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
         addMarker()
         searchTextFiled.layer.cornerRadius = 10
         searchTextFiled.delegate = self
+        searchEnteredAddress()
+    }
+    
+    private func searchEnteredAddress(){
+        if !dataLocation.street.isEmpty {
+            searchAdressByText(text: "\(dataLocation.address) \(dataLocation.street)")
+            searchTextFiled.text = "\(dataLocation.address) \(dataLocation.street)"
+        }
     }
     
     @IBAction func back(_ sender: UITapGestureRecognizer) {

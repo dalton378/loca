@@ -73,25 +73,25 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     
     @IBAction func confirm(_ sender: UIButton) {
         print(data)
-        if data.district_id == 0 || data.lat == 0 {
-            Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin trước khi đăng tin!")
-        }
-        else {
-            store.createPost(data: data, completionHandler: { (result, data) in
-                switch result {
-                case .success(let dataString):
-
-                    print(dataString)
-                    //                let parsedData = dataString.data(using: .utf8)
-                    //                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
-
-                case .failure:
-                    print(data)
-                    return
-                }
-
-            })
-        }
+//        if data.district_id == 0 || data.lat == 0 {
+//            Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin trước khi đăng tin!")
+//        }
+//        else {
+//            store.createPost(data: data, completionHandler: { (result, data) in
+//                switch result {
+//                case .success(let dataString):
+//
+//                    print(dataString)
+//                    //                let parsedData = dataString.data(using: .utf8)
+//                    //                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
+//
+//                case .failure:
+//                    print(data)
+//                    return
+//                }
+//
+//            })
+//        }
         
     }
     
@@ -100,18 +100,22 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         if segue.identifier == "createPost_map" {
             let view = segue.destination as! PostCreationMapViewController
             view.delegate = self
+            view.dataLocation = data
         } else if segue.identifier == "postcreation_description" {
             let view = segue.destination as! PostCreationDesViewController
             view.delegate = self
+            view.data = data.description
         } else if segue.identifier == "postcreation_addInfo" {
             let view = segue.destination as! PostCreationAddInfoViewController
             view.delegate = self
+            view.data = data
         } else if segue.identifier == "postcreation_camera" {
             let view = segue.destination as! PostCreationCameraViewController
             view.delegate = self
         } else if segue.identifier == "createPost_contact" {
             let view = segue.destination as! PosCreationContactViewController
             view.delegate = self
+            view.data = data.contacts.first
         } else if segue.identifier == "createPost_basicInfo" {
             let view = segue.destination as! PostCreationBasicViewController
             view.delegate = self
@@ -163,7 +167,8 @@ extension CreateApartmentPostViewController: PostCreationCameraProtocol {
 
 extension CreateApartmentPostViewController: PostCreationContactProtocol {
     func getContact(name: String, phone: String, email: String) {
-        data.contacts.append(ApartmentContact.init(name: name, phone: phone, email: email))
+        //data.contacts.append(ApartmentContact.init(name: name, phone: phone, email: email))
+        data.contacts[0] = ApartmentContact.init(name: name, phone: phone, email: email)
         tableData[5].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
     }

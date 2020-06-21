@@ -20,6 +20,8 @@ class PosCreationContactViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     
     var delegate: PostCreationContactProtocol?
+    var data: ApartmentContact!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -34,6 +36,12 @@ class PosCreationContactViewController: UIViewController {
         phoneTextField.addTarget(self, action: #selector(self.validateInput(_:)), for: .editingChanged)
         FloatingTextField.configureFloatingText(textfield: emailTextField, placeHolder: "Email", title: "Email")
         emailTextField.addTarget(self, action: #selector(self.validateInput(_:)), for: .editingChanged)
+        guard let contact = data else { return }
+        if !contact.name.isEmpty {
+            nameTextField.text = contact.name
+            phoneTextField.text = contact.phone
+            emailTextField.text = contact.email
+        }
     }
     
     @objc func validateInput(_ textfield: SkyFloatingLabelTextField) {

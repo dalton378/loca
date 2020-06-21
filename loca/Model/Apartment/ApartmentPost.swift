@@ -34,7 +34,7 @@ struct PhotosBase64Upload: Codable {
 struct ApartmentPostCreation: Codable {
     
     init() {
-        user_id = "" ; apartment_id = "" ; currency_id = 0; lat = 0.0; currency_id = 0 ;lng = 0.0 ;address = "" ;name = "" ;street = "" ;content = "" ;ward_id = 0 ;total_area = "" ;district_id = 0 ;province_id = 0 ;apartment_code = "" ;apartment_number = 0 ;property_type_id = "" ;post_type_id = 0 ;images = [] ;prices_unit_id = "" ;area = "" ;area_unit_id = 0 ;bathroom_number = 0 ;bedroom_number = 0 ;contacts = [] ;description = "" ;direction = "" ;end_date = "" ;floor_number = 0 ;garden = "" ;id = "" ;pool = "" ;price = "" ;region = "" ;start_date = ""; rooftop = ""
+        user_id = "" ; apartment_id = "" ; currency_id = 0; lat = 0.0; currency_id = 0 ;lng = 0.0 ;address = "" ;name = "" ;street = "" ;content = "" ;ward_id = 0 ;total_area = "" ;district_id = 0 ;province_id = 0 ;apartment_code = "" ;apartment_number = 0 ;property_type_id = "" ;post_type_id = 0 ;images = [] ;prices_unit_id = "" ;area = "" ;area_unit_id = 0 ;bathroom_number = 0 ;bedroom_number = 0 ;contacts = [ApartmentContact(name: "", phone: "", email: "")] ;description = "" ;direction = "" ;end_date = "" ;floor_number = 0 ;garden = "" ;id = "" ;pool = "" ;price = "" ;region = "" ;start_date = ""; rooftop = ""
     }
     var user_id: String
     var apartment_id : String
