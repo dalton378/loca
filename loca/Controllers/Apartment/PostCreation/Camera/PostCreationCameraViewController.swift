@@ -31,33 +31,14 @@ class PostCreationCameraViewController: UIViewController, UICollectionViewDataSo
         confirmButton.layer.cornerRadius = 10
     }
     
-    
     @IBAction func cameraTap(_ sender: UITapGestureRecognizer) {
         showAlert()
     }
     @IBAction func confirm(_ sender: UIButton) {
+        delegate?.getPhotos(images: photoCollection)
         self.navigationController?.popViewController(animated: true)
-        //delegate?.getPhotos(phots: self.photoCollection)
-        
-
-        
-        
-        store.postFile(file: photoCollection.first!, completionHandler: {(result,data) in
-            switch result {
-            case .success(let dataString):
-                let parsedData = dataString.data(using: .utf8)
-                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentPhotoReturn.self, from: newData) else {return}
-            case .failure(let data):
-                print(data)
-                Messages.displayErrorMessage(message: "Upload file không thành công!")
-            }
-        })
     }
     
-   
-    
-
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoCollection.count
     }
@@ -66,6 +47,13 @@ class PostCreationCameraViewController: UIViewController, UICollectionViewDataSo
         let cell = collection.dequeueReusableCell(withReuseIdentifier: "photo_collection_cell", for: indexPath) as! PostCreationCameraCollectionViewCell
         cell.setPhoto(photo: photoCollection[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        Messages.displayYesNoMessage(title: "Xoá hình đã chọn? ", message: "", buttonAction: {
+            self.photoCollection.remove(at: indexPath.row)
+            self.collection.reloadData()
+        })
     }
     
 }
@@ -88,7 +76,7 @@ extension PostCreationCameraViewController: UIImagePickerControllerDelegate, UIN
         alert.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: {(action: UIAlertAction) in
             self.getImage(fromSourceType: .photoLibrary)
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Huỷ", style: .destructive, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 
@@ -130,5 +118,5 @@ extension PostCreationCameraViewController: UICollectionViewDelegateFlowLayout {
 }
 
 protocol PostCreationCameraProtocol {
-    func getPhotos(phots: [UIImage])
+    func getPhotos(images: [UIImage])
 }

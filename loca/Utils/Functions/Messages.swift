@@ -79,4 +79,27 @@ public class Messages {
         // Show the message.
         SwiftMessages.show(config: config, view: view)
     }
+    
+    static func displayYesNoMessage(title: String, message: String, buttonAction: @escaping (()->Void)) {
+        let view = MessageView.viewFromNib(layout: .centeredView)
+        view.configureTheme(.info)
+        view.configureDropShadow()
+        view.configureContent(title: title, body: message, iconImage: nil, iconText: nil, buttonImage: nil, buttonTitle: "Xoá") {_ in
+            SwiftMessages.hide()
+            buttonAction()
+        }
+        
+        view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        var config = SwiftMessages.defaultConfig
+        config.duration = .forever
+        config.presentationStyle = .center
+        config.dimMode = .gray(interactive: true)
+
+        // Reduce the corner radius (applicable to layouts featuring rounded corners).
+        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+        view.button?.isHidden = false
+
+        // Show the message.
+        SwiftMessages.show(config: config, view: view)
+    }
 }

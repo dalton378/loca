@@ -18,7 +18,7 @@ struct PostPosition: Codable {
 }
 
 struct ApartmentPhotoReturn: Codable{
-    var id: String
+    var id: Int
     var path: ApartmentPhotoDetailReturn
 }
 

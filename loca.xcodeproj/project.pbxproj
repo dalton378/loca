@@ -10,6 +10,8 @@
 		08904C1096BDEBBBE6A04459 /* Pods_locaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF7294B8E53BB7098C1DCCE /* Pods_locaTests.framework */; };
 		48542ABA5CEF5C8E06E68954 /* Pods_loca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3562539F9D37F1EBC9C17C04 /* Pods_loca.framework */; };
 		8E02CA822449DE03006A4F3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CA812449DE03006A4F3B /* SceneDelegate.swift */; };
+		8E36650824A0A5940071B72B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36650624A0A5940071B72B /* Router.swift */; };
+		8E36650924A0A5940071B72B /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36650724A0A5940071B72B /* RouterProtocol.swift */; };
 		8E7192EF24401C5000DB814A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7192EE24401C5000DB814A /* AppDelegate.swift */; };
 		8E7192F324401C5000DB814A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7192F224401C5000DB814A /* ViewController.swift */; };
 		8E7192F624401C5000DB814A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7192F424401C5000DB814A /* Main.storyboard */; };
@@ -47,8 +49,6 @@
 		E8510F00245915B4004BE65A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510EFF245915B4004BE65A /* HomeViewController.swift */; };
 		E8510F04245922F4004BE65A /* AlamofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F03245922F4004BE65A /* AlamofireRequest.swift */; };
 		E8510F072459252F004BE65A /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F062459252F004BE65A /* AppConfig.swift */; };
-		E8510F0B2459281F004BE65A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F0A2459281F004BE65A /* Router.swift */; };
-		E8510F0D24592850004BE65A /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F0C24592850004BE65A /* RouterProtocol.swift */; };
 		E8510F1024592958004BE65A /* AccountApiProtocol .swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F0F24592958004BE65A /* AccountApiProtocol .swift */; };
 		E8510F1424592B38004BE65A /* AcountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8510F1324592B38004BE65A /* AcountModel.swift */; };
 		E8539CDB2477BA50005DF65F /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8539CDA2477BA50005DF65F /* DateTimePicker.swift */; };
@@ -111,6 +111,8 @@
 		5AF7294B8E53BB7098C1DCCE /* Pods_locaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_locaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loca_locaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E02CA812449DE03006A4F3B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8E36650624A0A5940071B72B /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		8E36650724A0A5940071B72B /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		8E7192EB24401C5000DB814A /* loca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7192EE24401C5000DB814A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E7192F224401C5000DB814A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -157,8 +159,6 @@
 		E8510EFF245915B4004BE65A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E8510F03245922F4004BE65A /* AlamofireRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireRequest.swift; sourceTree = "<group>"; };
 		E8510F062459252F004BE65A /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
-		E8510F0A2459281F004BE65A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		E8510F0C24592850004BE65A /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		E8510F0F24592958004BE65A /* AccountApiProtocol .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountApiProtocol .swift"; sourceTree = "<group>"; };
 		E8510F1324592B38004BE65A /* AcountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcountModel.swift; sourceTree = "<group>"; };
 		E8539CDA2477BA50005DF65F /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
@@ -458,8 +458,8 @@
 		E8510F0924592814004BE65A /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				E8510F0A2459281F004BE65A /* Router.swift */,
-				E8510F0C24592850004BE65A /* RouterProtocol.swift */,
+				8E36650624A0A5940071B72B /* Router.swift */,
+				8E36650724A0A5940071B72B /* RouterProtocol.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -877,14 +877,13 @@
 			files = (
 				E8947890245E70F200BA845E /* DropDownExtension.swift in Sources */,
 				8EC361AC2461604700F2F3EF /* Date+extension.swift in Sources */,
+				8E36650924A0A5940071B72B /* RouterProtocol.swift in Sources */,
 				E84FD1C8245D01D400E10507 /* AppConstants.swift in Sources */,
 				E8EDDB83246178720099691B /* CreatePostTableViewCell.swift in Sources */,
 				E85DCCE72463AC65009E516D /* ListViewItemCustom.swift in Sources */,
 				E8EDDB8624618E980099691B /* PostCreationMapViewController.swift in Sources */,
 				E8818B5C24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift in Sources */,
 				E84FD1CB245D068600E10507 /* ApartmentApiProtocol.swift in Sources */,
-				E8510F0D24592850004BE65A /* RouterProtocol.swift in Sources */,
-				E8510F0B2459281F004BE65A /* Router.swift in Sources */,
 				E8EDDB88246193790099691B /* ApartmentPost.swift in Sources */,
 				E8B74A2B2464451C0093F5C1 /* PosCreationContactViewController.swift in Sources */,
 				E86B68432459B3D700AF6659 /* MangeAccountViewController.swift in Sources */,
@@ -908,6 +907,7 @@
 				E84FD1CE245D085A00E10507 /* ApartmentModel.swift in Sources */,
 				E8947898245E986800BA845E /* UIColorExtension.swift in Sources */,
 				E8648EFC2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift in Sources */,
+				8E36650824A0A5940071B72B /* Router.swift in Sources */,
 				E8C47C852464EDCD0046BB4F /* FloatingTextField.swift in Sources */,
 				E8539CDE2477F2FE005DF65F /* PostManageListViewController.swift in Sources */,
 				8EF804382488EF4700F425E7 /* GoogleSigninViewController.swift in Sources */,

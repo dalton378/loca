@@ -13,6 +13,8 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     var tableData = [TableData]()
     var data = ApartmentPostCreation()
     let store = AlamofireStore()
+    var photos = [UIImage]()
+    var postedPhotos = [Int]()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var confirmButton: UIButton!
     
@@ -73,26 +75,48 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     
     @IBAction func confirm(_ sender: UIButton) {
         print(data)
-//        if data.district_id == 0 || data.lat == 0 {
-//            Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin trước khi đăng tin!")
-//        }
-//        else {
-//            store.createPost(data: data, completionHandler: { (result, data) in
-//                switch result {
-//                case .success(let dataString):
-//
-//                    print(dataString)
-//                    //                let parsedData = dataString.data(using: .utf8)
-//                    //                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
-//
-//                case .failure:
-//                    print(data)
-//                    return
-//                }
-//
-//            })
-//        }
+        postedPhotos.removeAll()
         
+        if data.district_id == 0 || data.lat == 0 {
+            Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin trước khi đăng tin!")
+        }
+        else {
+            for photo in photos {
+                store.postImageFormData(image: photo, completionHandler: {respose in
+                    
+                    print(String(decoding: respose.data!, as: UTF8.self))
+                    guard let newData = respose.data, let autParams = try? JSONDecoder().decode(ApartmentPhotoReturn.self, from: newData) else {
+                        Messages.displayErrorMessage(message: "Upload file không thành công!")
+                        return
+                    }
+                    self.postedPhotos.append(autParams.id)
+                    
+                    if self.postedPhotos.count == self.photos.count {
+                        self.data.images = self.postedPhotos
+                        self.createPost()
+                    }
+                    print(autParams.id)
+                    print(autParams.path.original)
+                })
+            }
+        }
+    }
+    
+    private func createPost(){
+        store.createPost(data: data, completionHandler: { (result, data) in
+            switch result {
+            case .success(let dataString):
+                
+                print(dataString)
+                //                let parsedData = dataString.data(using: .utf8)
+                //                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
+                
+            case .failure:
+                print(data)
+                return
+            }
+            
+        })
     }
     
     
@@ -112,6 +136,7 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         } else if segue.identifier == "postcreation_camera" {
             let view = segue.destination as! PostCreationCameraViewController
             view.delegate = self
+            view.photoCollection = self.photos
         } else if segue.identifier == "createPost_contact" {
             let view = segue.destination as! PosCreationContactViewController
             view.delegate = self
@@ -159,7 +184,8 @@ extension CreateApartmentPostViewController: PostCreationAddInfoProtocol {
 }
 
 extension CreateApartmentPostViewController: PostCreationCameraProtocol {
-    func getPhotos(phots: [UIImage]) {
+    func getPhotos(images: [UIImage]) {
+        self.photos = images
         tableData[4].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
     }
