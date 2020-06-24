@@ -50,7 +50,7 @@ class PostCreationCameraViewController: UIViewController, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        Messages.displayYesNoMessage(title: "Xoá hình đã chọn? ", message: "", buttonAction: {
+        Messages.displayYesNoMessage(title: "Xoá hình đã chọn? ", message: "", buttonText: "Xoá", buttonAction: {
             self.photoCollection.remove(at: indexPath.row)
             self.collection.reloadData()
         })

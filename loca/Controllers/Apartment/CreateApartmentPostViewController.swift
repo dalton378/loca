@@ -35,6 +35,10 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         confirmButton.layer.cornerRadius = 10
         tableView.dataSource = self
         tableView.delegate = self
+        if AppConfig.shared.profilePhoneVerified == 0 {
+            self.navigationController?.popViewController(animated: true)
+            Messages.displayYesNoMessage(title: "Tài khoản chưa xác thực", message: "Ấn vào avatar để xác thực tài khoản", buttonText: "OK", buttonAction: {})
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

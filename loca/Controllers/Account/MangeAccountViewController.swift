@@ -14,9 +14,13 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var settingTable: UITableView!
     
+    @IBOutlet weak var accountStatus: UIImageView!
+    
+    
     var settingData = [SettingData]()
     var updateData: AccountUpdate?
     var updateCaseNum = 0
+    let store = AlamofireStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +38,27 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         settingData.append(SettingData.init(icon: UIImage(named: "phone_icon")!, description: "Số điện thoại: \(AppConfig.shared.profilePhone ?? "")"))
         settingData.append(SettingData.init(icon: UIImage(named: "email_icon")!, description: "Email: \(AppConfig.shared.profileEmail ?? "")"))
         settingData.append(SettingData.init(icon: UIImage(named: "password_icon")!, description: "Cập nhật Password"))
-        settingData.append(SettingData.init(icon: UIImage(named: "letter_icon")!, description: "Liên hệ với LocaLoca"))
         settingData.append(SettingData.init(icon: UIImage(named: "letter_icon")!, description: "Đăng tin"))
         settingData.append(SettingData.init(icon: UIImage(named: "management_icon")!, description: "Quản lý tin"))
+        
+        if AppConfig.shared.profilePhoneVerified == 1 {
+            accountStatus.image = UIImage(named: "green_check_icon")
+        }
+    }
+    
+    @IBAction func showAccountStatus(_ sender: UITapGestureRecognizer) {
+        if AppConfig.shared.profilePhoneVerified == 0 {
+            Messages.displayYesNoMessage(title: "Tài khoản chưa xác thực!", message: "", buttonText: "Xác thực tài khoản", buttonAction: {
+                self.store.requestToken(completionHandler: {result in
+                    switch result{
+                    case .success:
+                        self.performSegue(withIdentifier: "account_phoneverify", sender: nil)
+                    case .failure:
+                        Messages.displayErrorMessage(message: "Không thể xác thực tài khoản. Vui lòng thử lại sau!")
+                    }
+                })
+            })
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,10 +91,8 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         case 3:
             performSegue(withIdentifier: "accountSetting_updatePass", sender: self)
         case 4:
-            performSegue(withIdentifier: "manageaccount_contact", sender: self)
-        case 5:
             performSegue(withIdentifier: "mangeaccount_createpost", sender: self)
-        case 6:
+        case 5:
             performSegue(withIdentifier: "manageaccount_postmanage", sender: self)
         default:
             print("2")

@@ -13,6 +13,8 @@ class VerifyPhoneViewController: UIViewController {
     
     @IBOutlet weak var pinView: SVPinView!
     
+    @IBOutlet weak var resendPINButton: UIButton!
+    
     let store = AlamofireStore()
     
     override func viewDidLoad() {
@@ -54,6 +56,22 @@ class VerifyPhoneViewController: UIViewController {
                 }
             })
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+            self.resendPINButton.isEnabled = true
+        })
+    }
+    
+    
+    @IBAction func resendPIN(_ sender: UIButton) {
+        store.requestToken(completionHandler: {result in
+            switch result{
+            case .success:
+                Messages.displaySuccessMessage(message: "PIN gửi thành công!")
+            case .failure:
+                Messages.displayErrorMessage(message: "PIN gửi không thành công. Vui lòng thử lại sau")
+            }
+        })
     }
     
     @IBAction func toHome(_ sender: UITapGestureRecognizer) {

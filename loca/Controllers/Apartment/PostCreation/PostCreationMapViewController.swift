@@ -127,7 +127,7 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     @IBAction func confirm(_ sender: UIButton) {
         confirmButton.setTitle("", for: .normal)
-        confirmButton.stopAnimation(animationStyle: .expand, revertAfterDelay: 1, completion: {
+        confirmButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 1, completion: {
             self.confirmButton.spinnerColor = UIColor.clear
             self.delegate?.getLocation(long: self.long, lat: self.lat)
             self.navigationController?.popViewController(animated: true)

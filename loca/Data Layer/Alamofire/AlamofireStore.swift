@@ -167,6 +167,13 @@ class AlamofireStore {
         })
     }
     
+    func requestToken(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.requestToken(completionHandler: {result in
+            print(result.response?.statusCode)
+            completionHandler(result.result)
+        })
+    }
+    
     
 }
 

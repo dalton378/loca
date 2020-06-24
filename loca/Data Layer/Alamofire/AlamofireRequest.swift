@@ -179,6 +179,12 @@ class AlamofireRequest {
             .responseString(completionHandler: completionHandler)
     }
     
+    func requestToken(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        let id = AppConfig.shared.profileId ?? 0
+        session.request(AccountApiProtocol.requestToken(id: id))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
 }
 
 

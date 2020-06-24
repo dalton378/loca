@@ -94,6 +94,7 @@
                         <segue destination="8IT-Vk-6on" kind="show" identifier="home_forgotPass" id="D0t-YC-THE"/>
                         <segue destination="qmZ-Kc-7HC" kind="show" identifier="signup_home" id="4bm-Y6-Lwb"/>
                         <segue destination="Yy8-Wa-JTp" kind="show" identifier="google_signin" id="9l5-Y2-EXe"/>
+                        <segue destination="JIb-iO-mEV" kind="show" identifier="home_contact" id="E1B-ey-8oX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xws-Ts-cLH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -408,15 +409,25 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kích Hoạt Sau" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Snl-Zg-pSt">
-                                <rect key="frame" x="12" y="285" width="390" height="21"/>
+                                <rect key="frame" x="12" y="338" width="390" height="21"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" name="UBlack"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="I6t-x9-YAm" appends="YES" id="yN4-MP-q8K"/>
                                 </connections>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lH3-7o-hvi">
+                                <rect key="frame" x="12" y="285" width="390" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Gửi lại PIN">
+                                    <color key="titleColor" name="UBlack"/>
+                                </state>
+                                <connections>
+                                    <action selector="resendPIN:" destination="A90-lv-m2D" eventType="touchUpInside" id="Z1A-6L-9Tf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
@@ -424,14 +435,17 @@
                             <constraint firstItem="iVX-nh-6rB" firstAttribute="leading" secondItem="E65-LG-QQS" secondAttribute="leading" constant="12" id="3cW-MF-sP6"/>
                             <constraint firstItem="qvl-U1-QaK" firstAttribute="top" secondItem="HqK-Kd-xmG" secondAttribute="bottom" constant="20" id="Dnd-eB-m55"/>
                             <constraint firstItem="qvl-U1-QaK" firstAttribute="centerX" secondItem="tku-j9-NK0" secondAttribute="centerX" id="EBe-bF-7LO"/>
-                            <constraint firstItem="Snl-Zg-pSt" firstAttribute="top" secondItem="iVX-nh-6rB" secondAttribute="bottom" constant="20" id="Kcy-ov-rFE"/>
                             <constraint firstItem="HqK-Kd-xmG" firstAttribute="top" secondItem="E65-LG-QQS" secondAttribute="top" constant="20" id="UPn-nV-rq9"/>
+                            <constraint firstItem="lH3-7o-hvi" firstAttribute="leading" secondItem="E65-LG-QQS" secondAttribute="leading" constant="12" id="WjF-w2-5sw"/>
                             <constraint firstAttribute="trailing" secondItem="HqK-Kd-xmG" secondAttribute="trailing" constant="12" id="YmZ-6L-0b3"/>
                             <constraint firstItem="iVX-nh-6rB" firstAttribute="top" secondItem="qvl-U1-QaK" secondAttribute="bottom" constant="20" id="Ypc-07-6Fr"/>
                             <constraint firstItem="E65-LG-QQS" firstAttribute="trailing" secondItem="Snl-Zg-pSt" secondAttribute="trailing" constant="12" id="YrQ-ai-izB"/>
+                            <constraint firstItem="E65-LG-QQS" firstAttribute="trailing" secondItem="lH3-7o-hvi" secondAttribute="trailing" constant="12" id="ZBD-Ck-rbF"/>
                             <constraint firstItem="Snl-Zg-pSt" firstAttribute="leading" secondItem="E65-LG-QQS" secondAttribute="leading" constant="12" id="b8s-5b-2AL"/>
                             <constraint firstItem="HqK-Kd-xmG" firstAttribute="leading" secondItem="E65-LG-QQS" secondAttribute="leading" constant="12" id="hpa-sD-k65"/>
                             <constraint firstItem="E65-LG-QQS" firstAttribute="trailing" secondItem="iVX-nh-6rB" secondAttribute="trailing" constant="12" id="hwu-xV-nue"/>
+                            <constraint firstItem="lH3-7o-hvi" firstAttribute="top" secondItem="iVX-nh-6rB" secondAttribute="bottom" constant="20" id="jf9-PG-C4G"/>
+                            <constraint firstItem="Snl-Zg-pSt" firstAttribute="top" secondItem="lH3-7o-hvi" secondAttribute="bottom" constant="20" id="zBY-u6-287"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E65-LG-QQS"/>
                         <userDefinedRuntimeAttributes>
@@ -449,6 +463,7 @@
                     <navigationItem key="navigationItem" id="gjp-fJ-7n1"/>
                     <connections>
                         <outlet property="pinView" destination="iVX-nh-6rB" id="VOX-il-25K"/>
+                        <outlet property="resendPINButton" destination="lH3-7o-hvi" id="z0I-wN-66R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ovm-mP-d4o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -479,11 +494,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzI-Qb-RjM">
                                         <rect key="frame" x="0.0" y="8" width="414" height="193.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon" translatesAutoresizingMaskIntoConstraints="NO" id="1rZ-ed-sa6">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon" translatesAutoresizingMaskIntoConstraints="NO" id="1rZ-ed-sa6">
                                                 <rect key="frame" x="158.5" y="20" width="97" height="97"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="1rZ-ed-sa6" secondAttribute="height" multiplier="1:1" id="uKh-Cn-ji3"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="Rpi-Ts-wNB" appends="YES" id="cMj-rb-tkk"/>
+                                                </connections>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxp-uk-BJS">
                                                 <rect key="frame" x="12" y="137" width="390" height="29"/>
@@ -491,12 +510,21 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cancel_icon" translatesAutoresizingMaskIntoConstraints="NO" id="8h2-pF-S2K">
+                                                <rect key="frame" x="225.5" y="20" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="CeX-FT-5ad"/>
+                                                    <constraint firstAttribute="width" constant="30" id="aWd-ym-Cgc"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="1rZ-ed-sa6" firstAttribute="top" secondItem="qzI-Qb-RjM" secondAttribute="top" constant="20" id="8hD-ph-yjw"/>
                                             <constraint firstItem="Bxp-uk-BJS" firstAttribute="leading" secondItem="qzI-Qb-RjM" secondAttribute="leading" constant="12" id="CLj-9n-2nj"/>
                                             <constraint firstItem="1rZ-ed-sa6" firstAttribute="height" secondItem="qzI-Qb-RjM" secondAttribute="height" multiplier="0.5" id="N3v-Ln-uhd"/>
+                                            <constraint firstItem="8h2-pF-S2K" firstAttribute="top" secondItem="1rZ-ed-sa6" secondAttribute="top" id="RJc-7Z-8yI"/>
+                                            <constraint firstItem="8h2-pF-S2K" firstAttribute="trailing" secondItem="1rZ-ed-sa6" secondAttribute="trailing" id="mYy-q2-R2g"/>
                                             <constraint firstItem="1rZ-ed-sa6" firstAttribute="centerX" secondItem="qzI-Qb-RjM" secondAttribute="centerX" id="oxp-3f-liZ"/>
                                             <constraint firstItem="Bxp-uk-BJS" firstAttribute="top" secondItem="1rZ-ed-sa6" secondAttribute="bottom" constant="20" id="poj-br-wOe"/>
                                             <constraint firstAttribute="trailing" secondItem="Bxp-uk-BJS" secondAttribute="trailing" constant="12" id="qDX-Kr-sTK"/>
@@ -579,6 +607,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="LKy-6d-6ha"/>
                     <navigationItem key="navigationItem" id="7fo-gJ-0Yp"/>
                     <connections>
+                        <outlet property="accountStatus" destination="8h2-pF-S2K" id="vGT-rJ-HaE"/>
                         <outlet property="nameLabel" destination="Bxp-uk-BJS" id="Ic3-Kc-K8V"/>
                         <outlet property="settingTable" destination="tnL-w6-oyc" id="NUD-zE-eDh"/>
                         <segue destination="CU1-v5-YAe" kind="show" identifier="mangeaccount_createpost" id="CG7-CW-T7d"/>
@@ -586,9 +615,15 @@
                         <segue destination="2eV-p2-Krd" kind="show" identifier="accountSetting_updatePass" id="SLI-He-Ues"/>
                         <segue destination="JIb-iO-mEV" kind="show" identifier="manageaccount_contact" id="OXM-LH-D9h"/>
                         <segue destination="bXc-E0-Jfc" kind="show" identifier="manageaccount_postmanage" id="Sd3-nW-zyz"/>
+                        <segue destination="A90-lv-m2D" kind="show" identifier="account_phoneverify" id="lrJ-0G-gb0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2C-z9-0JM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Rpi-Ts-wNB" userLabel="showAccountStatus">
+                    <connections>
+                        <action selector="showAccountStatus:" destination="nUc-XZ-LoH" id="RVU-Jf-STc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="825.66964285714278"/>
         </scene>
@@ -1365,7 +1400,12 @@
             <point key="canvasLocation" x="-852" y="1607"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="E1B-ey-8oX"/>
+        <segue reference="lrJ-0G-gb0"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="cancel_icon" width="96" height="96"/>
         <image name="down_icon" width="100" height="100"/>
         <image name="forgot_password_icon" width="96" height="96"/>
         <image name="membership_icon" width="96" height="96"/>

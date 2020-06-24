@@ -45,10 +45,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         let floaty = Floaty()
         floaty.openAnimationType = .pop
-        floaty.addItem("Search", icon: UIImage(named: "search_icon")!,handler:{ _ in
+        floaty.addItem("Tìm Kiếm", icon: UIImage(named: "search_icon")!,handler:{ _ in
             self.performSegue(withIdentifier: "home_apartmentFilter", sender: self)
         } )
-        floaty.addItem("Account", icon: UIImage(named: "user_icon")!,handler:{ _ in
+        floaty.addItem("Tài Khoản", icon: UIImage(named: "user_icon")!,handler:{ _ in
             guard let isSignedIn = AppConfig.shared.isSignedIn else {return}
             switch isSignedIn {
             case true:
@@ -57,7 +57,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                 Messages.displaySignInMessage(completionHandler: self.getDataFromServer, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)}, navigateGGsignInAction: {self.performSegue(withIdentifier: "google_signin", sender: self)})
             }
         } )
-        floaty.addItem("Contact", icon: UIImage(named: "email_icon")!,handler:{ _ in
+        floaty.addItem("Liên Hệ", icon: UIImage(named: "email_icon")!,handler:{ _ in
+            self.performSegue(withIdentifier: "home_contact", sender: self)
         } )
         self.view.addSubview(floaty)
         

@@ -80,11 +80,11 @@ public class Messages {
         SwiftMessages.show(config: config, view: view)
     }
     
-    static func displayYesNoMessage(title: String, message: String, buttonAction: @escaping (()->Void)) {
+    static func displayYesNoMessage(title: String, message: String, buttonText: String, buttonAction: @escaping (()->Void)) {
         let view = MessageView.viewFromNib(layout: .centeredView)
         view.configureTheme(.info)
         view.configureDropShadow()
-        view.configureContent(title: title, body: message, iconImage: nil, iconText: nil, buttonImage: nil, buttonTitle: "Xoá") {_ in
+        view.configureContent(title: title, body: message, iconImage: nil, iconText: nil, buttonImage: nil, buttonTitle: buttonText) {_ in
             SwiftMessages.hide()
             buttonAction()
         }
