@@ -16,7 +16,7 @@ class GoogleSigninViewController: UIViewController, GIDSignInDelegate {
         super.viewDidLoad()
         
         self.googleSignIn?.presentingViewController = self 
-        self.googleSignIn?.clientID = "924891718499-qqmmstqei25je6dqhg2i1tj0v0na658r.apps.googleusercontent.com"
+        self.googleSignIn?.clientID = "924891718499-2f8cd1tvcql7b24v6o3qngl8hm2567iv.apps.googleusercontent.com"
         self.googleSignIn?.delegate = self
         
     }
