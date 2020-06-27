@@ -113,3 +113,9 @@ struct ApartmentPostList: Codable {
     var data: [ApartmentPostDetail]
     var total: Int
 }
+
+struct GetApartmentPostList: Codable {
+    var current_page: Int
+    var data: [ApartmentPostDetail]
+    var total: Int
+}

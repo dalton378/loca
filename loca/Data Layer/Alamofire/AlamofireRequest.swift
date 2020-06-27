@@ -185,6 +185,13 @@ class AlamofireRequest {
             .validate()
             .responseString(completionHandler: completionHandler)
     }
+    
+    func deletePost(id: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        let token = AppConfig.shared.accessToken ?? ""
+        session.request(ApartmentApiProtocol.deletePost(token: token, id: id))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
 }
 
 

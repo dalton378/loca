@@ -11,6 +11,9 @@ import GoogleSignIn
 
 class GoogleSigninViewController: UIViewController, GIDSignInDelegate {
     let googleSignIn = GIDSignIn.sharedInstance()
+    var store = AlamofireStore()
+    
+    var getData: (() -> Void)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +34,28 @@ class GoogleSigninViewController: UIViewController, GIDSignInDelegate {
            if (error == nil) {
                // Perform any operations on signed in user here.
                let userId = user.userID                  // For client-side use only!
-               let idToken = user.authentication.idToken // Safe to send to the server
+               //let idToken = user.authentication.idToken // Safe to send to the server
                let fullName = user.profile.name
-               let givenName = user.profile.givenName
-               let familyName = user.profile.familyName
+              // let givenName = user.profile.givenName
+             //  let familyName = user.profile.familyName
                let email = user.profile.email
-               // ...
+            store.socialLogin(name: fullName ?? "", id: userId ?? "", provider: "Google", email: email ?? "", completionHandler: {result in
+                switch result {
+                case .success(let data):
+                    let parsedData = data.data(using: .utf8)
+                    guard let newData = parsedData, let autParams = try? JSONDecoder().decode(AccountModel.self, from: newData) else { return}
+                    AppConfig.shared.accessToken = autParams.access_token
+                    AppConfig.shared.isSignedIn = true
+                    Messages.displaySuccessMessage(message: "Đăng Nhập Thành Công.")
+                    self.getData()
+                    self.navigationController?.popToRootViewController(animated: true)
+                case .failure:
+                    return
+                }
+            
+                
+            })
+            
            } else {
                print("\(error.localizedDescription)")
            }

@@ -261,6 +261,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             let view = segue.destination as! FilterViewController
             view.delegate = self
         }
+        else if segue.identifier == "google_signin" {
+            let view = segue.destination as! GoogleSigninViewController
+            view.getData = self.getDataFromServer
+        }
     }
 }
 

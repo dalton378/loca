@@ -13,19 +13,20 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var settingTable: UITableView!
-    
     @IBOutlet weak var accountStatus: UIImageView!
-    
     
     var settingData = [SettingData]()
     var updateData: AccountUpdate?
     var updateCaseNum = 0
     let store = AlamofireStore()
+    let cIndicator = CustomIndicator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setEmptyBackButton()
+        cIndicator.addIndicator(view: self, alpha: 1)
+        cIndicator.startIndicator(timeout: 5)
         
         nameLabel.text = AppConfig.shared.profileName
         prepareData()
@@ -41,9 +42,8 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         settingData.append(SettingData.init(icon: UIImage(named: "letter_icon")!, description: "Đăng tin"))
         settingData.append(SettingData.init(icon: UIImage(named: "management_icon")!, description: "Quản lý tin"))
         
-        if AppConfig.shared.profilePhoneVerified == 1 {
-            accountStatus.image = UIImage(named: "green_check_icon")
-        }
+        guard let _ = AppConfig.shared.accessToken else {return}
+        getUserData()
     }
     
     @IBAction func showAccountStatus(_ sender: UITapGestureRecognizer) {
@@ -116,6 +116,28 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
             }
             viewController.data = updateData
         }
+    }
+    
+    private func getUserData(){
+        store.getUser(completionHandler: {result in
+            self.cIndicator.stopIndicator()
+            switch result {
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ProfileModel.self, from: newData) else {return}
+                AppConfig.shared.profileName = autParams.name
+                AppConfig.shared.profileId = autParams.id
+                AppConfig.shared.profileEmail = autParams.email
+                AppConfig.shared.profilePhone = autParams.phone
+                AppConfig.shared.profileEmailVerified = autParams.is_email_verified
+                AppConfig.shared.profilePhoneVerified = autParams.is_phone_verified
+                if AppConfig.shared.profilePhoneVerified == 1 {
+                    self.accountStatus.image = UIImage(named: "green_check_icon")
+                }
+            case .failure:
+                return
+            }
+        })
     }
     
     

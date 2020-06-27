@@ -316,7 +316,7 @@ class PostCreationBasicViewController: UIViewController {
         if tranString.isEmpty || propertyString.isEmpty || cityString.isEmpty || districtString.isEmpty || wardString.isEmpty || streetTextField.text!.isEmpty || numberAddressTextField.text!.isEmpty || squareTextfield.text!.isEmpty || squareUnitString.isEmpty || costTextField.text!.isEmpty || priceUnitString.isEmpty || startDateTextField.text!.isEmpty || endDateTextField.text!.isEmpty {
             Messages.displayErrorMessage(message: "Vui lòng nhập đầy đủ thông tin")
         } else {
-            delegate?.getBasicInfo(transType: tranString, proType: propertyString, city: cityString, district: districtString, ward: wardString, street: streetTextField.text!, unitNum: numberAddressTextField.text!, square: squareTextfield.text!, squareUnit: squareUnitString, price: costTextField.text!, priceUnit: priceUnitString, startDate: startDateTextField.text!, endDate: endDateTextField.text!)
+            delegate?.getBasicInfo(transType: tranString, proType: propertyString, city: cityString, district: districtString, ward: wardString, street: streetTextField.text!, fullAddress: "\(streetTextField.text!) \(wardText.text!), \(districtText.text!), \(cityText.text!)", unitNum: numberAddressTextField.text!, square: squareTextfield.text!, squareUnit: squareUnitString, price: costTextField.text!, priceUnit: priceUnitString, startDate: startDateTextField.text!, endDate: endDateTextField.text!)
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -360,5 +360,5 @@ extension PostCreationBasicViewController {
 
 
 protocol PostCreationBasicProtocol {
-    func getBasicInfo(transType: String, proType: String, city: String, district: String, ward: String, street: String, unitNum: String, square: String, squareUnit: String, price: String, priceUnit: String, startDate: String, endDate: String)
+    func getBasicInfo(transType: String, proType: String, city: String, district: String, ward: String, street: String, fullAddress: String, unitNum: String, square: String, squareUnit: String, price: String, priceUnit: String, startDate: String, endDate: String)
 }

@@ -17,6 +17,7 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     var postedPhotos = [Int]()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var confirmButton: UIButton!
+    let cIndicator = CustomIndicator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,9 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         confirmButton.layer.cornerRadius = 10
         tableView.dataSource = self
         tableView.delegate = self
+        
+        cIndicator.addIndicator(view: self, alpha: 0.6)
+        
         if AppConfig.shared.profilePhoneVerified == 0 {
             self.navigationController?.popViewController(animated: true)
             Messages.displayYesNoMessage(title: "Tài khoản chưa xác thực", message: "Ấn vào avatar để xác thực tài khoản", buttonText: "OK", buttonAction: {})
@@ -107,16 +111,19 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     }
     
     private func createPost(){
+        cIndicator.startIndicator(timeout: 10)
         store.createPost(data: data, completionHandler: { (result, data) in
+            self.cIndicator.stopIndicator()
             switch result {
             case .success(let dataString):
                 
                 print(dataString)
                 //                let parsedData = dataString.data(using: .utf8)
                 //                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
-                
+                Messages.displaySuccessMessage(message: "Đăng tin thành công")
+                self.navigationController?.popViewController(animated: true)
             case .failure:
-                print(data)
+                Messages.displayErrorMessage(message: "Không thành công. Vui lòng thử lại sau!")
                 return
             }
             
@@ -205,9 +212,8 @@ extension CreateApartmentPostViewController: PostCreationContactProtocol {
 }
 
 extension CreateApartmentPostViewController: PostCreationBasicProtocol {
-    func getBasicInfo(transType: String, proType: String, city: String, district: String, ward: String, street: String, unitNum: String, square: String, squareUnit: String, price: String, priceUnit: String, startDate: String, endDate: String) {
-        
-        data.post_type_id = Int(transType)!; data.property_type_id = proType; data.province_id = Int(city)!; data.district_id = Int(district)!; data.ward_id = Int(ward)!; data.street = street; data.address = unitNum; data.area = square; data.area_unit_id = Int(squareUnit)!; data.price = price; data.currency_id = Int(priceUnit)!; data.start_date = startDate; data.end_date = endDate
+    func getBasicInfo(transType: String, proType: String, city: String, district: String, ward: String, street: String, fullAddress: String, unitNum: String, square: String, squareUnit: String, price: String, priceUnit: String, startDate: String, endDate: String) {
+        data.post_type_id = Int(transType)!; data.property_type_id = proType; data.province_id = Int(city)!; data.district_id = Int(district)!; data.ward_id = Int(ward)!; data.street = street; data.address = "\(unitNum) \(fullAddress)"; data.area = square; data.area_unit_id = Int(squareUnit)!; data.price = price; data.currency_id = Int(priceUnit)!; data.start_date = startDate; data.end_date = endDate
         
         tableData[0].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()

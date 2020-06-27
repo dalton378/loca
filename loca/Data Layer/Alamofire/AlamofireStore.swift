@@ -93,11 +93,6 @@ class AlamofireStore {
     
     func postFile(file: UIImage, completionHandler: @escaping ((Result<String, AFError>, Data?) -> Void )) {
         client.postFile(file: file, completionHandler: {result in
-            
-            print(result.description)
-            print(result.debugDescription)
-            print(result.response?.statusCode)
-            print(result.data)
             completionHandler(result.result, result.data)
         })
     }
@@ -110,7 +105,6 @@ class AlamofireStore {
     
     func createPost(data: ApartmentPostCreation, completionHandler: @escaping ((Result<String, AFError>, Data?) -> Void )) {
         client.createPost(data: data, completionHandler: {result in
-            print(result.response?.statusCode)
             completionHandler(result.result, result.data)
         })
     }
@@ -135,21 +129,18 @@ class AlamofireStore {
     
     func getTransactionType(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
         client.getTransactionType(completionHandler: {result in
-            print(result.response?.statusCode)
             completionHandler(result.result)
         })
     }
     
     func getPost(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
         client.getPost(completionHandler: {result in
-            print(result.response?.statusCode)
             completionHandler(result.result)
         })
     }
     
     func getFBUserId(token: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
         client.getFBUserId(token: token, completionHandler: {result in
-            print(result.response?.statusCode)
             completionHandler(result.result)
         })
     }
@@ -162,18 +153,21 @@ class AlamofireStore {
     
     func phoneVerify(token: String, id: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
         client.phoneVerify(token: token, id: id, completionHandler: {result in
-            print(result.response?.statusCode)
             completionHandler(result.result)
         })
     }
     
     func requestToken(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
         client.requestToken(completionHandler: {result in
-            print(result.response?.statusCode)
             completionHandler(result.result)
         })
     }
     
+    func deletePost(id: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.deletePost(id: id, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
     
 }
 

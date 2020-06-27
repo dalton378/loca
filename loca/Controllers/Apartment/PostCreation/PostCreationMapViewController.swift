@@ -116,8 +116,8 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     private func searchEnteredAddress(){
         if !dataLocation.street.isEmpty {
-            searchAdressByText(text: "\(dataLocation.address) \(dataLocation.street)")
-            searchTextFiled.text = "\(dataLocation.address) \(dataLocation.street)"
+            searchAdressByText(text: "\(dataLocation.address)")
+            searchTextFiled.text = "\(dataLocation.address)"
         }
     }
     
