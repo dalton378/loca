@@ -17,14 +17,15 @@ class PostManageListViewController: UIViewController {
     let store = AlamofireStore()
     let cIndicator = CustomIndicator()
     var data = [ApartmentPostDetail]()
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        // Do any additional setup after loading the view.
     }
     
     private func setupUI(){
+        self.setEmptyBackButton()
         circleRing.layer.cornerRadius = 100
         tableView.dataSource = self
         tableView.delegate = self
@@ -68,17 +69,12 @@ extension PostManageListViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "manage_post", for: indexPath) as! ManagePostTableViewCell
+        guard let image = data[indexPath.row].images.first else {
+            cell.setUI(photo: UIImage(), address: data[indexPath.row].address, price: "\(data[indexPath.row].area) \(data[indexPath.row].area_unit.name) - \(data[indexPath.row].price) \(data[indexPath.row].currency.name)", date: data[indexPath.row].start_date, status: .pending)
+            return cell
+        }
         
-        
-        let newString = data[indexPath.row].images.first!.img.replacingOccurrences(of: "\\", with: "", options: .literal, range: nil)
-        let data1 = newString.data(using: .utf8)
-        let newData = data1!
-        let autParams = try? JSONDecoder().decode(ApartmentPhotoDetail.self, from: newData)
-        
-        let urlString = "\(AppConfig.shared.ApiBaseUrl)/\( autParams!.thumbnail)"
-        let urlPhoto = URL(string: urlString)
-        
-        let photo = self.downloadImage(from: urlPhoto!)
+        let photo = sharedFunctions.downloadLocaApartmentImage(image: image)
         
         cell.setUI(photo: photo, address: data[indexPath.row].address, price: "\(data[indexPath.row].area) \(data[indexPath.row].area_unit.name) - \(data[indexPath.row].price) \(data[indexPath.row].currency.name)", date: data[indexPath.row].start_date, status: .pending)
         
@@ -86,7 +82,7 @@ extension PostManageListViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: "Xoá") { (action, indexPath) in
             let id = self.data[indexPath.row].track_id
             self.store.deletePost(id: String(id), completionHandler: { result in
                 switch result{
@@ -99,8 +95,9 @@ extension PostManageListViewController: UITableViewDataSource, UITableViewDelega
             })
         }
 
-        let share = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            print("Edit")
+        let share = UITableViewRowAction(style: .normal, title: "Sửa") { (action, indexPath) in
+            self.selectedIndex = indexPath.row
+            self.performSegue(withIdentifier: "managepost_editpost", sender: self)
         }
 
         share.backgroundColor = UIColor.blue
@@ -108,6 +105,50 @@ extension PostManageListViewController: UITableViewDataSource, UITableViewDelega
         return [delete, share]
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "managepost_editpost" {
+            let view = segue.destination as! CreateApartmentPostViewController
+            var passedData = ApartmentPostCreation()
+            passedData.address = self.data[selectedIndex].address
+            passedData.apartment_code = self.data[selectedIndex].apartment_code ?? ""
+            passedData.apartment_id = String(self.data[selectedIndex].id ?? 0)
+            //passedData.apartment_number = String(self.data[selectedIndex]. ?? 0)
+            passedData.area = self.data[selectedIndex].area
+            passedData.area_unit_id = self.data[selectedIndex].area_unit.id
+            passedData.bathroom_number = self.data[selectedIndex].bathroom_number ?? 0
+            passedData.bedroom_number = self.data[selectedIndex].bedroom_number ?? 0
+            passedData.contacts = self.data[selectedIndex].contacts ?? []
+            //passedData.content = self.data[selectedIndex].description
+            passedData.currency_id = self.data[selectedIndex].currency.id
+            passedData.description = self.data[selectedIndex].description
+            passedData.direction = self.data[selectedIndex].direction
+            passedData.district_id = self.data[selectedIndex].district.id
+            passedData.end_date = self.data[selectedIndex].end_date
+            passedData.floor_number = self.data[selectedIndex].floor_number ?? 0
+            passedData.garden = self.data[selectedIndex].garden ?? "1"
+            passedData.id = String(self.data[selectedIndex].id ?? 0)
+            //passedData.images = self.data[selectedIndex].images
+            passedData.lat = self.data[selectedIndex].lat
+            passedData.lng = self.data[selectedIndex].lng
+            passedData.pool = self.data[selectedIndex].pool ?? "1"
+            passedData.post_type_id = self.data[selectedIndex].post_type.id
+            passedData.price = self.data[selectedIndex].price
+            //passedData.prices_unit_id = self.data[selectedIndex].c
+            passedData.property_type_id = self.data[selectedIndex].property_type.id
+            passedData.province_id = self.data[selectedIndex].province.id
+            passedData.region = self.data[selectedIndex].region
+            passedData.rooftop = self.data[selectedIndex].rooftop ?? "1"
+            passedData.start_date = self.data[selectedIndex].start_date
+            passedData.street = self.data[selectedIndex].street
+            passedData.total_area = self.data[selectedIndex].area
+            passedData.track_id = self.data[selectedIndex].track_id
+            passedData.user_id = String(self.data[selectedIndex].user_id)
+            passedData.ward_id = self.data[selectedIndex].ward.id
+            view.data = passedData
+            view.postedPhotoLink = self.data[selectedIndex].images
+            view.operation = .update
+        }
+    }
     
     func downloadImage(from url: URL) -> UIImage  {
         guard let data = try? Data(contentsOf: url) else {return UIImage()}

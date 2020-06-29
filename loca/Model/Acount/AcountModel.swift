@@ -35,8 +35,6 @@ struct AccountUpdate {
             return "Mật khẩu"
         case .email:
             return "Email"
-        default:
-            break
         }
     }
     
@@ -50,8 +48,6 @@ struct AccountUpdate {
             return "Cập nhật mật khẩu thành công!"
         case.email:
             return "Cập nhật email thành công!"
-        default:
-            break
         }
     }
     var errorMessage: String {
@@ -64,8 +60,6 @@ struct AccountUpdate {
              return "Cập nhật số điện thoại không thành công. Vui lòng thử lại sau!"
         case.email :
             return "Cập nhật email không thành công. Vui lòng thử lại sau!"
-        default:
-            break
         }
     }
     var type : UpdateCase

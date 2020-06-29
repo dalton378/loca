@@ -15,9 +15,11 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     let store = AlamofireStore()
     var photos = [UIImage]()
     var postedPhotos = [Int]()
+    var postedPhotoLink = [ApartmentPhotos]()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var confirmButton: UIButton!
     let cIndicator = CustomIndicator()
+    var operation: OperationType!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,12 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
             self.navigationController?.popViewController(animated: true)
             Messages.displayYesNoMessage(title: "Tài khoản chưa xác thực", message: "Ấn vào avatar để xác thực tài khoản", buttonText: "OK", buttonAction: {})
         }
+        
+        if !postedPhotoLink.isEmpty && operation == .update {
+            for i in postedPhotoLink {
+                photos.append(sharedFunctions.downloadLocaApartmentImage(image: i))
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,7 +69,6 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
         switch indexPath.row {
         case 0:
             performSegue(withIdentifier: "createPost_basicInfo", sender: self)
@@ -78,17 +85,25 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         default:
             break
         }
-        
     }
     
     @IBAction func confirm(_ sender: UIButton) {
-        print(data)
-        postedPhotos.removeAll()
         
-        if data.district_id == 0 || data.lat == 0 {
-            Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin trước khi đăng tin!")
+        guard let operationType = operation else { return}
+        print(data)
+        switch operationType {
+        case .create:
+            createPostRequest()
+        case .update:
+            updatePostRequest()
         }
-        else {
+    }
+    
+    private func updatePostRequest(){
+        
+        if photos.isEmpty {
+            self.updatePost()
+        } else {
             for photo in photos {
                 store.postImageFormData(image: photo, completionHandler: {respose in
                     
@@ -101,11 +116,55 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
                     
                     if self.postedPhotos.count == self.photos.count {
                         self.data.images = self.postedPhotos
-                        self.createPost()
+                        self.updatePost()
                     }
                     print(autParams.id)
                     print(autParams.path.original)
                 })
+            }
+        }
+    }
+    
+    private func updatePost(){
+        store.updatePost(data: self.data, completionHandler: {result in
+            print(result)
+            switch result{
+            case .success:
+                Messages.displaySuccessMessage(message: "Cập nhật tin thành công")
+            case .failure:
+                Messages.displayErrorMessage(message: "Cập nhật tin không thành công")
+            }
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
+    
+    private func createPostRequest(){
+        if data.district_id == 0 || data.lat == 0 {
+            Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin trước khi đăng tin!")
+        }
+        else {
+            postedPhotos.removeAll()
+            if photos.isEmpty {
+                self.createPost()
+            } else {
+                for photo in photos {
+                    store.postImageFormData(image: photo, completionHandler: {respose in
+                        
+                        print(String(decoding: respose.data!, as: UTF8.self))
+                        guard let newData = respose.data, let autParams = try? JSONDecoder().decode(ApartmentPhotoReturn.self, from: newData) else {
+                            Messages.displayErrorMessage(message: "Upload file không thành công!")
+                            return
+                        }
+                        self.postedPhotos.append(autParams.id)
+                        
+                        if self.postedPhotos.count == self.photos.count {
+                            self.data.images = self.postedPhotos
+                            self.createPost()
+                        }
+                        print(autParams.id)
+                        print(autParams.path.original)
+                    })
+                }
             }
         }
     }
@@ -164,6 +223,10 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         var description: String
         var status: UIImage
     }
+    enum OperationType {
+        case create
+        case update
+    }
 }
 
 extension CreateApartmentPostViewController: ApartmentPostLocationProtocol{
@@ -196,7 +259,11 @@ extension CreateApartmentPostViewController: PostCreationAddInfoProtocol {
 
 extension CreateApartmentPostViewController: PostCreationCameraProtocol {
     func getPhotos(images: [UIImage]) {
-        self.photos = images
+        if images.count == 0 {
+            self.data.images = []
+        } else {
+             self.photos = images
+        }
         tableData[4].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
     }

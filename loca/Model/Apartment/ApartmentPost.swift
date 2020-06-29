@@ -71,6 +71,7 @@ struct ApartmentPostCreation: Codable {
     var region: String?
     var start_date: String
     var rooftop: String
+    var track_id: Int?
 }
 
 

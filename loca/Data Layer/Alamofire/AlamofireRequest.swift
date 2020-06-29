@@ -192,6 +192,14 @@ class AlamofireRequest {
             .validate()
             .responseString(completionHandler: completionHandler)
     }
+    
+    func updatePost(data: ApartmentPostCreation, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        let token = AppConfig.shared.accessToken ?? ""
+        session.request(ApartmentApiProtocol.updatePost(token: token, data: data))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
 }
 
 

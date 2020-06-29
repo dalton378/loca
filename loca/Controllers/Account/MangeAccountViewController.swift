@@ -115,6 +115,9 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
                 break
             }
             viewController.data = updateData
+        } else if segue.identifier == "mangeaccount_createpost" {
+            let viewController = segue.destination as! CreateApartmentPostViewController
+            viewController.operation = .create
         }
     }
     

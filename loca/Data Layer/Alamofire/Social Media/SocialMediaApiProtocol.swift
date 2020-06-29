@@ -51,8 +51,6 @@ enum FBApiProtocol: Router {
         switch self {
         case .getFBUserId:
             return "me"
-        default:
-            return ""
         }
     }
     
@@ -67,16 +65,13 @@ enum FBApiProtocol: Router {
         switch self {
         case .getFBUserId(let token):
             return ["access_token" : token]
-        default:
-            return [:]
+
         }
     }
     var headers: [String : String]? {
         switch self {
         case let .getFBUserId(token):
             return ["Authorization": "Bearer \(token)"]
-        default:
-            return [:]
         }
     }
 }

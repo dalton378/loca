@@ -317,8 +317,6 @@ extension HomeViewController: FilterSelectionProtocol {
                 propertyType = section.value
             case .cost :
                 generateFromCostID(cost: section.value, min_price: &min_price, min_currency: &min_currency, max_price: &max_price, max_currency: &max_currency)
-            default:
-                break
             }
         }
         let token = AppConfig.shared.accessToken ?? ""

@@ -38,12 +38,12 @@ struct ApartmentPostDetail: Codable {
     var bedroom_number: Int?
     var bathroom_number: Int?
     var rooftop: String?
-    // var garden: String?
-    //var pool: String?
+    var garden: String?
+    var pool: String?
     var description: String
     var price: String
     var currency: Currency
-    var apartment_contacts: [ApartmentContact]?
+    var contacts: [ApartmentContact]?
     var approved_user: Int?
 }
 

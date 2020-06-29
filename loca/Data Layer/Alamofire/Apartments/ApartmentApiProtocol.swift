@@ -19,6 +19,7 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     case createPost(token: String, data: ApartmentPostCreation)
     case getPost(token: String)
     case deletePost(token: String, id: String)
+    case updatePost(token:String, data: ApartmentPostCreation)
     
     var method: HTTPMethod {
         switch self {
@@ -28,6 +29,8 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
             return .post
         case .deletePost:
             return .delete
+        case .updatePost:
+            return .put
         }
     }
     
@@ -49,8 +52,8 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
             return "post-apartments"
         case .deletePost(_,let id):
             return "post-apartments/\(id)"
-        default:
-            return ""
+        case .updatePost(_,let data):
+            return "post-apartments/\(data.track_id ?? 0)"
         }
     }
     
@@ -58,7 +61,7 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
         switch self {
         case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .deletePost:
             return URLEncoding.default
-        case .postFiles, .createPost:
+        case .postFiles, .createPost, .updatePost:
             return JSONEncoding.default
         }
     }
@@ -102,13 +105,16 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
         case .createPost(_, let data):
             return [ "apartment_id" : data.apartment_id, "currency_id" : data.currency_id, "lat": data.lat, "lng" : data.lng, "address" : data.address, "name" :data.name, "street" : data.street, "content" : data.content, "ward_id" : data.ward_id, "total_area": data.total_area, "district_id" : data.district_id, "province_id" : data.province_id, "apartment_code" :data.apartment_code, "apartment_number" : data.apartment_number, "property_type_id" : data.property_type_id, "post_type_id" : data.post_type_id, "images": data.images, "area" : data.area, "area_unit_id" :data.area_unit_id, "bathroom_number" : data.bathroom_number, "bedroom_number" :data.bedroom_number, "contacts" : [["name": data.contacts.first!.name, "phone" :data.contacts.first!.phone, "email": data.contacts.first!.email]], "description" : data.description, "direction" : data.direction, "end_date": data.end_date, "floor_number" : data.floor_number, "garden" : data.garden, "pool" :data.pool, "price" : data.price, "region" :data.region ?? "", "start_date": data.start_date, "rooftop" : data.rooftop
             ]
+            case .updatePost(_, let data):
+            return [ "apartment_id" : data.apartment_id, "currency_id" : data.currency_id, "lat": data.lat, "lng" : data.lng, "address" : data.address, "name" :data.name, "street" : data.street, "content" : data.content, "ward_id" : data.ward_id, "total_area": data.total_area, "district_id" : data.district_id, "province_id" : data.province_id, "apartment_code" :data.apartment_code, "apartment_number" : data.apartment_number, "property_type_id" : data.property_type_id, "post_type_id" : data.post_type_id, "images": data.images, "area" : data.area, "area_unit_id" :data.area_unit_id, "bathroom_number" : data.bathroom_number, "bedroom_number" :data.bedroom_number, "contacts" : [["name": data.contacts.first!.name, "phone" :data.contacts.first!.phone, "email": data.contacts.first!.email]], "description" : data.description, "direction" : data.direction, "end_date": data.end_date, "floor_number" : data.floor_number, "garden" : data.garden, "pool" :data.pool, "price" : data.price, "region" :data.region ?? "", "start_date": data.start_date, "rooftop" : data.rooftop
+            ]
         default:
             return [:]
         }
     }
     var headers: [String : String]? {
         switch self {
-        case let .getApartment(token), .getApartmentDetail(_, let token), .getPropertyType(let token), .searchApartment(let token,_,_,_,_,_,_,_,_), .createPost(let token, _), .getPost(let token), .deletePost(let token, _):
+        case let .getApartment(token), .getApartmentDetail(_, let token), .getPropertyType(let token), .searchApartment(let token,_,_,_,_,_,_,_,_), .createPost(let token, _), .getPost(let token), .deletePost(let token, _), .updatePost(let token, _):
             return ["Authorization": "Bearer \(token)"]
         default:
             return [:]

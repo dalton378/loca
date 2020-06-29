@@ -56,8 +56,6 @@ enum AccountApiProtocol: ServicesApiRouterProtocol {
             return "auth/phone-verify"
         case .requestToken:
             return "auth/request-token"
-        default:
-            return ""
         }
     }
     

@@ -43,8 +43,6 @@ enum ProvinceAPIProtocol: ServicesApiRouterProtocol {
             return "commons/area-units"
         case .getTransactionType:
             return "post-types"
-        default:
-            return ""
         }
     }
     

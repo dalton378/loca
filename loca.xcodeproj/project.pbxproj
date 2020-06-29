@@ -10,6 +10,7 @@
 		08904C1096BDEBBBE6A04459 /* Pods_locaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF7294B8E53BB7098C1DCCE /* Pods_locaTests.framework */; };
 		48542ABA5CEF5C8E06E68954 /* Pods_loca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3562539F9D37F1EBC9C17C04 /* Pods_loca.framework */; };
 		8E02CA822449DE03006A4F3B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E02CA812449DE03006A4F3B /* SceneDelegate.swift */; };
+		8E1AA9EA24A9F2DC00D550E5 /* SharedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA9E924A9F2DC00D550E5 /* SharedFunctions.swift */; };
 		8E36650824A0A5940071B72B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36650624A0A5940071B72B /* Router.swift */; };
 		8E36650924A0A5940071B72B /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36650724A0A5940071B72B /* RouterProtocol.swift */; };
 		8E7192EF24401C5000DB814A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7192EE24401C5000DB814A /* AppDelegate.swift */; };
@@ -112,6 +113,7 @@
 		5AF7294B8E53BB7098C1DCCE /* Pods_locaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_locaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738153B7F32CBDE99EBFF57A /* Pods_loca_locaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loca_locaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E02CA812449DE03006A4F3B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8E1AA9E924A9F2DC00D550E5 /* SharedFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFunctions.swift; sourceTree = "<group>"; };
 		8E36650624A0A5940071B72B /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8E36650724A0A5940071B72B /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		8E7192EB24401C5000DB814A /* loca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loca.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -308,6 +310,7 @@
 				8E807BD2246A7F290002A6AC /* GradientView.swift */,
 				E80049CF246F8E4600AAD711 /* ListView.swift */,
 				E8539CDA2477BA50005DF65F /* DateTimePicker.swift */,
+				8E1AA9E924A9F2DC00D550E5 /* SharedFunctions.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -940,6 +943,7 @@
 				E80049D0246F8E4600AAD711 /* ListView.swift in Sources */,
 				E8165E02247E7263009666BC /* SocialMediaApiModel.swift in Sources */,
 				8E7A513E246985C200A7C716 /* UITextViewExtension.swift in Sources */,
+				8E1AA9EA24A9F2DC00D550E5 /* SharedFunctions.swift in Sources */,
 				E8C59BA124A600E4002F96CC /* ManagePostTableViewCell.swift in Sources */,
 				8EE37B8E2467BF3B0094CE6B /* UpdateAccountPassViewController.swift in Sources */,
 				E84FD1DF245D282E00E10507 /* ApartmentDetail.swift in Sources */,

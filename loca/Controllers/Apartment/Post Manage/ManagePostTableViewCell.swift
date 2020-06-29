@@ -43,7 +43,6 @@ class ManagePostTableViewCell: UITableViewCell {
             self.statusLabel.textColor = UIColor.red
         default:
             self.statusLabel.text = "Đang Duyệt"
-            self.statusLabel.textColor = UIColor.darkGray
         }
     }
     

@@ -169,6 +169,12 @@ class AlamofireStore {
         })
     }
     
+    func updatePost(data: ApartmentPostCreation, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.updatePost(data: data, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
+    
 }
 
 extension AlamofireStore {

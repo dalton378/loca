@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dDQ-Y8-Bws">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dDQ-Y8-Bws">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -1376,7 +1376,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfb-dW-990">
                                                     <rect key="frame" x="113.5" y="92.5" width="268.5" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="UGray"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1434,11 +1434,22 @@
                         <outlet property="circleRing" destination="IN0-ho-UDI" id="VIZ-o7-vjw"/>
                         <outlet property="postNumberLabel" destination="WHX-YN-6Vo" id="ysG-Jo-BsK"/>
                         <outlet property="tableView" destination="O1n-Qq-4Iw" id="OT2-hM-Fu5"/>
+                        <segue destination="axP-Ou-WMC" kind="show" identifier="managepost_editpost" id="lOy-6r-zSU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SF6-N5-4bO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3521.739130434783" y="1662.7232142857142"/>
+        </scene>
+        <!--CreateApartmentPostViewController-->
+        <scene sceneID="bHB-9e-ZAJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Apartment" referencedIdentifier="CreateApartmentPostViewController" id="axP-Ou-WMC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1Jz-vD-bKr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RFd-t4-PZI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4279" y="1531"/>
         </scene>
         <!--Google Signin View Controller-->
         <scene sceneID="blG-qC-bYc">
@@ -1479,7 +1490,10 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UCyan">
-            <color red="0.011764705882352941" green="0.66274509803921566" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.011764706112444401" green="0.66274511814117432" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="UGray">
+            <color red="0.28235294117647058" green="0.28235294117647058" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

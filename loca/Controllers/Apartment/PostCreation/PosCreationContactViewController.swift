@@ -39,8 +39,8 @@ class PosCreationContactViewController: UIViewController {
         FloatingTextField.configureFloatingText(textfield: emailTextField, placeHolder: "Email", title: "Email")
         emailTextField.addTarget(self, action: #selector(self.validateInput(_:)), for: .editingChanged)
         emailTextField.text = AppConfig.shared.profileEmail
-        guard let contact = data else { return }
-        if !contact.name.isEmpty {
+        guard let contact = data, let name = contact.name else { return }
+        if !name.isEmpty {
             nameTextField.text = contact.name
             phoneTextField.text = contact.phone
             emailTextField.text = contact.email

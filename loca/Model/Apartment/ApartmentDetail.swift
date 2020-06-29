@@ -98,9 +98,9 @@ struct Currency: Codable {
 }
 
 struct ApartmentContact: Codable {
-    var name: String
-    var phone: String
-    var email: String
+    var name: String?
+    var phone: String?
+    var email: String?
 }
 
 struct ApartmentPhotoDetail: Codable {
