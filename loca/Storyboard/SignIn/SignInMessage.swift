@@ -66,6 +66,7 @@ class SignInMessage: MessageView {
         
         FloatingTextField.configureFloatingText(textfield: phoneTextfield, placeHolder: "Số điện thoại", title: "Số điện thoại")
         phoneTextfield.addTarget(self, action: #selector(self.validateInput(_:)), for: .editingChanged)
+        phoneTextfield.keyboardType = .phonePad
         
         TransitionButtonCustom.configureTransitionButton(button: buttonSign, tittle: "Đăng Nhập", tapHandler: nil)
         

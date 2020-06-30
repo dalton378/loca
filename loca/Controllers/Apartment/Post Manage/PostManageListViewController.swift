@@ -24,6 +24,10 @@ class PostManageListViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getPost()
+    }
+    
     private func setupUI(){
         self.setEmptyBackButton()
         circleRing.layer.cornerRadius = 100
@@ -31,7 +35,6 @@ class PostManageListViewController: UIViewController {
         tableView.delegate = self
         cIndicator.addIndicator(view: self, alpha: 1)
         cIndicator.startIndicator(timeout: 5)
-        getPost()
     }
     
     private func getPost(){

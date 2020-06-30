@@ -91,6 +91,7 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         
         guard let operationType = operation else { return}
         print(data)
+        postedPhotos.removeAll()
         switch operationType {
         case .create:
             createPostRequest()
@@ -100,26 +101,32 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     }
     
     private func updatePostRequest(){
-        
         if photos.isEmpty {
             self.updatePost()
         } else {
-            for photo in photos {
-                store.postImageFormData(image: photo, completionHandler: {respose in
-                    
-                    print(String(decoding: respose.data!, as: UTF8.self))
-                    guard let newData = respose.data, let autParams = try? JSONDecoder().decode(ApartmentPhotoReturn.self, from: newData) else {
-                        Messages.displayErrorMessage(message: "Upload file không thành công!")
-                        return
-                    }
-                    self.postedPhotos.append(autParams.id)
-                    
-                    if self.postedPhotos.count == self.photos.count {
-                        self.data.images = self.postedPhotos
-                        self.updatePost()
-                    }
-                    print(autParams.id)
-                    print(autParams.path.original)
+            cIndicator.startIndicator(timeout: 7)
+            var second = 0.0
+            for i in 0...self.photos.count - 1 {
+                second += 0.5
+                DispatchQueue.main.asyncAfter(deadline: .now() + second, execute: {
+                    sleep(1)
+                    self.store.postImageFormData(image: self.photos[i], completionHandler: {respose in
+                        
+                        print(String(decoding: respose.data!, as: UTF8.self))
+                        guard let newData = respose.data, let autParams = try? JSONDecoder().decode(ApartmentPhotoReturn.self, from: newData) else {
+                            Messages.displayErrorMessage(message: "Upload file không thành công!")
+                            return
+                        }
+                        self.postedPhotos.append(autParams.id)
+                        
+                        if self.postedPhotos.count == self.photos.count {
+                            self.cIndicator.stopIndicator()
+                            self.data.images = self.postedPhotos
+                            self.updatePost()
+                        }
+                        print(autParams.id)
+                        print(autParams.path.original)
+                    })
                 })
             }
         }
@@ -143,26 +150,32 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
             Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin trước khi đăng tin!")
         }
         else {
-            postedPhotos.removeAll()
             if photos.isEmpty {
                 self.createPost()
             } else {
-                for photo in photos {
-                    store.postImageFormData(image: photo, completionHandler: {respose in
-                        
-                        print(String(decoding: respose.data!, as: UTF8.self))
-                        guard let newData = respose.data, let autParams = try? JSONDecoder().decode(ApartmentPhotoReturn.self, from: newData) else {
-                            Messages.displayErrorMessage(message: "Upload file không thành công!")
-                            return
-                        }
-                        self.postedPhotos.append(autParams.id)
-                        
-                        if self.postedPhotos.count == self.photos.count {
-                            self.data.images = self.postedPhotos
-                            self.createPost()
-                        }
-                        print(autParams.id)
-                        print(autParams.path.original)
+                cIndicator.startIndicator(timeout: 7)
+                var second = 0.0
+                for i in 0...self.photos.count - 1 {
+                    second += 0.5
+                    DispatchQueue.main.asyncAfter(deadline: .now() + second, execute: {
+                        sleep(1)
+                        self.store.postImageFormData(image: self.photos[i], completionHandler: {respose in
+                            
+                            print(String(decoding: respose.data!, as: UTF8.self))
+                            guard let newData = respose.data, let autParams = try? JSONDecoder().decode(ApartmentPhotoReturn.self, from: newData) else {
+                                Messages.displayErrorMessage(message: "Upload file không thành công!")
+                                return
+                            }
+                            self.postedPhotos.append(autParams.id)
+                            
+                            if self.postedPhotos.count == self.photos.count {
+                                self.cIndicator.stopIndicator()
+                                self.data.images = self.postedPhotos
+                                self.createPost()
+                            }
+                            print(autParams.id)
+                            print(autParams.path.original)
+                        })
                     })
                 }
             }
@@ -174,21 +187,15 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         store.createPost(data: data, completionHandler: { (result, data) in
             self.cIndicator.stopIndicator()
             switch result {
-            case .success(let dataString):
-                
-                print(dataString)
-                //                let parsedData = dataString.data(using: .utf8)
-                //                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
+            case .success:
                 Messages.displaySuccessMessage(message: "Đăng tin thành công")
                 self.navigationController?.popViewController(animated: true)
             case .failure:
                 Messages.displayErrorMessage(message: "Không thành công. Vui lòng thử lại sau!")
                 return
             }
-            
         })
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createPost_map" {
@@ -259,6 +266,7 @@ extension CreateApartmentPostViewController: PostCreationAddInfoProtocol {
 
 extension CreateApartmentPostViewController: PostCreationCameraProtocol {
     func getPhotos(images: [UIImage]) {
+        self.photos.removeAll()
         if images.count == 0 {
             self.data.images = []
         } else {

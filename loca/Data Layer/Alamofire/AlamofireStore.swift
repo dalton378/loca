@@ -179,9 +179,10 @@ class AlamofireStore {
 
 extension AlamofireStore {
     func postImageFormData(image: UIImage, completionHandler: @escaping (AFDataResponse<Data?>) -> Void){
-        let imgData = image.jpegData(compressionQuality: 0.1)!
+        let newPhoto = image.resizeImage(image: image, percent: 0.5)
+        let imgData = newPhoto.jpegData(compressionQuality: 0.1)!
         
-        let parameters = ["file": image.base64String]
+        let parameters = ["file": newPhoto.base64String]
         
         AF.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(imgData, withName: "file",fileName: "mansion.jpg", mimeType: "image/jpg")
