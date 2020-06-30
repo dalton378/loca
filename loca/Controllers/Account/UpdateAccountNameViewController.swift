@@ -31,12 +31,15 @@ class UpdateAccountNameViewController: UIViewController {
         case .name:
             dataString = AppConfig.shared.profileName!
             iconImage.image = UIImage(named: "user_gradient_icon")
+            self.newNameTextField.keyboardType = .default
         case .phone:
             dataString = AppConfig.shared.profilePhone ?? ""
             iconImage.image = UIImage(named: "phone_gradient_icon")
+            self.newNameTextField.keyboardType = .phonePad
         case .email:
             dataString = AppConfig.shared.profileEmail ?? ""
             iconImage.image = UIImage(named: "email_gradient_icon")
+            self.newNameTextField.keyboardType = .emailAddress
         default:
             break
         }

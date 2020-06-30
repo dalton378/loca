@@ -100,9 +100,9 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
         }
         
         data.append(ApartmentData(icon: UIImage(named: "dollar_icon")!, description: "Giá: \(apartment.price) \(apartment.currency.name)"))
-        data.append(ApartmentData(icon: UIImage(named: "contact_icon")!, description: "Người liên hệ: \(apartment.apartment_contacts.first!.name) "))
-        data.append(ApartmentData(icon: UIImage(named: "phone_icon")!, description: "Số điện thoại: \(apartment.apartment_contacts.first!.phone) "))
-        data.append(ApartmentData(icon: UIImage(named: "email_icon")!, description: "Email: \(apartment.apartment_contacts.first!.email) "))
+        data.append(ApartmentData(icon: UIImage(named: "contact_icon")!, description: "Người liên hệ: \(apartment.apartment_contacts.first!.name ?? "") "))
+        data.append(ApartmentData(icon: UIImage(named: "phone_icon")!, description: "Số điện thoại: \(apartment.apartment_contacts.first!.phone ?? "") "))
+        data.append(ApartmentData(icon: UIImage(named: "email_icon")!, description: "Email: \(apartment.apartment_contacts.first!.email ?? "") "))
     }
     
     private func getApartmentPhotos(images: [ApartmentPhotos]){

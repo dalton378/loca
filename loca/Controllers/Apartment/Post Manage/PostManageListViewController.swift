@@ -88,7 +88,7 @@ extension PostManageListViewController: UITableViewDataSource, UITableViewDelega
                 switch result{
                 case .success:
                     Messages.displaySuccessMessage(message: "Xoá thành công!")
-                    self.tableView.reloadData()
+                    self.navigationController?.popViewController(animated: true)
                 case.failure:
                     Messages.displayErrorMessage(message: "Xoá không thành công. Vui lòng thử lại sau!")
                 }

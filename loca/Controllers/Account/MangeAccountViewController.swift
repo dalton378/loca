@@ -27,6 +27,7 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         self.setEmptyBackButton()
         cIndicator.addIndicator(view: self, alpha: 1)
         cIndicator.startIndicator(timeout: 5)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Đăng xuất", style: .plain, target: self, action: #selector(signOut))
         
         nameLabel.text = AppConfig.shared.profileName
         prepareData()
@@ -59,6 +60,13 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
                 })
             })
         }
+    }
+    
+    @objc func signOut(){
+        AppConfig().resetDefaults()
+        self.navigationController?.popToRootViewController(animated: true)
+        Messages.displaySuccessMessage(message: "Đăng xuất thành công!")
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

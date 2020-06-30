@@ -251,7 +251,7 @@
                                                     <constraint firstAttribute="height" constant="45" id="8oe-9O-3RX"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxL-fb-St9" customClass="TransitionButtonExtent" customModule="loca" customModuleProvider="target">
                                                 <rect key="frame" x="12" y="523" width="390" height="40"/>
@@ -295,7 +295,7 @@
                                                     <constraint firstAttribute="height" constant="45" id="I17-Sp-cfe"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="email"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1171,7 +1171,7 @@
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="45" id="sgu-gj-u4e"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="email"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oAN-Br-tAO" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="12" y="154" width="390" height="45"/>
@@ -1181,7 +1181,7 @@
                                                     <constraint firstAttribute="height" constant="45" id="bgF-eH-IAL"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wDS-XG-GjY" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="12" y="211" width="390" height="45"/>
@@ -1470,7 +1470,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="E1B-ey-8oX"/>
-        <segue reference="lrJ-0G-gb0"/>
+        <segue reference="YMv-GY-WxU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cancel_icon" width="96" height="96"/>

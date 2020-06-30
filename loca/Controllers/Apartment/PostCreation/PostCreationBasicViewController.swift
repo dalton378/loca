@@ -133,7 +133,7 @@ class PostCreationBasicViewController: UIViewController {
         endDate.showDatePicker()
         
         streetTextField.text = dataBasic.street
-        numberAddressTextField.text = dataBasic.address
+        numberAddressTextField.text = String(dataBasic.apartment_number)
         squareTextfield.text = dataBasic.area
         costTextField.text = dataBasic.price
         startDateTextField.text = dataBasic.start_date

@@ -280,7 +280,7 @@ extension CreateApartmentPostViewController: PostCreationContactProtocol {
 
 extension CreateApartmentPostViewController: PostCreationBasicProtocol {
     func getBasicInfo(transType: String, proType: String, city: String, district: String, ward: String, street: String, fullAddress: String, unitNum: String, square: String, squareUnit: String, price: String, priceUnit: String, startDate: String, endDate: String) {
-        data.post_type_id = Int(transType)!; data.property_type_id = proType; data.province_id = Int(city)!; data.district_id = Int(district)!; data.ward_id = Int(ward)!; data.street = street; data.address = "\(unitNum) \(fullAddress)"; data.area = square; data.area_unit_id = Int(squareUnit)!; data.price = price; data.currency_id = Int(priceUnit)!; data.start_date = startDate; data.end_date = endDate
+        data.post_type_id = Int(transType)!; data.property_type_id = proType; data.province_id = Int(city)!; data.district_id = Int(district)!; data.ward_id = Int(ward)!; data.street = street; data.address = fullAddress; data.area = square; data.area_unit_id = Int(squareUnit)!; data.price = price; data.currency_id = Int(priceUnit)!; data.start_date = startDate; data.end_date = endDate; data.apartment_number = Int(unitNum) ?? 0
         
         tableData[0].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
