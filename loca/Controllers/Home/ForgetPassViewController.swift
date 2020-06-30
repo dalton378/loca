@@ -13,10 +13,10 @@ import TransitionButton
 class ForgetPassViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
-    
     @IBOutlet weak var confirmButton: TransitionButton!
     
     var store = AlamofireStore()
+    var cIndicator = CustomIndicator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,7 @@ class ForgetPassViewController: UIViewController {
         FloatingTextField.configureFloatingText(textfield: emailTextField, placeHolder: "Email", title: "Email")
         emailTextField.addTarget(self, action: #selector(textValidation(_:)), for: .editingChanged)
         confirmButton.layer.cornerRadius = 10
+        cIndicator.addIndicator(view: self, alpha: 0.7)
     }
     
     @objc func textValidation(_ textfield: SkyFloatingLabelTextField) {
@@ -48,15 +49,18 @@ class ForgetPassViewController: UIViewController {
     }
     
     @IBAction func submit(_ sender: UIButton) {
-        
+        self.view.endEditing(true)
         guard let text = emailTextField.text else {return}
         if text.isEmpty {
             Messages.displayErrorMessage(message: "Vui lòng điền đầy đủ thông tin.")
         } else {
+            cIndicator.startIndicator(timeout: 10)
             store.forgetPassword(email: text, completionHandler: { (result,data)  in
+                self.cIndicator.stopIndicator()
                 switch result {
                 case .success:
                     Messages.displaySuccessMessage(message: "Vui lòng kiểm tra email và làm theo hướng dẫn.")
+                    self.navigationController?.popToRootViewController(animated: true)
                 case .failure:
                     Messages.displayErrorMessage(message: "Vui lòng thử lại sau!")
                 }
