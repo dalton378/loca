@@ -63,10 +63,10 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
     }
     
     @objc func signOut(){
-        AppConfig().resetDefaults()
-        self.navigationController?.popToRootViewController(animated: true)
-        Messages.displaySuccessMessage(message: "Đăng xuất thành công!")
-        
+        sharedFunctions.signOut {
+            self.navigationController?.popToRootViewController(animated: true)
+            Messages.displaySuccessMessage(message: "Đăng xuất thành công!")
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

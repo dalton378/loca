@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import FBSDKLoginKit
+import GoogleSignIn
 
 public class sharedFunctions {
     static func downloadImage(from url: URL) -> UIImage  {
@@ -26,5 +28,33 @@ public class sharedFunctions {
         let urlPhoto = URL(string: urlString)
         
         return self.downloadImage(from: urlPhoto!)
+    }
+    
+    static func getUserInfo(completionHandler: @escaping ()->Void){
+        let store = AlamofireStore()
+        store.getUser(completionHandler: {result in
+            switch result {
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ProfileModel.self, from: newData) else {return}
+                AppConfig.shared.profileName = autParams.name
+                AppConfig.shared.profileId = autParams.id
+                AppConfig.shared.profileEmail = autParams.email
+                AppConfig.shared.profilePhone = autParams.phone
+                AppConfig.shared.profileEmailVerified = autParams.is_email_verified
+                AppConfig.shared.profilePhoneVerified = autParams.is_phone_verified
+                completionHandler()
+            case .failure:
+                return
+            }
+        })
+    }
+    
+    static func signOut(completionHandler: @escaping () -> Void){
+        let loginManager = LoginManager()
+        loginManager.logOut()
+        GIDSignIn.sharedInstance().signOut()
+        AppConfig().resetDefaults()
+        completionHandler()
     }
 }

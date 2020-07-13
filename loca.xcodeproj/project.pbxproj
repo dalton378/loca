@@ -13,6 +13,7 @@
 		8E1AA9EA24A9F2DC00D550E5 /* SharedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1AA9E924A9F2DC00D550E5 /* SharedFunctions.swift */; };
 		8E36650824A0A5940071B72B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36650624A0A5940071B72B /* Router.swift */; };
 		8E36650924A0A5940071B72B /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36650724A0A5940071B72B /* RouterProtocol.swift */; };
+		8E45829B24BC59CD00513956 /* EnterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E45829A24BC59CD00513956 /* EnterPhoneViewController.swift */; };
 		8E7192EF24401C5000DB814A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7192EE24401C5000DB814A /* AppDelegate.swift */; };
 		8E7192F324401C5000DB814A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7192F224401C5000DB814A /* ViewController.swift */; };
 		8E7192F624401C5000DB814A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7192F424401C5000DB814A /* Main.storyboard */; };
@@ -116,6 +117,7 @@
 		8E1AA9E924A9F2DC00D550E5 /* SharedFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFunctions.swift; sourceTree = "<group>"; };
 		8E36650624A0A5940071B72B /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8E36650724A0A5940071B72B /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		8E45829A24BC59CD00513956 /* EnterPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneViewController.swift; sourceTree = "<group>"; };
 		8E7192EB24401C5000DB814A /* loca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7192EE24401C5000DB814A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E7192F224401C5000DB814A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				8ED3C6CB24699A1400A49530 /* HomeNavigationViewController.swift */,
 				E8C9DA0E246AB0B200BB8E26 /* ForgetPassViewController.swift */,
 				8EF804372488EF4700F425E7 /* GoogleSigninViewController.swift */,
+				8E45829A24BC59CD00513956 /* EnterPhoneViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -937,6 +940,7 @@
 				8E7A513C246981A100A7C716 /* ContactViewController.swift in Sources */,
 				8EC361A62461577B00F2F3EF /* ApartmentPhotoPreview.swift in Sources */,
 				E899550B245930E800E65195 /* AlamofireStore.swift in Sources */,
+				8E45829B24BC59CD00513956 /* EnterPhoneViewController.swift in Sources */,
 				E8510F1024592958004BE65A /* AccountApiProtocol .swift in Sources */,
 				8E7192EF24401C5000DB814A /* AppDelegate.swift in Sources */,
 				8E02CA822449DE03006A4F3B /* SceneDelegate.swift in Sources */,

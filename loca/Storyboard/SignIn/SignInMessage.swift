@@ -34,6 +34,7 @@ class SignInMessage: MessageView {
     var openSignUpAction: (() -> Void)?
     var forgotPass: (() -> Void)?
     var ggSignInAction: (() -> Void)?
+    var fbSignInAction: (() -> Void)?
     
     let store = AlamofireStore()
     
@@ -101,7 +102,7 @@ class SignInMessage: MessageView {
                             AppConfig.shared.isSignedIn = true
                             self.exitAction?()
                             Messages.displaySuccessMessage(message: "Đăng Nhập Thành Công.")
-                            self.doneAction?()
+                            self.fbSignInAction?()
                         case .failure:
                             return
                         }
@@ -114,12 +115,6 @@ class SignInMessage: MessageView {
             })
             
         }
-        
-        
-        
-        //        let googleSignIn = GIDSignInButton()
-        //        googleSignIn.layer.cornerRadius = 10
-        //        subViewFixinContainer(GGLoginView, button: googleSignIn)
     }
     
     private func signIn(password: String, phone: String) {

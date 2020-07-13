@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var apartmentId = ""
     var locationManager: CLLocationManager?
     let searchRequest = MKLocalSearch.Request()
+    var isNavigateToPhone = 0
     
     var city = "", district = "", min_price = "", min_currency = "", max_price = "", max_currency = "", transaction = "", propertyType = ""
     
@@ -54,7 +55,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             case true:
                 self.performSegue(withIdentifier: "home_manage", sender: self)
             default:
-                Messages.displaySignInMessage(completionHandler: self.getDataFromServer, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)}, navigateGGsignInAction: {self.performSegue(withIdentifier: "google_signin", sender: self)})
+                Messages.displaySignInMessage(completionHandler: self.getDataFromServer, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)}, navigateGGsignInAction: {self.performSegue(withIdentifier: "google_signin", sender: self)}, fbSignInAction: self.FBcompletionAction)
             }
         } )
         floaty.addItem("Liên Hệ", icon: UIImage(named: "email_icon")!,handler:{ _ in
@@ -246,6 +247,17 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         }
     }
     
+    func FBcompletionAction(){
+        sharedFunctions.getUserInfo(completionHandler: {
+            guard let _ = AppConfig.shared.profilePhone else {
+                if self.isNavigateToPhone == 0 {
+                    self.performSegue(withIdentifier: "home_phonenumber", sender: self)
+                    self.isNavigateToPhone = 1
+                }
+                return
+            }
+        })
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "home_apartmentDetail" {

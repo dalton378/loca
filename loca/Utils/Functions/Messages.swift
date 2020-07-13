@@ -40,13 +40,14 @@ public class Messages {
         SwiftMessages.show(view: view)
     }
     
-    static func displaySignInMessage(completionHandler: @escaping (() -> Void), navigateSignUpAction:  @escaping (() -> Void), navigateForgotPassAction:  @escaping (() -> Void), navigateGGsignInAction:  @escaping (() -> Void)){
+    static func displaySignInMessage(completionHandler: @escaping (() -> Void), navigateSignUpAction:  @escaping (() -> Void), navigateForgotPassAction:  @escaping (() -> Void), navigateGGsignInAction:  @escaping (() -> Void), fbSignInAction: @escaping(() -> Void)){
         let view = SignInMessage(frame: CGRect(x: 0, y: 100, width: 300, height: 200))
         view.exitAction = {SwiftMessages.hide()}
         view.doneAction = completionHandler
         view.openSignUpAction = {navigateSignUpAction()}
         view.forgotPass = navigateForgotPassAction
         view.ggSignInAction = navigateGGsignInAction
+        view.fbSignInAction = fbSignInAction
         view.configureDropShadow()
         var config = SwiftMessages.defaultConfig
         config.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
