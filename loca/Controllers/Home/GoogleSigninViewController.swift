@@ -28,7 +28,6 @@ class GoogleSigninViewController: UIViewController, GIDSignInDelegate {
         self.googleSignIn?.signIn()
     }
     
-    
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
            
            if (error == nil) {
@@ -47,13 +46,16 @@ class GoogleSigninViewController: UIViewController, GIDSignInDelegate {
                     AppConfig.shared.accessToken = autParams.access_token
                     AppConfig.shared.isSignedIn = true
                     Messages.displaySuccessMessage(message: "Đăng Nhập Thành Công.")
-                    self.getData()
-                    self.navigationController?.popToRootViewController(animated: true)
+                    sharedFunctions.getUserInfo(completionHandler: {
+                        guard let _ = AppConfig.shared.profilePhone else {
+                            self.performSegue(withIdentifier: "google_phonenumber", sender: self)
+                            return
+                        }
+                        self.navigationController?.popToRootViewController(animated: true)
+                    })
                 case .failure:
                     return
                 }
-            
-                
             })
             
            } else {

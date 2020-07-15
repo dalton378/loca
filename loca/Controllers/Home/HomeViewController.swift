@@ -18,10 +18,9 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     @IBOutlet weak var searchIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mapView: MKMapView!
     let store = AlamofireStore()
-    var apartmentId = ""
+    var apartmentId = "", isNavigateToPhone = 0, fullAddress = "", selectedLocation = [Double]()
     var locationManager: CLLocationManager?
     let searchRequest = MKLocalSearch.Request()
-    var isNavigateToPhone = 0
     
     var city = "", district = "", min_price = "", min_currency = "", max_price = "", max_currency = "", transaction = "", propertyType = ""
     
@@ -49,6 +48,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         floaty.addItem("Tìm Kiếm", icon: UIImage(named: "search_icon")!,handler:{ _ in
             self.performSegue(withIdentifier: "home_apartmentFilter", sender: self)
         } )
+        
         floaty.addItem("Tài Khoản", icon: UIImage(named: "user_icon")!,handler:{ _ in
             guard let isSignedIn = AppConfig.shared.isSignedIn else {return}
             switch isSignedIn {
@@ -65,7 +65,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         searchView.layer.cornerRadius = 10
         searchTextField.delegate = self
-        
     }
     
     private func searchAdressByText(text: String){
@@ -85,15 +84,14 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             for item in response.mapItems {
                 print(item.phoneNumber ?? "No phone number.")
                 listItem.append(item.name!)
-                
                 ids.append(i)
                 i+=1
             }
             
             ListView.displayListView(view: self.searchView, listHeight: 150, text: listItem, id: ids, selectionHandler: {(a,b) in
                 ListView.removeListView()
+                self.getAddressFromLatLon(pdblLatitude: String(response.mapItems[b].placemark.coordinate.latitude), withLongitude: String(response.mapItems[b].placemark.coordinate.longitude))
                 self.dropPinZoomIn(placemark: response.mapItems[b].placemark)
-                
             })
         }
     }
@@ -102,14 +100,20 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
+        //annotation.title = fullAddress
 
         let region = MKCoordinateRegion(center: placemark.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
+        mapView.addAnnotation(annotation)
         mapView.setRegion(region, animated: true)
     }
     
+    
+    @IBAction func getCurrentLocation(_ sender: UIButton) {
+        locationManager?.startUpdatingLocation()
+    }
+    
     private func getDataFromServer() {
-       
         getApartmentList()
         guard  let _ = AppConfig.shared.accessToken else {
             return
@@ -230,7 +234,9 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         ListView.removeListView()
-        guard let selectedAnnotation = view.annotation as? MakerAnnotation else {return}
+        guard let selectedAnnotation = view.annotation as? MakerAnnotation else {
+            displayPostCreation(address: self.fullAddress)
+            return}
         guard let text = selectedAnnotation.subtitle else {return}
         let fulltextArr = text.split(separator: "|")
         apartmentId = String(fulltextArr[1])
@@ -245,6 +251,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             self.mapView.setRegion(region, animated: true)
         }
+        locationManager?.stopUpdatingLocation()
     }
     
     func FBcompletionAction(){
@@ -255,6 +262,17 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                     self.isNavigateToPhone = 1
                 }
                 return
+            }
+        })
+    }
+    
+    func displayPostCreation(address: String){
+        Messages.displayYesNoMessage(title: "Đăng Tin", message: address, buttonText: "+ Bán/Cho Thuê", buttonAction: {
+            guard let isVerified = AppConfig.shared.profilePhoneVerified else { return}
+            if isVerified == 0 {
+                Messages.displayErrorMessage(message: "Tài khoản chưa xác thực. Vui lòng xác thực!")
+            } else {
+                self.performSegue(withIdentifier: "home_apartmentcreation", sender: self)
             }
         })
     }
@@ -276,6 +294,13 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         else if segue.identifier == "google_signin" {
             let view = segue.destination as! GoogleSigninViewController
             view.getData = self.getDataFromServer
+        }
+        else if segue.identifier == "home_apartmentcreation" {
+            let view = segue.destination as! CreateApartmentPostViewController
+            var passedData = ApartmentPostCreation()
+            passedData.lat = selectedLocation[0]
+            passedData.lng = selectedLocation[1]
+            view.data = passedData
         }
     }
 }
@@ -355,5 +380,34 @@ extension HomeViewController: UITextFieldDelegate {
             searchAdressByText(text: text)
         }
         return true
+    }
+    
+    func getAddressFromLatLon(pdblLatitude: String, withLongitude pdblLongitude: String) {
+        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        let lat: Double = Double("\(pdblLatitude)")!
+        let lon: Double = Double("\(pdblLongitude)")!
+        let ceo: CLGeocoder = CLGeocoder()
+        center.latitude = lat
+        center.longitude = lon
+        self.selectedLocation.append(lat)
+        self.selectedLocation.append(lon)
+
+        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        ceo.reverseGeocodeLocation(loc, completionHandler:
+            {(placemarks, error) in
+                if (error != nil)
+                {
+                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                }
+                let pm = placemarks! as [CLPlacemark]
+
+                if pm.count > 0 {
+                    let pm = placemarks![0]
+                    let addressString = "\(pm.subThoroughfare ?? "") \(pm.thoroughfare ?? ""), \(pm.subLocality ?? ""), \(pm.subAdministrativeArea ?? ""), \(pm.locality ?? ""), \(pm.country ?? "")"
+                    print(addressString)
+                    self.fullAddress = addressString
+              }
+        })
+
     }
 }

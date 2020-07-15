@@ -144,12 +144,20 @@ class PostCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     func addMarker(){
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        var  defaultCoordinate : CLLocationCoordinate2D?
+        if dataLocation.lat == 0 && dataLocation.lng == 0 {
+         defaultCoordinate = CLLocationCoordinate2D(latitude: Double(AppConstants.defaultLatitude)!, longitude: Double(AppConstants.defaultLongtitude)!)
+        } else {
+            long = dataLocation.lng
+            lat = dataLocation.lat
+            defaultCoordinate = CLLocationCoordinate2D(latitude: dataLocation.lat, longitude: dataLocation.lng)
+        }
         
-        let defaultCoordinate = CLLocationCoordinate2D(latitude: Double(AppConstants.defaultLatitude)!, longitude: Double(AppConstants.defaultLongtitude)!)
-        let annotation = MakerAnnotation(coordinate: defaultCoordinate, title: "", subTitle: "")
+        let annotation = MakerAnnotation(coordinate: defaultCoordinate!, title: "", subTitle: "")
         
         
         mapView.setRegion(annotation.region, animated: true)
+        mapView.addAnnotation(annotation)
         mapView.delegate = self
         mapView.showsUserLocation = true
     }
