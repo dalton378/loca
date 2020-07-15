@@ -90,6 +90,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             
             ListView.displayListView(view: self.searchView, listHeight: 150, text: listItem, id: ids, selectionHandler: {(a,b) in
                 ListView.removeListView()
+                self.view.endEditing(true)
                 self.getAddressFromLatLon(pdblLatitude: String(response.mapItems[b].placemark.coordinate.latitude), withLongitude: String(response.mapItems[b].placemark.coordinate.longitude))
                 self.dropPinZoomIn(placemark: response.mapItems[b].placemark)
             })
@@ -175,7 +176,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         let defaultCoordinate = CLLocationCoordinate2D(latitude: Double(AppConstants.defaultLatitude)!, longitude: Double(AppConstants.defaultLongtitude)!)
         let annotation = MakerAnnotation(coordinate: defaultCoordinate, title: "", subTitle: "")
         
-        
         mapView.setRegion(annotation.region, animated: true)
         mapView.delegate = self
         mapView.showsUserLocation = true
@@ -187,12 +187,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             let anotation = MakerAnnotation(coordinate: CLLocationCoordinate2D(latitude: (apartment.lat as NSString).doubleValue,  longitude: (apartment.lng as NSString).doubleValue), title: "", subTitle: "\(apartment.search_text)|\(apartment.id)")
             mapView.addAnnotation(anotation)
             
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if  status == .authorizedWhenInUse {
-            //locationManager?.startUpdatingLocation()
         }
     }
     
@@ -225,6 +219,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             //selectedAnnotation.animatesDrop = true
             selectedAnnotation.canShowCallout = false
             selectedAnnotation.rightCalloutAccessoryView = rightButton
+            selectedAnnotation.markerTintColor=UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0,alpha:0.5).withAlphaComponent(0)
+            selectedAnnotation.image = UIImage(named: "loca_pin_icon")
             
             return selectedAnnotation
         }
@@ -247,6 +243,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last{
+            self.getAddressFromLatLon(pdblLatitude: String(location.coordinate.latitude), withLongitude: String(location.coordinate.longitude))
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             self.mapView.setRegion(region, animated: true)

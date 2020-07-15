@@ -21,6 +21,9 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var heartIcon: UIImageView!
+    
+    var isLiked = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +39,42 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
     private func prepareUI(){
         setEmptyBackButton()
     }
+    
+    
+    @IBAction func likeAction(_ sender: UITapGestureRecognizer) {
+        if isLiked {
+            
+            guard let id = apartmentId else {return}
+            store.addFavoriteApartment(apartmentId: id, completionHandler: {result in
+                switch result {
+                case .success:
+                    Messages.displaySuccessMessage(message: "Thêm thành công")
+                    self.heartIcon.image = UIImage(named: "readheart_icon")
+                case .failure:
+                    Messages.displayErrorMessage(message: "Không thành công. Vui lòng thử lại sau!")
+                }
+            })
+            
+        } else {
+            heartIcon.image = UIImage(named: "heart_icon")
+        }
+        isLiked = !isLiked
+    }
+    
+    
+    @IBAction func shareAction(_ sender: UITapGestureRecognizer) {
+        //Set the default sharing message.
+        let message = "Message goes here."
+        //Set the link to share.
+        if let link = NSURL(string: "http://yoururl.com")
+        {
+            let objectsToShare = [message,link] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.postToFacebook]
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
     
     private func getApartmentDetail(id: String) {
         store.getApartmentDetail(id: id, completionHandler: {result in

@@ -175,6 +175,12 @@ class AlamofireStore {
         })
     }
     
+    func addFavoriteApartment(apartmentId: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.addFavoriteApartment(apartmentId: apartmentId, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
+    
 }
 
 extension AlamofireStore {

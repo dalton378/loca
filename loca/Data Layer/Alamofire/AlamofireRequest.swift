@@ -200,6 +200,13 @@ class AlamofireRequest {
             .responseString(completionHandler: completionHandler)
     }
     
+    func addFavoriteApartment(apartmentId: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        let token = AppConfig.shared.accessToken ?? ""
+        session.request(ApartmentApiProtocol.addFavorte(apartmentId: apartmentId, token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
 }
 
 

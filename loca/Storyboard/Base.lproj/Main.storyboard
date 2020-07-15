@@ -73,6 +73,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SXk-m3-Juu" secondAttribute="height" multiplier="1:1" id="EcN-im-RNp"/>
                                 </constraints>
+                                <color key="tintColor" name="UBlack"/>
                                 <state key="normal" image="target_icon"/>
                                 <connections>
                                     <action selector="getCurrentLocation:" destination="o8A-ec-I9P" eventType="touchUpInside" id="cOr-MT-HFy"/>
