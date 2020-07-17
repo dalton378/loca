@@ -50,7 +50,9 @@ class VerifyPhoneViewController: UIViewController {
                 switch result{
                 case .success:
                     Messages.displaySuccessMessage(message: "Xác nhận tài khoản thành công!")
-                    self.navigationController?.popToRootViewController(animated: true)
+                    sharedFunctions.getUserInfo {
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
                 case .failure:
                     Messages.displayErrorMessage(message: "Xác nhận tài khoản không thành công!")
                 }
