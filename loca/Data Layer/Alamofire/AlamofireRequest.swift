@@ -207,6 +207,20 @@ class AlamofireRequest {
             .responseString(completionHandler: completionHandler)
     }
     
+    func getFavoriteList(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        let token = AppConfig.shared.accessToken ?? ""
+        session.request(ApartmentApiProtocol.getFavoriteList(token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
+    func deleteFavoriteList(id: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        let token = AppConfig.shared.accessToken ?? ""
+        session.request(ApartmentApiProtocol.deleteFavorite(id: id, token: token))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
 }
 
 

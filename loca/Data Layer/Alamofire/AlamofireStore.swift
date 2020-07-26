@@ -98,10 +98,10 @@ class AlamofireStore {
     }
     
     func searchApartment(token: String, post_type_id: String, min_price: String, min_currency: String, max_price: String, max_currency: String, property_type_id: String, province_id : String, district_id: String, completionHandler:@escaping (Result<String, AFError>) -> Void ) {
-           client.searchApartment(token: token, post_type_id: post_type_id, min_price: min_price, min_currency: min_currency, max_price: max_price, max_currency: max_currency, property_type_id: property_type_id, province_id: province_id, district_id: district_id, completionHandler: {result in
+        client.searchApartment(token: token, post_type_id: post_type_id, min_price: min_price, min_currency: min_currency, max_price: max_price, max_currency: max_currency, property_type_id: property_type_id, province_id: province_id, district_id: district_id, completionHandler: {result in
             completionHandler(result.result)
-           })
-       }
+        })
+    }
     
     func createPost(data: ApartmentPostCreation, completionHandler: @escaping ((Result<String, AFError>, Data?) -> Void )) {
         client.createPost(data: data, completionHandler: {result in
@@ -181,6 +181,17 @@ class AlamofireStore {
         })
     }
     
+    func getFavoriteList(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.getFavoriteList(completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
+    
+    func deleteFavoriteList(id: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.deleteFavoriteList(id: id, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
 }
 
 extension AlamofireStore {

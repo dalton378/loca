@@ -21,14 +21,16 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     case deletePost(token: String, id: String)
     case updatePost(token:String, data: ApartmentPostCreation)
     case addFavorte(apartmentId: String, token: String)
+    case getFavoriteList(token: String)
+    case deleteFavorite(id: String, token: String)
     
     var method: HTTPMethod {
         switch self {
-        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost:
+        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .getFavoriteList:
             return .get
         case .postFiles, .createPost, .addFavorte:
             return .post
-        case .deletePost:
+        case .deletePost, .deleteFavorite:
             return .delete
         case .updatePost:
             return .put
@@ -57,12 +59,16 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
             return "post-apartments/\(data.track_id ?? 0)"
         case .addFavorte:
             return "favourite-apartments"
+        case .getFavoriteList:
+            return "favourite-apartments"
+        case .deleteFavorite:
+            return "favourite-apartments"
         }
     }
     
     var encoding: ParameterEncoding {
         switch self {
-        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .deletePost:
+        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .deletePost, .getFavoriteList, .deleteFavorite:
             return URLEncoding.default
         case .postFiles, .createPost, .updatePost, .addFavorte:
             return JSONEncoding.default
@@ -119,7 +125,7 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     }
     var headers: [String : String]? {
         switch self {
-        case let .getApartment(token), .getApartmentDetail(_, let token), .getPropertyType(let token), .searchApartment(let token,_,_,_,_,_,_,_,_), .createPost(let token, _), .getPost(let token), .deletePost(let token, _), .updatePost(let token, _), .addFavorte(_, let token):
+        case let .getApartment(token), .getApartmentDetail(_, let token), .getPropertyType(let token), .searchApartment(let token,_,_,_,_,_,_,_,_), .createPost(let token, _), .getPost(let token), .deletePost(let token, _), .updatePost(let token, _), .addFavorte(_, let token), .getFavoriteList(let token), .deleteFavorite(_, let token):
             return ["Authorization": "Bearer \(token)"]
         default:
             return [:]

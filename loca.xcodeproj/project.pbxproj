@@ -69,6 +69,7 @@
 		E86B68432459B3D700AF6659 /* MangeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */; };
 		E870ED5D245EF83E00B9204A /* AccountSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */; };
 		E87E10F524790B4F00307263 /* ApartmentPostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87E10F424790B4F00307263 /* ApartmentPostList.swift */; };
+		E87F266424CD3FAF005C3C48 /* FavoriteApartmentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F266324CD3FAF005C3C48 /* FavoriteApartmentList.swift */; };
 		E8818B5C24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8818B5B24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift */; };
 		E894788E245E6D5100BA845E /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894788D245E6D5100BA845E /* FilterViewController.swift */; };
 		E8947890245E70F200BA845E /* DropDownExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E894788F245E70F200BA845E /* DropDownExtension.swift */; };
@@ -182,6 +183,7 @@
 		E86B68422459B3D700AF6659 /* MangeAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangeAccountViewController.swift; sourceTree = "<group>"; };
 		E870ED5C245EF83E00B9204A /* AccountSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		E87E10F424790B4F00307263 /* ApartmentPostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentPostList.swift; sourceTree = "<group>"; };
+		E87F266324CD3FAF005C3C48 /* FavoriteApartmentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteApartmentList.swift; sourceTree = "<group>"; };
 		E8818B5B24643C40006F8D49 /* PostCreationCameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationCameraCollectionViewCell.swift; sourceTree = "<group>"; };
 		E894788D245E6D5100BA845E /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		E894788F245E70F200BA845E /* DropDownExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownExtension.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				E84FD1DE245D282E00E10507 /* ApartmentDetail.swift */,
 				E8EDDB87246193790099691B /* ApartmentPost.swift */,
 				E87E10F424790B4F00307263 /* ApartmentPostList.swift */,
+				E87F266324CD3FAF005C3C48 /* FavoriteApartmentList.swift */,
 			);
 			path = Apartment;
 			sourceTree = "<group>";
@@ -918,6 +921,7 @@
 				E8648EFC2462DB6F00C132B8 /* PostCreationAddInfoViewController.swift in Sources */,
 				8E36650824A0A5940071B72B /* Router.swift in Sources */,
 				E8C47C852464EDCD0046BB4F /* FloatingTextField.swift in Sources */,
+				E87F266424CD3FAF005C3C48 /* FavoriteApartmentList.swift in Sources */,
 				E8539CDE2477F2FE005DF65F /* PostManageListViewController.swift in Sources */,
 				8EF804382488EF4700F425E7 /* GoogleSigninViewController.swift in Sources */,
 				E8539CDB2477BA50005DF65F /* DateTimePicker.swift in Sources */,

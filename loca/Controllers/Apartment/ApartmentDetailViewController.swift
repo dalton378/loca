@@ -42,8 +42,7 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
     
     
     @IBAction func likeAction(_ sender: UITapGestureRecognizer) {
-        if isLiked {
-            
+        if !isLiked {
             guard let id = apartmentId else {return}
             store.addFavoriteApartment(apartmentId: id, completionHandler: {result in
                 switch result {
@@ -96,6 +95,9 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
                 }
                 self.descriptionLabel.text = self.apartmentDetail?.description
                 self.view.layoutIfNeeded()
+                
+                self.checkFavoriteApartment(apartmentId: autParams.id)
+                
             case .failure:
                 return
             }
@@ -103,6 +105,23 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
         })
     }
     
+    
+    private func checkFavoriteApartment(apartmentId: Int){
+        store.getFavoriteList(completionHandler: {result in
+            switch result {
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try! JSONDecoder().decode(FavoriteApartmentList?.self, from: newData) else {return}
+                
+                if autParams.total != 0 {
+                    self.isLiked = autParams.data!.contains(where: {$0.apartment.id == apartmentId})
+                }
+                self.setLikeIcon()
+            case .failure :
+                return
+            }
+        })
+    }
     
     func addADCustomView(containerView: UIView, numofViews: Int, viewHeigh: Int) -> Int{
         
@@ -117,6 +136,10 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
         }
         
         return ((viewHeigh * numofViews) + 40)
+    }
+    
+    private func setLikeIcon(){
+        isLiked ? (self.heartIcon.image = UIImage(named: "readheart_icon")) : (self.heartIcon.image = UIImage(named: "heart_icon"))
     }
     
     private func prepareData(){
