@@ -40,7 +40,7 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
         settingData.append(SettingData.init(icon: UIImage(named: "phone_icon")!, description: "Số điện thoại: \(AppConfig.shared.profilePhone ?? "")"))
         settingData.append(SettingData.init(icon: UIImage(named: "email_icon")!, description: "Email: \(AppConfig.shared.profileEmail ?? "")"))
         settingData.append(SettingData.init(icon: UIImage(named: "password_icon")!, description: "Cập nhật Password"))
-        settingData.append(SettingData.init(icon: UIImage(named: "letter_icon")!, description: "Đăng tin"))
+        //settingData.append(SettingData.init(icon: UIImage(named: "letter_icon")!, description: "Đăng tin"))
         settingData.append(SettingData.init(icon: UIImage(named: "management_icon")!, description: "Quản lý tin"))
         
         guard let _ = AppConfig.shared.accessToken else {return}
@@ -98,9 +98,9 @@ class MangeAccountViewController:  UIViewController, UITableViewDataSource, UITa
             performSegue(withIdentifier: "accountSetting_updateName", sender: self)
         case 3:
             performSegue(withIdentifier: "accountSetting_updatePass", sender: self)
+        //case 4:
+          //s  performSegue(withIdentifier: "mangeaccount_createpost", sender: self)
         case 4:
-            performSegue(withIdentifier: "mangeaccount_createpost", sender: self)
-        case 5:
             performSegue(withIdentifier: "manageaccount_postmanage", sender: self)
         default:
             print("2")

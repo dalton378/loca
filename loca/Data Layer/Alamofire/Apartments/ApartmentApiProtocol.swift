@@ -61,8 +61,8 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
             return "favourite-apartments"
         case .getFavoriteList:
             return "favourite-apartments"
-        case .deleteFavorite:
-            return "favourite-apartments"
+        case .deleteFavorite(let id,_):
+            return "favourite-apartments/\(id)"
         }
     }
     

@@ -298,6 +298,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             passedData.lat = selectedLocation[0]
             passedData.lng = selectedLocation[1]
             view.data = passedData
+            view.operation = .create
         }
     }
 }

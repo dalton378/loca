@@ -16,6 +16,7 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
     var data = [ApartmentData]()
     let customIndicator = CustomIndicator()
     var apartmentPhotos = [ApartmentPhotoDetail]()
+    var favoriteList : FavoriteApartmentList?
     @IBOutlet weak var photoScrollView: UIScrollView!
     @IBOutlet weak var photoView: UIView!
     @IBOutlet weak var containerView: UIView!
@@ -42,8 +43,8 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
     
     
     @IBAction func likeAction(_ sender: UITapGestureRecognizer) {
+        guard let id = apartmentId else {return}
         if !isLiked {
-            guard let id = apartmentId else {return}
             store.addFavoriteApartment(apartmentId: id, completionHandler: {result in
                 switch result {
                 case .success:
@@ -55,7 +56,7 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
             })
             
         } else {
-            heartIcon.image = UIImage(named: "heart_icon")
+            deleteFavoriteApartment(id: Int(id) ?? 0)
         }
         isLiked = !isLiked
     }
@@ -112,7 +113,7 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
             case .success(let data):
                 let parsedData = data.data(using: .utf8)
                 guard let newData = parsedData, let autParams = try! JSONDecoder().decode(FavoriteApartmentList?.self, from: newData) else {return}
-                
+                self.favoriteList = autParams
                 if autParams.total != 0 {
                     self.isLiked = autParams.data!.contains(where: {$0.apartment.id == apartmentId})
                 }
@@ -121,6 +122,23 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
                 return
             }
         })
+    }
+    
+    private func deleteFavoriteApartment(id: Int) {
+        guard let list = self.favoriteList, let data = list.data else {return}
+        for item in data {
+            if item.apartment.id == id {
+                store.deleteFavoriteList(id: String(item.id), completionHandler: {result in
+                    switch result{
+                    case .success:
+                        Messages.displaySuccessMessage(message: "Thành công!")
+                        self.heartIcon.image = UIImage(named: "heart_icon")
+                    case.failure:
+                        Messages.displayErrorMessage(message: "Vui lòng thử lại sau!")
+                    }
+                })
+            }
+        }
     }
     
     func addADCustomView(containerView: UIView, numofViews: Int, viewHeigh: Int) -> Int{
