@@ -311,7 +311,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             passedData.lat = selectedLocation[0]
             passedData.lng = selectedLocation[1]
             passedData.street = self.addressDetail?.street ?? ""
-            //passedData.apartment_number = self.addressDetail?.apartment_number ?? 0
+            passedData.apartment_number = self.addressDetail?.apartment_number ?? 0
             passedData.ward_id = self.addressDetail?.ward.id ?? 0
             passedData.district_id = self.addressDetail?.district.id ?? 0
             passedData.province_id = self.addressDetail?.province.id ?? 0
