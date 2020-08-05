@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var apartmentId = "", isNavigateToPhone = 0, fullAddress = "", selectedLocation = [Double]()
     var locationManager: CLLocationManager?
     let searchRequest = MKLocalSearch.Request()
+    var addressDetail: AddressDetailSearch?
     
     var city = "", district = "", min_price = "", min_currency = "", max_price = "", max_currency = "", transaction = "", propertyType = ""
     
@@ -269,7 +270,19 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             if isVerified == 0 {
                 Messages.displayErrorMessage(message: "Tài khoản chưa xác thực. Vui lòng xác thực!")
             } else {
-                self.performSegue(withIdentifier: "home_apartmentcreation", sender: self)
+                self.store.searchAddressDetail(address: address, completionHandler: {result in
+                    switch result {
+                    case .success(let dataString):
+                        let parsedData = dataString.data(using: .utf8)
+                        guard let newData = parsedData, let autParams = try! JSONDecoder().decode(AddressDetailSearch?.self, from: newData) else {return}
+                        self.addressDetail = autParams
+                        self.performSegue(withIdentifier: "home_apartmentcreation", sender: self)
+                    case .failure:
+                        Messages.displayErrorMessage(message: "Lỗi. Vui lòng thử lại sau!")
+                        return
+                    }
+                })
+                
             }
         })
     }
@@ -297,6 +310,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             var passedData = ApartmentPostCreation()
             passedData.lat = selectedLocation[0]
             passedData.lng = selectedLocation[1]
+            passedData.street = self.addressDetail?.street ?? ""
+            //passedData.apartment_number = self.addressDetail?.apartment_number ?? 0
+            passedData.ward_id = self.addressDetail?.ward.id ?? 0
+            passedData.district_id = self.addressDetail?.district.id ?? 0
+            passedData.province_id = self.addressDetail?.province.id ?? 0
             view.data = passedData
             view.operation = .create
         }

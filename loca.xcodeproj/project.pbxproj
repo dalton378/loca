@@ -79,6 +79,7 @@
 		E899550B245930E800E65195 /* AlamofireStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E899550A245930E800E65195 /* AlamofireStore.swift */; };
 		E89D55F22466E67D00917557 /* UpdateAccountNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89D55F12466E67D00917557 /* UpdateAccountNameViewController.swift */; };
 		E89FAD5A246D68510020AFAE /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89FAD59246D68510020AFAE /* UIImage+extension.swift */; };
+		E8AEFE8024DA9CDF002FED8B /* AddressDetailSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AEFE7F24DA9CDF002FED8B /* AddressDetailSearch.swift */; };
 		E8B74A2B2464451C0093F5C1 /* PosCreationContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B74A2A2464451C0093F5C1 /* PosCreationContactViewController.swift */; };
 		E8C47C852464EDCD0046BB4F /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C47C842464EDCD0046BB4F /* FloatingTextField.swift */; };
 		E8C47C872465022C0046BB4F /* TransitionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C47C862465022C0046BB4F /* TransitionButton.swift */; };
@@ -193,6 +194,7 @@
 		E899550A245930E800E65195 /* AlamofireStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireStore.swift; sourceTree = "<group>"; };
 		E89D55F12466E67D00917557 /* UpdateAccountNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountNameViewController.swift; sourceTree = "<group>"; };
 		E89FAD59246D68510020AFAE /* UIImage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
+		E8AEFE7F24DA9CDF002FED8B /* AddressDetailSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailSearch.swift; sourceTree = "<group>"; };
 		E8B74A2A2464451C0093F5C1 /* PosCreationContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosCreationContactViewController.swift; sourceTree = "<group>"; };
 		E8C47C842464EDCD0046BB4F /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		E8C47C862465022C0046BB4F /* TransitionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionButton.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 		E8510F1124592B21004BE65A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E8AEFE7E24DA9CC9002FED8B /* Address */,
 				E8165E00247E724F009666BC /* SocialMedia */,
 				E84FD1CC245D083800E10507 /* Apartment */,
 				E8510F052459251F004BE65A /* Config */,
@@ -590,6 +593,14 @@
 				8E7A513B246981A100A7C716 /* ContactViewController.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		E8AEFE7E24DA9CC9002FED8B /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				E8AEFE7F24DA9CDF002FED8B /* AddressDetailSearch.swift */,
+			);
+			path = Address;
 			sourceTree = "<group>";
 		};
 		E8EDDB8424618E760099691B /* PostCreation */ = {
@@ -954,6 +965,7 @@
 				8E1AA9EA24A9F2DC00D550E5 /* SharedFunctions.swift in Sources */,
 				E8C59BA124A600E4002F96CC /* ManagePostTableViewCell.swift in Sources */,
 				8EE37B8E2467BF3B0094CE6B /* UpdateAccountPassViewController.swift in Sources */,
+				E8AEFE8024DA9CDF002FED8B /* AddressDetailSearch.swift in Sources */,
 				E84FD1DF245D282E00E10507 /* ApartmentDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

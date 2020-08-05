@@ -221,6 +221,12 @@ class AlamofireRequest {
             .responseString(completionHandler: completionHandler)
     }
     
+    func searchAddressDetail(address: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        session.request(ApartmentApiProtocol.searchAddressDetail(text: address))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
 }
 
 

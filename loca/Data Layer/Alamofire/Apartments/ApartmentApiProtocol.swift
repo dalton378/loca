@@ -23,10 +23,11 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     case addFavorte(apartmentId: String, token: String)
     case getFavoriteList(token: String)
     case deleteFavorite(id: String, token: String)
+    case searchAddressDetail(text: String)
     
     var method: HTTPMethod {
         switch self {
-        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .getFavoriteList:
+        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .getFavoriteList, .searchAddressDetail:
             return .get
         case .postFiles, .createPost, .addFavorte:
             return .post
@@ -63,6 +64,8 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
             return "favourite-apartments"
         case .deleteFavorite(let id,_):
             return "favourite-apartments/\(id)"
+        case .searchAddressDetail:
+            return "apartments/search-detail"
         }
     }
     
@@ -70,6 +73,8 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
         switch self {
         case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .deletePost, .getFavoriteList, .deleteFavorite:
             return URLEncoding.default
+        case .searchAddressDetail:
+            return URLEncoding.queryString
         case .postFiles, .createPost, .updatePost, .addFavorte:
             return JSONEncoding.default
         }
@@ -119,6 +124,8 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
             ]
         case .addFavorte(let apartmentID,_):
             return ["apartment_id" : apartmentID]
+        case .searchAddressDetail(let address):
+            return ["search_text" : address]
         default:
             return [:]
         }

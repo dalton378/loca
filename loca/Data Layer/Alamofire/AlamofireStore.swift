@@ -192,6 +192,12 @@ class AlamofireStore {
             completionHandler(result.result)
         })
     }
+    
+    func searchAddressDetail(address: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.searchAddressDetail(address: address, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
 }
 
 extension AlamofireStore {

@@ -43,6 +43,7 @@ class PostManageListViewController: UIViewController {
             case .success(let data):
                 let parsedData = data.data(using: .utf8)
                 guard let newData = parsedData, let autParams = try! JSONDecoder().decode(ApartmentPostList?.self, from: newData) else {return}
+                self.data.removeAll()
                 for item in autParams.data {
                     self.data.append(item)
                 }
@@ -56,7 +57,6 @@ class PostManageListViewController: UIViewController {
             }
         })
     }
-    
 }
 
 
@@ -114,6 +114,7 @@ extension PostManageListViewController: UITableViewDataSource, UITableViewDelega
             var passedData = ApartmentPostCreation()
             passedData.address = self.data[selectedIndex].address
             passedData.apartment_code = self.data[selectedIndex].apartment_code ?? ""
+            //passedData.apartment_number = self.data[selectedIndex].apartment_number ?? 0 
             passedData.apartment_id = String(self.data[selectedIndex].id ?? 0)
             //passedData.apartment_number = String(self.data[selectedIndex]. ?? 0)
             passedData.area = self.data[selectedIndex].area

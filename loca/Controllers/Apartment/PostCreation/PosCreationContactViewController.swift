@@ -31,15 +31,11 @@ class PosCreationContactViewController: UIViewController {
     
     private func setupUI(){
         FloatingTextField.configureFloatingText(textfield: nameTextField, placeHolder: "Họ Tên", title: "Họ Tên")
-        nameTextField.text = AppConfig.shared.profileName
-        
         FloatingTextField.configureFloatingText(textfield: phoneTextField, placeHolder: "Số điện thoại", title: "Số điện thoại")
         phoneTextField.addTarget(self, action: #selector(self.validateInput(_:)), for: .editingChanged)
-        phoneTextField.text = AppConfig.shared.profilePhone
         phoneTextField.keyboardType = .phonePad
         FloatingTextField.configureFloatingText(textfield: emailTextField, placeHolder: "Email", title: "Email")
         emailTextField.addTarget(self, action: #selector(self.validateInput(_:)), for: .editingChanged)
-        emailTextField.text = AppConfig.shared.profileEmail
         emailTextField.keyboardType = .emailAddress
         guard let contact = data, let name = contact.name else { return }
         if !name.isEmpty {

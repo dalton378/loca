@@ -27,7 +27,7 @@ struct ApartmentPostDetail: Codable {
     var ward: Ward
     var images: [ApartmentPhotos]
     var street: String
-    //var apartment_number: String?
+    //var apartment_number: Int?
     var apartment_code: String?
     var direction: String
     var lat: Double

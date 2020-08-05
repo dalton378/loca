@@ -28,7 +28,7 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
     
     func setupUI(){
         tableData.append(TableData(icon: UIImage(named: "info_icon")!, description: "Thông tin cở bản", status: UIImage()))
-        tableData.append(TableData(icon: UIImage(named: "map_icon")!, description: "Vị trí", status: UIImage()))
+        tableData.append(TableData(icon: UIImage(named: "map_icon")!, description: "Vị trí", status: UIImage(named: "green_check_icon")!))
         tableData.append(TableData(icon: UIImage(named: "details_icon")!, description: "Thông tin mô tả", status: UIImage()))
         tableData.append(TableData(icon: UIImage(named: "graph_icon")!, description: "Thông tin khác", status: UIImage()))
         tableData.append(TableData(icon: UIImage(named: "photo_icon")!, description: "Hình ảnh", status: UIImage()))
@@ -217,6 +217,10 @@ class CreateApartmentPostViewController: UIViewController, UITableViewDataSource
         } else if segue.identifier == "createPost_contact" {
             let view = segue.destination as! PosCreationContactViewController
             view.delegate = self
+            if data.contacts.first?.name?.isEmpty ?? true {
+                data.contacts.removeAll()
+                data.contacts.append(ApartmentContact(name: AppConfig.shared.profileName, phone: AppConfig.shared.profilePhone, email: AppConfig.shared.profileEmail))
+            }
             view.data = data.contacts.first
         } else if segue.identifier == "createPost_basicInfo" {
             let view = segue.destination as! PostCreationBasicViewController
@@ -279,7 +283,6 @@ extension CreateApartmentPostViewController: PostCreationCameraProtocol {
 
 extension CreateApartmentPostViewController: PostCreationContactProtocol {
     func getContact(name: String, phone: String, email: String) {
-        //data.contacts.append(ApartmentContact.init(name: name, phone: phone, email: email))
         data.contacts[0] = ApartmentContact.init(name: name, phone: phone, email: email)
         tableData[5].status = UIImage(named: "green_check_icon")!
         tableView.reloadData()
