@@ -64,9 +64,9 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func shareAction(_ sender: UITapGestureRecognizer) {
         //Set the default sharing message.
-        let message = "Message goes here."
+        let message = "Loca - Real Estate Network"
         //Set the link to share.
-        if let link = NSURL(string: "http://yoururl.com")
+        if let link = NSURL(string: "https://localoca.vn/")
         {
             let objectsToShare = [message,link] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)

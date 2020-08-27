@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var locationManager: CLLocationManager?
     let searchRequest = MKLocalSearch.Request()
     var addressDetail: AddressDetailSearch?
+    var selectedAnnotations = [MKAnnotation]()
     
     var city = "", district = "", min_price = "", min_currency = "", max_price = "", max_currency = "", transaction = "", propertyType = ""
     
@@ -68,44 +69,14 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         searchTextField.delegate = self
     }
     
-    private func searchAdressByText(text: String){
-        searchRequest.naturalLanguageQuery = text
-        searchRequest.region = mapView.region
-        let search = MKLocalSearch(request: searchRequest)
-        search.start { response, error in
-            self.searchIndicator.stopAnimating()
-            guard let response = response else {
-                print("Error: \(error?.localizedDescription ?? "Unknown error").")
-                return
-            }
-            
-            var listItem = [String]()
-            var ids = [Int]()
-            var i = 0
-            for item in response.mapItems {
-                print(item.phoneNumber ?? "No phone number.")
-                listItem.append(item.name!)
-                ids.append(i)
-                i+=1
-            }
-            
-            ListView.displayListView(view: self.searchView, listHeight: 150, text: listItem, id: ids, selectionHandler: {(a,b) in
-                ListView.removeListView()
-                self.view.endEditing(true)
-                self.getAddressFromLatLon(pdblLatitude: String(response.mapItems[b].placemark.coordinate.latitude), withLongitude: String(response.mapItems[b].placemark.coordinate.longitude))
-                self.dropPinZoomIn(placemark: response.mapItems[b].placemark)
-            })
-        }
-    }
-    
     func dropPinZoomIn(placemark:MKPlacemark){
+        self.mapView.removeAnnotations(self.selectedAnnotations)
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
-        //annotation.title = fullAddress
-
-        let region = MKCoordinateRegion(center: placemark.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        selectedAnnotations.append(annotation)
         mapView.addAnnotation(annotation)
         mapView.setRegion(region, animated: true)
     }
@@ -120,7 +91,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         guard  let _ = AppConfig.shared.accessToken else {
             return
         }
-         getUserData()
+        getUserData()
     }
     
     private func getUserData(){
@@ -232,7 +203,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         ListView.removeListView()
         guard let selectedAnnotation = view.annotation as? MakerAnnotation else {
-            displayPostCreation(address: self.fullAddress)
+            displayPostCreation(address: self.addressDetail!.address)
             return}
         guard let text = selectedAnnotation.subtitle else {return}
         let fulltextArr = text.split(separator: "|")
@@ -308,8 +279,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         else if segue.identifier == "home_apartmentcreation" {
             let view = segue.destination as! CreateApartmentPostViewController
             var passedData = ApartmentPostCreation()
-            passedData.lat = selectedLocation[0]
-            passedData.lng = selectedLocation[1]
+            passedData.lat = self.addressDetail?.lat ?? 0
+            passedData.lng = self.addressDetail?.lng ?? 0
             passedData.street = self.addressDetail?.street ?? ""
             passedData.apartment_number = self.addressDetail?.apartment_number ?? 0
             passedData.ward_id = self.addressDetail?.ward.id ?? 0
@@ -388,12 +359,12 @@ extension HomeViewController: FilterSelectionProtocol {
 }
 
 extension HomeViewController: UITextFieldDelegate {
-
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text  else {return true}
         if text.count > 3 {
             self.searchIndicator.startAnimating()
-            searchAdressByText(text: text)
+            searchAddress(address: text)
         }
         return true
     }
@@ -407,7 +378,7 @@ extension HomeViewController: UITextFieldDelegate {
         center.longitude = lon
         self.selectedLocation.append(lat)
         self.selectedLocation.append(lon)
-
+        
         let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
         ceo.reverseGeocodeLocation(loc, completionHandler:
             {(placemarks, error) in
@@ -416,14 +387,58 @@ extension HomeViewController: UITextFieldDelegate {
                     print("reverse geodcode fail: \(error!.localizedDescription)")
                 }
                 let pm = placemarks! as [CLPlacemark]
-
+                
                 if pm.count > 0 {
                     let pm = placemarks![0]
                     let addressString = "\(pm.subThoroughfare ?? "") \(pm.thoroughfare ?? ""), \(pm.subLocality ?? ""), \(pm.subAdministrativeArea ?? ""), \(pm.locality ?? ""), \(pm.country ?? "")"
                     print(addressString)
                     self.fullAddress = addressString
-              }
+                }
         })
-
+        
+    }
+    
+    private func searchAddress(address: String){
+        store.searchAddress(address: address, completionHandler: {result in
+            self.searchIndicator.stopAnimating()
+            switch result {
+            case .success(let dataString):
+                let parsedData = dataString.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try! JSONDecoder().decode(SearchAddressList?.self, from: newData) else {return}
+                
+                var listItem = [String]()
+                var ids = [Int]()
+                guard let datas = autParams.data else {return}
+                for item in datas {
+                    listItem.append(item.search_text)
+                    ids.append(item.id ?? 0)
+                }
+                
+                ListView.displayListView(view: self.searchView, listHeight: 150, text: listItem, id: ids, selectionHandler: {(a,b) in
+                    ListView.removeListView()
+                    self.view.endEditing(true)
+                    self.store.searchAddressDetail(address: a, completionHandler: {result in
+                        switch result {
+                        case .success(let dataString):
+                            let parsedData = dataString.data(using: .utf8)
+                            guard let newData = parsedData, let autParams = try? JSONDecoder().decode(AddressDetailSearch.self, from: newData) else {return}
+                            self.addressDetail = autParams
+                            guard let lat = autParams.lat, let long = autParams.lng else {
+                                Messages.displayErrorMessage(message: "Lỗi. Vui lòng thử lại sau!")
+                                return
+                            }
+                            self.dropPinZoomIn(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D.init(latitude: CLLocationDegrees(exactly: lat)!, longitude: CLLocationDegrees(exactly: long)!)))
+                        case .failure:
+                            Messages.displayErrorMessage(message: "Lỗi. Vui lòng thử lại sau!")
+                            return
+                        }
+                    })
+                    
+                })
+            case .failure:
+                Messages.displayErrorMessage(message: "Lỗi. Vui lòng thử lại sau!")
+                return
+            }
+        })
     }
 }

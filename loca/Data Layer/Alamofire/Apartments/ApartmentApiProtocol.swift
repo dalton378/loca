@@ -17,17 +17,18 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     case postFiles( data: String)
     case searchApartment(token: String, post_type_id: String?, min_price: String?, min_currency: String?, max_price: String?, max_currency: String?, property_type_id: String?, province_id : String?, district_id: String?)
     case createPost(token: String, data: ApartmentPostCreation)
-    case getPost(token: String)
+    case getPost(token: String, page: String)
     case deletePost(token: String, id: String)
     case updatePost(token:String, data: ApartmentPostCreation)
     case addFavorte(apartmentId: String, token: String)
     case getFavoriteList(token: String)
     case deleteFavorite(id: String, token: String)
     case searchAddressDetail(text: String)
+    case searchAddress(text: String)
     
     var method: HTTPMethod {
         switch self {
-        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .getFavoriteList, .searchAddressDetail:
+        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .getFavoriteList, .searchAddressDetail, .searchAddress:
             return .get
         case .postFiles, .createPost, .addFavorte:
             return .post
@@ -66,12 +67,14 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
             return "favourite-apartments/\(id)"
         case .searchAddressDetail:
             return "apartments/search-detail"
+        case .searchAddress:
+            return "apartments/search"
         }
     }
     
     var encoding: ParameterEncoding {
         switch self {
-        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .deletePost, .getFavoriteList, .deleteFavorite:
+        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .deletePost, .getFavoriteList, .deleteFavorite, .searchAddress:
             return URLEncoding.default
         case .searchAddressDetail:
             return URLEncoding.queryString
@@ -126,13 +129,17 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
             return ["apartment_id" : apartmentID]
         case .searchAddressDetail(let address):
             return ["search_text" : address]
+        case .getPost(_, let page):
+            return ["page" : page]
+        case .searchAddress(let address):
+            return ["search_text": address]
         default:
             return [:]
         }
     }
     var headers: [String : String]? {
         switch self {
-        case let .getApartment(token), .getApartmentDetail(_, let token), .getPropertyType(let token), .searchApartment(let token,_,_,_,_,_,_,_,_), .createPost(let token, _), .getPost(let token), .deletePost(let token, _), .updatePost(let token, _), .addFavorte(_, let token), .getFavoriteList(let token), .deleteFavorite(_, let token):
+        case let .getApartment(token), .getApartmentDetail(_, let token), .getPropertyType(let token), .searchApartment(let token,_,_,_,_,_,_,_,_), .createPost(let token, _), .getPost(let token, _), .deletePost(let token, _), .updatePost(let token, _), .addFavorte(_, let token), .getFavoriteList(let token), .deleteFavorite(_, let token):
             return ["Authorization": "Bearer \(token)"]
         default:
             return [:]

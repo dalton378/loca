@@ -133,8 +133,8 @@ class AlamofireStore {
         })
     }
     
-    func getPost(completionHandler: @escaping (Result<String, AFError>) -> Void ) {
-        client.getPost(completionHandler: {result in
+    func getPost(page: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.getPost(page: page, completionHandler: {result in
             completionHandler(result.result)
         })
     }
@@ -198,6 +198,13 @@ class AlamofireStore {
             completionHandler(result.result)
         })
     }
+    
+    func searchAddress(address: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+           client.searchAddress(address: address, completionHandler: {result in
+               completionHandler(result.result)
+           })
+       }
+    
 }
 
 extension AlamofireStore {

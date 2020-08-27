@@ -18,6 +18,7 @@ class PostManageListViewController: UIViewController {
     let cIndicator = CustomIndicator()
     var data = [ApartmentPostDetail]()
     var selectedIndex = 0
+    var defaultPage = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class PostManageListViewController: UIViewController {
     }
     
     private func getPost(){
-        store.getPost(completionHandler: {result in
+        store.getPost(page: String(defaultPage), completionHandler: {result in
             switch result {
             case .success(let data):
                 let parsedData = data.data(using: .utf8)
@@ -106,6 +107,35 @@ extension PostManageListViewController: UITableViewDataSource, UITableViewDelega
         share.backgroundColor = UIColor.blue
 
         return [delete, share]
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if data.count - 1 == indexPath.row {
+            self.defaultPage += 1
+            store.getPost(page: String(defaultPage), completionHandler: {result in
+                switch result {
+                case .success(let data):
+                    let parsedData = data.data(using: .utf8)
+                    guard let newData = parsedData, let autParams = try! JSONDecoder().decode(ApartmentPostList?.self, from: newData) else {return}
+                    
+                    if !autParams.data.isEmpty {
+                        for item in autParams.data {
+                            self.data.append(item)
+                        }
+                        self.cIndicator.stopIndicator()
+                        self.postNumberLabel.text = String(self.data.count)
+                        self.tableView.reloadData()
+                        self.defaultPage += 1
+                    } else {
+                        self.defaultPage -= 1
+                    }
+                case .failure:
+                    Messages.displayErrorMessage(message: "Không có dữ liệu. Vui lòng thử lại sau!")
+                    self.navigationController?.popViewController(animated: true)
+                    return
+                }
+            })
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

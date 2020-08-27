@@ -160,9 +160,9 @@ class AlamofireRequest {
             .responseString(completionHandler: completionHandler)
     }
     
-    func getPost(completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+    func getPost(page: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
         let token = AppConfig.shared.accessToken ?? ""
-        session.request(ApartmentApiProtocol.getPost(token: token))
+        session.request(ApartmentApiProtocol.getPost(token: token, page: page))
             .validate()
             .responseString(completionHandler: completionHandler)
     }
@@ -223,6 +223,12 @@ class AlamofireRequest {
     
     func searchAddressDetail(address: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
         session.request(ApartmentApiProtocol.searchAddressDetail(text: address))
+            .validate()
+            .responseString(completionHandler: completionHandler)
+    }
+    
+    func searchAddress(address: String, completionHandler: @escaping (AFDataResponse<String>) -> Void ) {
+        session.request(ApartmentApiProtocol.searchAddress(text: address))
             .validate()
             .responseString(completionHandler: completionHandler)
     }
