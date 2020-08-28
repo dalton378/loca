@@ -112,7 +112,7 @@ class ApartmentDetailViewController: UIViewController, UIScrollViewDelegate {
             switch result {
             case .success(let data):
                 let parsedData = data.data(using: .utf8)
-                guard let newData = parsedData, let autParams = try! JSONDecoder().decode(FavoriteApartmentList?.self, from: newData) else {return}
+                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(FavoriteApartmentList.self, from: newData) else {return}
                 self.favoriteList = autParams
                 if autParams.total != 0 {
                     self.isLiked = autParams.data!.contains(where: {$0.apartment.id == apartmentId})

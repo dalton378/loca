@@ -203,7 +203,8 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         ListView.removeListView()
         guard let selectedAnnotation = view.annotation as? MakerAnnotation else {
-            displayPostCreation(address: self.addressDetail!.address)
+            guard let detail = self.addressDetail  else { return }
+            displayPostCreation(address: detail.address)
             return}
         guard let text = selectedAnnotation.subtitle else {return}
         let fulltextArr = text.split(separator: "|")

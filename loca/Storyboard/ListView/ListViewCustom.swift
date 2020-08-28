@@ -29,23 +29,24 @@ class ListViewCustom: UIView {
     
     func commonInit() {
         Bundle.main.loadNibNamed("ListViewCustom", owner: self, options: nil)
-       contentView.fixInView(self)
+        contentView.fixInView(self)
         contentView.layer.cornerRadius = 5
     }
     func setData(data: [String], ids: [Int], selectionHandler: @escaping ((String, Int) -> Void)){
-        for i in 0...data.count - 1 {
-            let item = ListViewItemCustom.init(frame: CGRect(x: 0, y: (40 * CGFloat(i)) , width: stackView.frame.width, height: 40))
-            item.setItem(item: data[i], id: ids[i])
-            item.selectionHandler = selectionHandler
-            stackView.addSubview(item)
-        }
-        viewHeight = (data.count * 40)
-        
-        for a in stackView.constraints {
-            if a.identifier == "innerViewHeigh" {
-                a.constant = CGFloat(viewHeight)
+        if data.count > 0 {
+            for i in 0...data.count - 1 {
+                let item = ListViewItemCustom.init(frame: CGRect(x: 0, y: (40 * CGFloat(i)) , width: stackView.frame.width, height: 40))
+                item.setItem(item: data[i], id: ids[i])
+                item.selectionHandler = selectionHandler
+                stackView.addSubview(item)
+            }
+            viewHeight = (data.count * 40)
+            
+            for a in stackView.constraints {
+                if a.identifier == "innerViewHeigh" {
+                    a.constant = CGFloat(viewHeight)
+                }
             }
         }
-        
     }
 }
