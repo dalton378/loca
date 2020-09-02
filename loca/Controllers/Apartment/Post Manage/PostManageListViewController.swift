@@ -26,6 +26,7 @@ class PostManageListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        defaultPage = 1
         getPost()
     }
     
