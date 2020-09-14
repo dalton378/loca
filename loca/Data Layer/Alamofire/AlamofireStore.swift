@@ -209,20 +209,22 @@ class AlamofireStore {
 
 extension AlamofireStore {
     func postImageFormData(image: UIImage, completionHandler: @escaping (AFDataResponse<Data?>) -> Void){
-        let newPhoto = image.resizeImage(image: image, percent: 0.5)
-        let imgData = newPhoto.jpegData(compressionQuality: 0.1)!
+        image.resizeImageToMB(image: image, size: 1000000, completionHandler: ({newPhoto in
+            let imgData = newPhoto.jpegData(compressionQuality: 0.9)!
+            
+            let parameters = ["file": newPhoto.base64String]
+            
+            AF.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imgData, withName: "file",fileName: "mansion.jpg", mimeType: "image/jpg")
+                for (key, value) in parameters {
+                    multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+                } //Optional for extra parameters
+            },
+                      to:"https://area51.localoca.vn/v1/files").response { response in
+                        completionHandler(response)
+                        
+            }
+        }))
         
-        let parameters = ["file": newPhoto.base64String]
-        
-        AF.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(imgData, withName: "file",fileName: "mansion.jpg", mimeType: "image/jpg")
-            for (key, value) in parameters {
-                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
-            } //Optional for extra parameters
-        },
-                  to:"https://area51.localoca.vn/v1/files").response { response in
-                    completionHandler(response)
-                    
-        }
     }
 }

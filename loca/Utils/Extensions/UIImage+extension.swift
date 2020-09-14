@@ -32,5 +32,17 @@ extension UIImage {
         return newImage ?? UIImage()
     }
     
+    func resizeImageToMB(image: UIImage, size: Int, completionHandler: @escaping ((UIImage) -> ())) {
+        let compressionPercent = 0.6
+        let newImage = image.resizeImage(image: image, percent: CGFloat(compressionPercent))
+        let _size = newImage.pngData()?.count ?? 0
+        
+        if _size > size {
+            resizeImageToMB(image: newImage, size: size, completionHandler: completionHandler)
+        } else {
+            completionHandler(newImage)
+        }
+    }
+    
    
 }

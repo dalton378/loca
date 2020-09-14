@@ -146,7 +146,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
         let defaultCoordinate = CLLocationCoordinate2D(latitude: Double(AppConstants.defaultLatitude)!, longitude: Double(AppConstants.defaultLongtitude)!)
-        let annotation = MakerAnnotation(coordinate: defaultCoordinate, title: "", subTitle: "")
+        let annotation = MakerAnnotation(coordinate: defaultCoordinate, title: "", subTitle: "", icon: UIImage(named: "location_pin") ?? UIImage())
         
         mapView.setRegion(annotation.region, animated: true)
         mapView.delegate = self
@@ -156,13 +156,15 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     private func addApartmentAnnotation(mapView: MKMapView, apartmentList: ApartmentList){
         mapView.removeAnnotations(mapView.annotations)
         for apartment in apartmentList.data {
-            let anotation = MakerAnnotation(coordinate: CLLocationCoordinate2D(latitude: (apartment.lat as NSString).doubleValue,  longitude: (apartment.lng as NSString).doubleValue), title: "", subTitle: "\(apartment.search_text)|\(apartment.id)")
+            var icon: UIImage?
+            apartment.post_type_id == 1 ? (icon = UIImage(named: "loca_pin_icon")) : (icon = UIImage(named: "loca_blue_pin_icon"))
+            let anotation = MakerAnnotation(coordinate: CLLocationCoordinate2D(latitude: (apartment.lat as NSString).doubleValue,  longitude: (apartment.lng as NSString).doubleValue), title: "", subTitle: "\(apartment.search_text)|\(apartment.id)", icon: icon ?? UIImage())
             mapView.addAnnotation(anotation)
             
         }
     }
     
-    final class MakerAnnotation: NSObject, MKAnnotation {
+     class MakerAnnotation: NSObject, MKAnnotation {
         var coordinate: CLLocationCoordinate2D
         var title : String?
         var subtitle: String?
@@ -170,11 +172,12 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             let span = MKCoordinateSpan(latitudeDelta: 0.003, longitudeDelta: 0.003)
             return MKCoordinateRegion(center: coordinate, span: span)
         }
-        
-        init(coordinate : CLLocationCoordinate2D, title : String, subTitle : String) {
+        var icon: UIImage
+        init(coordinate : CLLocationCoordinate2D, title : String, subTitle : String, icon: UIImage) {
             self.coordinate = coordinate
             self.title = title
             self.subtitle = subTitle
+            self.icon = icon
             super.init()
         }
     }
@@ -186,13 +189,19 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             selectedAnnotation.titleVisibility = .adaptive
             selectedAnnotation.subtitleVisibility = .adaptive
             
-            let rightButton = UIButton(type: .contactAdd)
-            rightButton.tag = annotation.hash
+          //  let rightButton = UIButton(type: .detailDisclosure)
+            //rightButton.tag = annotation.hash
             //selectedAnnotation.animatesDrop = true
-            selectedAnnotation.canShowCallout = false
-            selectedAnnotation.rightCalloutAccessoryView = rightButton
+            selectedAnnotation.canShowCallout = true
+           // selectedAnnotation.rightCalloutAccessoryView = rightButton
             selectedAnnotation.markerTintColor=UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0,alpha:0.5).withAlphaComponent(0)
-            selectedAnnotation.image = UIImage(named: "loca_pin_icon")
+            if let custom = annotation as? MakerAnnotation {
+                selectedAnnotation.image = custom.icon
+            } else {
+                selectedAnnotation.image = UIImage(named: "location_pin") ?? UIImage()
+            }
+            
+
             
             return selectedAnnotation
         }
