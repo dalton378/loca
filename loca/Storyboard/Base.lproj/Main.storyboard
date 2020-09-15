@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dDQ-Y8-Bws">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dDQ-Y8-Bws">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -68,26 +68,12 @@
                                     <constraint firstAttribute="height" constant="40" id="zU4-IT-8UM"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXk-m3-Juu">
-                                <rect key="frame" x="12" y="712.5" width="41.5" height="41.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="SXk-m3-Juu" secondAttribute="height" multiplier="1:1" id="EcN-im-RNp"/>
-                                </constraints>
-                                <color key="tintColor" name="UBlack"/>
-                                <state key="normal" image="target_icon"/>
-                                <connections>
-                                    <action selector="getCurrentLocation:" destination="o8A-ec-I9P" eventType="touchUpInside" id="cOr-MT-HFy"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="hh2-sh-tOl" firstAttribute="trailing" secondItem="A1P-UP-eXn" secondAttribute="trailing" id="0YL-2J-QHc"/>
                             <constraint firstItem="hh2-sh-tOl" firstAttribute="leading" secondItem="A1P-UP-eXn" secondAttribute="leading" id="DAI-hY-KDj"/>
-                            <constraint firstItem="A1P-UP-eXn" firstAttribute="bottom" secondItem="SXk-m3-Juu" secondAttribute="bottom" constant="20" id="Lf5-sY-Tr8"/>
-                            <constraint firstItem="SXk-m3-Juu" firstAttribute="width" secondItem="hh2-sh-tOl" secondAttribute="width" multiplier="0.1" id="Oxv-VH-dEY"/>
                             <constraint firstItem="A1P-UP-eXn" firstAttribute="trailing" secondItem="Rgz-Ue-EWJ" secondAttribute="trailing" constant="12" id="WhA-Yt-UoE"/>
-                            <constraint firstItem="SXk-m3-Juu" firstAttribute="leading" secondItem="A1P-UP-eXn" secondAttribute="leading" constant="12" id="YoU-xN-LJP"/>
                             <constraint firstItem="Rgz-Ue-EWJ" firstAttribute="top" secondItem="A1P-UP-eXn" secondAttribute="top" constant="20" id="flq-gP-NDc"/>
                             <constraint firstItem="hh2-sh-tOl" firstAttribute="top" secondItem="A1P-UP-eXn" secondAttribute="top" id="l1n-nF-iRe"/>
                             <constraint firstItem="Rgz-Ue-EWJ" firstAttribute="leading" secondItem="A1P-UP-eXn" secondAttribute="leading" constant="12" id="lGK-ua-nQs"/>
@@ -1589,7 +1575,6 @@
         <image name="membership_icon" width="96" height="96"/>
         <image name="password_gradient_icon" width="96" height="96"/>
         <image name="phone_gradient_icon" width="96" height="96"/>
-        <image name="target_icon" width="64" height="64"/>
         <image name="user_icon" width="100" height="100"/>
         <namedColor name="Gradient_DarkBlue">
             <color red="0.73333333333333328" green="0.82352941176470584" blue="0.77254901960784317" alpha="0.95099997520446777" colorSpace="custom" customColorSpace="sRGB"/>

@@ -63,10 +63,23 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         floaty.addItem("Liên Hệ", icon: UIImage(named: "email_icon")!,handler:{ _ in
             self.performSegue(withIdentifier: "home_contact", sender: self)
         } )
+        
+        floaty.addItem("Vệ Tinh", icon: UIImage(named: "satellite_icon"), handler: {_ in
+            self.mapView.mapType = .satellite
+        })
+        
+        floaty.addItem("Sơ Đồ", icon: UIImage(named: "map_icon"), handler: {_ in
+            self.mapView.mapType = .standard
+        })
+        floaty.addItem("Vị Trị Của Bạn ", icon: UIImage(named: "location_icon"), handler: {_ in
+            self.locationManager?.startUpdatingLocation()
+        })
+        
         self.view.addSubview(floaty)
         
         searchView.layer.cornerRadius = 10
         searchTextField.delegate = self
+        
     }
     
     func dropPinZoomIn(placemark:MKPlacemark){
