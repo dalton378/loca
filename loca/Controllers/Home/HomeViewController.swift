@@ -19,10 +19,10 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var accountImage: UIImageView!
     @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var sellView: UIView!
+    @IBOutlet weak var rentView: UIView!
     @IBOutlet weak var mapTypeButton: UIButton!
     @IBOutlet weak var myLocationButton: UIButton!
-    
-    
     
     let store = AlamofireStore()
     var apartmentId = "", isNavigateToPhone = 0, fullAddress = "", selectedLocation = [Double]()
@@ -53,11 +53,14 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             break
         }
         
+        mapView.showsCompass = false
         searchView.layer.cornerRadius = 30
         searchTextField.delegate = self
         accountImage.layer.cornerRadius = accountImage.frame.width/2
         
-        filterView.layer.cornerRadius = filterView.frame.height/2
+        [filterView,sellView,rentView].forEach({view in
+            view.layer.cornerRadius = view.frame.height/2
+        })
         mapTypeButton.layer.cornerRadius = mapTypeButton.frame.height/2
         myLocationButton.layer.cornerRadius = myLocationButton.frame.height/2
         
@@ -160,11 +163,44 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         mapTypeButton.isSelected = !mapTypeButton.isSelected
     }
     
+    @IBAction func sellViewTap(_ sender: Any) {
+        sellView.backgroundColor = UIColor.darkGray
+        rentView.backgroundColor = UIColor.white
+        store.searchApartment(token: AppConfig.shared.accessToken ?? "", post_type_id: "1", min_price: "", min_currency: "", max_price: "", max_currency: "", property_type_id: "", province_id: "", district_id: "", completionHandler: {result in
+                                switch result {
+                                case .success(let dataString):
+                                    let parsedData = dataString.data(using: .utf8)
+                                    guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
+                                    AppConfig.shared.apartmentList = autParams
+                                    self.addApartmentAnnotation(mapView: self.mapView, apartmentList: autParams)
+                                case .failure:
+                                    return
+                                }})
+    }
+    
+    @IBAction func rentViewTap(_ sender: Any) {
+        sellView.backgroundColor = UIColor.white
+        rentView.backgroundColor = UIColor.darkGray
+        store.searchApartment(token: AppConfig.shared.accessToken ?? "", post_type_id: "2", min_price: "", min_currency: "", max_price: "", max_currency: "", property_type_id: "", province_id: "", district_id: "", completionHandler: {result in
+                                switch result {
+                                case .success(let dataString):
+                                    let parsedData = dataString.data(using: .utf8)
+                                    guard let newData = parsedData, let autParams = try? JSONDecoder().decode(ApartmentList.self, from: newData) else {return}
+                                    AppConfig.shared.apartmentList = autParams
+                                    self.addApartmentAnnotation(mapView: self.mapView, apartmentList: autParams)
+                                case .failure:
+                                    return
+                                }})
+    }
+    
+    
     @IBAction func myLocationTap(_ sender: UIButton) {
         self.locationManager?.startUpdatingLocation()
     }
     
     @IBAction func filterTap(_ sender: Any) {
+        sellView.backgroundColor = UIColor.white
+        rentView.backgroundColor = UIColor.white
         self.performSegue(withIdentifier: "home_apartmentFilter", sender: self)
     }
     

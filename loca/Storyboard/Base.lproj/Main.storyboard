@@ -99,11 +99,90 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCI-p3-Pgl">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCy-Yc-wVQ">
+                                                <rect key="frame" x="8" y="0.0" width="114" height="40"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dollarsign.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="D6d-ju-LIp">
+                                                        <rect key="frame" x="8" y="8.5" width="24" height="23"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="D6d-ju-LIp" secondAttribute="height" multiplier="1:1" id="hXk-Xg-dDn"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bán" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="m5H-TB-7f2">
+                                                        <rect key="frame" x="38" y="11" width="68" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="m5H-TB-7f2" secondAttribute="trailing" constant="8" id="DVv-oc-fBV"/>
+                                                    <constraint firstItem="D6d-ju-LIp" firstAttribute="leading" secondItem="QCy-Yc-wVQ" secondAttribute="leading" constant="8" id="kYe-zi-mAn"/>
+                                                    <constraint firstItem="D6d-ju-LIp" firstAttribute="height" secondItem="QCy-Yc-wVQ" secondAttribute="height" multiplier="0.6" id="peV-z3-dAS"/>
+                                                    <constraint firstItem="m5H-TB-7f2" firstAttribute="leading" secondItem="D6d-ju-LIp" secondAttribute="trailing" constant="6" id="rr4-r6-q6o"/>
+                                                    <constraint firstItem="D6d-ju-LIp" firstAttribute="centerY" secondItem="QCy-Yc-wVQ" secondAttribute="centerY" id="tQB-pt-tYE"/>
+                                                    <constraint firstItem="m5H-TB-7f2" firstAttribute="centerY" secondItem="QCy-Yc-wVQ" secondAttribute="centerY" id="v5L-f1-3Nl"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="jE9-01-w68" appends="YES" id="f2C-ko-9T6"/>
+                                                </connections>
+                                            </view>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="QCy-Yc-wVQ" firstAttribute="leading" secondItem="qCI-p3-Pgl" secondAttribute="leading" constant="8" id="QiK-DP-SZf"/>
+                                            <constraint firstAttribute="bottom" secondItem="QCy-Yc-wVQ" secondAttribute="bottom" id="bhB-Io-spA"/>
+                                            <constraint firstAttribute="trailing" secondItem="QCy-Yc-wVQ" secondAttribute="trailing" constant="8" id="lxK-cY-xhu"/>
+                                            <constraint firstItem="QCy-Yc-wVQ" firstAttribute="top" secondItem="qCI-p3-Pgl" secondAttribute="top" id="pcq-wH-EOa"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUb-gL-ufM">
                                         <rect key="frame" x="130" y="0.0" width="130" height="40"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWb-5D-vTC">
+                                                <rect key="frame" x="8" y="0.0" width="114" height="40"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dollarsign.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="teL-Xo-ayk">
+                                                        <rect key="frame" x="8" y="8.5" width="24" height="23"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="teL-Xo-ayk" secondAttribute="height" multiplier="1:1" id="Xic-Jm-7OZ"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cho Thuê" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Qla-Ri-6TP">
+                                                        <rect key="frame" x="38" y="11" width="68" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstItem="Qla-Ri-6TP" firstAttribute="centerY" secondItem="JWb-5D-vTC" secondAttribute="centerY" id="9ZP-Fa-0MW"/>
+                                                    <constraint firstItem="teL-Xo-ayk" firstAttribute="height" secondItem="JWb-5D-vTC" secondAttribute="height" multiplier="0.6" id="Jk2-0q-ab3"/>
+                                                    <constraint firstItem="teL-Xo-ayk" firstAttribute="centerY" secondItem="JWb-5D-vTC" secondAttribute="centerY" id="LEX-l4-ePJ"/>
+                                                    <constraint firstItem="Qla-Ri-6TP" firstAttribute="leading" secondItem="teL-Xo-ayk" secondAttribute="trailing" constant="6" id="as4-73-Wg2"/>
+                                                    <constraint firstItem="teL-Xo-ayk" firstAttribute="leading" secondItem="JWb-5D-vTC" secondAttribute="leading" constant="8" id="fsm-m5-AzA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Qla-Ri-6TP" secondAttribute="trailing" constant="8" id="qXY-TD-axk"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="JWb-5D-vTC" firstAttribute="top" secondItem="LUb-gL-ufM" secondAttribute="top" id="4gJ-lp-WcF"/>
+                                            <constraint firstItem="JWb-5D-vTC" firstAttribute="leading" secondItem="LUb-gL-ufM" secondAttribute="leading" constant="8" id="DjN-WE-Yxv"/>
+                                            <constraint firstAttribute="trailing" secondItem="JWb-5D-vTC" secondAttribute="trailing" constant="8" id="EQd-rw-N7U"/>
+                                            <constraint firstAttribute="bottom" secondItem="JWb-5D-vTC" secondAttribute="bottom" id="hsv-qX-flr"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="pxo-wH-HhN" appends="YES" id="YfH-3R-UDN"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcQ-gE-4DG">
                                         <rect key="frame" x="260" y="0.0" width="130" height="40"/>
@@ -111,8 +190,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vyv-Vx-Uch">
                                                 <rect key="frame" x="8" y="0.0" width="114" height="40"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mixer_icon" translatesAutoresizingMaskIntoConstraints="NO" id="igc-KB-DSy">
-                                                        <rect key="frame" x="8" y="8" width="24" height="24"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="igc-KB-DSy">
+                                                        <rect key="frame" x="8" y="8.5" width="24" height="23"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="igc-KB-DSy" secondAttribute="height" multiplier="1:1" id="GzR-jZ-f86"/>
                                                         </constraints>
@@ -165,7 +245,7 @@
                                     <action selector="myLocationTap:" destination="o8A-ec-I9P" eventType="touchUpInside" id="aQ2-Fz-WSu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrc-Vm-dvC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrc-Vm-dvC">
                                 <rect key="frame" x="352.5" y="632.5" width="49.5" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="gyroscope" catalog="system"/>
@@ -204,9 +284,11 @@
                         <outlet property="mapTypeButton" destination="Qrc-Vm-dvC" id="C1x-Sx-7Xu"/>
                         <outlet property="mapView" destination="hh2-sh-tOl" id="uWP-Ll-AUu"/>
                         <outlet property="myLocationButton" destination="oJs-WF-7Zn" id="MSY-SM-srd"/>
+                        <outlet property="rentView" destination="JWb-5D-vTC" id="wnX-f7-mZp"/>
                         <outlet property="searchIndicator" destination="3th-Gh-tCs" id="GhG-Jt-NL2"/>
                         <outlet property="searchTextField" destination="y5L-mI-Gnp" id="OV8-LH-u6c"/>
                         <outlet property="searchView" destination="Rgz-Ue-EWJ" id="za0-oc-ulk"/>
+                        <outlet property="sellView" destination="QCy-Yc-wVQ" id="FLS-i7-mbT"/>
                         <segue destination="oaM-HV-KSV" kind="show" identifier="home_apartmentDetail" id="CsY-5T-KRW"/>
                         <segue destination="nUc-XZ-LoH" kind="show" identifier="home_manage" id="CLG-xq-UIs"/>
                         <segue destination="NsI-qh-BQi" kind="show" identifier="home_apartmentFilter" id="BUm-0a-adM"/>
@@ -232,6 +314,16 @@
                 <tapGestureRecognizer id="uYT-xU-JQS" userLabel="filterTap">
                     <connections>
                         <action selector="filterTap:" destination="o8A-ec-I9P" id="p39-cM-cc5"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="jE9-01-w68" userLabel="sellViewTap">
+                    <connections>
+                        <action selector="sellViewTap:" destination="o8A-ec-I9P" id="4oa-9z-nqu"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="pxo-wH-HhN" userLabel="rentViewTap">
+                    <connections>
+                        <action selector="rentViewTap:" destination="o8A-ec-I9P" id="AhB-Wn-H6M"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1722,9 +1814,6 @@
         <designable name="RXp-NE-dHf">
             <size key="intrinsicContentSize" width="390" height="39.220703125"/>
         </designable>
-        <designable name="Xoy-Ut-mbJ">
-            <size key="intrinsicContentSize" width="79" height="36"/>
-        </designable>
         <designable name="cTt-OU-lt1">
             <size key="intrinsicContentSize" width="390" height="39.220703125"/>
         </designable>
@@ -1749,12 +1838,6 @@
         <designable name="wDS-XG-GjY">
             <size key="intrinsicContentSize" width="390" height="39.220703125"/>
         </designable>
-        <designable name="wUS-sR-I2c">
-            <size key="intrinsicContentSize" width="79" height="36"/>
-        </designable>
-        <designable name="xxL-fb-St9">
-            <size key="intrinsicContentSize" width="74" height="36"/>
-        </designable>
         <designable name="yoV-Bx-T77">
             <size key="intrinsicContentSize" width="390" height="39.220703125"/>
         </designable>
@@ -1762,18 +1845,19 @@
     <inferredMetricsTieBreakers>
         <segue reference="E1B-ey-8oX"/>
         <segue reference="6gg-9a-n9y"/>
-        <segue reference="IXF-tv-TAV"/>
+        <segue reference="YMv-GY-WxU"/>
         <segue reference="eJN-VZ-F4Y"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cancel_icon" width="96" height="96"/>
+        <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
         <image name="down_icon" width="100" height="100"/>
+        <image name="eye.circle.fill" catalog="system" width="128" height="121"/>
         <image name="forgot_password_icon" width="96" height="96"/>
         <image name="google-pin" width="512" height="512"/>
         <image name="gyroscope" catalog="system" width="128" height="121"/>
         <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="membership_icon" width="96" height="96"/>
-        <image name="mixer_icon" width="512" height="512"/>
         <image name="password_gradient_icon" width="96" height="96"/>
         <image name="phone_gradient_icon" width="96" height="96"/>
         <image name="user_icon" width="100" height="100"/>
