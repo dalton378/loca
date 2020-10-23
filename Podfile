@@ -9,11 +9,10 @@ pod 'SwiftMessages'
 pod 'Alamofire', '~> 5.0.0-rc.3'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
-pod 'iOSDropDown'
+pod 'Kingfisher'
 pod 'GoogleSignIn'
 pod 'SkyFloatingLabelTextField', '~> 3.0'
 pod 'TransitionButton'
-pod 'Floaty', '~> 4.2.0'
 pod 'SVPinView', '~> 1.0'
 
   target 'locaTests' do

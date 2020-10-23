@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ManagePostTableViewCell: UITableViewCell {
 
@@ -29,8 +30,8 @@ class ManagePostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setUI(photo: UIImage, address: String, price: String, date: String, status: statusCases) {
-        self.photo.image = photo
+    func setUI(photo: URL?, address: String, price: String, date: String, status: statusCases) {
+        self.photo.kf.setImage(with: photo)
         self.addressLabel.text = address
         self.priceLabel.text = price
         self.dateLabel.text = date

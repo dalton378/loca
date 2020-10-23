@@ -7,13 +7,13 @@
 //
 
 import Foundation
+import Combine
 
-
+@available(iOS 13.0, *)
 class AppConfig {
     
-    
-    
     static let shared = AppConfig()
+    var publisherSignIn = PassthroughSubject<Bool,Never>()
     
     func resetDefaults() {
         //let defaults = UserDefaults.standard
@@ -83,8 +83,10 @@ class AppConfig {
     }
     
     var isSignedIn: Bool? {
-        get { return userDefaults.bool(forKey: "isSignedIn") }
-        set { userDefaults.set(newValue, forKey: "isSignedIn") }
+        get { publisherSignIn.send(userDefaults.bool(forKey: "isSignedIn"))
+            return userDefaults.bool(forKey: "isSignedIn") }
+        set { userDefaults.set(newValue, forKey: "isSignedIn")
+            publisherSignIn.send(newValue ?? false) }
     }
     
     var apartmentList: ApartmentList?{
@@ -105,4 +107,5 @@ class AppConfig {
             }
         }
     }
+    
 }

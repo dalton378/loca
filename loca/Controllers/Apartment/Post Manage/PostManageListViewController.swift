@@ -75,13 +75,20 @@ extension PostManageListViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "manage_post", for: indexPath) as! ManagePostTableViewCell
         guard let image = data[indexPath.row].images.first else {
-            cell.setUI(photo: UIImage(), address: data[indexPath.row].address, price: "\(data[indexPath.row].area) \(data[indexPath.row].area_unit.name) - \(data[indexPath.row].price) \(data[indexPath.row].currency.name)", date: data[indexPath.row].start_date, status: .pending)
+            cell.setUI(photo: URL(string: ""), address: data[indexPath.row].address, price: "\(data[indexPath.row].area) \(data[indexPath.row].area_unit.name) - \(data[indexPath.row].price) \(data[indexPath.row].currency.name)", date: data[indexPath.row].start_date, status: .pending)
             return cell
         }
         
-        let photo = sharedFunctions.downloadLocaApartmentImage(image: image)
+        let newString = image.img.replacingOccurrences(of: "\\", with: "", options: .literal, range: nil)
+        let data1 = newString.data(using: .utf8)
+        let newData = data1!
+        let autParams = try? JSONDecoder().decode(ApartmentPhotoDetail.self, from: newData)
         
-        cell.setUI(photo: photo, address: data[indexPath.row].address, price: "\(data[indexPath.row].area) \(data[indexPath.row].area_unit.name) - \(data[indexPath.row].price) \(data[indexPath.row].currency.name)", date: data[indexPath.row].start_date, status: .pending)
+        let urlString = "\(AppConfig.shared.ApiBaseUrl)/\( autParams!.thumbnail)"
+        let urlPhoto = URL(string: urlString)
+        
+        
+        cell.setUI(photo: urlPhoto!, address: data[indexPath.row].address, price: "\(data[indexPath.row].area) \(data[indexPath.row].area_unit.name) - \(data[indexPath.row].price) \(data[indexPath.row].currency.name)", date: data[indexPath.row].start_date, status: .pending)
         
         return cell
     }
@@ -118,7 +125,7 @@ extension PostManageListViewController: UITableViewDataSource, UITableViewDelega
                 case .success(let data):
                     let parsedData = data.data(using: .utf8)
                     guard let newData = parsedData, let autParams = try! JSONDecoder().decode(ApartmentPostList?.self, from: newData) else {return}
-                    
+
                     if !autParams.data.isEmpty {
                         for item in autParams.data {
                             self.data.append(item)

@@ -131,7 +131,7 @@ class SignInMessage: MessageView {
                     return
                 }
                 AppConfig.shared.accessToken = autParams.access_token
-                AppConfig.shared.isSignedIn = true
+                //AppConfig.shared.isSignedIn = true
                 self.buttonSign.stopAnimation(animationStyle: .expand, revertAfterDelay: 1, completion: {
                     self.exitAction?()
                     Messages.displaySuccessMessage(message: "Đăng Nhập Thành Công.")

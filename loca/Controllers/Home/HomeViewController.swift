@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
-import Floaty
+import Combine
 
 class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -17,12 +17,20 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var accountImage: UIImageView!
+    @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var mapTypeButton: UIButton!
+    @IBOutlet weak var myLocationButton: UIButton!
+    
+    
+    
     let store = AlamofireStore()
     var apartmentId = "", isNavigateToPhone = 0, fullAddress = "", selectedLocation = [Double]()
     var locationManager: CLLocationManager?
     let searchRequest = MKLocalSearch.Request()
     var addressDetail: AddressDetailSearch?
     var selectedAnnotations = [MKAnnotation]()
+    var cancellable: AnyCancellable?
     
     var city = "", district = "", min_price = "", min_currency = "", max_price = "", max_currency = "", transaction = "", propertyType = ""
     
@@ -45,40 +53,23 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             break
         }
         
-        let floaty = Floaty()
-        floaty.openAnimationType = .pop
-        floaty.addItem("Tìm Kiếm", icon: UIImage(named: "search_icon")!,handler:{ _ in
-            self.performSegue(withIdentifier: "home_apartmentFilter", sender: self)
-        } )
-        
-        floaty.addItem("Tài Khoản", icon: UIImage(named: "user_icon")!,handler:{ _ in
-            guard let isSignedIn = AppConfig.shared.isSignedIn else {return}
-            switch isSignedIn {
-            case true:
-                self.performSegue(withIdentifier: "home_manage", sender: self)
-            default:
-                Messages.displaySignInMessage(completionHandler: self.getDataFromServer, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)}, navigateGGsignInAction: {self.performSegue(withIdentifier: "google_signin", sender: self)}, fbSignInAction: self.FBcompletionAction)
-            }
-        } )
-        floaty.addItem("Liên Hệ", icon: UIImage(named: "email_icon")!,handler:{ _ in
-            self.performSegue(withIdentifier: "home_contact", sender: self)
-        } )
-        
-        floaty.addItem("Vệ Tinh", icon: UIImage(named: "satellite_icon"), handler: {_ in
-            self.mapView.mapType = .satellite
-        })
-        
-        floaty.addItem("Sơ Đồ", icon: UIImage(named: "map_icon"), handler: {_ in
-            self.mapView.mapType = .standard
-        })
-        floaty.addItem("Vị Trị Của Bạn ", icon: UIImage(named: "location_icon"), handler: {_ in
-            self.locationManager?.startUpdatingLocation()
-        })
-        
-        self.view.addSubview(floaty)
-        
-        searchView.layer.cornerRadius = 10
+        searchView.layer.cornerRadius = 30
         searchTextField.delegate = self
+        accountImage.layer.cornerRadius = accountImage.frame.width/2
+        
+        filterView.layer.cornerRadius = filterView.frame.height/2
+        mapTypeButton.layer.cornerRadius = mapTypeButton.frame.height/2
+        myLocationButton.layer.cornerRadius = myLocationButton.frame.height/2
+        
+        self.cancellable = AppConfig.shared.publisherSignIn.sink(receiveValue: {isSignedIn in
+            switch isSignedIn{
+            case true:
+                self.accountImage.image = sharedFunctions.imageWith(name: String(AppConfig.shared.profileName?.prefix(1) ?? "A"))
+            case false:
+                self.accountImage.image = UIImage(named: "user_icon")
+            }
+        })
+        _ = AppConfig.shared.isSignedIn
         
     }
     
@@ -119,6 +110,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                 AppConfig.shared.profilePhone = autParams.phone
                 AppConfig.shared.profileEmailVerified = autParams.is_email_verified
                 AppConfig.shared.profilePhoneVerified = autParams.is_phone_verified
+                AppConfig.shared.isSignedIn = true
             case .failure:
                 return
             }
@@ -155,6 +147,38 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         ListView.removeListView()
     }
     
+    
+    @IBAction func changeMapTypeTap(_ sender: UIButton) {
+        switch mapTypeButton.isSelected {
+        case true:
+            mapTypeButton.setImage(UIImage(systemName: "gyroscope"), for: .normal)
+            self.mapView.mapType = .standard
+        default:
+            mapTypeButton.setImage(UIImage(systemName: "map"), for: .normal)
+            self.mapView.mapType = .satellite
+        }
+        mapTypeButton.isSelected = !mapTypeButton.isSelected
+    }
+    
+    @IBAction func myLocationTap(_ sender: UIButton) {
+        self.locationManager?.startUpdatingLocation()
+    }
+    
+    @IBAction func filterTap(_ sender: Any) {
+        self.performSegue(withIdentifier: "home_apartmentFilter", sender: self)
+    }
+    
+    
+    @IBAction func accountTap(_ sender: Any) {
+        guard let isSignedIn = AppConfig.shared.isSignedIn else {return}
+        switch isSignedIn {
+        case true:
+            self.performSegue(withIdentifier: "home_manage", sender: self)
+        default:
+            Messages.displaySignInMessage(completionHandler: self.getDataFromServer, navigateSignUpAction: {self.performSegue(withIdentifier: "signup_home", sender: self)}, navigateForgotPassAction: {self.performSegue(withIdentifier: "home_forgotPass", sender: self)}, navigateGGsignInAction: {self.performSegue(withIdentifier: "google_signin", sender: self)}, fbSignInAction: self.FBcompletionAction)
+        }
+    }
+    
     func addMarker(){
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
@@ -177,7 +201,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         }
     }
     
-     class MakerAnnotation: NSObject, MKAnnotation {
+    class MakerAnnotation: NSObject, MKAnnotation {
         var coordinate: CLLocationCoordinate2D
         var title : String?
         var subtitle: String?
@@ -202,11 +226,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             selectedAnnotation.titleVisibility = .adaptive
             selectedAnnotation.subtitleVisibility = .adaptive
             
-          //  let rightButton = UIButton(type: .detailDisclosure)
+            //  let rightButton = UIButton(type: .detailDisclosure)
             //rightButton.tag = annotation.hash
             //selectedAnnotation.animatesDrop = true
             selectedAnnotation.canShowCallout = true
-           // selectedAnnotation.rightCalloutAccessoryView = rightButton
+            // selectedAnnotation.rightCalloutAccessoryView = rightButton
             selectedAnnotation.markerTintColor=UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0,alpha:0.5).withAlphaComponent(0)
             if let custom = annotation as? MakerAnnotation {
                 selectedAnnotation.image = custom.icon
@@ -214,7 +238,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                 selectedAnnotation.image = UIImage(named: "location_pin") ?? UIImage()
             }
             
-
+            
             
             return selectedAnnotation
         }
@@ -233,7 +257,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         apartmentId = String(fulltextArr[1])
         
         Messages.displayApartmentPreviewMessage(title: "Thông Tin", message: String(fulltextArr[0]), buttonAction: {
-            self.performSegue(withIdentifier: "home_apartmentDetail", sender: self)})
+                                                    self.performSegue(withIdentifier: "home_apartmentDetail", sender: self)})
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -260,8 +284,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func displayPostCreation(address: String){
         Messages.displayYesNoMessage(title: "Đăng Tin", message: address, buttonText: "+ Bán/Cho Thuê", buttonAction: {
-            guard let isVerified = AppConfig.shared.profilePhoneVerified else { return}
-            if isVerified == 0 {
+            guard let isVerified = AppConfig.shared.profilePhoneVerified, let isSignIn = AppConfig.shared.isSignedIn else { return}
+            if isSignIn == false {
+                Messages.displayErrorMessage(message: "Vui lòng đăng nhập trước khi đăng tin!")
+            }
+            else if isVerified == 0 {
                 Messages.displayErrorMessage(message: "Tài khoản chưa xác thực. Vui lòng xác thực!")
             } else {
                 self.store.searchAddressDetail(address: address, completionHandler: {result in
@@ -276,7 +303,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                         return
                     }
                 })
-                
             }
         })
     }
@@ -404,20 +430,20 @@ extension HomeViewController: UITextFieldDelegate {
         
         let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
         ceo.reverseGeocodeLocation(loc, completionHandler:
-            {(placemarks, error) in
-                if (error != nil)
-                {
-                    print("reverse geodcode fail: \(error!.localizedDescription)")
-                }
-                let pm = placemarks! as [CLPlacemark]
-                
-                if pm.count > 0 {
-                    let pm = placemarks![0]
-                    let addressString = "\(pm.subThoroughfare ?? "") \(pm.thoroughfare ?? ""), \(pm.subLocality ?? ""), \(pm.subAdministrativeArea ?? ""), \(pm.locality ?? ""), \(pm.country ?? "")"
-                    print(addressString)
-                    self.fullAddress = addressString
-                }
-        })
+                                    {(placemarks, error) in
+                                        if (error != nil)
+                                        {
+                                            print("reverse geodcode fail: \(error!.localizedDescription)")
+                                        }
+                                        let pm = placemarks! as [CLPlacemark]
+                                        
+                                        if pm.count > 0 {
+                                            let pm = placemarks![0]
+                                            let addressString = "\(pm.subThoroughfare ?? "") \(pm.thoroughfare ?? ""), \(pm.subLocality ?? ""), \(pm.subAdministrativeArea ?? ""), \(pm.locality ?? ""), \(pm.country ?? "")"
+                                            print(addressString)
+                                            self.fullAddress = addressString
+                                        }
+                                    })
         
     }
     

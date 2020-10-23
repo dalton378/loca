@@ -29,7 +29,7 @@ struct ApartmentDetail: Codable {
     var street: String
     var apartment_number: String?
     var apartment_code: String?
-    var direction: String
+    var direction: String?
     var lat: String
     var lng: String
     var area: Int
