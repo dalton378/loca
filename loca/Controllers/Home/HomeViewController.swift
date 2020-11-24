@@ -31,6 +31,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var addressDetail: AddressDetailSearch?
     var selectedAnnotations = [MKAnnotation]()
     var cancellable: AnyCancellable?
+    var gestureRecognizer = UILongPressGestureRecognizer()
     
     var city = "", district = "", min_price = "", min_currency = "", max_price = "", max_currency = "", transaction = "", propertyType = ""
     
@@ -73,7 +74,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             }
         })
         _ = AppConfig.shared.isSignedIn
+        self.mapView.mapType = .satellite
         
+        /// Add Tap REcognizer
+        gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        mapView.addGestureRecognizer(gestureRecognizer)
     }
     
     func dropPinZoomIn(placemark:MKPlacemark){
@@ -154,11 +159,11 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     @IBAction func changeMapTypeTap(_ sender: UIButton) {
         switch mapTypeButton.isSelected {
         case true:
-            mapTypeButton.setImage(UIImage(systemName: "gyroscope"), for: .normal)
-            self.mapView.mapType = .standard
-        default:
             mapTypeButton.setImage(UIImage(systemName: "map"), for: .normal)
             self.mapView.mapType = .satellite
+        default:
+            mapTypeButton.setImage(UIImage(systemName: "gyroscope"), for: .normal)
+            self.mapView.mapType = .mutedStandard
         }
         mapTypeButton.isSelected = !mapTypeButton.isSelected
     }
@@ -217,9 +222,9 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func addMarker(){
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        
+
         let defaultCoordinate = CLLocationCoordinate2D(latitude: Double(AppConstants.defaultLatitude)!, longitude: Double(AppConstants.defaultLongtitude)!)
-        let annotation = MakerAnnotation(coordinate: defaultCoordinate, title: "", subTitle: "", icon: UIImage(named: "location_pin") ?? UIImage())
+        let annotation = MakerAnnotation(coordinate: defaultCoordinate, title: "", subTitle: "", icon: UIImage())
         
         mapView.setRegion(annotation.region, animated: true)
         mapView.delegate = self
@@ -258,23 +263,15 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let selectedAnnotation = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
-            selectedAnnotation.animatesWhenAdded = true
-            selectedAnnotation.titleVisibility = .adaptive
-            selectedAnnotation.subtitleVisibility = .adaptive
-            
-            //  let rightButton = UIButton(type: .detailDisclosure)
-            //rightButton.tag = annotation.hash
-            //selectedAnnotation.animatesDrop = true
-            selectedAnnotation.canShowCallout = true
-            // selectedAnnotation.rightCalloutAccessoryView = rightButton
-            selectedAnnotation.markerTintColor=UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0,alpha:0.5).withAlphaComponent(0)
+            selectedAnnotation.markerTintColor = .clear
+            selectedAnnotation.glyphTintColor = .clear
             if let custom = annotation as? MakerAnnotation {
                 selectedAnnotation.image = custom.icon
             } else {
-                selectedAnnotation.image = UIImage(named: "location_pin") ?? UIImage()
+                selectedAnnotation.image = UIImage(named: "loca_pin") ?? UIImage()
             }
             
-            
+            selectedAnnotation.canShowCallout = true
             
             return selectedAnnotation
         }
@@ -374,6 +371,19 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             view.data = passedData
             view.operation = .create
         }
+    }
+    
+    @objc func handleTap(_ gestureReconizer: UILongPressGestureRecognizer) {
+        mapView.removeAnnotations(mapView.annotations)
+        self.addressDetail = nil
+        self.view.endEditing(true)
+        let location = gestureReconizer.location(in: mapView)
+        let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
+
+       //  Add annotation:
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
     }
 }
 

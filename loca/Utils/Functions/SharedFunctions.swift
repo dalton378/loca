@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FBSDKLoginKit
 import GoogleSignIn
+import MapKit
 
 public class sharedFunctions {
     static func downloadImage(from url: URL) -> UIImage  {
@@ -86,5 +87,40 @@ public class sharedFunctions {
             return nameImage
         }
         return nil
+    }
+    
+    static func getAddressFromLatLon(coordinate: CLLocationCoordinate2D) -> (city: String?, ward: String?, street: String?)   {
+            let center = coordinate
+            let ceo: CLGeocoder = CLGeocoder()
+            let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+            var result = CLPlacemark()
+        
+            ceo.reverseGeocodeLocation(loc, completionHandler:
+                {(placemarks, error) in
+                    if (error != nil)
+                    {
+                        print("reverse geodcode fail: \(error!.localizedDescription)")
+                    }
+                    let pm = placemarks! as [CLPlacemark]
+
+                    if pm.count > 0 {
+                        let pm = placemarks![0]
+                        result = pm
+//                        print(pm.country)
+//                        print(pm.locality)
+//                        print(pm.subLocality)
+//                        print(pm.thoroughfare)
+//                        print(pm.postalCode)
+//                        print(pm.subThoroughfare)
+                       
+                  }
+                    //return (result.locality, result.subLocality, result.thoroughfare)
+            })
+        //completionHandler(result.locality, result.subLocality, result.thoroughfare)
+        if ((result.locality?.isEmpty) != nil){
+            return ("","","")
+        } else {
+        return (result.locality, result.subLocality, result.thoroughfare)
+        }
     }
 }

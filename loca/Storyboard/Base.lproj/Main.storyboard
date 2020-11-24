@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dDQ-Y8-Bws">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dDQ-Y8-Bws">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -248,7 +248,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrc-Vm-dvC">
                                 <rect key="frame" x="352.5" y="632.5" width="49.5" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="gyroscope" catalog="system"/>
+                                <state key="normal" image="map" catalog="system"/>
                                 <connections>
                                     <action selector="changeMapTypeTap:" destination="o8A-ec-I9P" eventType="touchUpInside" id="h1s-QD-d5t"/>
                                 </connections>
@@ -1855,8 +1855,8 @@
         <image name="eye.circle.fill" catalog="system" width="128" height="121"/>
         <image name="forgot_password_icon" width="96" height="96"/>
         <image name="google-pin" width="512" height="512"/>
-        <image name="gyroscope" catalog="system" width="128" height="121"/>
         <image name="location.fill" catalog="system" width="128" height="121"/>
+        <image name="map" catalog="system" width="128" height="110"/>
         <image name="membership_icon" width="96" height="96"/>
         <image name="password_gradient_icon" width="96" height="96"/>
         <image name="phone_gradient_icon" width="96" height="96"/>
