@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import Combine
 
-class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
@@ -31,7 +31,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var addressDetail: AddressDetailSearch?
     var selectedAnnotations = [MKAnnotation]()
     var cancellable: AnyCancellable?
-    var gestureRecognizer = UILongPressGestureRecognizer()
     
     var city = "", district = "", min_price = "", min_currency = "", max_price = "", max_currency = "", transaction = "", propertyType = ""
     
@@ -75,10 +74,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         })
         _ = AppConfig.shared.isSignedIn
         self.mapView.mapType = .satellite
-        
-        /// Add Tap REcognizer
-        gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        mapView.addGestureRecognizer(gestureRecognizer)
     }
     
     func dropPinZoomIn(placemark:MKPlacemark){
@@ -260,49 +255,6 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         }
     }
     
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if let selectedAnnotation = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
-            selectedAnnotation.markerTintColor = .clear
-            selectedAnnotation.glyphTintColor = .clear
-            if let custom = annotation as? MakerAnnotation {
-                selectedAnnotation.image = custom.icon
-            } else {
-                selectedAnnotation.image = UIImage(named: "loca_pin") ?? UIImage()
-            }
-            
-            selectedAnnotation.canShowCallout = true
-            
-            return selectedAnnotation
-        }
-        else {return nil}
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        ListView.removeListView()
-        guard let selectedAnnotation = view.annotation as? MakerAnnotation else {
-            guard let detail = self.addressDetail  else { return }
-            displayPostCreation(address: detail.address)
-            return}
-        guard let text = selectedAnnotation.subtitle else {return}
-        let fulltextArr = text.split(separator: "|")
-        apartmentId = String(fulltextArr[1])
-        
-        Messages.displayApartmentPreviewMessage(title: "Thông Tin", message: String(fulltextArr[0]), buttonAction: {
-                                                    self.performSegue(withIdentifier: "home_apartmentDetail", sender: self)})
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last{
-            self.getAddressFromLatLon(pdblLatitude: String(location.coordinate.latitude), withLongitude: String(location.coordinate.longitude))
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            self.mapView.setRegion(region, animated: true)
-        }
-        locationManager?.stopUpdatingLocation()
-    }
-    
     func FBcompletionAction(){
         sharedFunctions.getUserInfo(completionHandler: {
             guard let _ = AppConfig.shared.profilePhone else {
@@ -328,7 +280,7 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                     switch result {
                     case .success(let dataString):
                         let parsedData = dataString.data(using: .utf8)
-                        guard let newData = parsedData, let autParams = try! JSONDecoder().decode(AddressDetailSearch?.self, from: newData) else {return}
+                        guard let newData = parsedData, let autParams = try? JSONDecoder().decode(AddressDetailSearch.self, from: newData) else {return}
                         self.addressDetail = autParams
                         self.performSegue(withIdentifier: "home_apartmentcreation", sender: self)
                     case .failure:
@@ -373,20 +325,45 @@ class HomeViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         }
     }
     
-    @objc func handleTap(_ gestureReconizer: UILongPressGestureRecognizer) {
-        mapView.removeAnnotations(mapView.annotations)
+    private func searchByDragDrop(coordinate: CLLocationCoordinate2D){
         self.addressDetail = nil
         self.view.endEditing(true)
-        let location = gestureReconizer.location(in: mapView)
-        let coordinate = mapView.convert(location,toCoordinateFrom: mapView)
 
        //  Add annotation:
         let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        mapView.addAnnotation(annotation)
+       
+        store.searchAddressByLocation(long: coordinate.longitude, lat: coordinate.latitude, completionHandler: { [self]result in
+            switch result{
+            case .success(let data):
+                let parsedData = data.data(using: .utf8)
+                guard let newData = parsedData, let autParams = try? JSONDecoder().decode(AddressDetailSearch.self, from: newData) else {
+                    Messages.displayErrorMessage(message: "Lỗi. Vui lòng thử lại sau!")
+                    return
+                }
+                self.addressDetail = autParams
+                annotation.coordinate = coordinate
+                selectedAnnotations.append(annotation)
+                self.mapView.addAnnotation(annotation)
+                selectAnnotation(annotation: annotation)
+            case .failure:
+                Messages.displayErrorMessage(message: "Lỗi. Vui lòng thử lại sau!")
+            }
+        })
+    }
+    
+    private func selectAnnotation(annotation: MKAnnotation){
+        ListView.removeListView()
+        guard let selectedAnnotation = annotation as? MakerAnnotation else {
+            guard let detail = self.addressDetail  else { return }
+            displayPostCreation(address: detail.address)
+            return}
+        guard let text = selectedAnnotation.subtitle else {return}
+        let fulltextArr = text.split(separator: "|")
+        apartmentId = String(fulltextArr[1])
+        Messages.displayApartmentPreviewMessage(title: "Thông Tin", message: String(fulltextArr[0]), buttonAction: {
+                                                    self.performSegue(withIdentifier: "home_apartmentDetail", sender: self)})
     }
 }
-
 
 extension HomeViewController: FilterSelectionProtocol {
     
@@ -454,7 +431,6 @@ extension HomeViewController: FilterSelectionProtocol {
 }
 
 extension HomeViewController: UITextFieldDelegate {
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text  else {return true}
         if text.count > 3 {
@@ -535,5 +511,53 @@ extension HomeViewController: UITextFieldDelegate {
                 return
             }
         })
+    }
+}
+
+//MARK: Mapview delegates
+extension HomeViewController: MKMapViewDelegate, CLLocationManagerDelegate {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
+        switch newState {
+        case .ending, .canceling:
+            guard let annotation = view.annotation else {return}
+            mapView.removeAnnotations(self.selectedAnnotations)
+            searchByDragDrop(coordinate: annotation.coordinate)
+        default:
+            break
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let selectedAnnotation = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
+            selectedAnnotation.markerTintColor = .clear
+            selectedAnnotation.glyphTintColor = .clear
+            if let custom = annotation as? MakerAnnotation {
+                selectedAnnotation.image = custom.icon
+            } else {
+                selectedAnnotation.image = UIImage(named: "loca_pin") ?? UIImage()
+            }
+            
+            selectedAnnotation.canShowCallout = true
+            selectedAnnotation.isDraggable = true
+            selectedAnnotation.animatesWhenAdded = true
+            
+            return selectedAnnotation
+        }
+        else {return nil}
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotation = view.annotation else {return}
+        selectAnnotation(annotation: annotation)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last{
+            self.getAddressFromLatLon(pdblLatitude: String(location.coordinate.latitude), withLongitude: String(location.coordinate.longitude))
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.mapView.setRegion(region, animated: true)
+        }
+        locationManager?.stopUpdatingLocation()
     }
 }

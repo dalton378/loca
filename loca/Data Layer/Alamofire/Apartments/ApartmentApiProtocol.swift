@@ -24,11 +24,12 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     case getFavoriteList(token: String)
     case deleteFavorite(id: String, token: String)
     case searchAddressDetail(text: String)
+    case searchAddressByLocation(long: Double, lat: Double)
     case searchAddress(text: String)
     
     var method: HTTPMethod {
         switch self {
-        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .getFavoriteList, .searchAddressDetail, .searchAddress:
+        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .getFavoriteList, .searchAddressDetail, .searchAddress, .searchAddressByLocation:
             return .get
         case .postFiles, .createPost, .addFavorte:
             return .post
@@ -67,6 +68,8 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
             return "favourite-apartments/\(id)"
         case .searchAddressDetail:
             return "apartments/search-detail"
+        case .searchAddressByLocation:
+            return "apartments/search-detail"
         case .searchAddress:
             return "apartments/search"
         }
@@ -74,7 +77,7 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
     
     var encoding: ParameterEncoding {
         switch self {
-        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .deletePost, .getFavoriteList, .deleteFavorite, .searchAddress:
+        case .getApartment, .getApartmentDetail, .getPropertyType, .searchApartment, .getPost, .deletePost, .getFavoriteList, .deleteFavorite, .searchAddress, .searchAddressByLocation:
             return URLEncoding.default
         case .searchAddressDetail:
             return URLEncoding.queryString
@@ -133,6 +136,8 @@ enum ApartmentApiProtocol: ServicesApiRouterProtocol {
             return ["page" : page]
         case .searchAddress(let address):
             return ["search_text": address]
+        case .searchAddressByLocation(let long, let lat):
+            return["lat": lat, "lng": long]
         default:
             return [:]
         }

@@ -200,11 +200,16 @@ class AlamofireStore {
     }
     
     func searchAddress(address: String, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
-           client.searchAddress(address: address, completionHandler: {result in
-               completionHandler(result.result)
-           })
-       }
+        client.searchAddress(address: address, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
     
+    func searchAddressByLocation(long: Double, lat: Double, completionHandler: @escaping (Result<String, AFError>) -> Void ) {
+        client.searchAddressByLocation(long: long, lat: lat, completionHandler: {result in
+            completionHandler(result.result)
+        })
+    }
 }
 
 extension AlamofireStore {
@@ -220,9 +225,9 @@ extension AlamofireStore {
                     multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
                 } //Optional for extra parameters
             },
-                      to:"https://area51.localoca.vn/v1/files").response { response in
-                        completionHandler(response)
-                        
+            to:"https://area51.localoca.vn/v1/files").response { response in
+                completionHandler(response)
+                
             }
         }))
         
